@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2343803824473772323}
   - component: {fileID: 2343803824473772322}
   - component: {fileID: 5959421837208471471}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,4 +180,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894958148b9e7e3419ea796d5910fc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  _walkSpeed: 10
+  _runSpeed: 30
