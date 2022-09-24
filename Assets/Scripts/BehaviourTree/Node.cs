@@ -79,7 +79,7 @@ namespace BehaviorTree
             Node tmp = _parent;
             while (tmp is not null)
             {
-                value = GetData(key);
+                value = tmp.GetData(key);
                 if (value is not null)
                     return value;
                 tmp = tmp.Parent;

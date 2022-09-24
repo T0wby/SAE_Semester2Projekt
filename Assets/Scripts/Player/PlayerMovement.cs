@@ -48,7 +48,6 @@ namespace Player_Towby
             Move(_move);
             if (CameraController.Instance != null)
             {
-                Debug.Log(_look);
                 CameraController.Instance.FollowTarget(Time.deltaTime);
                 CameraController.Instance.HandleCameraRotation(Time.deltaTime, _look.x, _look.y);
             }

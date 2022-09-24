@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace BehaviorTree
 {
-    public class Sequence : Node
+    public class Selector : Node
     {
-        //And operator
+        //Or operator
 
         #region Constructors
-        public Sequence() : base()
+        public Selector() : base()
         {
 
         }
 
-        public Sequence(List<Node> children) : base(children)
+        public Selector(List<Node> children) : base(children)
         {
 
         }
@@ -22,27 +22,24 @@ namespace BehaviorTree
 
         public override ENodeState CalculateState()
         {
-            bool childIsRunning = false;
-
             foreach (Node node in children)
             {
                 switch (node.CalculateState())
                 {
                     case ENodeState.FAILURE:
-                        state = ENodeState.FAILURE;
-                        return state;
+                        continue;
                     case ENodeState.RUNNING:
-                        childIsRunning = true;
-                        continue;
+                        state = ENodeState.RUNNING;
+                        return state;
                     case ENodeState.SUCCESS:
-                        continue;
-                    default:
                         state = ENodeState.SUCCESS;
                         return state;
+                    default:
+                        continue;
                 }
             }
 
-            return state = childIsRunning ? ENodeState.RUNNING : ENodeState.SUCCESS;
+            return state = ENodeState.FAILURE;
         }
     } 
 }
