@@ -9,11 +9,17 @@ public class OfficerBT : BehaviorTree.Tree
 
     public static float speed = 2f;
     public static float fovRange = 6f;
+    public static float attackRange = 2f;
 
     protected override Node SetupTree()
     {
         Node root = new Selector(new List<Node>
         {
+            new Sequence(new List<Node>
+            {
+                new CheckForEnemyInAttackRange(transform),
+                new LeafAttack(transform),
+            }),
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInFOV(transform),
