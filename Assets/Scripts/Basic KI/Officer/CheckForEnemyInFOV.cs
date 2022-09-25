@@ -17,22 +17,45 @@ public class CheckForEnemyInFOV : Node
     public override ENodeState CalculateState()
     {
         object target = GetData("target");
-        if (target is null)
-        {
-            _colliders = Physics.OverlapSphere(_thisTransform.position, OfficerBT.fovRange, _enemyLayerMask);
+        
+        if (target is not null)
+            DeleteData("target");
 
-            if (_colliders.Length > 0)
+        return CheckforEnemy();
+
+    }
+
+    private ENodeState CheckforEnemy()
+    {
+        _colliders = Physics.OverlapSphere(_thisTransform.position, OfficerBT.fovRange, _enemyLayerMask);
+
+        if (_colliders.Length > 0)
+        {
+            //Saving the Target in Root so that other Nodes can access it
+            Parent.Parent.SetData("target", ClosestEnemy(_colliders));
+            return state = ENodeState.SUCCESS;
+        }
+        else
+        {
+            return state = ENodeState.FAILURE;
+        }
+    }
+
+    private Transform ClosestEnemy(Collider[] enemyColliders)
+    {
+        float lowest = Vector3.Distance(enemyColliders[0].transform.position, _thisTransform.position);
+        Collider closest = enemyColliders[0];
+
+        for (int i = 0; i < enemyColliders.Length; i++)
+        {
+            float next = Vector3.Distance(enemyColliders[i].transform.position, _thisTransform.position);
+
+            if (lowest > next)
             {
-                //Saving the Target in Root so that other Nodes can access it
-                Parent.Parent.SetData("target", _colliders[0].transform);
-                return state = ENodeState.SUCCESS;
-            }
-            else
-            {
-                return state = ENodeState.FAILURE;
+                closest = enemyColliders[i];
+                lowest = next;
             }
         }
-
-        return state = ENodeState.SUCCESS;
+        return closest.transform;
     }
 }
