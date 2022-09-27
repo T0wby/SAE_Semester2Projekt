@@ -40,17 +40,16 @@ namespace BehaviorTree
                 Transform waypoint = _waypoints[_currentWaypointIndex];
 
 
-                if (Vector3.Distance(_thisTransform.position, waypoint.position) < 0.01f)
+                if (Vector3.Distance(_thisTransform.position, waypoint.position) < 0.2f)
                 {
-                    _thisTransform.position = waypoint.position;
+                    //_thisTransform.position = waypoint.position;
                     _waitCounter = 0f;
                     _waiting = true;
-
                     _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
                 }
                 else
                 {
-                    _agent.SetDestination(waypoint.position);
+                    _agent.destination = waypoint.position;
                     //_thisTransform.position = Vector3.MoveTowards(_thisTransform.position, waypoint.position, OfficerBT.speed * Time.deltaTime);
                     //_thisTransform.LookAt(waypoint.position);
                 }

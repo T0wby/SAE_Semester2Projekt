@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using BehaviorTree;
+using UnityEngine.AI;
 using UnityEngine;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class GuardBT : BehaviorTree.Tree
 {
     public Transform guardpoint;
@@ -10,9 +12,12 @@ public class GuardBT : BehaviorTree.Tree
     public static float speed = 2f;
     public static float fovRange = 6f;
     public static float attackRange = 2f;
+    private NavMeshAgent _agent;
 
     protected override Node SetupTree()
     {
+        _agent = GetComponent<NavMeshAgent>();
+
         Node root = new Selector(new List<Node>
         {
             new Sequence(new List<Node>
@@ -23,13 +28,12 @@ public class GuardBT : BehaviorTree.Tree
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInFOV(transform),
-                //new GoToTarget(transform),
-                //TODO: NavMesh to Guard prefab
+                new GoToTarget(transform,_agent),
             }),
             new Sequence(new List<Node>
             {
                 new CheckIfNotAtGuardPos(transform, guardpoint),
-                new GoToGuardPos(transform, guardpoint),
+                new GoToGuardPos(transform, guardpoint, _agent),
             })
             //new Patrol(this.transform, waypoints),
         });

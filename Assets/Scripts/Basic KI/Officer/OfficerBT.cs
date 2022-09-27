@@ -14,7 +14,6 @@ public class OfficerBT : BehaviorTree.Tree
     public static float attackRange = 2f;
 
     private NavMeshAgent _agent;
-    public NavMeshAgent Agent { get { return _agent; } }
 
     protected override Node SetupTree()
     {
