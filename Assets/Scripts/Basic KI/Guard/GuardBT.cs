@@ -23,7 +23,8 @@ public class GuardBT : BehaviorTree.Tree
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInFOV(transform),
-                new GoToTarget(transform),
+                //new GoToTarget(transform),
+                //TODO: NavMesh to Guard prefab
             }),
             new Sequence(new List<Node>
             {

@@ -30,9 +30,9 @@ public class OfficerBT : BehaviorTree.Tree
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInFOV(transform),
-                new GoToTarget(transform),
+                new GoToTarget(transform, _agent),
             }),
-            new Patrol(this.transform, waypoints),
+            new Patrol(this.transform, waypoints, _agent),
         });
 
         return root;

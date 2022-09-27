@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
 namespace BehaviorTree
@@ -8,6 +9,7 @@ namespace BehaviorTree
     {
         private Transform _thisTransform;
         private Animator _thisAnimator;
+        private NavMeshAgent _agent;
         private Transform[] _waypoints;
         private int _currentWaypointIndex;
 
@@ -16,11 +18,13 @@ namespace BehaviorTree
         private bool _waiting = false;
 
 
-        public Patrol(Transform transform, Transform[] waypoints)
+        public Patrol(Transform transform, Transform[] waypoints, NavMeshAgent agent)
         {
             _thisTransform = transform;
             _waypoints = waypoints;
             _thisAnimator = transform.GetComponent<Animator>();
+            _agent = agent;
+            _agent.speed = OfficerBT.speed;
         }
 
         public override ENodeState CalculateState()
@@ -34,6 +38,8 @@ namespace BehaviorTree
             else
             {
                 Transform waypoint = _waypoints[_currentWaypointIndex];
+
+
                 if (Vector3.Distance(_thisTransform.position, waypoint.position) < 0.01f)
                 {
                     _thisTransform.position = waypoint.position;
@@ -44,8 +50,9 @@ namespace BehaviorTree
                 }
                 else
                 {
-                    _thisTransform.position = Vector3.MoveTowards(_thisTransform.position, waypoint.position, OfficerBT.speed * Time.deltaTime);
-                    _thisTransform.LookAt(waypoint.position);
+                    _agent.SetDestination(waypoint.position);
+                    //_thisTransform.position = Vector3.MoveTowards(_thisTransform.position, waypoint.position, OfficerBT.speed * Time.deltaTime);
+                    //_thisTransform.LookAt(waypoint.position);
                 }
             }
 
