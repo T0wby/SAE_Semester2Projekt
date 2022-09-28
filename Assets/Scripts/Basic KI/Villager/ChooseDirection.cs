@@ -4,30 +4,33 @@ using UnityEngine;
 using BehaviorTree;
 using UnityEngine.AI;
 
-public class ChooseDirection : Node
+public class ChooseDirection : Node 
 {
-    private VillagerBT _thisVillagerBT;
+    private RandomWalkTree _thisRandomWalkTree;
 
-    public ChooseDirection(VillagerBT villagerBT)
+    public ChooseDirection(RandomWalkTree randomWalkTree)
 	{
-        _thisVillagerBT = villagerBT;
+        _thisRandomWalkTree = randomWalkTree;
     }
 
     public override ENodeState CalculateState()
 	{
-        if (_thisVillagerBT.CurrentWalkTime >= _thisVillagerBT.MaxWalkTime)
+        CheckForNewDirection();
+
+        return ENodeState.SUCCESS;
+	}
+
+    private void CheckForNewDirection()
+    {
+        if (_thisRandomWalkTree.CurrentWalkTime >= _thisRandomWalkTree.MaxWalkTime)
         {
             Vector2 randomDirection = Random.insideUnitCircle.normalized;
 
             Node root = GetRoot(this);
             root.SetData("randomDirection", randomDirection);
 
-            _thisVillagerBT.CurrentWalkTime = 0f;
-            _thisVillagerBT.MaxWalkTime = Random.Range(5f, 10f);
+            _thisRandomWalkTree.CurrentWalkTime = 0f;
+            _thisRandomWalkTree.MaxWalkTime = Random.Range(5f, 10f);
         }
-        
-
-        return ENodeState.SUCCESS;
-	}
-
+    }
 }

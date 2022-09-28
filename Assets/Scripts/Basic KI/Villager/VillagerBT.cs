@@ -5,18 +5,13 @@ using BehaviorTree;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class VillagerBT : BehaviorTree.Tree
+public class VillagerBT : RandomWalkTree
 {
     public static float walkSpeed = 2f;
     public static float fleeSpeed = 4f;
     public static float fovRange = 8f;
     public static float safeRange = 8f;
     private NavMeshAgent _agent;
-    private float _currentWalkTime = 0f;
-    private float _maxWalkTime;
-
-    public float CurrentWalkTime { get { return _currentWalkTime; } set { _currentWalkTime = value; } }
-    public float MaxWalkTime { get { return _maxWalkTime; } set { _maxWalkTime = value; } }
 
     protected override Node SetupTree()
     {
@@ -32,7 +27,7 @@ public class VillagerBT : BehaviorTree.Tree
             new Sequence(new List<Node>
             {
                 new ChooseDirection(this),
-                new WalkAround(transform, _agent, this),
+                new WalkAround(transform, _agent, walkSpeed, this),
             })
         });
 

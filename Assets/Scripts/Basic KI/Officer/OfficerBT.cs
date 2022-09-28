@@ -14,6 +14,7 @@ public class OfficerBT : BehaviorTree.Tree
     public static float attackRange = 2f;
 
     private NavMeshAgent _agent;
+    private int _enemyLayerMask = 1 << 9;
 
     protected override Node SetupTree()
     {
@@ -28,7 +29,7 @@ public class OfficerBT : BehaviorTree.Tree
             }),
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInFOV(transform, fovRange),
+                new CheckForEnemyInFOV(transform, fovRange, _enemyLayerMask),
                 new GoToTarget(transform, _agent),
             }),
             new Patrol(this.transform, waypoints, _agent),

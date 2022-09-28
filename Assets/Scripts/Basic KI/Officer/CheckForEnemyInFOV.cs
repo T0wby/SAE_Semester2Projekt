@@ -5,15 +5,16 @@ using BehaviorTree;
 
 public class CheckForEnemyInFOV : Node
 {
-    private static int _enemyLayerMask = 1 << 9;
+    private int _enemyLayerMask;
     private Transform _thisTransform;
     private Collider[] _colliders;
     private float _range;
 
-    public CheckForEnemyInFOV(Transform transform, float range)
+    public CheckForEnemyInFOV(Transform transform, float range, int enemyLayerMask)
     {
         _thisTransform = transform;
         _range = range;
+        _enemyLayerMask = enemyLayerMask;
     }
 
     public override ENodeState CalculateState()
