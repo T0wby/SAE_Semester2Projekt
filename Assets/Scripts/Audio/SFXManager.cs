@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Audio
+namespace AudioManaging
 {
     public class SFXManager : MonoBehaviour
     {
         private string m_tag = "SFXManager";
 
-        [SerializeField] private NotifySoundCollection m_soundRequest;
+        [SerializeField] private NotifyEntityRequestCollection m_entityRequests;
 
         [SerializeField] private AudioMixerGroup m_mixingGroup;
 
         [SerializeField] private int m_poolSize;
         [SerializeField] private GameObject m_audioObjectPrefab;
         
-        [SerializeField] private List<ClipCollection<ESources,ESoundTypes>> m_clipCollections = new List<ClipCollection<ESources, ESoundTypes>>();
+        [SerializeField] private List<EntityClipCollection> m_entityClipCollections = new List<EntityClipCollection>();
 
 
-        private Dictionary<ESources, Dictionary<ESoundTypes, ClipLibrary<ESoundTypes>>> m_clipCollectionDictionaries = new Dictionary<ESources, Dictionary<ESoundTypes, ClipLibrary<ESoundTypes>>>();
+        private Dictionary<ESources, Dictionary<ESoundTypes, ClipLibrary<ESoundTypes>>> m_entityClipCollectionDictionary = new Dictionary<ESources, Dictionary<ESoundTypes, ClipLibrary<ESoundTypes>>>();
 
-        private AudioObjectPool m_pool;
+        private ObjectPool<AudioObject> m_pool;
         private void Awake()
         {
             GameObject[] objs = GameObject.FindGameObjectsWithTag(m_tag);
@@ -34,28 +34,28 @@ namespace Audio
 
             DontDestroyOnLoad(this.gameObject);
 
-            m_pool = new AudioObjectPool(m_audioObjectPrefab, m_poolSize, transform);
+            m_pool = new ObjectPool<AudioObject>(m_audioObjectPrefab, m_poolSize, transform);
 
-            foreach (ClipCollection<ESources, ESoundTypes> ClipCollection in m_clipCollections)
+            foreach (EntityClipCollection ClipCollection in m_entityClipCollections)
             {
                 foreach (ESources Source in System.Enum.GetValues(typeof(ESources)))
                 {
                     if (ClipCollection.Source == Source)
                     {
-                        m_clipCollectionDictionaries.Add(Source, ClipCollection.Collection);
+                        m_entityClipCollectionDictionary.Add(Source, ClipCollection.Collection);
                         break;
                     }
                 }
             }
 
-            m_soundRequest.OnAdd += OnSoundRequest;
+            m_entityRequests.OnAdd += OnEntitySound;
         }
 
-        private void OnSoundRequest(SoundRequest _request)
+        private void OnEntitySound(EntityAudioRequest _request)
         {
             AudioObject tmp = m_pool.GetItem();
             AudioSource tmpSource = tmp.Source;
-            ClipLibrary<ESoundTypes> library = m_clipCollectionDictionaries[_request.Source][_request.Type];
+            ClipLibrary<ESoundTypes> library = m_entityClipCollectionDictionary[_request.Source][_request.Type];
             tmp.name = $"{_request.Source} {_request.Type}-Sound";
 
             tmp.transform.parent = _request.Parent;
@@ -70,7 +70,7 @@ namespace Audio
             tmpSource.Play();
             tmp.SetCountdown((int)(tmpSource.clip.length * 1000));
 
-            m_soundRequest.Remove(_request);
+            m_entityRequests.Remove(_request);
         }
     } 
 }
