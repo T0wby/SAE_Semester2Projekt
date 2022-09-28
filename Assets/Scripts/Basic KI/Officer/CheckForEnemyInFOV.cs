@@ -8,10 +8,12 @@ public class CheckForEnemyInFOV : Node
     private static int _enemyLayerMask = 1 << 9;
     private Transform _thisTransform;
     private Collider[] _colliders;
+    private float _range;
 
-    public CheckForEnemyInFOV(Transform transform)
+    public CheckForEnemyInFOV(Transform transform, float range)
     {
-        _thisTransform = transform; 
+        _thisTransform = transform;
+        _range = range;
     }
 
     public override ENodeState CalculateState()
@@ -27,17 +29,18 @@ public class CheckForEnemyInFOV : Node
 
     private ENodeState CheckforEnemy()
     {
-        _colliders = Physics.OverlapSphere(_thisTransform.position, OfficerBT.fovRange, _enemyLayerMask);
+        _colliders = Physics.OverlapSphere(_thisTransform.position, _range, _enemyLayerMask);
 
         if (_colliders.Length > 0)
         {
             //Saving the Target in Root so that other Nodes can access it
-            Parent.Parent.SetData("target", ClosestEnemy(_colliders));
-            return state = ENodeState.SUCCESS;
+            Node tmp = GetRoot(this);
+            tmp.SetData("target", ClosestEnemy(_colliders));
+            return ENodeState.SUCCESS;
         }
         else
         {
-            return state = ENodeState.FAILURE;
+            return ENodeState.FAILURE;
         }
     }
 

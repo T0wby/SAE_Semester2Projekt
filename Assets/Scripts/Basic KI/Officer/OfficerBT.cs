@@ -23,12 +23,12 @@ public class OfficerBT : BehaviorTree.Tree
         {
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInAttackRange(transform),
+                new CheckForEnemyInAttackRange(transform, attackRange),
                 new LeafAttack(transform),
             }),
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInFOV(transform),
+                new CheckForEnemyInFOV(transform, fovRange),
                 new GoToTarget(transform, _agent),
             }),
             new Patrol(this.transform, waypoints, _agent),

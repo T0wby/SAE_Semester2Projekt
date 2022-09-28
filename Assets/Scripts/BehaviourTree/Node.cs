@@ -111,6 +111,14 @@ namespace BehaviorTree
             return false;
         }
 
+        public Node GetRoot(Node node)
+        {
+            if (node.Parent is null)
+                return node;
+
+            return GetRoot(node.Parent);
+        }
+
         #endregion
     }
 }

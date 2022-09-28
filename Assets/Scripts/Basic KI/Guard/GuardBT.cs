@@ -22,12 +22,12 @@ public class GuardBT : BehaviorTree.Tree
         {
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInAttackRange(transform),
+                new CheckForEnemyInAttackRange(transform, attackRange),
                 new LeafAttack(transform),
             }),
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInFOV(transform),
+                new CheckForEnemyInFOV(transform, fovRange),
                 new GoToTarget(transform,_agent),
             }),
             new Sequence(new List<Node>
