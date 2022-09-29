@@ -8,12 +8,15 @@ public class CheckForEnemyInFOV : Node
     private int _enemyLayerMask;
     private Transform _thisTransform;
     private Collider[] _colliders;
+    private List<Collider> _inViewColliders = new List<Collider>();
     private float _range;
+    private float _viewAngle;
 
-    public CheckForEnemyInFOV(Transform transform, float range, int enemyLayerMask)
+    public CheckForEnemyInFOV(Transform transform, float range, float viewAngle, int enemyLayerMask)
     {
         _thisTransform = transform;
         _range = range;
+        _viewAngle = viewAngle;
         _enemyLayerMask = enemyLayerMask;
     }
 
@@ -34,10 +37,24 @@ public class CheckForEnemyInFOV : Node
 
         if (_colliders.Length > 0)
         {
-            //Saving the Target in Root so that other Nodes can access it
-            Node tmp = GetRoot(this);
-            tmp.SetData("target", ClosestEnemy(_colliders));
-            return ENodeState.SUCCESS;
+            foreach (Collider collider in _colliders)
+            {
+                if (Vector3.Angle(_thisTransform.forward, collider.transform.position - _thisTransform.position) < _viewAngle * 0.5f)
+                {
+                    _inViewColliders.Add(collider);
+                }
+            }
+
+            if (_inViewColliders.Count > 0)
+            {
+                //Saving the Target in Root so that other Nodes can access it
+                Node tmp = GetRoot(this);
+                tmp.SetData("target", ClosestEnemy(_inViewColliders));
+                return ENodeState.SUCCESS;
+            }
+
+            return ENodeState.FAILURE;
+
         }
         else
         {
@@ -45,12 +62,12 @@ public class CheckForEnemyInFOV : Node
         }
     }
 
-    private Transform ClosestEnemy(Collider[] enemyColliders)
+    private Transform ClosestEnemy(List<Collider> enemyColliders)
     {
         float lowest = Vector3.Distance(enemyColliders[0].transform.position, _thisTransform.position);
         Collider closest = enemyColliders[0];
 
-        for (int i = 0; i < enemyColliders.Length; i++)
+        for (int i = 0; i < enemyColliders.Count; i++)
         {
             float next = Vector3.Distance(enemyColliders[i].transform.position, _thisTransform.position);
 

@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using BehaviorTree;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-public class OfficerBT : BehaviorTree.Tree
+public class BoidBT : BehaviorTree.Tree
 {
     public Transform[] waypoints;
+    public BoidSettings settings;
 
     public static float speed = 2f;
     public static float fovRange = 6f;
@@ -15,7 +15,7 @@ public class OfficerBT : BehaviorTree.Tree
     public static float viewAngle = 200f;
 
     private NavMeshAgent _agent;
-    private int _enemyLayerMask = 1 << 9;
+    private int _enemyLayerMask = 1 << 10;
 
     protected override Node SetupTree()
     {
@@ -33,7 +33,7 @@ public class OfficerBT : BehaviorTree.Tree
                 new CheckForEnemyInFOV(transform, fovRange, viewAngle, _enemyLayerMask),
                 new GoToTarget(transform, _agent),
             }),
-            new Patrol(this.transform, waypoints, _agent),
+            new Flocking(transform, waypoints, _agent),
         });
 
         return root;

@@ -12,6 +12,7 @@ public class GuardBT : BehaviorTree.Tree
     public static float speed = 2f;
     public static float fovRange = 6f;
     public static float attackRange = 2f;
+    public static float viewAngle = 200f;
     private NavMeshAgent _agent;
     private int _enemyLayerMask = 1 << 9;
 
@@ -28,7 +29,7 @@ public class GuardBT : BehaviorTree.Tree
             }),
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInFOV(transform, fovRange, _enemyLayerMask),
+                new CheckForEnemyInFOV(transform, fovRange, viewAngle, _enemyLayerMask),
                 new GoToTarget(transform,_agent),
             }),
             new Sequence(new List<Node>

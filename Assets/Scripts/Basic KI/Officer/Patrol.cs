@@ -24,6 +24,7 @@ namespace BehaviorTree
             _waypoints = waypoints;
             _thisAnimator = transform.GetComponent<Animator>();
             _agent = agent;
+            //TODO: Change speed to be dynamic
             _agent.speed = OfficerBT.speed;
         }
 

@@ -12,6 +12,7 @@ public class EnemyBT : RandomWalkTree
     public static float fovRange = 8f;
     public static float safeRange = 8f;
     public static float attackRange = 2f;
+    public static float viewAngle = 200f;
     private NavMeshAgent _agent;
     private int _enemyLayerMask = 1 << 10;
 
@@ -29,7 +30,7 @@ public class EnemyBT : RandomWalkTree
             }),
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInFOV(transform, fovRange, _enemyLayerMask),
+                new CheckForEnemyInFOV(transform, fovRange, viewAngle, _enemyLayerMask),
                 new Sequence(new List<Node>
                 {
                     //TODO: CheckForVillager

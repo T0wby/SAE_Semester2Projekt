@@ -11,7 +11,9 @@ public class VillagerBT : RandomWalkTree
     public static float fleeSpeed = 4f;
     public static float fovRange = 8f;
     public static float safeRange = 8f;
+    public static float viewAngle = 200f;
     private NavMeshAgent _agent;
+    private int _enemyLayerMask = 1 << 9;
 
     protected override Node SetupTree()
     {
@@ -21,8 +23,8 @@ public class VillagerBT : RandomWalkTree
         {
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInFOV(transform, fovRange),
-                new Flee(transform, _agent),
+                new CheckForEnemyInFOV(transform, fovRange, viewAngle, _enemyLayerMask),
+                new Flee(transform, _agent, this),
             }),
             new Sequence(new List<Node>
             {

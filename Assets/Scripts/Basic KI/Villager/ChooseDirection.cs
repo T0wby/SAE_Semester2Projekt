@@ -25,7 +25,6 @@ public class ChooseDirection : Node
         if (_thisRandomWalkTree.CurrentWalkTime >= _thisRandomWalkTree.MaxWalkTime)
         {
             Vector2 randomDirection = Random.insideUnitCircle.normalized;
-
             Node root = GetRoot(this);
             root.SetData("randomDirection", randomDirection);
 
