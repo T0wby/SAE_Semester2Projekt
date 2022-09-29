@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoidMovement : MonoBehaviour
 {
     private List<BoidMovement> _neighbours = new List<BoidMovement>();
-    private Vector3 _desiredVelocity;
+    private Vector3 _desiredVelocity = Vector3.zero;
     private Vector3 _currentVelocity;
     private Collider[] _colliders;
     [SerializeField] private BoidSettings _settings;
@@ -32,7 +32,13 @@ public class BoidMovement : MonoBehaviour
         _currentVelocity = diff * Time.deltaTime;
         _currentVelocity = Vector3.ClampMagnitude(_currentVelocity, _settings.Speed);
         _currentVelocity *= Time.deltaTime;
+        transform.forward = _currentVelocity;
         //Use currentValocity in the Flocking Node
+    }
+
+    private void LateUpdate()
+    {
+        _desiredVelocity = Vector3.zero;
     }
 
     #region Movement
@@ -72,6 +78,7 @@ public class BoidMovement : MonoBehaviour
         }
 
         center /= _neighbours.Count;
+        center -= transform.position;
 
         return center.normalized * _settings.Speed * _settings.Cohesion;
     }

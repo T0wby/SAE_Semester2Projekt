@@ -19,7 +19,7 @@ namespace Player_Towby
         private Quaternion _targetRotation;
 
         [Header("Settings")]
-        [SerializeField] private float _lookSpeed;
+        [Range(0f, 1f)][SerializeField] private float _lookSpeed;
         [SerializeField] private float _followSpeed;
         [SerializeField] private float _pivotSpeed;
         [SerializeField] private float _minimumPivot = -35f;
