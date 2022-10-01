@@ -9,31 +9,21 @@ public class BoidMovement : MonoBehaviour
     private Vector3 _currentVelocity;
     private Collider[] _colliders;
     [SerializeField] private BoidSettings _settings;
-    private int _boidLayerMask = 1<<11;
+    private int _boidLayerMask = 1<<10;
 
     public Vector3 CurrentVelocity { get => _currentVelocity;}
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         CheckForOtherBoids();
-        _desiredVelocity += Alignment();
-        _desiredVelocity += Cohesion();
-        _desiredVelocity += Seperation();
+        CombineMovement();
 
         Vector3 diff = _desiredVelocity - _currentVelocity;
         _currentVelocity = diff * Time.deltaTime;
         _currentVelocity = Vector3.ClampMagnitude(_currentVelocity, _settings.Speed);
         _currentVelocity *= Time.deltaTime;
-        transform.forward = _currentVelocity;
-        //Use currentValocity in the Flocking Node
+        //transform.forward = _currentVelocity;
+        //Use currentVelocity in the Flocking Node
     }
 
     private void LateUpdate()
@@ -78,7 +68,7 @@ public class BoidMovement : MonoBehaviour
         }
 
         center /= _neighbours.Count;
-        center -= transform.position;
+        //center -= transform.position;
 
         return center.normalized * _settings.Speed * _settings.Cohesion;
     }
@@ -125,6 +115,13 @@ public class BoidMovement : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void CombineMovement()
+    {
+        _desiredVelocity += Alignment();
+        _desiredVelocity += Cohesion();
+        _desiredVelocity += Seperation();
     }
 
     //private void OnTriggerStay(Collider other)

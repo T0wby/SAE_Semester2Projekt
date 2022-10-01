@@ -70,7 +70,6 @@ namespace BehaviorTree
             if (_waiting)
             {
                 _waitCounter += Time.deltaTime;
-                Debug.Log("_waitCounter: " + _waitCounter);
                 if (_waitCounter >= _waitTime)
                     _waiting = false;
             }

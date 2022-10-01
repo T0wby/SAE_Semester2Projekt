@@ -8,6 +8,7 @@ public class BoidBT : BehaviorTree.Tree
 {
     public Transform[] waypoints;
     public BoidSettings settings;
+    public BoidMovement boidMovement;
 
     public static float speed = 2f;
     public static float fovRange = 6f;
@@ -33,7 +34,7 @@ public class BoidBT : BehaviorTree.Tree
                 new CheckForEnemyInFOV(transform, fovRange, viewAngle, _enemyLayerMask),
                 new GoToTarget(transform, _agent),
             }),
-            new Flocking(transform, waypoints, _agent),
+            new Flocking(transform, waypoints, _agent, boidMovement),
         });
 
         return root;
