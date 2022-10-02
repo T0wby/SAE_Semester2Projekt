@@ -26,8 +26,6 @@ public class GoToGuardPos : Node
         }
         else
         {
-            //_thisTransform.position = Vector3.MoveTowards(_thisTransform.position, _guardpoint.position, GuardBT.speed * Time.deltaTime);
-            //_thisTransform.LookAt(_guardpoint.position);
             _agent.destination = _guardpoint.position;
             return state = ENodeState.RUNNING;
         }

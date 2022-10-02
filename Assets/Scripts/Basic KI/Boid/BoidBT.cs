@@ -6,9 +6,9 @@ using UnityEngine.AI;
 
 public class BoidBT : BehaviorTree.Tree
 {
-    public Transform[] waypoints;
     public BoidSettings settings;
     public BoidMovement boidMovement;
+    [SerializeField] private float radius = 2f;
 
     public static float speed = 2f;
     public static float fovRange = 6f;
@@ -27,14 +27,18 @@ public class BoidBT : BehaviorTree.Tree
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInAttackRange(transform, attackRange),
-                new LeafAttack(transform),
+                new LeafAttack(transform)
             }),
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInFOV(transform, fovRange, viewAngle, _enemyLayerMask),
-                new GoToTarget(transform, _agent),
+                new GoToTarget(transform, _agent)
             }),
-            new Flocking(transform, waypoints, _agent, boidMovement),
+            new Sequence(new List<Node>
+            {
+                new CheckIfAtTargetPos(transform),
+                new Flocking(transform, _agent, boidMovement, settings, radius)
+            }),
         });
 
         return root;

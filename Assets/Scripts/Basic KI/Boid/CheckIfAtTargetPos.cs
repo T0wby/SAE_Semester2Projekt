@@ -6,21 +6,21 @@ using BehaviorTree;
 public class CheckIfAtTargetPos : Node
 {
     private Transform _thisTransform;
-    private Transform _targetPos;
+    private Vector3? _targetPos;
 
 
-    public CheckIfAtTargetPos(Transform transform, Transform targetPos)
+    public CheckIfAtTargetPos(Transform transform)
     {
         _thisTransform = transform;
-        _targetPos = targetPos;
+        GetRoot(this).SetData("boidDestination", Vector3.zero);
     }
 
     public override ENodeState CalculateState()
     {
-        if (_thisTransform.position == _targetPos.position)
-        {
+        _targetPos = (Vector3?)GetData("boidDestination");
+
+        if (Vector3.Distance(_thisTransform.position, (Vector3)_targetPos) < 0.3f)
             return state = ENodeState.FAILURE;
-        }
 
         return state = ENodeState.SUCCESS;
 
