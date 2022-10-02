@@ -12,6 +12,7 @@ public class Flocking : Node
     private Transform[] _waypoints;
     private int _currentWaypointIndex;
     private BoidMovement _boidMovement;
+    private Vector3? _mousePos;
 
     public Flocking(Transform transform, Transform[] waypoints, NavMeshAgent agent, BoidMovement boidMovement)
     {
@@ -24,11 +25,25 @@ public class Flocking : Node
 
     public override ENodeState CalculateState()
     {
-        //TODO: Use mouse right to set agent destination
-        _agent.destination = _waypoints[0].position;
+        if (CheckIfTargetOnNavmesh() is not null)
+            _agent.destination = (Vector3)CheckIfTargetOnNavmesh();
         _agent.Move(_boidMovement.CurrentVelocity.normalized);
         return state = ENodeState.RUNNING;
     }
 
-    
+    private Vector3? CheckIfTargetOnNavmesh()
+    {
+        _mousePos = MousePosition.GetMousePosition();
+
+        if (_mousePos is not null)
+        {
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition((Vector3)_mousePos, out hit, 1f, NavMesh.AllAreas))
+            {
+                return hit.position;
+            }
+            return null;
+        }
+        return null;
+    }
 }

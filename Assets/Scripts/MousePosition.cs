@@ -9,17 +9,13 @@ using UnityEngine.EventSystems;
 */
 public static class MousePosition
 {
-    public static Vector3? GetNavMeshPosition()
+    public static Vector3? GetMousePosition()
     {
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue))
             {
-
-
-
-
                 return raycastHit.point;
             }
             else

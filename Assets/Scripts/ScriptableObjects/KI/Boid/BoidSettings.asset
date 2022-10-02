@@ -16,6 +16,6 @@ MonoBehaviour:
   _cohesion: 1
   _seperation: 1
   _target: 1
-  _fovRange: 4
+  _fovRange: 10
   _fovAngle: 60
   _speed: 4
