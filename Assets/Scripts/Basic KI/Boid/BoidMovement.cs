@@ -22,7 +22,6 @@ public class BoidMovement : MonoBehaviour
         _currentVelocity = diff * Time.deltaTime;
         _currentVelocity = Vector3.ClampMagnitude(_currentVelocity, _settings.Speed);
         _currentVelocity *= Time.deltaTime;
-        //transform.forward = _currentVelocity;
         //Use currentVelocity in the Flocking Node
     }
 

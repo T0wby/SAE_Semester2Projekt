@@ -32,7 +32,7 @@ public class Flocking : Node
 
         if (CheckIfTargetOnNavmesh() is not null)
             _agent.destination = (Vector3)CheckIfTargetOnNavmesh();
-        _agent.Move(_boidMovement.CurrentVelocity.normalized);
+        _agent.Move(_boidMovement.CurrentVelocity);
         return state = ENodeState.RUNNING;
     }
 

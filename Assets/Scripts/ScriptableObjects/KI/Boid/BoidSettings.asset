@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5f397a38442a348b51df45a394056b, type: 3}
   m_Name: BoidSettings
   m_EditorClassIdentifier: 
-  _alignment: 1
-  _cohesion: 1
-  _seperation: 1
-  _target: 1
+  _hp: 0
   _fovRange: 10
   _fovAngle: 60
   _speed: 4
+  _runSpeed: 0
+  _alignment: 1
+  _cohesion: 1
+  _seperation: 1
+  _target: 0.002

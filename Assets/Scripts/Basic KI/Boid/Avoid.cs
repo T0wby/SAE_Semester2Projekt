@@ -18,14 +18,14 @@ public class Avoid : Node
         _settings = settings;
     }
 
-public override ENodeState CalculateState()
+    public override ENodeState CalculateState()
 	{
         //TODO: Add a different Speed for Avoiding maybe
         if (_agent.speed != _settings.Speed)
             _agent.speed = _settings.Speed;
 
         _targetTransform = (Transform)GetData("target");
-        _agent.Move((_thisTransform.position - _targetTransform.position).normalized);
+        _agent.Move((_thisTransform.position - _targetTransform.position)*0.005f);
         return state = ENodeState.RUNNING;
     }
 }

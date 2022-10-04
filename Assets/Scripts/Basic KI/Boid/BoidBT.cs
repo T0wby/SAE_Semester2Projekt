@@ -12,7 +12,7 @@ public class BoidBT : BehaviorTree.Tree
 
     public static float speed = 2f;
     public static float fovRange = 6f;
-    public static float attackRange = 2f;
+    public static float attackRange = 1f;
     public static float viewAngle = 200f;
 
     private NavMeshAgent _agent;
@@ -32,7 +32,6 @@ public class BoidBT : BehaviorTree.Tree
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInFOV(transform, fovRange, viewAngle, _enemyLayerMask),
-                //TODO: Add Selector with Sequence and Flee, Selector checks if enemy is villager. If it is GoToTarget.
                 new Selector(new List<Node>
                     {
                         new Sequence(new List<Node>
@@ -42,7 +41,6 @@ public class BoidBT : BehaviorTree.Tree
                         }),
                         new Avoid(transform, _agent, settings)
                     }),
-                new GoToTarget(transform, _agent)
             }),
             new Sequence(new List<Node>
             {
