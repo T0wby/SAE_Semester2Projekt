@@ -177,6 +177,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  settings: {fileID: 11400000, guid: 7bc229a37a204d84680c2bc2da610edb, type: 2}
 --- !u!1 &7535049668066949067
 GameObject:
   m_ObjectHideFlags: 0

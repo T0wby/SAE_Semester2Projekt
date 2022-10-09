@@ -12,7 +12,7 @@ public class BoidBT : BehaviorTree.Tree
 
     public static float speed = 2f;
     public static float fovRange = 6f;
-    public static float attackRange = 1f;
+    public static float attackRange = 1.5f;
     public static float viewAngle = 200f;
 
     private NavMeshAgent _agent;
@@ -40,7 +40,7 @@ public class BoidBT : BehaviorTree.Tree
                             new GoToTarget(transform, _agent)
                         }),
                         new Avoid(transform, _agent, settings)
-                    }),
+                    })
             }),
             new Sequence(new List<Node>
             {

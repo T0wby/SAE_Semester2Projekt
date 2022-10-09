@@ -7,6 +7,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class VillagerBT : RandomWalkTree
 {
+    public VillagerSettings settings;
+
     public static float walkSpeed = 2f;
     public static float fleeSpeed = 4f;
     public static float fovRange = 8f;

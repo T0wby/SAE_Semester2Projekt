@@ -6,6 +6,7 @@ using BehaviorTree;
 public class LeafAttack : Node
 {
     private Transform _lastTarget;
+    private Transform _thisTransform;
     private Enemy enemy;
 
     private float _attackTime = 1f;
@@ -13,7 +14,7 @@ public class LeafAttack : Node
 
     public LeafAttack(Transform transform)
     {
-
+        _thisTransform = transform;
     }
 
     public override ENodeState CalculateState()
@@ -29,7 +30,7 @@ public class LeafAttack : Node
         _attackCounter += Time.deltaTime;
         if (_attackCounter >= _attackTime)
         {
-            Debug.Log("Attack!");
+            Debug.Log(_thisTransform.gameObject.name + " Attacks!");
             _attackCounter = 0f;
         }
 

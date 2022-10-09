@@ -18,7 +18,7 @@ public class GoToTarget : Node
     public override ENodeState CalculateState()
     {
         Transform targetTransform = (Transform)GetData("target");
-        if (Vector3.Distance(_thisTransform.position, targetTransform.position) > 0.01f)
+        if (Vector3.Distance(_thisTransform.position, targetTransform.position) > 0.1f)
         {
             if (_agent.destination != targetTransform.position)
                 _agent.destination = targetTransform.position;

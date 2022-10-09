@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guardpoint: {fileID: 0}
+  settings: {fileID: 11400000, guid: 4a0aa878b09278d45a1c23ee4a4c03f4, type: 2}
 --- !u!195 &8086573738237592664
 NavMeshAgent:
   m_ObjectHideFlags: 0

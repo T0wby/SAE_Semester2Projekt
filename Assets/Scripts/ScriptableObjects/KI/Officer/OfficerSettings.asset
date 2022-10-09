@@ -9,15 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd5f397a38442a348b51df45a394056b, type: 3}
-  m_Name: BoidSettings
+  m_Script: {fileID: 11500000, guid: 3d9ca40b67123544b9c1391c583eaf0a, type: 3}
+  m_Name: OfficerSettings
   m_EditorClassIdentifier: 
   _hp: 100
-  _fovRange: 10
+  _fovRange: 5
   _fovAngle: 60
-  _speed: 4
-  _runSpeed: 8
-  _alignment: 1
-  _cohesion: 1
-  _seperation: 1
-  _target: 0.002
+  _speed: 3
+  _runSpeed: 7

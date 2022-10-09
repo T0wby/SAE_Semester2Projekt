@@ -166,8 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c82a63dad024fd439fdfa7efcdfefd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
   settings: {fileID: 11400000, guid: 9526f1297f7d4e3468c10cede5004b4b, type: 2}
+  boidMovement: {fileID: 8701874230558297179}
+  radius: 1
 --- !u!1 &9195471926225352117
 GameObject:
   m_ObjectHideFlags: 0

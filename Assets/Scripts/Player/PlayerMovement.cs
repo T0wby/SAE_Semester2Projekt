@@ -20,7 +20,7 @@ namespace Player_Towby
 
         [Header("Settings")]
         [SerializeField] private float _walkSpeed = 10f;
-        [SerializeField] private float _runSpeed = 30f;
+        //[SerializeField] private float _runSpeed = 30f;
 
         private void Awake()
         {

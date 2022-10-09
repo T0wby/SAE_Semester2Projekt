@@ -8,6 +8,7 @@ using BehaviorTree;
 public class OfficerBT : BehaviorTree.Tree
 {
     public Transform[] waypoints;
+    public OfficerSettings settings;
 
     public static float speed = 2f;
     public static float fovRange = 6f;

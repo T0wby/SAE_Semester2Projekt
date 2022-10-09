@@ -122,28 +122,4 @@ public class BoidMovement : MonoBehaviour
         _desiredVelocity += Cohesion();
         _desiredVelocity += Seperation();
     }
-
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    BoidMovement boid = other.GetComponent<BoidMovement>();
-    //    if (boid is null)
-    //        return;
-
-    //    if (Vector3.Angle(transform.forward, boid.transform.position - transform.position) < _settings.FovAngle * 0.5f)
-    //    {
-    //        _neighbours.Add(boid);
-    //    }
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    BoidMovement boid = other.GetComponent<BoidMovement>();
-    //    if (boid is null)
-    //        return;
-
-    //    if (_neighbours.Contains(boid))
-    //    {
-    //        _neighbours.Remove(boid);
-    //    }
-    //}
 }

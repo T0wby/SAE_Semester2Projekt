@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BasicKISettings", menuName = "KI/BasicKISettings")]
 public class BasicKISettings : ScriptableObject
 {
     [SerializeField] private int _hp;

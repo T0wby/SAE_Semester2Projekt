@@ -8,6 +8,7 @@ using UnityEngine;
 public class GuardBT : BehaviorTree.Tree
 {
     public Transform guardpoint;
+    public GuardSettings settings;
 
     public static float speed = 2f;
     public static float fovRange = 6f;
@@ -35,9 +36,8 @@ public class GuardBT : BehaviorTree.Tree
             new Sequence(new List<Node>
             {
                 new CheckIfNotAtGuardPos(transform, guardpoint),
-                new GoToGuardPos(transform, guardpoint, _agent),
+                new GoToPos(transform, guardpoint, _agent, settings)
             })
-            //new Patrol(this.transform, waypoints),
         });
 
         return root;
