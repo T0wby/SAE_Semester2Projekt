@@ -21,8 +21,8 @@ public class GoToPos : Node
 
     public override ENodeState CalculateState()
     {
-        if (_agent.speed != _settings.Speed)
-            _agent.speed = _settings.Speed;
+        if (_agent.speed != _settings.WalkSpeed)
+            _agent.speed = _settings.WalkSpeed;
 
         if (Vector3.Distance(_thisTransform.position, _targetTransform.position) < 0.01f)
         {

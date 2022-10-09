@@ -20,7 +20,7 @@ public class BoidMovement : MonoBehaviour
 
         Vector3 diff = _desiredVelocity - _currentVelocity;
         _currentVelocity = diff * Time.deltaTime;
-        _currentVelocity = Vector3.ClampMagnitude(_currentVelocity, _settings.Speed);
+        _currentVelocity = Vector3.ClampMagnitude(_currentVelocity, _settings.WalkSpeed);
         _currentVelocity *= Time.deltaTime;
         //Use currentVelocity in the Flocking Node
     }
@@ -48,7 +48,7 @@ public class BoidMovement : MonoBehaviour
 
         direction /= _neighbours.Count;
 
-        return direction.normalized * _settings.Speed * _settings.Alignment;
+        return direction.normalized * _settings.WalkSpeed * _settings.Alignment;
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public class BoidMovement : MonoBehaviour
         center /= _neighbours.Count;
         //center -= transform.position;
 
-        return center.normalized * _settings.Speed * _settings.Cohesion;
+        return center.normalized * _settings.WalkSpeed * _settings.Cohesion;
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public class BoidMovement : MonoBehaviour
 
         direction /= _neighbours.Count;
 
-        return -direction.normalized * _settings.Speed * _settings.Seperation;
+        return -direction.normalized * _settings.WalkSpeed * _settings.Seperation;
     }
     #endregion
 

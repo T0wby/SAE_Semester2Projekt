@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using BehaviorTree;
 
-public class Idle : MonoBehaviour
+public class Idle : Node
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private NavMeshAgent _agent;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Idle(NavMeshAgent agent)
+	{
+		_agent = agent;
+	}
+
+    public override ENodeState CalculateState()
+	{
+        _agent.Move(Vector3.zero);
+        Debug.Log("Idle");
+        return ENodeState.RUNNING;
+	}
 }
