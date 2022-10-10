@@ -7,7 +7,7 @@ public class LeafAttack : Node
 {
     private Transform _lastTarget;
     private Transform _thisTransform;
-    private Enemy enemy;
+    private Boid enemy;
 
     private float _attackTime = 1f;
     private float _attackCounter = 0f;
@@ -23,7 +23,7 @@ public class LeafAttack : Node
 
         if (target != _lastTarget)
         {
-            enemy = target.GetComponent<Enemy>();
+            enemy = target.GetComponent<Boid>();
             _lastTarget = target;
         }
 
