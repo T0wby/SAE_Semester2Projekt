@@ -10,10 +10,10 @@ public class OfficerBT : BehaviorTree.Tree
     public Transform[] waypoints;
     public OfficerSettings settings;
 
-    public static float speed = 2f;
-    public static float fovRange = 6f;
-    public static float attackRange = 2f;
-    public static float viewAngle = 200f;
+    //public static float speed = 2f;
+    //public static float fovRange = 6f;
+    //public static float attackRange = 2f;
+    //public static float viewAngle = 200f;
     public static float targetRadius = 5f;
 
     private NavMeshAgent _agent;
@@ -27,15 +27,15 @@ public class OfficerBT : BehaviorTree.Tree
         {
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInAttackRange(transform, attackRange),
-                new LeafAttack(transform),
+                new CheckForEnemyInAttackRange(transform, settings.InteractRange),
+                new LeafAttack(transform, settings.AtkSpeed),
             }),
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInFOV(transform, fovRange, viewAngle, _enemyLayerMask),
+                new CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
                 new GoToTarget(transform, _agent),
             }),
-            new PatrolWait(transform, waypoints, _agent, targetRadius, speed),
+            new PatrolWait(transform, waypoints, _agent, targetRadius, settings.WalkSpeed),
         });
 
         return root;

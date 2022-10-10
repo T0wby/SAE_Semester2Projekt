@@ -9,10 +9,10 @@ public class BoidBT : BehaviorTree.Tree
     public BoidSettings settings;
     public BoidMovement boidMovement;
 
-    public static float speed = 2f;
-    public static float fovRange = 6f;
-    public static float attackRange = 1.5f;
-    public static float viewAngle = 60f;
+    //public static float speed = 2f;
+    //public static float fovRange = 6f;
+    //public static float attackRange = 1.5f;
+    //public static float viewAngle = 60f;
 
     private NavMeshAgent _agent;
     private int _enemyLayerMask = 1 << 10;
@@ -25,12 +25,12 @@ public class BoidBT : BehaviorTree.Tree
         {
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInAttackRange(transform, attackRange),
-                new LeafAttack(transform)
+                new CheckForEnemyInAttackRange(transform, settings.InteractRange),
+                new LeafAttack(transform, settings.AtkSpeed)
             }),
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInFOV(transform, fovRange, viewAngle, _enemyLayerMask),
+                new CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
                 new Selector(new List<Node>
                     {
                         new Sequence(new List<Node>

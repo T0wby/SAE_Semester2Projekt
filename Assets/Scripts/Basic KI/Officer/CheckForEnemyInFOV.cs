@@ -64,6 +64,7 @@ public class CheckForEnemyInFOV : Node
 
     private Transform ClosestEnemy(List<Collider> enemyColliders)
     {
+        //Might consider sqrMagnitude
         float lowest = Vector3.Distance(enemyColliders[0].transform.position, _thisTransform.position);
         Collider closest = enemyColliders[0];
 

@@ -15,6 +15,7 @@ MonoBehaviour:
   _hp: 100
   _fovRange: 5
   _fovAngle: 60
-  _speed: 2
+  _walkSpeed: 2
   _runSpeed: 4
+  _interactRange: 1
   _hunger: 100

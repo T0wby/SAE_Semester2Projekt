@@ -20,7 +20,7 @@ public class Villager : AEntity, IMortal
         }
     }
 
-    public Villager()
+    private void Awake()
     {
         _health = _settings.HP;
         _walkSpeed = _settings.WalkSpeed;

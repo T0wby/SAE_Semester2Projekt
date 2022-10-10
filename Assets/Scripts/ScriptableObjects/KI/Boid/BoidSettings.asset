@@ -15,9 +15,12 @@ MonoBehaviour:
   _hp: 100
   _fovRange: 10
   _fovAngle: 60
-  _speed: 4
+  _walkSpeed: 3
   _runSpeed: 8
+  _interactRange: 2
   _alignment: 1
   _cohesion: 1
   _seperation: 1
   _target: 0.002
+  _damage: 20
+  _atkSpeed: 0.5

@@ -22,7 +22,8 @@ public class Guard : AEntity, IMortal, IAttack
     public float Damage { get => _settings.Damage; }
     public float AtkSpeed { get => _settings.AtkSpeed; }
 
-    public Guard()
+
+    private void Awake()
     {
         _health = _settings.HP;
         _walkSpeed = _settings.WalkSpeed;

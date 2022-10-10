@@ -28,6 +28,7 @@ public class CheckIfAtTargetPos : Node
 
         if (_targetPos is null || Vector3.Distance(_thisTransform.position, (Vector3)_targetPos) < 1.5f)
             return state = ENodeState.FAILURE;
+        Debug.Log("SUCCESS");
 
         return state = ENodeState.SUCCESS;
 
@@ -42,7 +43,6 @@ public class CheckIfAtTargetPos : Node
         {
             _destination = RandomizePos();
             GetRoot(this).SetData("boidDestination", _destination);
-            Debug.Log("_destination: " + _destination);
             NavMeshHit hit;
             if (NavMesh.SamplePosition((Vector3)_destination, out hit, 1f, NavMesh.AllAreas))
             {

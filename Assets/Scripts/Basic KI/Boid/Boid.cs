@@ -20,7 +20,8 @@ public class Boid : AEntity, IMortal, IAttack
     public float Damage { get => _settings.Damage; }
     public float AtkSpeed { get => _settings.AtkSpeed; }
 
-    public Boid()
+
+    private void Awake()
     {
         _health = _settings.HP;
         _walkSpeed = _settings.WalkSpeed;
