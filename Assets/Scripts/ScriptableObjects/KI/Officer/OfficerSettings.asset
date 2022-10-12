@@ -19,4 +19,4 @@ MonoBehaviour:
   _runSpeed: 7
   _interactRange: 1
   _damage: 15
-  _atkSpeed: 0.5
+  _atkSpeed: 1

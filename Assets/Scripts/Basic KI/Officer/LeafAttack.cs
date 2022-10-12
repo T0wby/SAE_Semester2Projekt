@@ -34,7 +34,6 @@ public class LeafAttack : Node
         _attackCounter += Time.deltaTime;
         if (_attackCounter >= _attackTime)
         {
-            Debug.Log(_thisTransform.gameObject.name + " Attacks!");
             _thisAttack.Attack(_enemy);
             CheckEnemyHealth(_enemy);
             _attackCounter = 0f;

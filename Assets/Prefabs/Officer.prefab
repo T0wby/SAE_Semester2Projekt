@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2238941886912965046}
   - component: {fileID: 1726947971133768242}
   - component: {fileID: 2238941886912965047}
+  - component: {fileID: 6051146599199070839}
   m_Layer: 10
   m_Name: Officer
   m_TagString: Untagged
@@ -178,6 +179,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   settings: {fileID: 11400000, guid: 7bc229a37a204d84680c2bc2da610edb, type: 2}
+--- !u!114 &6051146599199070839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238941886912965048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6269df2da7c9a9341b9120c4fabc43f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _settings: {fileID: 11400000, guid: 7bc229a37a204d84680c2bc2da610edb, type: 2}
+  OnHealthReduction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7535049668066949067
 GameObject:
   m_ObjectHideFlags: 0

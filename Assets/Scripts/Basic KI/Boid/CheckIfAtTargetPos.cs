@@ -46,7 +46,6 @@ public class CheckIfAtTargetPos : Node
             NavMeshHit hit;
             if (NavMesh.SamplePosition((Vector3)_destination, out hit, 1f, NavMesh.AllAreas))
             {
-                Debug.Log("SamplePosition: " + hit.position);
                 return hit.position;
             }
             return null;

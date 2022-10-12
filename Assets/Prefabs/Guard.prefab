@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 853483271687107068}
   - component: {fileID: 2238941886912965046}
   - component: {fileID: 8451935196748432225}
+  - component: {fileID: 8134340880396340698}
   - component: {fileID: 8086573738237592664}
   m_Layer: 10
   m_Name: Guard
@@ -153,6 +154,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guardpoint: {fileID: 0}
   settings: {fileID: 11400000, guid: 4a0aa878b09278d45a1c23ee4a4c03f4, type: 2}
+--- !u!114 &8134340880396340698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238941886912965048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34c9266e978e0c4780bd0d0ed3890bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _settings: {fileID: 11400000, guid: 4a0aa878b09278d45a1c23ee4a4c03f4, type: 2}
+  OnHealthReduction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!195 &8086573738237592664
 NavMeshAgent:
   m_ObjectHideFlags: 0
