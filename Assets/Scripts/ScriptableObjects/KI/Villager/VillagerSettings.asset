@@ -19,3 +19,7 @@ MonoBehaviour:
   _runSpeed: 4
   _interactRange: 1
   _hunger: 100
+  _hungerReductionIntervall: 3
+  _maxHungerReduction: 7
+  _minHungerReduction: 4
+  _healthReduction: 5

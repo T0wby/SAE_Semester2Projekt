@@ -28,7 +28,6 @@ public class CheckIfAtTargetPos : Node
 
         if (_targetPos is null || Vector3.Distance(_thisTransform.position, (Vector3)_targetPos) < 1.5f)
             return state = ENodeState.FAILURE;
-        Debug.Log("SUCCESS");
 
         return state = ENodeState.SUCCESS;
 
