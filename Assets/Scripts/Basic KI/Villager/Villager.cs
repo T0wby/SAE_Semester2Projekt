@@ -6,10 +6,12 @@ using UnityEngine.Events;
 public class Villager : AEntity, IMortal
 {
     [SerializeField] private VillagerSettings _settings;
+    [Header("Hunger")]
     private float _hunger;
     private float _hungerReductionIntervall;
     private float _maxHungerReduction;
     private float _minHungerReduction;
+    [Header("Health")]
     private float _healthReduction;
 
 
@@ -60,6 +62,10 @@ public class Villager : AEntity, IMortal
 
     public void Destroy()
     {
+        //gameObject.GetComponent<Rigidbody>().freezeRotation = false;
+        //Component.Destroy(gameObject.GetComponent<VillagerBT>());
+        //gameObject.tag = null;
+        //Component.Destroy(this);
         gameObject.SetActive(false);
     }
 
