@@ -10,10 +10,6 @@ public class GuardBT : BehaviorTree.Tree
     public Transform guardpoint;
     public GuardSettings settings;
 
-    //public static float speed = 2f;
-    //public static float fovRange = 6f;
-    //public static float attackRange = 2f;
-    //public static float viewAngle = 200f;
     private NavMeshAgent _agent;
     private int _enemyLayerMask = 1 << 9;
 

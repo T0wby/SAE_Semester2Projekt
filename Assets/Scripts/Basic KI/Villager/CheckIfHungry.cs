@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BehaviorTree;
 
-public class CheckIfHungry : MonoBehaviour
+public class CheckIfHungry : Node
 {
-    // Start is called before the first frame update
-    void Start()
+    private Villager _villager;
+
+    public CheckIfHungry(Villager villager)
     {
-        
+            _villager = villager;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override ENodeState CalculateState()
     {
-        
+        if (_villager.CheckIfHungry())
+            return ENodeState.SUCCESS;
+        return ENodeState.FAILURE;
     }
 }

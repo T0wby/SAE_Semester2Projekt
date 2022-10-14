@@ -15,6 +15,7 @@ public class Villager : AEntity, IMortal
 
     public UnityEvent OnHealthReduction;
 
+    public float Hunger { get { return _hunger; } set { _hunger = value; } }
     public float Health
     {
         get => _health;
@@ -84,7 +85,7 @@ public class Villager : AEntity, IMortal
         }
     }
 
-    private bool CheckIfHungry()
+    public bool CheckIfHungry()
     {
         return _hunger <=0 ? true : false;
     }

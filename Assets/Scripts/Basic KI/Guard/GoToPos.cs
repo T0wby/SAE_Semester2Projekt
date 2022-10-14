@@ -11,10 +11,10 @@ public class GoToPos : Node
     private NavMeshAgent _agent;
     private BasicKISettings _settings;
 
-    public GoToPos(Transform transform, Transform guardpoint, NavMeshAgent agent, BasicKISettings settings)
+    public GoToPos(Transform transform, Transform targetTransform, NavMeshAgent agent, BasicKISettings settings)
     {
         _thisTransform = transform;
-        _targetTransform = guardpoint;
+        _targetTransform = targetTransform;
         _agent = agent;
         _settings = settings;
     }

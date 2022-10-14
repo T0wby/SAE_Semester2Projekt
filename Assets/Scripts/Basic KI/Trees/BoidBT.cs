@@ -9,11 +9,6 @@ public class BoidBT : BehaviorTree.Tree
     public BoidSettings settings;
     public BoidMovement boidMovement;
 
-    //public static float speed = 2f;
-    //public static float fovRange = 6f;
-    //public static float attackRange = 1.5f;
-    //public static float viewAngle = 60f;
-
     private NavMeshAgent _agent;
     private int _enemyLayerMask = 1 << 10;
 
