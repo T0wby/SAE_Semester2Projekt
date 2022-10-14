@@ -10,12 +10,14 @@ public class Avoid : Node
     private Transform _targetTransform;
     private NavMeshAgent _agent;
     private BasicKISettings _settings;
+    private BoidMovement _boidMovement;
 
-    public Avoid(Transform transform, NavMeshAgent agent, BasicKISettings settings)
+    public Avoid(Transform transform, NavMeshAgent agent, BasicKISettings settings, BoidMovement boidMovement)
     {
         _thisTransform = transform;
         _agent = agent;
         _settings = settings;
+        _boidMovement = boidMovement;
     }
 
     public override ENodeState CalculateState()
@@ -24,7 +26,14 @@ public class Avoid : Node
             _agent.speed = _settings.RunSpeed;
 
         _targetTransform = (Transform)GetData("target");
-        _agent.Move((_thisTransform.position - _targetTransform.position)*0.005f);
+
+        Vector3 diff = (_thisTransform.position - _targetTransform.position) - _boidMovement.CurrentVelocity;
+        _agent.velocity = diff * Time.deltaTime;
+        _agent.velocity = Vector3.ClampMagnitude(_agent.velocity, _settings.RunSpeed);
+        //_agent.velocity *= Time.deltaTime;
+
+        //_agent.Move((_thisTransform.position - _targetTransform.position));
+        //_agent.velocity = (_thisTransform.position - _targetTransform.position).normalized * 0.005f;
         return state = ENodeState.RUNNING;
     }
 }

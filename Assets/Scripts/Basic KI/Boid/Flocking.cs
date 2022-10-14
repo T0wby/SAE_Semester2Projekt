@@ -10,7 +10,6 @@ public class Flocking : Node
     private Animator _thisAnimator;
     private NavMeshAgent _agent;
     private BoidMovement _boidMovement;
-    private Vector3? _mousePos;
     private BoidSettings _settings;
     private Vector3 _destination;
 

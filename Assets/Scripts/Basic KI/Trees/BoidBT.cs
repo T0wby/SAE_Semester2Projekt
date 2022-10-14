@@ -31,9 +31,9 @@ public class BoidBT : BehaviorTree.Tree
                         new Sequence(new List<Node>
                         {
                             new EnemyIsCertainType<VillagerBT>(),
-                            new GoToTarget(transform, _agent)
+                            new GoToTarget(transform, _agent, settings)
                         }),
-                        new Avoid(transform, _agent, settings)
+                        new Avoid(transform, _agent, settings, boidMovement)
                     })
             }),
             new Sequence(new List<Node>

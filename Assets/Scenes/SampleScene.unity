@@ -2089,6 +2089,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2238941886912965048, guid: 6a448dea50b393f4b9e15e976f1d5161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a448dea50b393f4b9e15e976f1d5161, type: 3}
 --- !u!4 &455384231 stripped
@@ -2456,6 +2461,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Villager (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238941886912965048, guid: 6a448dea50b393f4b9e15e976f1d5161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a448dea50b393f4b9e15e976f1d5161, type: 3}
@@ -3344,6 +3354,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 2238941886912965048, guid: 6a448dea50b393f4b9e15e976f1d5161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a448dea50b393f4b9e15e976f1d5161, type: 3}
 --- !u!4 &788331028 stripped
@@ -3424,6 +3439,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2238941886912965048, guid: 6a448dea50b393f4b9e15e976f1d5161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a448dea50b393f4b9e15e976f1d5161, type: 3}
 --- !u!4 &798125649 stripped
@@ -3452,7 +3472,7 @@ PrefabInstance:
     - target: {fileID: 2238941886912965044, guid: 6a448dea50b393f4b9e15e976f1d5161,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.7
+      value: 55.6
       objectReference: {fileID: 0}
     - target: {fileID: 2238941886912965044, guid: 6a448dea50b393f4b9e15e976f1d5161,
         type: 3}
@@ -3462,7 +3482,7 @@ PrefabInstance:
     - target: {fileID: 2238941886912965044, guid: 6a448dea50b393f4b9e15e976f1d5161,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 44.7
+      value: 67.2
       objectReference: {fileID: 0}
     - target: {fileID: 2238941886912965044, guid: 6a448dea50b393f4b9e15e976f1d5161,
         type: 3}
@@ -5238,6 +5258,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2238941886912965048, guid: 6a448dea50b393f4b9e15e976f1d5161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a448dea50b393f4b9e15e976f1d5161, type: 3}
 --- !u!4 &1156268177 stripped
@@ -6523,6 +6548,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2238941886912965048, guid: 6a448dea50b393f4b9e15e976f1d5161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a448dea50b393f4b9e15e976f1d5161, type: 3}
 --- !u!4 &1444837071 stripped
@@ -7272,6 +7302,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2238941886912965048, guid: 6a448dea50b393f4b9e15e976f1d5161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a448dea50b393f4b9e15e976f1d5161, type: 3}
 --- !u!4 &1583203038 stripped
@@ -7357,6 +7392,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Villager (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238941886912965048, guid: 6a448dea50b393f4b9e15e976f1d5161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a448dea50b393f4b9e15e976f1d5161, type: 3}
@@ -8125,6 +8165,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2238941886912965048, guid: 6a448dea50b393f4b9e15e976f1d5161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a448dea50b393f4b9e15e976f1d5161, type: 3}
 --- !u!4 &1719090416 stripped
@@ -8318,6 +8363,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Villager (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238941886912965048, guid: 6a448dea50b393f4b9e15e976f1d5161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a448dea50b393f4b9e15e976f1d5161, type: 3}

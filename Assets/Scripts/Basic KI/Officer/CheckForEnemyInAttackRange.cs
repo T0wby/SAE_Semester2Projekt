@@ -23,7 +23,6 @@ public class CheckForEnemyInAttackRange : Node
         Transform target = (Transform)tmp;
         if (Vector3.Distance(_thisTransform.position, target.position) <= _range)
         {
-            Debug.Log("EnemyInRange Success");
             return state = ENodeState.SUCCESS;
         }
 

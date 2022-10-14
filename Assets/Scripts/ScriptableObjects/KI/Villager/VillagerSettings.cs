@@ -19,25 +19,4 @@ public class VillagerSettings : BasicKISettings
     public float MaxHungerReduction => _maxHungerReduction;
     public float MinHungerReduction => _minHungerReduction;
     public float HealthReduction => _healthReduction;
-
-    //public float MinHungerReduction
-    //{
-    //    get { return _minHungerReduction; }
-    //    set { _minHungerReduction = value;
-    //        if (_minHungerReduction < 0f)
-    //            _minHungerReduction = 0f;
-    //        }
-    //}
-
-    //public float HealthReduction
-    //{
-    //    get { return _healthReduction; }
-    //    set
-    //    {
-    //        _healthReduction = value;
-    //        if (_healthReduction < 0f)
-    //            _healthReduction = 0f;
-    //    }
-    //}
-
 }

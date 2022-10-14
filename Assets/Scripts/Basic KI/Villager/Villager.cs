@@ -15,7 +15,14 @@ public class Villager : AEntity, IMortal
 
     public UnityEvent OnHealthReduction;
 
-    public float Hunger { get { return _hunger; } set { _hunger = value; } }
+    public float Hunger { 
+        get { return _hunger; } 
+        set 
+        { 
+            _hunger = value;
+            if (_hunger < 0)
+                _hunger = 0;
+        } }
     public float Health
     {
         get => _health;
@@ -78,7 +85,7 @@ public class Villager : AEntity, IMortal
             }else
                 _hunger -= Random.Range(_minHungerReduction, _maxHungerReduction);
 
-            //Debug.Log("hunger: " + _hunger);
+            Debug.Log("hunger: " + _hunger);
             //Debug.Log("health: " + _health);
 
             yield return new WaitForSeconds(_hungerReductionIntervall);

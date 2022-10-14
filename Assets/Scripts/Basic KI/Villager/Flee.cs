@@ -9,6 +9,7 @@ public class Flee : Node
     private Transform _thisTransform;
     private NavMeshAgent _agent;
     private RandomWalkTree _thisRandomWalkTree;
+    private BasicKISettings _settings;
 
     #region Constructors
     public Flee(Transform transform, NavMeshAgent agent)
@@ -17,18 +18,19 @@ public class Flee : Node
         _agent = agent;
     }
 
-    public Flee(Transform transform, NavMeshAgent agent, RandomWalkTree randomWalkTree)
+    public Flee(Transform transform, NavMeshAgent agent, RandomWalkTree randomWalkTree, BasicKISettings settings)
     {
         _thisTransform = transform;
         _agent = agent;
         _thisRandomWalkTree = randomWalkTree;
+        _settings = settings;
     }
     #endregion
 
     public override ENodeState CalculateState()
     {
-        if (_agent.speed != VillagerBT.fleeSpeed)
-            _agent.speed = VillagerBT.fleeSpeed;
+        if (_agent.speed != _settings.RunSpeed)
+            _agent.speed = _settings.RunSpeed;
 
         Transform targetTransform = (Transform)GetData("target");
 

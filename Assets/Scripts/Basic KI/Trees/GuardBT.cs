@@ -27,7 +27,7 @@ public class GuardBT : BehaviorTree.Tree
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
-                new GoToTarget(transform,_agent),
+                new GoToTarget(transform, _agent, settings)
             }),
             new Sequence(new List<Node>
             {

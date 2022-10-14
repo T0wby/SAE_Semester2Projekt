@@ -10,11 +10,11 @@ public class VillagerBT : RandomWalkTree
     public VillagerSettings settings;
 
     //Replace
-    public static float walkSpeed = 2f;
+    //public static float walkSpeed = 2f;
     public static float fleeSpeed = 4f;
-    public static float fovRange = 8f;
+    //public static float fovRange = 8f;
     public static float safeRange = 8f;
-    public static float viewAngle = 200f;
+    //public static float viewAngle = 200f;
 
     [SerializeField] private Transform _foodPoint;
     private Villager _villager;
@@ -30,18 +30,18 @@ public class VillagerBT : RandomWalkTree
         {
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInFOV(transform, fovRange, viewAngle, _enemyLayerMask),
-                new Flee(transform, _agent, this),
+                new CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
+                new Flee(transform, _agent, this, settings)
             }),
             new Sequence(new List<Node>
             {
                 new CheckIfHungry(_villager),
-                new GoToPos(transform, _foodPoint, _agent, settings),
+                new GoToPos(transform, _foodPoint, _agent, settings)
             }),
             new Sequence(new List<Node>
             {
                 new ChooseDirection(this),
-                new WalkAround(transform, _agent, walkSpeed, this),
+                new WalkAround(transform, _agent, settings.WalkSpeed, this)
             })
         });
 
