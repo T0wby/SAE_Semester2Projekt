@@ -6,12 +6,10 @@ using UnityEngine.Events;
 public class Villager : AEntity, IMortal
 {
     [SerializeField] private VillagerSettings _settings;
-    [Header("Hunger")]
     private float _hunger;
     private float _hungerReductionIntervall;
     private float _maxHungerReduction;
     private float _minHungerReduction;
-    [Header("Health")]
     private float _healthReduction;
 
 
