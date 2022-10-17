@@ -5,45 +5,53 @@ using UnityEngine;
 public class Foodpoint : MonoBehaviour
 {
     [SerializeField] private float _foodAmount = 5f;
-    private Villager _villager; //Change to List and save all who entered and start feeding them.
+    [SerializeField] private float _feedingInterval = 1f;
+    private List<Villager>  _villagerList;
+    private Villager  _villager;
     private Coroutine _lastCoroutine;
 
-
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    _villager = collision.gameObject.GetComponent<Villager>();
-
-    //    if(_villager is not null)
-    //    {
-    //        _villager.Hunger += _foodAmount;
-    //        //if(_lastCoroutine is null)
-    //        //    _lastCoroutine = StartCoroutine(StartFeeding());
-    //    }
-    //    else
-    //    {
-    //        //if (_lastCoroutine is not null)
-    //        //    StopCoroutine(StartFeeding());
-    //    }
-    //}
-
-    private void OnCollisionEnter(Collision collision)
+    private void Awake()
     {
-        _villager = collision.gameObject.GetComponent<Villager>();
-
-        if (_villager is not null)
-            StartCoroutine(StartFeeding());
+        _villagerList = new List<Villager>();
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        
+        _villager = other.gameObject.GetComponent<Villager>();
+
+        if (_villager == null)
+            return;
+
+        _villagerList.Add(_villager);
+
+        if (_villagerList.Count > 0 && _lastCoroutine is null)
+            _lastCoroutine = StartCoroutine(StartFeeding());
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        _villagerList.Remove(other.gameObject.GetComponent<Villager>());
+
+        if (_villagerList.Count < 1)
+        {
+            StopCoroutine(StartFeeding());
+            _lastCoroutine = null;
+        }
     }
 
     IEnumerator StartFeeding()
     {
         //TODO: Add max Hunger
-        _villager.Hunger += _foodAmount;
 
-        yield return null;
+        if (_villagerList.Count > 0)
+        {
+            for (int i = 0; i < _villagerList.Count; i++)
+            {
+                _villagerList[i].Hunger += _foodAmount;
+            }
+        }
+        
+
+        yield return new WaitForSeconds(_feedingInterval);
     }
 }
