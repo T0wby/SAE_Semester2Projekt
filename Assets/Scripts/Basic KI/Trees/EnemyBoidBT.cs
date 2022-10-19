@@ -4,16 +4,21 @@ using UnityEngine;
 using BehaviorTree;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyBoidBT : BehaviorTree.Tree
 {
+    public Transform[] waypoints;
     public BoidSettings settings;
     public BoidMovement boidMovement;
 
+    private float targetRadius = 5f;
     private NavMeshAgent _agent;
     private int _enemyLayerMask = 1 << 9;
 
     protected override Node SetupTree()
     {
+        _agent = GetComponent<NavMeshAgent>();
+
         Node root = new Selector(new List<Node>
         {
             new Sequence(new List<Node>
@@ -24,22 +29,13 @@ public class EnemyBoidBT : BehaviorTree.Tree
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
-                new Selector(new List<Node>
-                    {
-                        new Sequence(new List<Node>
-                        {
-                            new EnemyIsCertainType<VillagerBT>(),
-                            new GoToTarget(transform, _agent, settings)
-                        }),
-                        new Avoid(transform, _agent, settings, boidMovement)
-                    })
+                new GoToTarget(transform, _agent, settings)
             }),
             new Sequence(new List<Node>
             {
-                new CheckIfAtTargetPos(transform, settings),
-                new Flocking(transform, _agent, boidMovement, settings)
+                new Patrol(transform, waypoints, _agent, targetRadius, settings.WalkSpeed),
+                new FlockingEnemy(_agent, boidMovement, settings)
             }),
-            new Idle(_agent)
         });
 
         return root;

@@ -9,8 +9,8 @@ public class OfficerBT : BehaviorTree.Tree
 {
     public Transform[] waypoints;
     public OfficerSettings settings;
-    public static float targetRadius = 5f;
 
+    private float targetRadius = 5f;
     private NavMeshAgent _agent;
     private int _enemyLayerMask = 1 << 9;
 

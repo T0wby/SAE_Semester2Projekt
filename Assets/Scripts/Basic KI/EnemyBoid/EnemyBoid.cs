@@ -24,16 +24,19 @@ public class EnemyBoid : AEntity, IMortal, IAttack
 
     public void Attack(IMortal enemy)
     {
-        throw new System.NotImplementedException();
+        enemy.Health -= Damage;
     }
 
     public void CheckHealth()
     {
-        throw new System.NotImplementedException();
+        if (_health <= 0)
+        {
+            Destroy();
+        }
     }
 
     public void Destroy()
     {
-        throw new System.NotImplementedException();
+        gameObject.SetActive(false);
     }
 }

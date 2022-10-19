@@ -9,9 +9,15 @@ public class BoidMovement : MonoBehaviour
     private Vector3 _currentVelocity;
     private Collider[] _colliders;
     [SerializeField] private BoidSettings _settings;
-    private int _boidLayerMask = 1<<10;
+    [SerializeField] private int _layerMaskInt;
+    private int _boidLayerMask;
 
     public Vector3 CurrentVelocity { get => _currentVelocity;}
+
+    private void Start()
+    {
+        _boidLayerMask = 1 << _layerMaskInt;
+    }
 
     void Update()
     {
@@ -21,8 +27,7 @@ public class BoidMovement : MonoBehaviour
         Vector3 diff = _desiredVelocity - _currentVelocity;
         _currentVelocity = diff * Time.deltaTime;
         _currentVelocity = Vector3.ClampMagnitude(_currentVelocity, _settings.WalkSpeed);
-        _currentVelocity *= Time.deltaTime;
-        //Use currentVelocity in the Flocking Node
+        //_currentVelocity *= Time.deltaTime;
     }
 
     private void LateUpdate()

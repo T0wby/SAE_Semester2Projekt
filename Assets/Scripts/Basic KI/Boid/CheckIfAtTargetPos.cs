@@ -19,7 +19,6 @@ public class CheckIfAtTargetPos : Node
     {
         _thisTransform = transform;
         _settings = settings;
-        //GetRoot(this).SetData("boidDestination", Vector3.zero);
     }
 
     public override ENodeState CalculateState()

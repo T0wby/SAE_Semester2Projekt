@@ -31,7 +31,6 @@ namespace BehaviorTree
             _agent = agent;
             _radius = radius;
             _speed = speed;
-
         }
 
         public override ENodeState CalculateState()
