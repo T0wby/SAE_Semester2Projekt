@@ -85,8 +85,6 @@ public class Villager : AEntity, IMortal
             }else
                 _hunger -= Random.Range(_minHungerReduction, _maxHungerReduction);
 
-            Debug.Log("hunger: " + _hunger);
-            //Debug.Log("health: " + _health);
 
             yield return new WaitForSeconds(_hungerReductionIntervall);
         }

@@ -11,6 +11,7 @@ public class BoidMovement : MonoBehaviour
     [SerializeField] private BoidSettings _settings;
     [SerializeField] private int _layerMaskInt;
     private int _boidLayerMask;
+    private int _neighbourCount;
 
     public Vector3 CurrentVelocity { get => _currentVelocity;}
 
@@ -27,7 +28,7 @@ public class BoidMovement : MonoBehaviour
         Vector3 diff = _desiredVelocity - _currentVelocity;
         _currentVelocity = diff * Time.deltaTime;
         _currentVelocity = Vector3.ClampMagnitude(_currentVelocity, _settings.WalkSpeed);
-        //_currentVelocity *= Time.deltaTime;
+        _currentVelocity *= Time.deltaTime;
     }
 
     private void LateUpdate()
@@ -42,16 +43,17 @@ public class BoidMovement : MonoBehaviour
     /// <returns></returns>
     private Vector3 Alignment()
     {
-        if (_neighbours.Count == 0) return Vector3.zero;
+        _neighbourCount = _neighbours.Count;
+        if (_neighbourCount == 0) return Vector3.zero;
 
         Vector3 direction = Vector3.zero;
 
-        for (int i = 0; i < _neighbours.Count; i++)
+        for (int i = 0; i < _neighbourCount; i++)
         {
             direction += _neighbours[i].CurrentVelocity;
         }
 
-        direction /= _neighbours.Count;
+        direction /= _neighbourCount;
 
         return direction.normalized * _settings.WalkSpeed * _settings.Alignment;
     }
@@ -62,16 +64,17 @@ public class BoidMovement : MonoBehaviour
     /// <returns></returns>
     private Vector3 Cohesion()
     {
-        if (_neighbours.Count == 0) return Vector3.zero;
+        _neighbourCount = _neighbours.Count;
+        if (_neighbourCount == 0) return Vector3.zero;
 
         Vector3 center = Vector3.zero;
 
-        for (int i = 0; i < _neighbours.Count; i++)
+        for (int i = 0; i < _neighbourCount; i++)
         {
             center += _neighbours[i].transform.position;
         }
 
-        center /= _neighbours.Count;
+        center /= _neighbourCount;
         //center -= transform.position;
 
         return center.normalized * _settings.WalkSpeed * _settings.Cohesion;
@@ -83,18 +86,19 @@ public class BoidMovement : MonoBehaviour
     /// <returns></returns>
     private Vector3 Seperation()
     {
-        if (_neighbours.Count == 0) return Vector3.zero;
+        _neighbourCount = _neighbours.Count;
+        if (_neighbourCount == 0) return Vector3.zero;
 
         Vector3 direction = Vector3.zero;
         Vector3 distance;
 
-        for (int i = 0; i < _neighbours.Count; i++)
+        for (int i = 0; i < _neighbourCount; i++)
         {
             distance = _neighbours[i].transform.position - transform.position;
             direction += distance / distance.sqrMagnitude;
         }
 
-        direction /= _neighbours.Count;
+        direction /= _neighbourCount;
 
         return -direction.normalized * _settings.WalkSpeed * _settings.Seperation;
     }
@@ -113,10 +117,12 @@ public class BoidMovement : MonoBehaviour
             boid = collider.GetComponent<BoidMovement>();
             if (boid)
             {
-                if (Vector3.Angle(transform.forward, boid.transform.position - transform.position) < _settings.FovAngle * 0.5f)
-                {
+                if(!_neighbours.Contains(boid))
                     _neighbours.Add(boid);
-                }
+                //if (Vector3.Angle(transform.forward, boid.transform.position - transform.position) < _settings.FovAngle * 0.5f)
+                //{
+                //    _neighbours.Add(boid);
+                //}
             }
         }
     }
