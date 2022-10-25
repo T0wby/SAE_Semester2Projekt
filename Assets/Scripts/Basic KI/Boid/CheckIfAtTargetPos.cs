@@ -25,8 +25,11 @@ public class CheckIfAtTargetPos : Node
     {
         _targetPos = CheckIfTargetOnNavmesh();
 
+        //Vector3.SqrMagnitude((Vector3)_targetPos - _thisTransform.position)
         if (_targetPos is null || Vector3.Distance(_thisTransform.position, (Vector3)_targetPos) < 1.5f)
             return state = ENodeState.FAILURE;
+
+        
 
         return state = ENodeState.SUCCESS;
 

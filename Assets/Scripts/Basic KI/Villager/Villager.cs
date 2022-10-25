@@ -23,7 +23,7 @@ public class Villager : AEntity, IMortal
             if (_hunger < 0)
                 _hunger = 0;
         } }
-    public float Health
+    public override float Health
     {
         get => _health;
         set
@@ -58,7 +58,7 @@ public class Villager : AEntity, IMortal
         StartCoroutine(StartHunger());
     }
 
-    public void CheckHealth()
+    public override void CheckHealth()
     {
         if (_health <= 0)
         {
@@ -66,7 +66,7 @@ public class Villager : AEntity, IMortal
         }
     }
 
-    public void Destroy()
+    public override void Destroy()
     {
         //gameObject.GetComponent<Rigidbody>().freezeRotation = false;
         //Component.Destroy(gameObject.GetComponent<VillagerBT>());

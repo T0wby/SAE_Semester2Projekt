@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BehaviorTree
 {
-    public class RandomWalkTree : Tree
+    public class RandomWalkTree : MyTree
     {
         protected float _currentWalkTime = 0f;
         protected float _maxWalkTime;

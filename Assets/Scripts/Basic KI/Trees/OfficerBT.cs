@@ -5,17 +5,16 @@ using UnityEngine.AI;
 using BehaviorTree;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class OfficerBT : BehaviorTree.Tree
+public class OfficerBT : BehaviorTree.MyTree
 {
     public Transform[] waypoints;
     public OfficerSettings settings;
 
-    private float targetRadius = 5f;
-    private NavMeshAgent _agent;
-    private int _enemyLayerMask = 1 << 9;
+    [SerializeField] private float _waypointRadius = 5f;
 
     protected override Node SetupTree()
     {
+        _enemyLayerMask = 1 << 9;
         _agent = GetComponent<NavMeshAgent>();
 
         Node root = new Selector(new List<Node>
@@ -30,7 +29,7 @@ public class OfficerBT : BehaviorTree.Tree
                 new CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
                 new GoToTarget(transform, _agent, settings)
             }),
-            new PatrolWait(transform, waypoints, _agent, targetRadius, settings.WalkSpeed),
+            new PatrolWait(transform, waypoints, _agent, _waypointRadius, settings.WalkSpeed),
         });
 
         return root;

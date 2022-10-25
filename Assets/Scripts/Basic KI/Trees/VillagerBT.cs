@@ -9,20 +9,12 @@ public class VillagerBT : RandomWalkTree
 {
     public VillagerSettings settings;
 
-    //Replace
-    //public static float walkSpeed = 2f;
-    public static float fleeSpeed = 4f;
-    //public static float fovRange = 8f;
-    public static float safeRange = 8f;
-    //public static float viewAngle = 200f;
-
     [SerializeField] private Transform _foodPoint;
     private Villager _villager;
-    private NavMeshAgent _agent;
-    private int _enemyLayerMask = 1 << 9;
 
     protected override Node SetupTree()
     {
+        _enemyLayerMask = 1 << 9;
         _agent = GetComponent<NavMeshAgent>();
         _villager = GetComponent<Villager>();
 

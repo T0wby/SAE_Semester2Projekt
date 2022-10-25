@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyBoid : AEntity, IMortal, IAttack
+public class EnemyBoid : AEntity, IAttack
 {
     [SerializeField] private BoidSettings _settings;
 
     public UnityEvent OnHealthReduction;
 
-    public float Health
+    public override float Health
     {
         get => _health;
         set
@@ -27,7 +27,7 @@ public class EnemyBoid : AEntity, IMortal, IAttack
         enemy.Health -= Damage;
     }
 
-    public void CheckHealth()
+    public override void CheckHealth()
     {
         if (_health <= 0)
         {
@@ -35,7 +35,7 @@ public class EnemyBoid : AEntity, IMortal, IAttack
         }
     }
 
-    public void Destroy()
+    public override void Destroy()
     {
         gameObject.SetActive(false);
     }

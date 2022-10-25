@@ -13,10 +13,15 @@ public class VillagerSettings : BasicKISettings
     [SerializeField] private float _minHungerReduction;
     [Header("Health")]
     [SerializeField] private float _healthReduction;
+    [Header("Movement")]
+    [SerializeField] private float _fleeSpeed;
+    [SerializeField] private float _safeRange;
 
     public float Hunger => _hunger;
     public float HungerReductionIntervall => _hungerReductionIntervall;
     public float MaxHungerReduction => _maxHungerReduction;
     public float MinHungerReduction => _minHungerReduction;
     public float HealthReduction => _healthReduction;
+    public float FleeSpeed => _fleeSpeed;
+    public float SafeRange => _safeRange;
 }

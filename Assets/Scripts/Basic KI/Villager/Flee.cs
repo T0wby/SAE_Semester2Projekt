@@ -9,7 +9,7 @@ public class Flee : Node
     private Transform _thisTransform;
     private NavMeshAgent _agent;
     private RandomWalkTree _thisRandomWalkTree;
-    private BasicKISettings _settings;
+    private VillagerSettings _settings;
 
     #region Constructors
     public Flee(Transform transform, NavMeshAgent agent)
@@ -17,13 +17,13 @@ public class Flee : Node
         _thisTransform = transform;
         _agent = agent;
     }
-
-    public Flee(Transform transform, NavMeshAgent agent, RandomWalkTree randomWalkTree, BasicKISettings settings)
+    
+    public Flee(Transform transform, NavMeshAgent agent, RandomWalkTree randomWalkTree, VillagerSettings vilSettings)
     {
         _thisTransform = transform;
         _agent = agent;
         _thisRandomWalkTree = randomWalkTree;
-        _settings = settings;
+        _settings = vilSettings;
     }
     #endregion
 
@@ -34,7 +34,7 @@ public class Flee : Node
 
         Transform targetTransform = (Transform)GetData("target");
 
-        if (Vector3.Distance(_thisTransform.position, targetTransform.position) > VillagerBT.safeRange)
+        if (Vector3.Distance(_thisTransform.position, targetTransform.position) > _settings.SafeRange)
             return ENodeState.FAILURE;
 
         ResetRandomDirection();

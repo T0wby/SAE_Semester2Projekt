@@ -27,11 +27,21 @@ public class Flocking : Node
         if (_agent.speed != _settings.WalkSpeed)
             _agent.speed = _settings.WalkSpeed;
 
+        SetAgentDestination();
+        ManipulateAgentMovement();
+
+        return state = ENodeState.RUNNING;
+    }
+
+    private void SetAgentDestination()
+    {
         _destination = (Vector3)GetData("boidDestination");
         if (_agent.destination != _destination)
             _agent.destination = _destination;
+    }
 
+    private void ManipulateAgentMovement()
+    {
         _agent.Move(_boidMovement.CurrentVelocity);
-        return state = ENodeState.RUNNING;
     }
 }

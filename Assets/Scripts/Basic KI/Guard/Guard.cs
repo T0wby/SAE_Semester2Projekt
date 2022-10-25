@@ -9,7 +9,7 @@ public class Guard : AEntity, IMortal, IAttack
 
     public UnityEvent OnHealthReduction;
 
-    public float Health
+    public override float Health
     {
         get => _health;
         set
@@ -38,7 +38,7 @@ public class Guard : AEntity, IMortal, IAttack
         enemy.Health -= Damage;
     }
 
-    public void CheckHealth()
+    public override void CheckHealth()
     {
         if (_health <= 0)
         {
@@ -46,7 +46,7 @@ public class Guard : AEntity, IMortal, IAttack
         }
     }
 
-    public void Destroy()
+    public override void Destroy()
     {
         gameObject.SetActive(false);
     }

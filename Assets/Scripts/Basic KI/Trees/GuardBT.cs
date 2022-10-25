@@ -5,16 +5,14 @@ using UnityEngine.AI;
 using UnityEngine;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class GuardBT : BehaviorTree.Tree
+public class GuardBT : BehaviorTree.MyTree
 {
     public Transform guardpoint;
     public GuardSettings settings;
 
-    private NavMeshAgent _agent;
-    private int _enemyLayerMask = 1 << 9;
-
     protected override Node SetupTree()
     {
+        _enemyLayerMask = 1 << 9;
         _agent = GetComponent<NavMeshAgent>();
 
         Node root = new Selector(new List<Node>

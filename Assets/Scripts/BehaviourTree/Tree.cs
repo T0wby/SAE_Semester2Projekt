@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace BehaviorTree
 {
-    public abstract class Tree : MonoBehaviour
+    public abstract class MyTree : MonoBehaviour
     {
         private Node _root = null;
+        protected NavMeshAgent _agent;
+        protected int _enemyLayerMask;
 
         protected void Start()
         {

@@ -25,15 +25,17 @@ public class Avoid : Node
         if (_agent.speed != _settings.RunSpeed)
             _agent.speed = _settings.RunSpeed;
 
+        AvoidTarget();
+
+        return state = ENodeState.RUNNING;
+    }
+
+    private void AvoidTarget()
+    {
         _targetTransform = (Transform)GetData("target");
 
         Vector3 diff = (_thisTransform.position - _targetTransform.position) - _boidMovement.CurrentVelocity;
         _agent.velocity = diff * Time.deltaTime;
         _agent.velocity = Vector3.ClampMagnitude(_agent.velocity, _settings.RunSpeed);
-        //_agent.velocity *= Time.deltaTime;
-
-        //_agent.Move((_thisTransform.position - _targetTransform.position));
-        //_agent.velocity = (_thisTransform.position - _targetTransform.position).normalized * 0.005f;
-        return state = ENodeState.RUNNING;
     }
 }

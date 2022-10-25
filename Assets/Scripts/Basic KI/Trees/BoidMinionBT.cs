@@ -4,16 +4,14 @@ using UnityEngine;
 using BehaviorTree;
 using UnityEngine.AI;
 
-public class BoidMinionBT : BehaviorTree.Tree
+public class BoidMinionBT : BehaviorTree.MyTree
 {
     public BoidSettings settings;
     public BoidMovement boidMovement;
 
-    private NavMeshAgent _agent;
-    private int _enemyLayerMask = 1 << 10;
-
     protected override Node SetupTree()
     {
+        _enemyLayerMask = 1 << 10;
         _agent = GetComponent<NavMeshAgent>();
 
         Node root = new Selector(new List<Node>
