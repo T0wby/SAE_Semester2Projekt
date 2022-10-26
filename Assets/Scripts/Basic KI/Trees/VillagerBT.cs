@@ -10,6 +10,7 @@ public class VillagerBT : RandomWalkTree
     public VillagerSettings settings;
 
     [SerializeField] private Transform _foodPoint;
+    [SerializeField] private LayerMask _hideableLayers;
     private Villager _villager;
 
     protected override Node SetupTree()
