@@ -12,6 +12,7 @@ public class BoidMovement : MonoBehaviour
     [SerializeField] private int _layerMaskInt;
     private int _boidLayerMask;
     private int _neighbourCount;
+    private int _boidLeaderMultiplier = 2;
 
     public Vector3 CurrentVelocity { get => _currentVelocity;}
 
@@ -28,7 +29,6 @@ public class BoidMovement : MonoBehaviour
         Vector3 diff = _desiredVelocity - _currentVelocity;
         _currentVelocity = diff * Time.deltaTime;
         _currentVelocity = Vector3.ClampMagnitude(_currentVelocity, _settings.WalkSpeed);
-        _currentVelocity *= Time.deltaTime;
     }
 
     private void LateUpdate()
@@ -44,13 +44,19 @@ public class BoidMovement : MonoBehaviour
     private Vector3 Alignment()
     {
         _neighbourCount = _neighbours.Count;
+        Debug.Log("_neighbourCount: " + _neighbourCount);
         if (_neighbourCount == 0) return Vector3.zero;
-
+        
         Vector3 direction = Vector3.zero;
 
         for (int i = 0; i < _neighbourCount; i++)
         {
-            direction += _neighbours[i].CurrentVelocity;
+            if (_neighbours[i].gameObject.GetComponent<BoidBT>() != null)
+            {
+                direction += (_neighbours[i].CurrentVelocity * _boidLeaderMultiplier);
+            }
+            else
+                direction += _neighbours[i].CurrentVelocity;
         }
 
         direction /= _neighbourCount;
@@ -75,7 +81,7 @@ public class BoidMovement : MonoBehaviour
         }
 
         center /= _neighbourCount;
-        //center -= transform.position;
+        center -= transform.position;
 
         return center.normalized * _settings.WalkSpeed * _settings.Cohesion;
     }
@@ -115,7 +121,7 @@ public class BoidMovement : MonoBehaviour
         foreach (Collider collider in _colliders)
         {
             boid = collider.GetComponent<BoidMovement>();
-            if (boid)
+            if (boid != this && boid != null)
             {
                 if(!_neighbours.Contains(boid))
                     _neighbours.Add(boid);

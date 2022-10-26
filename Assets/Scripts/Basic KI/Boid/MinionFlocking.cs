@@ -23,6 +23,7 @@ public class MinionFlocking : Node
             _agent.speed = _settings.WalkSpeed;
 
         _agent.Move(_boidMovement.CurrentVelocity);
+
         Debug.Log("_boidMovement.CurrentVelocity: " + _boidMovement.CurrentVelocity);
         return state = ENodeState.RUNNING;
     }

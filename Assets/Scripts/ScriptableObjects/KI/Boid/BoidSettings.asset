@@ -21,6 +21,6 @@ MonoBehaviour:
   _alignment: 1
   _cohesion: 1
   _seperation: 1
-  _target: 0.002
+  _target: 0
   _damage: 20
   _atkSpeed: 1

@@ -13,12 +13,14 @@ public class CheckIfAtTargetPos : Node
     private Vector3? _destination;
     private float _radius = 2f;
     private BoidSettings _settings;
+    private NavMeshAgent _agent;
 
 
-    public CheckIfAtTargetPos(Transform transform, BoidSettings settings)
+    public CheckIfAtTargetPos(Transform transform, BoidSettings settings, NavMeshAgent agent)
     {
         _thisTransform = transform;
         _settings = settings;
+        _agent = agent;
     }
 
     public override ENodeState CalculateState()
@@ -30,7 +32,7 @@ public class CheckIfAtTargetPos : Node
             return state = ENodeState.FAILURE;
 
         
-
+        //_agent.isStopped = false;
         return state = ENodeState.SUCCESS;
 
     }

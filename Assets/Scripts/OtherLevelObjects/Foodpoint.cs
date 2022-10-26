@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Foodpoint : MonoBehaviour
@@ -38,6 +39,13 @@ public class Foodpoint : MonoBehaviour
             _lastCoroutine = null;
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
+
+    }
+
+    
+
 
     IEnumerator StartFeeding()
     {
@@ -49,6 +57,7 @@ public class Foodpoint : MonoBehaviour
             {
                 _villagerList[i].Hunger += _foodAmount;
             }
+            Debug.Log("FEED!");
         }
         
 

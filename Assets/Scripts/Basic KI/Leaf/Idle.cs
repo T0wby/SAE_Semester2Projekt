@@ -15,7 +15,7 @@ public class Idle : Node
 
     public override ENodeState CalculateState()
 	{
-        _agent.Move(Vector3.zero);
+        //_agent.isStopped = true;
         return ENodeState.RUNNING;
 	}
 }

@@ -36,7 +36,7 @@ public class BoidBT : BehaviorTree.MyTree
             }),
             new Sequence(new List<Node>
             {
-                new CheckIfAtTargetPos(transform, settings),
+                new CheckIfAtTargetPos(transform, settings, _agent),
                 new Flocking(transform, _agent, boidMovement, settings)
             }),
             new Idle(_agent)

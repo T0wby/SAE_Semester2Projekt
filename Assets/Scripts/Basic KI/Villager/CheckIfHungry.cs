@@ -15,7 +15,10 @@ public class CheckIfHungry : Node
     public override ENodeState CalculateState()
     {
         if (_villager.Hunger < 50f)
+        {
+            Debug.Log($"{_villager.name} hunger: {_villager.Hunger}");
             return ENodeState.SUCCESS;
+        }
 
         return ENodeState.FAILURE;
     }

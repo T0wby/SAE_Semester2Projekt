@@ -68,10 +68,6 @@ public class Villager : AEntity, IMortal
 
     public override void Destroy()
     {
-        //gameObject.GetComponent<Rigidbody>().freezeRotation = false;
-        //Component.Destroy(gameObject.GetComponent<VillagerBT>());
-        //gameObject.tag = null;
-        //Component.Destroy(this);
         gameObject.SetActive(false);
     }
 
@@ -82,7 +78,8 @@ public class Villager : AEntity, IMortal
             if (CheckIfHungry())
             {
                 Health -= _healthReduction;
-            }else
+            }
+            else
                 _hunger -= Random.Range(_minHungerReduction, _maxHungerReduction);
 
 
