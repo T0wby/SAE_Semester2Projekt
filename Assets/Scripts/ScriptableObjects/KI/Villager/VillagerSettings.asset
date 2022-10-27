@@ -23,3 +23,7 @@ MonoBehaviour:
   _maxHungerReduction: 5
   _minHungerReduction: 1
   _healthReduction: 5
+  _fleeSpeed: 5
+  _safeRange: 5
+  _hideSensitivity: 1
+  _hideRange: 20

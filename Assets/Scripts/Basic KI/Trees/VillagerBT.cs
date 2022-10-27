@@ -24,7 +24,8 @@ public class VillagerBT : RandomWalkTree
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
-                new Flee(transform, _agent, this, settings)
+                //new Flee(transform, _agent, this, settings)
+                new Hide(transform, _agent, settings, _hideableLayers)
             }),
             new Sequence(new List<Node>
             {

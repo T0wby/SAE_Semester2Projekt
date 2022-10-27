@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorTree;
 using UnityEngine.AI;
+using UnityEditor;
 
 public class Hide : Node
 {
@@ -10,7 +11,7 @@ public class Hide : Node
     private NavMeshAgent _agent;
     private VillagerSettings _settings;
     private LayerMask _hideableLayers;
-    private Collider[] _colliders = new Collider[20];
+    private Collider[] _colliders;
     private Transform _targetTransform;
 
 
@@ -29,18 +30,30 @@ public class Hide : Node
         if(target != null)
             _targetTransform = (Transform)target;
 
-        return ENodeState.RUNNING;
+        Debug.Log("Hide!!");
+
+        if (Hiding(_targetTransform))
+            return ENodeState.SUCCESS;
+
+        return ENodeState.FAILURE;
     }
 
     private bool Hiding(Transform target)
     {
         while (true)
         {
-            _colliders = Physics.OverlapSphere(_thisTransform.position, _settings.FovRange, _hideableLayers);
+
+            //for (int i = 0; i < _colliders.Length; i++)
+            //{
+            //    _colliders[i] = null;
+            //}
+
+            _colliders = Physics.OverlapSphere(_thisTransform.position, _settings.HideRange, _hideableLayers);
+            
 
             for (int i = 0; i < _colliders.Length; i++)
             {
-                if (NavMesh.SamplePosition(_colliders[i].transform.position, out NavMeshHit hit, 2f, _agent.areaMask))
+                if (NavMesh.SamplePosition(_colliders[i].transform.position, out NavMeshHit hit, 100f, 1))
                 {
                     if (!NavMesh.FindClosestEdge(hit.position, out hit, _agent.areaMask))
                     {

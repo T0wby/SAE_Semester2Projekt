@@ -7,7 +7,7 @@ public class CheckForEnemyInFOV : Node
 {
     private int _enemyLayerMask;
     private Transform _thisTransform;
-    private Collider[] _colliders;
+    private Collider[] _colliders = new Collider[30];
     private List<Collider> _inViewColliders = new List<Collider>();
     private float _range;
     private float _viewAngle;
@@ -33,6 +33,15 @@ public class CheckForEnemyInFOV : Node
 
     private ENodeState CheckforEnemy()
     {
+        if (_colliders.Length > 0)
+        {
+            for (int i = 0; i < _colliders.Length; i++)
+            {
+                _colliders[i] = null;
+            }
+        }
+
+
         _colliders = Physics.OverlapSphere(_thisTransform.position, _range, _enemyLayerMask);
 
         if (_colliders.Length > 0)

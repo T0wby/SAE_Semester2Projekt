@@ -18,6 +18,7 @@ public class VillagerSettings : BasicKISettings
     [SerializeField] private float _safeRange;
     [Range(-1f, 1f)]
     [SerializeField] private float _hideSensitivity = 0;
+    [SerializeField] private float _hideRange = 5f;
 
     public float Hunger => _hunger;
     public float HungerReductionIntervall => _hungerReductionIntervall;
@@ -27,4 +28,5 @@ public class VillagerSettings : BasicKISettings
     public float FleeSpeed => _fleeSpeed;
     public float SafeRange => _safeRange;
     public float HideSensitivity => _hideSensitivity;
+    public float HideRange => _hideRange;
 }
