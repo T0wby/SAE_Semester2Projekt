@@ -31,17 +31,18 @@ public class Foodpoint : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        _villagerList.Remove(other.gameObject.GetComponent<Villager>());
+        _villager = other.gameObject.GetComponent<Villager>();
 
-        if (_villagerList.Count < 1)
-        {
-            StopCoroutine(StartFeeding());
-            _lastCoroutine = null;
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
+        if (_villager == null)
+            return;
 
+        _villagerList.Remove(_villager);
+
+        //if (_villagerList.Count < 1)
+        //{
+        //    StopCoroutine(StartFeeding());
+        //    _lastCoroutine = null;
+        //}
     }
 
     
@@ -51,16 +52,17 @@ public class Foodpoint : MonoBehaviour
     {
         //TODO: Add max Hunger
 
-        if (_villagerList.Count > 0)
+        while (true)
         {
-            for (int i = 0; i < _villagerList.Count; i++)
+            if (_villagerList.Count > 0)
             {
-                _villagerList[i].Hunger += _foodAmount;
+                for (int i = 0; i < _villagerList.Count; i++)
+                {
+                    _villagerList[i].Hunger += _foodAmount;
+                }
+                Debug.Log("FEED!");
             }
-            Debug.Log("FEED!");
+            yield return new WaitForSeconds(_feedingInterval);
         }
-        
-
-        yield return new WaitForSeconds(_feedingInterval);
     }
 }

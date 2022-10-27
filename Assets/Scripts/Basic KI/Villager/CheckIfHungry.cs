@@ -16,7 +16,6 @@ public class CheckIfHungry : Node
     {
         if (_villager.Hunger < 50f)
         {
-            Debug.Log($"{_villager.name} hunger: {_villager.Hunger}");
             return ENodeState.SUCCESS;
         }
 
