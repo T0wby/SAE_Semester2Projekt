@@ -5,10 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BoidSettings", menuName ="KI/BoidSettings")]
 public class BoidSettings : BasicKISettings
 {
+    [Header("Flocking")]
     [SerializeField] private float _alignment;
     [SerializeField] private float _cohesion;
     [SerializeField] private float _seperation;
     [SerializeField] private float _target;
+    [Header("Attack")]
     [SerializeField] private float _damage;
     [SerializeField] private float _atkSpeed;
 

@@ -44,7 +44,6 @@ public class BoidMovement : MonoBehaviour
     private Vector3 Alignment()
     {
         _neighbourCount = _neighbours.Count;
-        Debug.Log("_neighbourCount: " + _neighbourCount);
         if (_neighbourCount == 0) return Vector3.zero;
         
         Vector3 direction = Vector3.zero;

@@ -40,6 +40,7 @@ public class BoidMinionBT : BehaviorTree.MyTree
                 new Flocking(transform, _agent, boidMovement, settings)
             }),
             new Idle(_agent)
+            //new MinionFlocking(_agent, boidMovement, settings)
         });
 
         return root;
