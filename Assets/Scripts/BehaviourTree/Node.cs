@@ -111,6 +111,11 @@ namespace BehaviorTree
             return false;
         }
 
+        /// <summary>
+        /// Finds the root Node of the tree
+        /// </summary>
+        /// <param name="node">Node we are searching from</param>
+        /// <returns>Returns the root Node reference</returns>
         public Node GetRoot(Node node)
         {
             if (node.Parent is null)
