@@ -30,8 +30,8 @@ public class EnemyBoidBT : BehaviorTree.MyTree
             }),
             new Sequence(new List<Node>
             {
-                new Patrol(transform, waypoints, _agent, settings.WalkSpeed),
-                new FlockingEnemy(_agent, boidMovement, settings)
+                new Patrol(transform, waypoints, _agent),
+                new MinionFlocking(_agent, boidMovement, settings)
             }),
         });
 
