@@ -34,7 +34,7 @@ public class GoToPos : Node
         else
         {
             _agent.destination = _targetTransform.position;
-            //SetAnimationState(_animator, "IsWalking", true);
+            SetAnimationState(_animator, "IsWalking", true);
         }
 
         return state = ENodeState.RUNNING;

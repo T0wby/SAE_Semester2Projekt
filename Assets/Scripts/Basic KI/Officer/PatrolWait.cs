@@ -52,7 +52,7 @@ namespace BehaviorTree
                 }
 
 
-                if (Vector3.Distance(_thisTransform.position, _destination) < 0.3f)
+                if (Vector3.Distance(_thisTransform.position, _destination) < 1f)
                 {
                     _waitCounter = 0f;
                     _waiting = true;
