@@ -12,12 +12,14 @@ public class VillagerBT : RandomWalkTree
     [SerializeField] private Transform _foodPoint;
     [SerializeField] private LayerMask _hideableLayers;
     private Villager _villager;
+    private Animator _animator;
 
     protected override Node SetupTree()
     {
         _enemyLayerMask = 1 << 9;
         _agent = GetComponent<NavMeshAgent>();
         _villager = GetComponent<Villager>();
+        _animator = GetComponent<Animator>();
 
         Node root = new Selector(new List<Node>
         {
@@ -30,7 +32,7 @@ public class VillagerBT : RandomWalkTree
             new Sequence(new List<Node>
             {
                 new CheckIfHungry(_villager),
-                new GoToPos(transform, _foodPoint, _agent, settings)
+                new GoToPos(transform, _foodPoint, _agent, settings, _animator)
             }),
             new Sequence(new List<Node>
             {

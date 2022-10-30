@@ -17,6 +17,6 @@ MonoBehaviour:
   _fovAngle: 60
   _walkSpeed: 2
   _runSpeed: 5
-  _interactRange: 1
+  _interactRange: 2
   _damage: 10
   _atkSpeed: 0.7
