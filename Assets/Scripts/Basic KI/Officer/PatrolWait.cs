@@ -21,9 +21,10 @@ namespace BehaviorTree
         private float _radius;
         private float _speed;
         private bool _waiting = false;
+        private Animator _animator;
 
 
-        public PatrolWait(Transform transform, Transform[] waypoints, NavMeshAgent agent, float radius, float speed)
+        public PatrolWait(Transform transform, Transform[] waypoints, NavMeshAgent agent, float radius, float speed, Animator animator)
         {
             _thisTransform = transform;
             _waypoints = waypoints;
@@ -31,19 +32,21 @@ namespace BehaviorTree
             _agent = agent;
             _radius = radius;
             _speed = speed;
+            _animator = animator;
         }
 
         public override ENodeState CalculateState()
         {
             if (_waiting)
             {
+                SetAnimationState(_animator, "IsWalking", false);
                 _waitCounter += Time.deltaTime;
                 if (_waitCounter >= _waitTime)
                     _waiting = false;
             }
             else
             {
-
+                SetAnimationState(_animator, "IsWalking", true);
                 if (_previousWaypointIndex != _currentWaypointIndex)
                 {
                     Transform waypoint = _waypoints[_currentWaypointIndex];
@@ -54,6 +57,7 @@ namespace BehaviorTree
 
                 if (Vector3.Distance(_thisTransform.position, _destination) < 1f)
                 {
+                    SetAnimationState(_animator, "IsWalking", false);
                     _waitCounter = 0f;
                     _waiting = true;
                     _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
@@ -64,6 +68,20 @@ namespace BehaviorTree
                 }
             }
             return state = ENodeState.RUNNING;
+        }
+
+        /// <summary>
+        /// Changes a bool value of an animator
+        /// </summary>
+        /// <param name="animator">Used animator</param>
+        /// <param name="paramName">Exact name of the bool</param>
+        /// <param name="state">bool value it should change to</param>
+        private void SetAnimationState(Animator animator, string paramName, bool state)
+        {
+            if (animator.GetBool(paramName) != state)
+            {
+                animator.SetBool(paramName, state);
+            }
         }
     } 
 }

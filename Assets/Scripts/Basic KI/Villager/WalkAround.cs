@@ -10,13 +10,15 @@ public class WalkAround : Node
     private NavMeshAgent _agent;
     private RandomWalkTree _thisRandomWalkTree;
     private float _speed;
+    private Animator _animator;
 
-    public WalkAround(Transform transform, NavMeshAgent agent,float speed, RandomWalkTree randomBT)
+    public WalkAround(Transform transform, NavMeshAgent agent, float speed, RandomWalkTree randomBT, Animator animator)
     {
         _thisTransform = transform;
         _agent = agent;
         _speed = speed;
         _thisRandomWalkTree = randomBT;
+        _animator = animator;
     }
 
     public override ENodeState CalculateState()
@@ -29,6 +31,8 @@ public class WalkAround : Node
 
         if (_agent.speed != _speed)
             _agent.speed = _speed;
+
+        SetAnimationState(_animator, "IsWalking", true);
 
         Vector3 movementDirection = new Vector3(randomDirection.x, _thisTransform.position.y, randomDirection.y);
 
@@ -49,5 +53,19 @@ public class WalkAround : Node
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Changes a bool value of an animator
+    /// </summary>
+    /// <param name="animator">Used animator</param>
+    /// <param name="paramName">Exact name of the bool</param>
+    /// <param name="state">bool value it should change to</param>
+    private void SetAnimationState(Animator animator, string paramName, bool state)
+    {
+        if (animator.GetBool(paramName) != state)
+        {
+            animator.SetBool(paramName, state);
+        }
     }
 }

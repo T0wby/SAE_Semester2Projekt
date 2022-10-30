@@ -10,20 +10,23 @@ public class Flee : Node
     private NavMeshAgent _agent;
     private RandomWalkTree _thisRandomWalkTree;
     private VillagerSettings _settings;
+    private Animator _animator;
 
     #region Constructors
-    public Flee(Transform transform, NavMeshAgent agent)
+    public Flee(Transform transform, NavMeshAgent agent, Animator animator)
     {
         _thisTransform = transform;
         _agent = agent;
+        _animator = animator;
     }
     
-    public Flee(Transform transform, NavMeshAgent agent, RandomWalkTree randomWalkTree, VillagerSettings vilSettings)
+    public Flee(Transform transform, NavMeshAgent agent, RandomWalkTree randomWalkTree, VillagerSettings vilSettings, Animator animator)
     {
         _thisTransform = transform;
         _agent = agent;
         _thisRandomWalkTree = randomWalkTree;
         _settings = vilSettings;
+        _animator = animator;
     }
     #endregion
 
@@ -33,9 +36,12 @@ public class Flee : Node
             _agent.speed = _settings.RunSpeed;
 
         Transform targetTransform = (Transform)GetData("target");
-
+        SetAnimationState(_animator, "IsWalking", true);
         if (Vector3.Distance(_thisTransform.position, targetTransform.position) > _settings.SafeRange)
+        {
             return ENodeState.FAILURE;
+        }
+            
 
         ResetRandomDirection();
 
@@ -52,6 +58,20 @@ public class Flee : Node
         {
             DeleteData("randomDirection");
             _thisRandomWalkTree.CurrentWalkTime = 0f;
+        }
+    }
+
+    /// <summary>
+    /// Changes a bool value of an animator
+    /// </summary>
+    /// <param name="animator">Used animator</param>
+    /// <param name="paramName">Exact name of the bool</param>
+    /// <param name="state">bool value it should change to</param>
+    private void SetAnimationState(Animator animator, string paramName, bool state)
+    {
+        if (animator.GetBool(paramName) != state)
+        {
+            animator.SetBool(paramName, state);
         }
     }
 }
