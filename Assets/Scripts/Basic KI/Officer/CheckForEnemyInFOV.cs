@@ -50,8 +50,15 @@ public class CheckForEnemyInFOV : Node
             {
                 if (Vector3.Angle(_thisTransform.forward, collider.transform.position - _thisTransform.position) < _viewAngle * 0.5f)
                 {
-                    _inViewColliders.Add(collider);
+                    if (!_inViewColliders.Contains(collider))
+                        _inViewColliders.Add(collider);
                 }
+                else
+                {
+                    if (_inViewColliders.Contains(collider))
+                        _inViewColliders.Remove(collider);
+                }
+
             }
 
             if (_inViewColliders.Count > 0)

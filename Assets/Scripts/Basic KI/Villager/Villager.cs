@@ -34,6 +34,7 @@ public class Villager : AEntity, IMortal
         }
     }
 
+    #region Unity
     private void Awake()
     {
         _health = _settings.HP;
@@ -57,6 +58,7 @@ public class Villager : AEntity, IMortal
     {
         StartCoroutine(StartHunger());
     }
+    #endregion
 
     public override void CheckHealth()
     {

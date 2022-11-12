@@ -26,4 +26,5 @@ MonoBehaviour:
   _fleeSpeed: 5
   _safeRange: 5
   _hideSensitivity: 1
-  _hideRange: 20
+  _hideRange: 15
+  _hideLayerInt: 8

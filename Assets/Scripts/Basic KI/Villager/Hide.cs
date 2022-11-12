@@ -4,23 +4,24 @@ using UnityEngine;
 using BehaviorTree;
 using UnityEngine.AI;
 using UnityEditor;
+using Unity.VisualScripting;
 
 public class Hide : Node
 {
     private Transform _thisTransform;
     private NavMeshAgent _agent;
     private VillagerSettings _settings;
-    private LayerMask _hideableLayers;
-    private Collider[] _colliders;
+    private List<Collider> _colliders;
     private Transform _targetTransform;
+    private TrackHideObject _trackHideObject;
+    
 
-
-    public Hide(Transform transform, NavMeshAgent agent, VillagerSettings settings, LayerMask hideableLayers)
+    public Hide(Transform transform, NavMeshAgent agent, VillagerSettings settings, TrackHideObject trackHideObject)
     {
         _thisTransform = transform;
         _agent = agent;
         _settings = settings;
-        _hideableLayers = hideableLayers;
+        _trackHideObject = trackHideObject;
     }
 
     public override ENodeState CalculateState()
@@ -43,15 +44,9 @@ public class Hide : Node
         while (true)
         {
 
-            //for (int i = 0; i < _colliders.Length; i++)
-            //{
-            //    _colliders[i] = null;
-            //}
+            _colliders = _trackHideObject.Colliders;
 
-            _colliders = Physics.OverlapSphere(_thisTransform.position, _settings.HideRange, _hideableLayers);
-            
-
-            for (int i = 0; i < _colliders.Length; i++)
+            for (int i = 0; i < _colliders.Count; i++)
             {
                 if (NavMesh.SamplePosition(_colliders[i].transform.position, out NavMeshHit hit, 100f, 1))
                 {

@@ -11,6 +11,7 @@ public class VillagerBT : RandomWalkTree
 
     [SerializeField] private Transform _foodPoint;
     [SerializeField] private LayerMask _hideableLayers;
+    [SerializeField] private TrackHideObject _hideObjects;
     private Villager _villager;
     private Animator _animator;
 
@@ -26,19 +27,19 @@ public class VillagerBT : RandomWalkTree
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
-                new Flee(transform, _agent, this, settings, _animator)
-                //new Hide(transform, _agent, settings, _hideableLayers)
+                //new Flee(transform, _agent, this, settings, _animator)
+                new Hide(transform, _agent, settings, _hideObjects)
             }),
             new Sequence(new List<Node>
             {
                 new CheckIfHungry(_villager),
                 new GoToPos(transform, _foodPoint, _agent, settings, _animator)
             }),
-            new Sequence(new List<Node>
-            {
-                new ChooseDirection(this),
-                new WalkAround(transform, _agent, settings.WalkSpeed, this, _animator)
-            })
+            //new Sequence(new List<Node>
+            //{
+            //    new ChooseDirection(this),
+            //    new WalkAround(transform, _agent, settings.WalkSpeed, this, _animator)
+            //})
         });
 
         return root;
