@@ -31,8 +31,6 @@ public class Hide : Node
         if(target != null)
             _targetTransform = (Transform)target;
 
-        Debug.Log("Hide!!");
-
         if (Hiding(_targetTransform))
             return ENodeState.SUCCESS;
 
@@ -57,7 +55,8 @@ public class Hide : Node
 
                     if (Vector3.Dot(hit.normal, (_targetTransform.position - hit.position).normalized) < _settings.HideSensitivity)
                     {
-                        _agent.destination = hit.position;
+                        if (_agent.destination != hit.position)
+                            _agent.destination = hit.position;
                         return true;
                     }
                     else // if hit position is facing the player
