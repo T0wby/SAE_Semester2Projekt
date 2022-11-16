@@ -29,28 +29,14 @@ public class GoToPos : Node
         if (Vector3.Distance(_thisTransform.position, _targetTransform.position) < 0.01f)
         {
             _thisTransform.position = _targetTransform.position;
-            SetAnimationState(_animator, "IsWalking", false);
+            SetAnimationBool(_animator, "IsWalking", false);
         }
         else
         {
             _agent.destination = _targetTransform.position;
-            SetAnimationState(_animator, "IsWalking", true);
+            SetAnimationBool(_animator, "IsWalking", true);
         }
 
         return state = ENodeState.RUNNING;
-    }
-
-    /// <summary>
-    /// Changes a bool value of an animator
-    /// </summary>
-    /// <param name="animator">Used animator</param>
-    /// <param name="paramName">Exact name of the bool</param>
-    /// <param name="state">bool value it should change to</param>
-    private void SetAnimationState(Animator animator, string paramName, bool state)
-    {
-        if (animator.GetBool(paramName) != state)
-        {
-            animator.SetBool(paramName, state);
-        }
     }
 }

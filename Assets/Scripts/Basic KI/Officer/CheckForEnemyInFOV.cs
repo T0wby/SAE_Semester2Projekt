@@ -23,7 +23,8 @@ public class CheckForEnemyInFOV : Node
     public override ENodeState CalculateState()
     {
         object target = GetData("target");
-        
+
+
         if (target is not null)
             DeleteData("target");
 

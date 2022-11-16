@@ -124,6 +124,20 @@ namespace BehaviorTree
             return GetRoot(node.Parent);
         }
 
+        /// <summary>
+        /// Changes a bool value of an animator
+        /// </summary>
+        /// <param name="animator">Used animator</param>
+        /// <param name="paramName">Exact name of the bool</param>
+        /// <param name="state">bool value it should change to</param>
+        protected void SetAnimationBool(Animator animator, string paramName, bool state)
+        {
+            if (animator.GetBool(paramName) != state)
+            {
+                animator.SetBool(paramName, state);
+            }
+        }
+
         #endregion
     }
 }

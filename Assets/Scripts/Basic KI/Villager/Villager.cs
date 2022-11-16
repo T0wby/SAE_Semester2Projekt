@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Villager : AEntity, IMortal
 {
+    #region Fields
+
     [SerializeField] private VillagerSettings _settings;
     private float _hunger;
     private float _hungerReductionIntervall;
@@ -12,17 +14,25 @@ public class Villager : AEntity, IMortal
     private float _minHungerReduction;
     private float _healthReduction;
 
+    #endregion
+
+    #region Events
 
     public UnityEvent OnHealthReduction;
 
-    public float Hunger { 
-        get { return _hunger; } 
-        set 
-        { 
+    #endregion
+
+    #region Properties
+    public float Hunger
+    {
+        get { return _hunger; }
+        set
+        {
             _hunger = value;
             if (_hunger < 0)
                 _hunger = 0;
-        } }
+        }
+    }
     public override float Health
     {
         get => _health;
@@ -34,6 +44,10 @@ public class Villager : AEntity, IMortal
         }
     }
 
+    #endregion
+
+    #region Methods
+
     #region Unity
     private void Awake()
     {
@@ -43,12 +57,9 @@ public class Villager : AEntity, IMortal
         _fovRange = _settings.FovRange;
         _fovAngle = _settings.FovAngle;
         _hunger = _settings.Hunger;
-        // Check for no Value below 0
         _hungerReductionIntervall = _settings.HungerReductionIntervall;
-        // Check for no Value below 0 and if max is bigger min
         _maxHungerReduction = _settings.MaxHungerReduction;
         _minHungerReduction = _settings.MinHungerReduction;
-        //Check for no Value below 0
         _healthReduction = _settings.HealthReduction;
 
         OnHealthReduction.AddListener(CheckHealth);
@@ -77,20 +88,21 @@ public class Villager : AEntity, IMortal
     {
         while (true)
         {
+            yield return new WaitForSeconds(_hungerReductionIntervall);
+
             if (CheckIfHungry())
             {
                 Health -= _healthReduction;
             }
             else
-                _hunger -= Random.Range(_minHungerReduction, _maxHungerReduction);
-
-
-            yield return new WaitForSeconds(_hungerReductionIntervall);
+                Hunger -= Random.Range(_minHungerReduction, _maxHungerReduction);
         }
     }
 
     public bool CheckIfHungry()
     {
-        return _hunger <=0 ? true : false;
+        return _hunger <= 0 ? true : false;
     }
+
+    #endregion
 }

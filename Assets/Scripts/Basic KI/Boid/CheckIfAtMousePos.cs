@@ -5,7 +5,7 @@ using BehaviorTree;
 using UnityEngine.AI;
 
 //TODO: Might be better to use sqrMagnitude.
-public class CheckIfAtTargetPos : Node
+public class CheckIfAtMousePos : Node
 {
     private Transform _thisTransform;
     private Vector3? _targetPos;
@@ -16,7 +16,7 @@ public class CheckIfAtTargetPos : Node
     private NavMeshAgent _agent;
 
 
-    public CheckIfAtTargetPos(Transform transform, BoidSettings settings, NavMeshAgent agent)
+    public CheckIfAtMousePos(Transform transform, BoidSettings settings, NavMeshAgent agent)
     {
         _thisTransform = transform;
         _settings = settings;

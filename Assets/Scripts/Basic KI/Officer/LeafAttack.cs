@@ -27,7 +27,7 @@ public class LeafAttack : Node
     {
         _currentTarget = (Transform)GetData("target");
 
-        SetAnimationState(_animator, "IsWalking", false);
+        SetAnimationBool(_animator, "IsWalking", false);
         
 
         if (_currentTarget != _lastTarget)
@@ -39,7 +39,7 @@ public class LeafAttack : Node
         _attackCounter += Time.deltaTime;
         if (_attackCounter >= _attackTime)
         {
-            SetAnimationState(_animator, "IsAttacking", true);
+            SetAnimationBool(_animator, "IsAttacking", true);
             _thisAttack.Attack(_enemy);
             CheckEnemyHealth(_enemy);
             _attackCounter = 0f;
@@ -59,19 +59,5 @@ public class LeafAttack : Node
     private void RemoveDeadEnemy(IMortal enemy)
     {
         DeleteData("target");
-    }
-
-    /// <summary>
-    /// Changes a bool value of an animator
-    /// </summary>
-    /// <param name="animator">Used animator</param>
-    /// <param name="paramName">Exact name of the bool</param>
-    /// <param name="state">bool value it should change to</param>
-    private void SetAnimationState(Animator animator, string paramName, bool state)
-    {
-        if (animator.GetBool(paramName) != state)
-        {
-            animator.SetBool(paramName, state);
-        }
     }
 }

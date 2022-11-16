@@ -21,7 +21,7 @@ public class CheckForEnemyInAttackRange : Node
         object tmp = GetData("target");
         if (tmp is null)
         {
-            SetAnimationState(_animator, "IsAttacking", false);
+            SetAnimationBool(_animator, "IsAttacking", false);
             return state = ENodeState.FAILURE;
         }
 
@@ -31,21 +31,7 @@ public class CheckForEnemyInAttackRange : Node
             return state = ENodeState.SUCCESS;
         }
 
-        SetAnimationState(_animator, "IsAttacking", false);
+        SetAnimationBool(_animator, "IsAttacking", false);
         return state = ENodeState.FAILURE;
-    }
-
-    /// <summary>
-    /// Changes a bool value of an animator
-    /// </summary>
-    /// <param name="animator">Used animator</param>
-    /// <param name="paramName">Exact name of the bool</param>
-    /// <param name="state">bool value it should change to</param>
-    private void SetAnimationState(Animator animator, string paramName, bool state)
-    {
-        if (animator.GetBool(paramName) != state)
-        {
-            animator.SetBool(paramName, state);
-        }
     }
 }

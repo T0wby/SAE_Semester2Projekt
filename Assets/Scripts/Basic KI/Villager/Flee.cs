@@ -36,7 +36,7 @@ public class Flee : Node
             _agent.speed = _settings.RunSpeed;
 
         Transform targetTransform = (Transform)GetData("target");
-        SetAnimationState(_animator, "IsWalking", true);
+        SetAnimationBool(_animator, "IsWalking", true);
         if (Vector3.Distance(_thisTransform.position, targetTransform.position) > _settings.SafeRange)
         {
             return ENodeState.FAILURE;
@@ -58,20 +58,6 @@ public class Flee : Node
         {
             DeleteData("randomDirection");
             _thisRandomWalkTree.CurrentWalkTime = 0f;
-        }
-    }
-
-    /// <summary>
-    /// Changes a bool value of an animator
-    /// </summary>
-    /// <param name="animator">Used animator</param>
-    /// <param name="paramName">Exact name of the bool</param>
-    /// <param name="state">bool value it should change to</param>
-    private void SetAnimationState(Animator animator, string paramName, bool state)
-    {
-        if (animator.GetBool(paramName) != state)
-        {
-            animator.SetBool(paramName, state);
         }
     }
 }
