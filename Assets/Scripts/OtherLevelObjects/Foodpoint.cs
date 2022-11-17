@@ -38,11 +38,11 @@ public class Foodpoint : MonoBehaviour
 
         _villagerList.Remove(_villager);
 
-        //if (_villagerList.Count < 1)
-        //{
-        //    StopCoroutine(StartFeeding());
-        //    _lastCoroutine = null;
-        //}
+        if (_villagerList.Count < 1)
+        {
+            StopCoroutine(StartFeeding());
+            _lastCoroutine = null;
+        }
     }
 
     
