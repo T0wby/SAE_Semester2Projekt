@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Officer : AEntity, IMortal, IAttack
+public class Officer : AEntity, IAttack
 {
     [SerializeField] private OfficerSettings _settings;
 

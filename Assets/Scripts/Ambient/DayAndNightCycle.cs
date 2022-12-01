@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Animations.Rigging;
 using UnityEngine;
 
-public class DanAndNightCycle : MonoBehaviour
+public class DayAndNightCycle : MonoBehaviour
 {
     [SerializeField] private SceneSettings _sceneSettings;
     [SerializeField] private Transform _lightTransform;

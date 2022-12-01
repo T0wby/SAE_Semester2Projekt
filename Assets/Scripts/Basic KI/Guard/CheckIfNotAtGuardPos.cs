@@ -19,7 +19,13 @@ public class CheckIfNotAtGuardPos : Node
 
     public override ENodeState CalculateState()
     {
-        if (_thisTransform.position.x == _guardpoint.position.x && _thisTransform.position.z == _guardpoint.position.z)
+        //if (_thisTransform.position.x == _guardpoint.position.x && _thisTransform.position.z == _guardpoint.position.z)
+        //{
+        //    SetAnimationBool(_animator, "IsWalking", false);
+        //    return state = ENodeState.FAILURE;
+        //}
+
+        if (Vector3.SqrMagnitude(_guardpoint.position - _thisTransform.position) < 0.5f * 0.5f)
         {
             SetAnimationBool(_animator, "IsWalking", false);
             return state = ENodeState.FAILURE;

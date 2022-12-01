@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Guard : AEntity, IMortal, IAttack
+public class Guard : AEntity, IAttack
 {
     [SerializeField] private GuardSettings _settings;
 

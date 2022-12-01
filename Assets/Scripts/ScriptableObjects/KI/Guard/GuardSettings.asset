@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 100
   _fovRange: 5
-  _fovAngle: 60
+  _fovAngle: 90
   _walkSpeed: 2
   _runSpeed: 5
   _interactRange: 2
