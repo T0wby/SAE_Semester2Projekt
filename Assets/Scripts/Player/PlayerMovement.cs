@@ -17,6 +17,7 @@ namespace Player_Towby
         private Vector2 _look;
         private Vector2 _move;
         private Vector3 _direction;
+        private Transform _cameraTransform;
 
         [Header("Settings")]
         [SerializeField] private float _walkSpeed = 10f;
@@ -26,6 +27,7 @@ namespace Player_Towby
         {
             _playerControls = new PlayerControls();
             _thisRb = GetComponent<Rigidbody>();
+            _cameraTransform = Camera.main.transform;
         }
 
         private void OnEnable()
@@ -66,6 +68,7 @@ namespace Player_Towby
         private void Move(Vector2 dir)
         {
             _direction = new Vector3(dir.x, 0, dir.y);
+            _direction = Quaternion.Euler(0, _cameraTransform.eulerAngles.y, 0) * _direction;
 
             _thisRb.velocity += _direction * _walkSpeed * Time.deltaTime;
         }

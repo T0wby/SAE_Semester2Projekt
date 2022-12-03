@@ -41,7 +41,6 @@ namespace Player_Towby
 
         public void FollowTarget(float delta)
         {
-            //_targetPosition = Vector3.Lerp(_thisTransform.position, _targetTransform.position, delta/_followSpeed);
             _targetPosition = Vector3.SmoothDamp(_thisTransform.position, _targetTransform.position, ref _cameraFollowVelocity, delta / _followSpeed);
             _thisTransform.position = _targetPosition;
 
