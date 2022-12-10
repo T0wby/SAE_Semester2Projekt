@@ -17,11 +17,15 @@ namespace Player_Towby
         private Vector2 _look;
         private Vector2 _move;
         private Vector3 _direction;
+        private Vector3 _angles;
+        private float _angleX;
         private Transform _cameraTransform;
 
         [Header("Settings")]
         [SerializeField] private float _walkSpeed = 10f;
         //[SerializeField] private float _runSpeed = 30f;
+        [SerializeField] private float _rotationPower = 1;
+        [SerializeField] private Transform _rotationFollow;
 
         private void Awake()
         {
@@ -48,11 +52,12 @@ namespace Player_Towby
         private void Update()
         {
             Move(_move);
-            if (CameraController.Instance != null)
-            {
-                CameraController.Instance.FollowTarget(Time.deltaTime);
-                CameraController.Instance.HandleCameraRotation(Time.deltaTime, _look.x, _look.y);
-            }
+            Rotation(_look);
+            //if (CameraController.Instance != null)
+            //{
+            //    CameraController.Instance.FollowTarget(Time.deltaTime);
+            //    CameraController.Instance.HandleCameraRotation(Time.deltaTime, _look.x, _look.y);
+            //}
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -71,6 +76,36 @@ namespace Player_Towby
             _direction = Quaternion.Euler(0, _cameraTransform.eulerAngles.y, 0) * _direction;
 
             _thisRb.velocity += _direction * _walkSpeed * Time.deltaTime;
+        }
+
+        private void Rotation(Vector2 look)
+        {
+            _rotationFollow.rotation *= Quaternion.AngleAxis(look.x * _rotationPower, Vector3.up);
+
+
+            _rotationFollow.rotation *= Quaternion.AngleAxis(look.y * _rotationPower, Vector3.right);
+
+            _angles = _rotationFollow.localEulerAngles;
+            _angles.z = 0;
+
+            _angleX = _rotationFollow.localEulerAngles.x;
+
+            if (_angleX > 180 && _angleX < 340)
+            {
+                _angles.x = 340;
+            }
+            else if (_angleX < 180 && _angleX > 40)
+            {
+                _angles.x = 40;
+            }
+
+            _rotationFollow.localEulerAngles = _angles;
+
+            //Set player Rotation to look transform
+            transform.rotation = Quaternion.Euler(0, _rotationFollow.rotation.eulerAngles.y, 0);
+
+            //Reset otherwise everything goes bonkers
+            _rotationFollow.localEulerAngles = new Vector3(_angles.x, 0, 0);
         }
     }
 }
