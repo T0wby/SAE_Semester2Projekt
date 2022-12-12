@@ -57331,6 +57331,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 991845160, guid: 8c5af60203a7f774b9448a73705a1671, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
+      value: 154.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 991845160, guid: 8c5af60203a7f774b9448a73705a1671, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 991845160, guid: 8c5af60203a7f774b9448a73705a1671, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
+      value: -6.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 991845160, guid: 8c5af60203a7f774b9448a73705a1671, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 991845162, guid: 8c5af60203a7f774b9448a73705a1671, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 8c5af60203a7f774b9448a73705a1671,
         type: 3}
       propertyPath: m_Camera
