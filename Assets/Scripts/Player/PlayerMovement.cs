@@ -76,6 +76,10 @@ namespace Player_Towby
             _direction = Quaternion.Euler(0, _cameraTransform.eulerAngles.y, 0) * _direction;
 
             _thisRb.velocity += _direction * _walkSpeed * Time.deltaTime;
+            if (_thisRb.velocity.magnitude > _walkSpeed)
+            {
+                _thisRb.velocity = Vector3.ClampMagnitude(_thisRb.velocity, _walkSpeed);
+            }
         }
 
         private void Rotation(Vector2 look)
@@ -83,7 +87,7 @@ namespace Player_Towby
             _rotationFollow.rotation *= Quaternion.AngleAxis(look.x * _rotationPower, Vector3.up);
 
 
-            _rotationFollow.rotation *= Quaternion.AngleAxis(look.y * _rotationPower, Vector3.right);
+            _rotationFollow.rotation *= Quaternion.AngleAxis(-look.y * _rotationPower, Vector3.right);
 
             _angles = _rotationFollow.localEulerAngles;
             _angles.z = 0;
