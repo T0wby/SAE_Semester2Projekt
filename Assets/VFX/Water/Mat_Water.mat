@@ -52,6 +52,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _FresnelMultiplier: 14
+    - _FresnelPower: 7
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0.71
@@ -60,5 +62,6 @@ Material:
     - _WaterSpeed: 0.07
     - _Water_EffectSpeed: 0.5
     m_Colors:
+    - _FoamColor: {r: 0.45323062, g: 0.718245, b: 0.9150943, a: 0}
     - _MainColor: {r: 0.26633143, g: 0.36056763, b: 0.8962264, a: 0}
   m_BuildTextureStacks: []
