@@ -11,13 +11,15 @@ public class Avoid : Node
     private NavMeshAgent _agent;
     private BasicKISettings _settings;
     private BoidMovement _boidMovement;
+    private Animator _animator;
 
-    public Avoid(Transform transform, NavMeshAgent agent, BasicKISettings settings, BoidMovement boidMovement)
+    public Avoid(Transform transform, NavMeshAgent agent, BasicKISettings settings, BoidMovement boidMovement, Animator animator)
     {
         _thisTransform = transform;
         _agent = agent;
         _settings = settings;
         _boidMovement = boidMovement;
+        _animator = animator;
     }
 
     public override ENodeState CalculateState()
@@ -26,7 +28,7 @@ public class Avoid : Node
             _agent.speed = _settings.RunSpeed;
 
         AvoidTarget();
-
+        SetAnimationBool(_animator, "IsWalking", true);
         return state = ENodeState.RUNNING;
     }
 

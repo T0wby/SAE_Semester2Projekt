@@ -23,7 +23,7 @@ public class GoToTarget : Node
     {
         Transform targetTransform = (Transform)GetData("target");
 
-        SetAnimationState(_animator, "IsWalking", true);
+        SetAnimationBool(_animator, "IsWalking", true);
 
         if (_agent.speed != _settings.RunSpeed)
             _agent.speed = _settings.RunSpeed;
@@ -34,22 +34,8 @@ public class GoToTarget : Node
                 _agent.destination = targetTransform.position;
         }
         else
-            SetAnimationState(_animator, "IsWalking", false);
+            SetAnimationBool(_animator, "IsWalking", false);
 
         return state = ENodeState.RUNNING;
-    }
-
-    /// <summary>
-    /// Changes a bool value of an animator
-    /// </summary>
-    /// <param name="animator">Used animator</param>
-    /// <param name="paramName">Exact name of the bool</param>
-    /// <param name="state">bool value it should change to</param>
-    private void SetAnimationState(Animator animator, string paramName, bool state)
-    {
-        if (animator.GetBool(paramName) != state)
-        {
-            animator.SetBool(paramName, state);
-        }
     }
 }

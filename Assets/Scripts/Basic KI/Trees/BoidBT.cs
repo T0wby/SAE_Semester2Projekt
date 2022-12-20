@@ -34,15 +34,15 @@ public class BoidBT : BehaviorTree.MyTree
                             new EnemyIsCertainType<VillagerBT>(),
                             new GoToTarget(transform, _agent, settings, _animator)
                         }),
-                        new Avoid(transform, _agent, settings, boidMovement)
+                        new Avoid(transform, _agent, settings, boidMovement, _animator)
                     })
             }),
             new Sequence(new List<Node>
             {
                 new CheckIfAtMousePos(transform, settings, _agent),
-                new Flocking(transform, _agent, boidMovement, settings)
+                new Flocking(transform, _agent, boidMovement, settings, _animator)
             }),
-            new Idle(_agent)
+            new Idle(_agent, _animator)
         });
 
         return root;

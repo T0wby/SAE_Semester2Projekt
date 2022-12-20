@@ -7,19 +7,20 @@ using UnityEngine.AI;
 public class Flocking : Node
 {
     private Transform _thisTransform;
-    private Animator _thisAnimator;
+    private Animator _animator;
     private NavMeshAgent _agent;
     private BoidMovement _boidMovement;
     private BoidSettings _settings;
     private Vector3 _destination;
 
-    public Flocking(Transform transform, NavMeshAgent agent, BoidMovement boidMovement, BoidSettings settings)
+    public Flocking(Transform transform, NavMeshAgent agent, BoidMovement boidMovement, BoidSettings settings, Animator animator)
     {
         _thisTransform = transform;
-        _thisAnimator = transform.GetComponent<Animator>();
+        _animator = transform.GetComponent<Animator>();
         _agent = agent;
         _boidMovement = boidMovement;
         _settings = settings;
+        _animator = animator;
     }
 
     public override ENodeState CalculateState()
@@ -29,6 +30,7 @@ public class Flocking : Node
 
         SetAgentDestination();
         ManipulateAgentMovement();
+        SetAnimationBool(_animator, "IsWalking", true);
 
         return state = ENodeState.RUNNING;
     }
