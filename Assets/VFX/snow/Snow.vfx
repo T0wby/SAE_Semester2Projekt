@@ -1243,7 +1243,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":9.021728515625,"y":10.0,"z":-10.097755432128907},"size":{"x":70.0,"y":1.0,"z":70.0}}'
+      m_SerializableObject: '{"center":{"x":1.3504638671875,"y":10.0,"z":0.17412567138671876},"size":{"x":70.0,"y":1.0,"z":70.0}}'
     m_Space: 0
   m_Property:
     name: Box
@@ -2725,7 +2725,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.52
+      m_SerializableObject: 0.3
     m_Space: 2147483647
   m_Property:
     name: Intensity
