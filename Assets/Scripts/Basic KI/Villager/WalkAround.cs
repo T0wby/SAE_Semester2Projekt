@@ -8,17 +8,17 @@ public class WalkAround : Node
 {
     private Transform _thisTransform;
     private NavMeshAgent _agent;
-    private RandomWalkTree _thisRandomWalkTree;
     private float _speed;
+    private HideAI _hideAI;
     private Animator _animator;
 
-    public WalkAround(Transform transform, NavMeshAgent agent, float speed, RandomWalkTree randomBT, Animator animator)
+    public WalkAround(Transform transform, NavMeshAgent agent, float speed, Animator animator, HideAI hideAI)
     {
         _thisTransform = transform;
         _agent = agent;
         _speed = speed;
-        _thisRandomWalkTree = randomBT;
         _animator = animator;
+        _hideAI = hideAI;
     }
 
     public override ENodeState CalculateState()
@@ -37,7 +37,7 @@ public class WalkAround : Node
         Vector3 movementDirection = new Vector3(randomDirection.x, _thisTransform.position.y, randomDirection.y);
 
         _agent.destination = _thisTransform.position + movementDirection;
-        _thisRandomWalkTree.CurrentWalkTime += Time.deltaTime;
+        _hideAI.CurrentWalkTime += Time.deltaTime;
 
         if (WalkTimerDone())
             return ENodeState.FAILURE;
@@ -47,7 +47,7 @@ public class WalkAround : Node
 
     private bool WalkTimerDone()
     {
-        if (_thisRandomWalkTree.CurrentWalkTime >= _thisRandomWalkTree.MaxWalkTime)
+        if (_hideAI.CurrentWalkTime >= _hideAI.MaxWalkTime)
         {
             return true;
         }

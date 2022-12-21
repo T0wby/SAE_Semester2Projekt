@@ -6,11 +6,11 @@ using UnityEngine.AI;
 
 public class ChooseDirection : Node 
 {
-    private RandomWalkTree _thisRandomWalkTree;
+    private HideAI _hideAI;
 
-    public ChooseDirection(RandomWalkTree randomWalkTree)
+    public ChooseDirection(HideAI hideAI)
 	{
-        _thisRandomWalkTree = randomWalkTree;
+        _hideAI = hideAI;
     }
 
     public override ENodeState CalculateState()
@@ -22,14 +22,13 @@ public class ChooseDirection : Node
 
     private void CheckForNewDirection()
     {
-        if (_thisRandomWalkTree.CurrentWalkTime >= _thisRandomWalkTree.MaxWalkTime)
+        if (_hideAI.CurrentWalkTime >= _hideAI.MaxWalkTime)
         {
             Vector2 randomDirection = Random.insideUnitCircle.normalized;
             Node root = GetRoot(this);
             root.SetData("randomDirection", randomDirection);
 
-            _thisRandomWalkTree.CurrentWalkTime = 0f;
-            _thisRandomWalkTree.MaxWalkTime = Random.Range(5f, 10f);
+            _hideAI.CurrentWalkTime = 0f;
         }
     }
 }
