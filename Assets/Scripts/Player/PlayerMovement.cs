@@ -23,7 +23,7 @@ namespace Player_Towby
 
         [Header("Settings")]
         [SerializeField] private float _walkSpeed = 10f;
-        //[SerializeField] private float _runSpeed = 30f;
+        [SerializeField] private float _runSpeed = 30f;
         [SerializeField] private float _rotationPower = 1;
         [SerializeField] private Transform _rotationFollow;
 
@@ -76,9 +76,9 @@ namespace Player_Towby
             _direction = Quaternion.Euler(0, _cameraTransform.eulerAngles.y, 0) * _direction;
 
             _thisRb.velocity += _direction * _walkSpeed * Time.deltaTime;
-            if (_thisRb.velocity.magnitude > _walkSpeed)
+            if (_thisRb.velocity.magnitude > _runSpeed)
             {
-                _thisRb.velocity = Vector3.ClampMagnitude(_thisRb.velocity, _walkSpeed);
+                _thisRb.velocity = Vector3.ClampMagnitude(_thisRb.velocity, _runSpeed);
             }
         }
 
