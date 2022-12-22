@@ -25,6 +25,6 @@ MonoBehaviour:
   _healthReduction: 0
   _fleeSpeed: 0
   _safeRange: 0
-  _hideSensitivity: 1
+  _hideSensitivity: 0
   _hideRange: 30
   _hideLayerInt: 6

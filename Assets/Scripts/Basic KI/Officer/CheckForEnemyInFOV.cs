@@ -65,8 +65,7 @@ public class CheckForEnemyInFOV : Node
             if (_inViewColliders.Count > 0)
             {
                 //Saving the Target in Root so that other Nodes can access it
-                Node tmp = GetRoot(this);
-                tmp.SetData("target", ClosestEnemy(_inViewColliders));
+                GetRoot(this).SetData("target", ClosestEnemy(_inViewColliders));
                 return ENodeState.SUCCESS;
             }
 

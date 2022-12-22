@@ -13,24 +13,26 @@ public class GetHidePosition : Node
     private NavMeshAgent _agent;
     private VillagerSettings _settings;
     private List<Collider> _colliders;
+    private Transform _thisTransform;
     private Transform _targetTransform;
     private TrackHideObject _trackHideObject;
     private object _target;
 
     #endregion
 
-    public GetHidePosition(NavMeshAgent agent, VillagerSettings settings, TrackHideObject trackHideObject)
+    public GetHidePosition(NavMeshAgent agent, VillagerSettings settings, TrackHideObject trackHideObject, Transform thisTransform)
     {
         _agent = agent;
         _settings = settings;
         _trackHideObject = trackHideObject;
+        _thisTransform = thisTransform;
     }
 
     public override ENodeState CalculateState()
     {
         _target = GetData("target");
 
-        if (_target != null)
+        if (_target is not null)
             _targetTransform = (Transform)_target;
 
         //Reset Hide destination
@@ -50,6 +52,14 @@ public class GetHidePosition : Node
     private bool Hiding(Transform target)
     {
         _colliders = _trackHideObject.Colliders;
+
+        //for (int i = 0; i < _colliders.Count; i++)
+        //{
+        //    if (Vector3.SqrMagnitude(_colliders[i].transform.position - _thisTransform.position) > _settings.FovRange * _settings.FovRange)
+        //    {
+        //        _colliders.RemoveAt(i);
+        //    }
+        //}
 
         for (int i = 0; i < _colliders.Count; i++)
         {

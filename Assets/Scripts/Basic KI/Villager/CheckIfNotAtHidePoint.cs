@@ -30,10 +30,7 @@ public class CheckIfNotAtHidePoint : Node
         _hideDestination = GetData("hideDestination");
 
         if (_hideDestination != null && Vector3.Distance(_thisTransform.position, (Vector3)_hideDestination) > 4f)
-        {
-            Debug.Log("Not at hide point");
             return ENodeState.SUCCESS;
-        }
         SetAnimationBool(_animator, "IsWalking", false);
         GetRoot(this).DeleteData("hideDestination");
 
