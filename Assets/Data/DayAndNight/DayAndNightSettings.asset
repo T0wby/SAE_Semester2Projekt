@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DayAndNightSettings
   m_EditorClassIdentifier: 
   EnableDayAndNightCycle: 1
-  DayLengthInSeconds: 20
-  DayInitialRatio: 0
+  DayLengthInSeconds: 10
+  DayInitialRatio: 0.2
   LightRefreshRate: 0.01
