@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class ShapeGenerator
@@ -84,12 +85,55 @@ public class ShapeGenerator
 
     private Matrix4x4 GetCurrTransformMatrix()
     {
+        #region Broken Threading
+        //float xRotRad = rotation.x * Mathf.Deg2Rad;
+        //Matrix4x4 rotMatX = new Matrix4x4();
+        //Thread tOne = new Thread(() =>
+        //{
+        //    rotMatX.SetRow(0, new Vector4(1, 0, 0, 0));
+        //    rotMatX.SetRow(1, new Vector4(0, Mathf.Cos(xRotRad), -Mathf.Sin(xRotRad), 0));
+        //    rotMatX.SetRow(2, new Vector4(0, Mathf.Sin(xRotRad), Mathf.Cos(xRotRad), 0));
+        //    rotMatX.SetRow(3, new Vector4(0, 0, 0, 1));
+        //});
+
+
+        //float yRotRad = rotation.y * Mathf.Deg2Rad;
+        //Matrix4x4 rotMatY = new Matrix4x4();
+        //Thread tTwo = new Thread(() =>
+        //{
+        //    rotMatY.SetRow(0, new Vector4(Mathf.Cos(yRotRad), 0, Mathf.Sin(yRotRad), 0));
+        //    rotMatY.SetRow(1, new Vector4(0, 1, 0, 0));
+        //    rotMatY.SetRow(2, new Vector4(-Mathf.Sin(yRotRad), 0, Mathf.Cos(yRotRad), 0));
+        //    rotMatY.SetRow(3, new Vector4(0, 0, 0, 1));
+        //});
+
+        //float zRotRad = rotation.z * Mathf.Deg2Rad;
+        //Matrix4x4 rotMatZ = new Matrix4x4();
+        //Thread tThree = new Thread(() =>
+        //{
+        //    rotMatZ.SetRow(0, new Vector4(Mathf.Cos(zRotRad), -Mathf.Sin(zRotRad), 0, 0));
+        //    rotMatZ.SetRow(1, new Vector4(Mathf.Sin(zRotRad), Mathf.Cos(zRotRad), 0, 0));
+        //    rotMatZ.SetRow(2, new Vector4(0, 0, 1, 0));
+        //    rotMatZ.SetRow(3, new Vector4(0, 0, 0, 1));
+        //});
+
+        //tOne.Start();
+        //tTwo.Start();
+        //tThree.Start();
+
+        //tOne.Join();
+        //tTwo.Join();
+        //tThree.Join();
+        #endregion
+
+
         float xRotRad = rotation.x * Mathf.Deg2Rad;
         Matrix4x4 rotMatX = new Matrix4x4();
         rotMatX.SetRow(0, new Vector4(1, 0, 0, 0));
         rotMatX.SetRow(1, new Vector4(0, Mathf.Cos(xRotRad), -Mathf.Sin(xRotRad), 0));
         rotMatX.SetRow(2, new Vector4(0, Mathf.Sin(xRotRad), Mathf.Cos(xRotRad), 0));
         rotMatX.SetRow(3, new Vector4(0, 0, 0, 1));
+
 
         float yRotRad = rotation.y * Mathf.Deg2Rad;
         Matrix4x4 rotMatY = new Matrix4x4();
@@ -104,6 +148,7 @@ public class ShapeGenerator
         rotMatZ.SetRow(1, new Vector4(Mathf.Sin(zRotRad), Mathf.Cos(zRotRad), 0, 0));
         rotMatZ.SetRow(2, new Vector4(0, 0, 1, 0));
         rotMatZ.SetRow(3, new Vector4(0, 0, 0, 1));
+
 
         //Base Matrix mit Rotation
         Matrix4x4 transformMatrix = rotMatX * rotMatY * rotMatZ;

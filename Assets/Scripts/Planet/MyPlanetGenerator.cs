@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
 using UnityEngine;
 
 public class MyPlanetGenerator : MonoBehaviour
@@ -37,8 +39,17 @@ public class MyPlanetGenerator : MonoBehaviour
 
     [SerializeField]
     private Material mMeshMat;
-    [SerializeField, Range(2, 256)]
+    [SerializeField, Range(2, 255)]
     private int mResolution;
+
+    private void Start()
+    {
+        Stopwatch st = new Stopwatch();
+        st.Start();
+        GeneratePlanet();
+        st.Stop();
+        UnityEngine.Debug.Log($"GeneratePlanet: {gameObject.name} took {st.ElapsedMilliseconds} ms to complete");
+    }
 
     public void GeneratePlanet()
     {
@@ -83,6 +94,7 @@ public class MyPlanetGenerator : MonoBehaviour
         for (int i = 0; i < terrainFaces.Length; i++)
         {
             terrainFaces[i].GenerateMesh();
+            StartCoroutine(CheckTerrainFaces(i));
         }
     }
 
@@ -99,6 +111,15 @@ public class MyPlanetGenerator : MonoBehaviour
         if (mAutoUpdatePlanet)
         {
             GeneratePlanet();
+        }
+    }
+    
+
+    private IEnumerator CheckTerrainFaces(int value)
+    {
+        while (terrainFaces[value].SetMeshValues())
+        {
+            yield return new WaitForEndOfFrame();
         }
     }
 }
