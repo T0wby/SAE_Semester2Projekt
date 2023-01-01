@@ -9,11 +9,9 @@ public class MyPlanetGenerator : MonoBehaviour
     private TerrainFace[] terrainFaces;
     private MeshFilter[] terrainFilters;
 
-    [SerializeField]
-    private ShapeSettings shapeSettings;
+    [SerializeField] private ShapeSettings shapeSettings;
     public ShapeSettings ShapeSettings => shapeSettings;
-    [HideInInspector]
-    public bool ShapeSettingsFoldout;
+    [HideInInspector] public bool ShapeSettingsFoldout;
 
     private ShapeGenerator shapeGenerator = new ShapeGenerator();
 
@@ -27,20 +25,15 @@ public class MyPlanetGenerator : MonoBehaviour
             Vector3.down
     };
 
-    [SerializeField]
-    private bool mAutoUpdatePlanet;
+    [SerializeField] private bool mAutoUpdatePlanet;
 
-    [SerializeField]
-    private Vector3 mPosition;
-    [SerializeField]
-    private Vector3 mRotation;
-    [SerializeField]
-    private Vector3 mScale;
+    [SerializeField] private Vector3 mPosition;
+    [SerializeField] private Vector3 mRotation;
+    [SerializeField] private Vector3 mScale;
 
-    [SerializeField]
-    private Material mMeshMat;
-    [SerializeField, Range(2, 255)]
-    private int mResolution;
+    [SerializeField] private Material mMeshMat;
+    [SerializeField, Range(2, 255)] private int mResolution;
+    [SerializeField] private bool _useMultiThreading = true;
 
     private void Start()
     {
@@ -93,9 +86,10 @@ public class MyPlanetGenerator : MonoBehaviour
     {
         for (int i = 0; i < terrainFaces.Length; i++)
         {
-            terrainFaces[i].GenerateMesh();
+            terrainFaces[i].GenerateMesh(_useMultiThreading);
             StartCoroutine(CheckTerrainFaces(i));
         }
+
     }
 
     public void OnBaseInfoUpdate()
@@ -113,7 +107,7 @@ public class MyPlanetGenerator : MonoBehaviour
             GeneratePlanet();
         }
     }
-    
+
 
     private IEnumerator CheckTerrainFaces(int value)
     {

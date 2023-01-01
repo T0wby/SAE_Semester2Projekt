@@ -5600,6 +5600,7 @@ MonoBehaviour:
   mScale: {x: 1, y: 1, z: 1}
   mMeshMat: {fileID: 2100000, guid: 0b94fa27fe926874a8e2cf6c9d7756d5, type: 2}
   mResolution: 255
+  _useMultiThreading: 0
 --- !u!1001 &392655936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8973,6 +8974,7 @@ MonoBehaviour:
   mScale: {x: 1, y: 1, z: 1}
   mMeshMat: {fileID: 2100000, guid: 0b94fa27fe926874a8e2cf6c9d7756d5, type: 2}
   mResolution: 255
+  _useMultiThreading: 0
 --- !u!1001 &619311798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27736,6 +27738,7 @@ MonoBehaviour:
   mScale: {x: 1, y: 1, z: 1}
   mMeshMat: {fileID: 2100000, guid: 0b94fa27fe926874a8e2cf6c9d7756d5, type: 2}
   mResolution: 255
+  _useMultiThreading: 0
 --- !u!1001 &1699570652
 PrefabInstance:
   m_ObjectHideFlags: 0

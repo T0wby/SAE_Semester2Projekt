@@ -32,13 +32,15 @@ public class TerrainFace
         axisB = Vector3.Cross(axisA, localUpVector);
     }
 
-    public void GenerateMesh()
+    public void GenerateMesh(bool useThreading)
     {
-        t = new Thread(CalculateMesh);
-        t.Start();
-        //t.Join();
-
-        //CalculateMesh();
+        if (useThreading)
+        {
+            t = new Thread(CalculateMesh);
+            t.Start();
+        }
+        else
+            CalculateMesh();
     }
 
     private void CalculateMesh()
@@ -80,14 +82,25 @@ public class TerrainFace
 
     public bool SetMeshValues()
     {
-        bool isThreadAlive = t.IsAlive;
-        if (isThreadAlive)
-            return isThreadAlive;
+        if (t is null)
+        {
+            mesh.Clear();
+            mesh.vertices = verts;
+            mesh.triangles = tris;
+            mesh.RecalculateNormals();
+            return false;
+        }
+        else
+        {
+            bool isThreadAlive = t.IsAlive;
+            if (isThreadAlive)
+                return isThreadAlive;
 
-        mesh.Clear();
-        mesh.vertices = verts;
-        mesh.triangles = tris;
-        mesh.RecalculateNormals();
-        return isThreadAlive;
+            mesh.Clear();
+            mesh.vertices = verts;
+            mesh.triangles = tris;
+            mesh.RecalculateNormals();
+            return isThreadAlive;
+        }
     }
 }
