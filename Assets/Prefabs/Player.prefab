@@ -56,7 +56,7 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0, y: 0.843, z: 0}
+      - m_Value: {x: 0, y: 1, z: -5.522758}
         m_Name: Pos
         m_Overridden: 1
     m_Vector4f:
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 8325972510565024221}
   - component: {fileID: 6157923254704944726}
   - component: {fileID: 3958365189182076359}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}

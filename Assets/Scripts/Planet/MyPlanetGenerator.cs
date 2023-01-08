@@ -37,11 +37,11 @@ public class MyPlanetGenerator : MonoBehaviour
 
     private void Start()
     {
-        Stopwatch st = new Stopwatch();
-        st.Start();
+        //Stopwatch st = new Stopwatch();
+        //st.Start();
         GeneratePlanet();
-        st.Stop();
-        UnityEngine.Debug.Log($"GeneratePlanet: {gameObject.name} took {st.ElapsedMilliseconds} ms to complete");
+        //st.Stop();
+        //UnityEngine.Debug.Log($"GeneratePlanet: {gameObject.name} took {st.ElapsedMilliseconds} ms to complete");
     }
 
     public void GeneratePlanet()
@@ -55,10 +55,10 @@ public class MyPlanetGenerator : MonoBehaviour
         shapeGenerator = new ShapeGenerator();
         shapeGenerator.UpdateShapeSettings(ShapeSettings, mPosition, mRotation, mScale);
 
-        terrainFaces = new TerrainFace[6];      //6 weil... ein Würfel hat 6 Seiten
+        terrainFaces = new TerrainFace[6];  
 
         if (terrainFilters == null || terrainFilters.Length != 6)
-            terrainFilters = new MeshFilter[6]; //6 weil... ein Würfel hat 6 Seiten
+            terrainFilters = new MeshFilter[6];
 
         GameObject newFaceObj;
         for (int i = 0; i < terrainFaces.Length; i++)
