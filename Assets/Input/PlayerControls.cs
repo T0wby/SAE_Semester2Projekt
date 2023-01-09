@@ -114,6 +114,54 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""a13ea015-b3d1-4b29-a278-bf38bb1f0cf8"",
+            ""actions"": [
+                {
+                    ""name"": ""OpenMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""b6f067b9-854d-404c-9d5d-7c4ff00cb498"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GeneratePlanet"",
+                    ""type"": ""Button"",
+                    ""id"": ""11764988-322f-4a72-ad46-8746454d39ca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""57edfdbd-daa3-4670-a634-e0673c38a0a8"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e8655a9b-2e12-4dff-8c77-3406d4225e5d"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GeneratePlanet"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -122,6 +170,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_Movement = m_PlayerMovement.FindAction("Movement", throwIfNotFound: true);
         m_PlayerMovement_Camera = m_PlayerMovement.FindAction("Camera", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_OpenMenu = m_Menu.FindAction("OpenMenu", throwIfNotFound: true);
+        m_Menu_GeneratePlanet = m_Menu.FindAction("GeneratePlanet", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -218,9 +270,55 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public PlayerMovementActions @PlayerMovement => new PlayerMovementActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_OpenMenu;
+    private readonly InputAction m_Menu_GeneratePlanet;
+    public struct MenuActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @OpenMenu => m_Wrapper.m_Menu_OpenMenu;
+        public InputAction @GeneratePlanet => m_Wrapper.m_Menu_GeneratePlanet;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @OpenMenu.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnOpenMenu;
+                @OpenMenu.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnOpenMenu;
+                @OpenMenu.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnOpenMenu;
+                @GeneratePlanet.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnGeneratePlanet;
+                @GeneratePlanet.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnGeneratePlanet;
+                @GeneratePlanet.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnGeneratePlanet;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @OpenMenu.started += instance.OnOpenMenu;
+                @OpenMenu.performed += instance.OnOpenMenu;
+                @OpenMenu.canceled += instance.OnOpenMenu;
+                @GeneratePlanet.started += instance.OnGeneratePlanet;
+                @GeneratePlanet.performed += instance.OnGeneratePlanet;
+                @GeneratePlanet.canceled += instance.OnGeneratePlanet;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface IPlayerMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnCamera(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnOpenMenu(InputAction.CallbackContext context);
+        void OnGeneratePlanet(InputAction.CallbackContext context);
     }
 }

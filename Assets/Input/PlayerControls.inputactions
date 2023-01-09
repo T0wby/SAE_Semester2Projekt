@@ -92,6 +92,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Menu",
+            "id": "a13ea015-b3d1-4b29-a278-bf38bb1f0cf8",
+            "actions": [
+                {
+                    "name": "OpenMenu",
+                    "type": "Button",
+                    "id": "b6f067b9-854d-404c-9d5d-7c4ff00cb498",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GeneratePlanet",
+                    "type": "Button",
+                    "id": "11764988-322f-4a72-ad46-8746454d39ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "57edfdbd-daa3-4670-a634-e0673c38a0a8",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e8655a9b-2e12-4dff-8c77-3406d4225e5d",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GeneratePlanet",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

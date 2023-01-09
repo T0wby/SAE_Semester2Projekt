@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class MyPlanetGenerator : MonoBehaviour
 {
+    #region Fields
     private TerrainFace[] terrainFaces;
     private MeshFilter[] terrainFilters;
 
@@ -33,17 +34,16 @@ public class MyPlanetGenerator : MonoBehaviour
 
     [SerializeField] private Material mMeshMat;
     [SerializeField, Range(2, 255)] private int mResolution;
-    [SerializeField] private bool _useMultiThreading = true;
+    #endregion
 
+    #region Unity
     private void Start()
     {
-        //Stopwatch st = new Stopwatch();
-        //st.Start();
-        GeneratePlanet();
-        //st.Stop();
-        //UnityEngine.Debug.Log($"GeneratePlanet: {gameObject.name} took {st.ElapsedMilliseconds} ms to complete");
+        //GeneratePlanet();
     }
+    #endregion
 
+    #region Methods
     public void GeneratePlanet()
     {
         Initialize();
@@ -55,7 +55,7 @@ public class MyPlanetGenerator : MonoBehaviour
         shapeGenerator = new ShapeGenerator();
         shapeGenerator.UpdateShapeSettings(ShapeSettings, mPosition, mRotation, mScale);
 
-        terrainFaces = new TerrainFace[6];  
+        terrainFaces = new TerrainFace[6];
 
         if (terrainFilters == null || terrainFilters.Length != 6)
             terrainFilters = new MeshFilter[6];
@@ -86,7 +86,7 @@ public class MyPlanetGenerator : MonoBehaviour
     {
         for (int i = 0; i < terrainFaces.Length; i++)
         {
-            terrainFaces[i].GenerateMesh(_useMultiThreading);
+            terrainFaces[i].GenerateMesh(GameManager.Instance.UseMultiThreading);
             StartCoroutine(CheckTerrainFaces(i));
         }
 
@@ -107,13 +107,16 @@ public class MyPlanetGenerator : MonoBehaviour
             GeneratePlanet();
         }
     }
+    #endregion
 
 
+    #region Enumerators
     private IEnumerator CheckTerrainFaces(int value)
     {
         while (terrainFaces[value].SetMeshValues())
         {
             yield return new WaitForEndOfFrame();
         }
-    }
+    } 
+    #endregion
 }

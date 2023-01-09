@@ -11,6 +11,8 @@ namespace Player_Towby
         private PlayerControls _playerControls;
         private InputAction _moveAround;
         private InputAction _lookAround;
+        private InputAction _menuAction;
+        private InputAction _generatePlanets;
 
 
         private Rigidbody _thisRb;
@@ -41,23 +43,26 @@ namespace Player_Towby
 
             _lookAround = _playerControls.PlayerMovement.Camera;
             _lookAround.Enable();
+
+            _menuAction = _playerControls.Menu.OpenMenu;
+            _menuAction.Enable();
+
+            _generatePlanets = _playerControls.Menu.GeneratePlanet;
+            _generatePlanets.Enable();
         }
 
         private void OnDisable()
         {
             _moveAround.Disable();
             _lookAround.Disable();
+            _menuAction.Disable();
+            _generatePlanets.Disable();
         }
 
         private void Update()
         {
             Move(_move);
             Rotation(_look);
-            //if (CameraController.Instance != null)
-            //{
-            //    CameraController.Instance.FollowTarget(Time.deltaTime);
-            //    CameraController.Instance.HandleCameraRotation(Time.deltaTime, _look.x, _look.y);
-            //}
         }
 
         public void OnMove(InputAction.CallbackContext context)
