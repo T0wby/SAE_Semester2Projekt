@@ -12,9 +12,9 @@ public class BoidMovement : MonoBehaviour
     [SerializeField] private int _layerMaskInt;
     private int _boidLayerMask;
     private int _neighbourCount;
-    private int _boidLeaderMultiplier = 2;
+    //private int _boidLeaderMultiplier = 2;
 
-    public Vector3 CurrentVelocity { get => _currentVelocity;}
+    public Vector3 CurrentVelocity { get => _currentVelocity; set => _currentVelocity = value; }
 
     private void Start()
     {
@@ -50,12 +50,7 @@ public class BoidMovement : MonoBehaviour
 
         for (int i = 0; i < _neighbourCount; i++)
         {
-            if (_neighbours[i].gameObject.GetComponent<BoidBT>() != null)
-            {
-                direction += (_neighbours[i].CurrentVelocity * _boidLeaderMultiplier);
-            }
-            else
-                direction += _neighbours[i].CurrentVelocity;
+            direction += _neighbours[i].CurrentVelocity;
         }
 
         direction /= _neighbourCount;
