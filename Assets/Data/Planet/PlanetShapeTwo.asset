@@ -29,11 +29,22 @@ MonoBehaviour:
   - Enabled: 1
     UseFirstLayerAsMask: 1
     NoiseSettings:
-      Strength: 5
-      LayerCount: 4
-      Amplitude: 0.8
-      Persistence: 0.5
+      Strength: 3
+      LayerCount: 2
+      Amplitude: 0.8888
+      Persistence: 0.7
       Frequency: 1
       Roughness: 2
       NoiseCenter: {x: 0, y: 0, z: 0}
+      GroundLevel: 0.6
+  - Enabled: 1
+    UseFirstLayerAsMask: 1
+    NoiseSettings:
+      Strength: 0.2
+      LayerCount: 5
+      Amplitude: 0.7
+      Persistence: 0.3
+      Frequency: 2
+      Roughness: 2
+      NoiseCenter: {x: 4.23, y: 0, z: 21.29}
       GroundLevel: 0.6
