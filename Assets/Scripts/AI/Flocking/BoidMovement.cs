@@ -12,7 +12,6 @@ public class BoidMovement : MonoBehaviour
     [SerializeField] private int _layerMaskInt;
     private int _boidLayerMask;
     private int _neighbourCount;
-    //private int _boidLeaderMultiplier = 2;
 
     public Vector3 CurrentVelocity { get => _currentVelocity; set => _currentVelocity = value; }
 
