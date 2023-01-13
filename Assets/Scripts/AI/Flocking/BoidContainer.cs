@@ -24,7 +24,7 @@ public class BoidContainer : MonoBehaviour
         _centerDistance = _center.transform.position - transform.position;
         if (_centerDistance.sqrMagnitude > (_radius * _radius))
         {
-            _boidMovement.CurrentVelocity += _centerDistance.normalized * _containerForce * Time.deltaTime;
+            _boidMovement.CurrentVelocity += -_centerDistance.normalized * _containerForce * Time.deltaTime;
         }
     }
 }
