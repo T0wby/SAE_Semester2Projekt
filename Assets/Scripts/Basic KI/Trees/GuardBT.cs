@@ -22,7 +22,7 @@ public class GuardBT : BehaviorTree.MyTree
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInAttackRange(transform, settings.InteractRange, _animator),
-                new LeafAttack(transform, settings.AtkSpeed, _animator),
+                new LF_Attack(transform, settings.AtkSpeed, _animator),
             }),
             new Sequence(new List<Node>
             {

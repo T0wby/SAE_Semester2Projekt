@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GuardSettings", menuName = "KI/GuardSettings")]
+[CreateAssetMenu(fileName = "GuardSettings", menuName = "AI/GuardSettings")]
 public class GuardSettings : BasicKISettings
 {
     [SerializeField] private float _damage;

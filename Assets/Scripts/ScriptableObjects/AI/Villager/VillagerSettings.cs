@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Searcher.SearcherWindow;
 
-[CreateAssetMenu(fileName = "VillagerSettings", menuName = "KI/VillagerSettings")]
+[CreateAssetMenu(fileName = "VillagerSettings", menuName = "AI/VillagerSettings")]
 public class VillagerSettings : BasicKISettings
 {
     [Header("Hunger")]

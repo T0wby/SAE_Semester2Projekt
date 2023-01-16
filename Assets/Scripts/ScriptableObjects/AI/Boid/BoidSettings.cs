@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BoidSettings", menuName ="KI/BoidSettings")]
+[CreateAssetMenu(fileName = "BoidSettings", menuName ="AI/BoidSettings")]
 public class BoidSettings : BasicKISettings
 {
     [Header("Flocking")]

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorTree;
 
-public class LeafAttack : Node
+public class LF_Attack : Node
 {
     private Transform _currentTarget;
     private Transform _lastTarget;
@@ -15,7 +15,7 @@ public class LeafAttack : Node
     private float _attackTime;
     private float _attackCounter = 0f;
 
-    public LeafAttack(Transform transform, float attackSpeed, Animator animator)
+    public LF_Attack(Transform transform, float attackSpeed, Animator animator)
     {
         _thisTransform = transform;
         _attackTime = attackSpeed;

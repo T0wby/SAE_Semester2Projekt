@@ -7,6 +7,11 @@ public class LF_CheckAlertState : Node
 {
     private HideAI _hideAI;
 
+    public LF_CheckAlertState()
+    {
+        _hideAI = null;
+    }
+
     public LF_CheckAlertState(HideAI hideAI)
     {
         _hideAI = hideAI;
