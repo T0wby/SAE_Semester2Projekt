@@ -6,11 +6,19 @@ using BehaviorTree;
 
 public class GoToPos : Node
 {
+    #region Fields
     private Transform _thisTransform;
     private Transform _targetTransform;
     private NavMeshAgent _agent;
     private BasicKISettings _settings;
     private Animator _animator;
+    #endregion
+
+    #region Constructor
+    public GoToPos()
+    {
+
+    }
 
     public GoToPos(Transform transform, Transform targetTransform, NavMeshAgent agent, BasicKISettings settings, Animator animator)
     {
@@ -19,7 +27,8 @@ public class GoToPos : Node
         _agent = agent;
         _settings = settings;
         _animator = animator;
-    }
+    } 
+    #endregion
 
     public override ENodeState CalculateState()
     {

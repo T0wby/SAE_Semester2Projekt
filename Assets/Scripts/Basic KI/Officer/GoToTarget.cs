@@ -11,6 +11,11 @@ public class GoToTarget : Node
     private BasicKISettings _settings;
     private Animator _animator;
 
+    public GoToTarget()
+    {
+
+    }
+
     public GoToTarget(Transform transform, NavMeshAgent agent, BasicKISettings settings, Animator animator)
     {
         _thisTransform = transform;
