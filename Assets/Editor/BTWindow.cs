@@ -26,7 +26,7 @@ public class BTWindow : EditorWindow
     {
         _tabDrawer= new TabDrawer();
         _nodeCreation = new NodeCreationDrawer();
-        _windowDrawer = new WindowDrawer();
+        _windowDrawer = new WindowDrawer(_nodeCreation.CompositeNodes);
     }
 
     private void OnGUI()
@@ -40,9 +40,7 @@ public class BTWindow : EditorWindow
 
                 break;
             case Tabs.CurrentTree:
-                BeginWindows();
-                _windowRect = GUI.Window(0, _windowRect, DrawWindow, "Window");
-                EndWindows();
+                _windowDrawer.RedrawWindows(this);
                 break;
             case Tabs.Settings:
                 if (GUI.Button(new Rect(50,50,100,100),"Save"))

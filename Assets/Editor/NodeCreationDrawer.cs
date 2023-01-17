@@ -10,9 +10,11 @@ public class NodeCreationDrawer
     private List<Type> _compositeNodes;
     private List<Type> _leafNodes;
 
+    public List<Type> CompositeNodes { get => _compositeNodes;}
+
     public NodeCreationDrawer()
     {
-        _compositeNodes= new List<Type>();
+        _compositeNodes = new List<Type>();
         _leafNodes= new List<Type>();
 
         FindScripts();
