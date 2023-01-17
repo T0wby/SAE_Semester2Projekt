@@ -16,6 +16,11 @@ public class SetHideDestination : Node
     #endregion
 
     #region Constructor
+    public SetHideDestination()
+    {
+
+    }
+
     public SetHideDestination(NavMeshAgent agent, VillagerSettings settings, Animator animator)
 	{
         _agent = agent;

@@ -6,6 +6,7 @@ using BehaviorTree;
 
 public class Patrol : Node
 {
+    #region Fields
     private Transform _thisTransform;
     private Animator _thisAnimator;
     private NavMeshAgent _agent;
@@ -13,6 +14,13 @@ public class Patrol : Node
     private int _currentWaypointIndex;
     private int _previousWaypointIndex = -1;
     private Vector3 _destination;
+    #endregion
+
+    #region Constructor
+    public Patrol()
+    {
+
+    }
 
     public Patrol(Transform transform, Transform[] waypoints, NavMeshAgent agent)
     {
@@ -21,7 +29,9 @@ public class Patrol : Node
         _thisAnimator = transform.GetComponent<Animator>();
         _agent = agent;
     }
+    #endregion
 
+    #region Methods
     public override ENodeState CalculateState()
     {
         ChangeWaypointIndex();
@@ -56,6 +66,7 @@ public class Patrol : Node
         {
             _agent.destination = _destination;
         }
-    }
+    } 
+    #endregion
 
 }

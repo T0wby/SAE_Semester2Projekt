@@ -17,6 +17,11 @@ public class GoToDataPoint : Node
 
     #region Constructor
 
+    public GoToDataPoint()
+    {
+
+    }
+
     public GoToDataPoint(Transform transform, NavMeshAgent agent, string dataKey)
     {
         _thisTransform = transform;

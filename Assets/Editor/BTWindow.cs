@@ -18,7 +18,7 @@ public class BTWindow : EditorWindow
     {
         _bTWindow = (BTWindow)EditorWindow.GetWindow(typeof(BTWindow));
         _bTWindow.titleContent = new GUIContent();
-        _bTWindow.maxSize = new Vector2(1000, 1000);
+        _bTWindow.maxSize = new Vector2(2000, 2000);
         _bTWindow.minSize = new Vector2(500, 500);
     }
 

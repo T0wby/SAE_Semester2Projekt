@@ -10,6 +10,12 @@ public class LF_EnemyInRange : Node
     private Transform _thisTransform;
     private Transform _targetTransform;
 
+    public LF_EnemyInRange()
+    {
+        _senseRange = 0f;
+        _thisTransform = null;
+    }
+
     public LF_EnemyInRange(float senseRange, Transform thisTransform)
     {
         _senseRange = senseRange;

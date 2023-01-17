@@ -20,13 +20,20 @@ public class GetHidePosition : Node
 
     #endregion
 
+    #region Constructors
+    public GetHidePosition()
+    {
+
+    }
+
     public GetHidePosition(NavMeshAgent agent, VillagerSettings settings, TrackHideObject trackHideObject, Transform thisTransform)
     {
         _agent = agent;
         _settings = settings;
         _trackHideObject = trackHideObject;
         _thisTransform = thisTransform;
-    }
+    } 
+    #endregion
 
     public override ENodeState CalculateState()
     {

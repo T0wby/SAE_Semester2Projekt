@@ -23,7 +23,7 @@ public class WindowDrawer
         _nodeWindows = new List<NodeWindow>();
         _compositeNodeTypes = compositeNodeTypes;
         _composites = _compositeNodeTypes.ConvertAll(type => type.ToString()).ToArray();
-        _rootNode = new NodeWindow(new Rect(10, 10, _nodeWindowSize.x, _nodeWindowSize.y), _compositeNodeTypes.Count > 0 ? (Node)Activator.CreateInstance(_compositeNodeTypes[0]) : null);
+        _rootNode = new NodeWindow(new Rect(50, 50, _nodeWindowSize.x, _nodeWindowSize.y), _compositeNodeTypes.Count > 0 ? (Node)Activator.CreateInstance(_compositeNodeTypes[0]) : null);
         _connectionHandler = new ConnectionHandler();
     }
 
@@ -36,7 +36,7 @@ public class WindowDrawer
     {
         bTWindow.BeginWindows();
 
-        _rootNode.WindowRect = GUI.Window(-1, _rootNode.WindowRect, DrawRootNodeWindow, $"Root: {_rootNode.WindowNode}");
+        _rootNode.WindowRect = GUI.Window(-1, _rootNode.WindowRect, DrawRootNodeWindow, "Root");
 
         for (int i = 0; i < _nodeWindows.Count; i++)
         {

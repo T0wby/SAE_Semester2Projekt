@@ -15,6 +15,11 @@ public class LF_Attack : Node
     private float _attackTime;
     private float _attackCounter = 0f;
 
+    public LF_Attack()
+    {
+
+    }
+
     public LF_Attack(Transform transform, float attackSpeed, Animator animator)
     {
         _thisTransform = transform;

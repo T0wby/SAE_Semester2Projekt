@@ -24,3 +24,6 @@ MonoBehaviour:
   - SetHideDestination
   - CheckIfNotAtHidePoint
   - GoToDataPoint
+  - GoToPos
+  - WalkAround
+  - Patrol

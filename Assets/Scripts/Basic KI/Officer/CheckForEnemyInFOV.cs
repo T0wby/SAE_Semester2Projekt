@@ -12,6 +12,11 @@ public class CheckForEnemyInFOV : Node
     private float _range;
     private float _viewAngle;
 
+    public CheckForEnemyInFOV()
+    {
+
+    }
+
     public CheckForEnemyInFOV(Transform transform, float range, float viewAngle, int enemyLayerMask)
     {
         _thisTransform = transform;

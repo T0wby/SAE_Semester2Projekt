@@ -16,6 +16,11 @@ public class CheckIfNotAtHidePoint : Node
 
     #region Constructor
 
+    public CheckIfNotAtHidePoint()
+    {
+
+    }
+
     public CheckIfNotAtHidePoint(Transform transform, Animator animator)
     {
         _thisTransform = transform;

@@ -6,11 +6,19 @@ using UnityEngine.AI;
 
 public class WalkAround : Node
 {
+    #region Fields
     private Transform _thisTransform;
     private NavMeshAgent _agent;
     private float _speed;
     private HideAI _hideAI;
     private Animator _animator;
+    #endregion
+
+    #region Constructor
+    public WalkAround()
+    {
+
+    }
 
     public WalkAround(Transform transform, NavMeshAgent agent, float speed, Animator animator, HideAI hideAI)
     {
@@ -20,7 +28,9 @@ public class WalkAround : Node
         _animator = animator;
         _hideAI = hideAI;
     }
+    #endregion
 
+    #region Methods
     public override ENodeState CalculateState()
     {
         object tmp = GetData("randomDirection");
@@ -53,5 +63,6 @@ public class WalkAround : Node
         }
 
         return false;
-    }
+    } 
+    #endregion
 }

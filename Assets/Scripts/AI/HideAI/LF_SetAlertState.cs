@@ -9,6 +9,12 @@ public class LF_SetAlertState : Node
     private HideAI _hideAI;
     private bool _isAlerted;
 
+    public LF_SetAlertState()
+    {
+        _hideAI = null;
+        _isAlerted = false;
+    }
+
     public LF_SetAlertState(HideAI hideAI, bool isAlerted)
     {
         _hideAI = hideAI;

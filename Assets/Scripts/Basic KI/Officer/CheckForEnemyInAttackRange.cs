@@ -9,6 +9,13 @@ public class CheckForEnemyInAttackRange : Node
     private float _range;
     private Animator _animator;
 
+    public CheckForEnemyInAttackRange()
+    {
+        _thisTransform = null;
+        _range = 3f;
+        _animator = null;
+    }
+
     public CheckForEnemyInAttackRange(Transform transform, float range, Animator animator)
     {
         _thisTransform = transform;
