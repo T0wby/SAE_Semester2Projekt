@@ -15,7 +15,8 @@ public class MyPlanetGenerator : MonoBehaviour
     public ShapeSettings ShapeSettings => shapeSettings;
     [HideInInspector] public bool ShapeSettingsFoldout;
 
-    private ShapeGenerator shapeGenerator = new ShapeGenerator();
+    private ShapeGenerator shapeGenerator;
+    private ColourGenerator colourGenerator = new ColourGenerator();
 
     private static Vector3[] DIRECTIONS = new Vector3[]
     {
@@ -33,14 +34,14 @@ public class MyPlanetGenerator : MonoBehaviour
     [SerializeField] private Vector3 mRotation;
     [SerializeField] private Vector3 mScale;
 
-    [SerializeField] private Material mMeshMat;
+    private Material mMeshMat;
     [SerializeField, Range(2, 255)] private int mResolution;
     #endregion
 
     #region Unity
-    private void Start()
+    private void Awake()
     {
-        //GeneratePlanet();
+        mMeshMat = colourSettings.PlanetMaterial;
     }
     #endregion
 
@@ -56,6 +57,8 @@ public class MyPlanetGenerator : MonoBehaviour
     {
         shapeGenerator = new ShapeGenerator();
         shapeGenerator.UpdateShapeSettings(shapeSettings, mPosition, mRotation, mScale);
+
+        colourGenerator.UpdateSettings(colourSettings);
 
         terrainFaces = new TerrainFace[6];
 
@@ -91,15 +94,12 @@ public class MyPlanetGenerator : MonoBehaviour
             terrainFaces[i].GenerateMesh(GameManager.Instance.UseMultiThreading);
             StartCoroutine(CheckTerrainFaces(i));
         }
-
+        colourGenerator.UpdateElevation(shapeGenerator.ElevationMinMax);
     }
 
     private void GenerateColour()
     {
-        for (int i = 0; i < terrainFilters.Length; i++)
-        {
-            terrainFilters[i].GetComponent<MeshRenderer>().sharedMaterial.color = colourSettings.PlanetColour;
-        }
+        colourGenerator.UpdateColours();
     }
 
     public void OnBaseInfoUpdate()

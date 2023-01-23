@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New ColourSettings", menuName = "Planet/ColourSettings")]
 public class ColourSettings : ScriptableObject
 {
-    public Color PlanetColour;
+    public Gradient gradient;
     public Material PlanetMaterial;
 }

@@ -13,6 +13,8 @@ public class ShapeGenerator
     Vector3 _rotation;
     Vector3 _scale;
 
+    public MinMax ElevationMinMax { get => _elevationMinMax; }
+
     public void UpdateShapeSettings(ShapeSettings newSettings, Vector3 position, Vector3 rotation, Vector3 scale)
     {
         _currentSettings = newSettings;
