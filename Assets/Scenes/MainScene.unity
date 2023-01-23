@@ -2926,6 +2926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shapeSettings: {fileID: 11400000, guid: c7075e0e44d1d8747815803d8a8598b5, type: 2}
+  colourSettings: {fileID: 11400000, guid: 057b240333bfde54699b270bba38dacb, type: 2}
   ShapeSettingsFoldout: 0
   mAutoUpdatePlanet: 1
   mPosition: {x: -352, y: 5, z: 275}
@@ -4686,6 +4687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shapeSettings: {fileID: 11400000, guid: 0b0a5c92298b79742a17e0fee94069f5, type: 2}
+  colourSettings: {fileID: 11400000, guid: 057b240333bfde54699b270bba38dacb, type: 2}
   ShapeSettingsFoldout: 0
   mAutoUpdatePlanet: 1
   mPosition: {x: -372, y: 5, z: 275}
@@ -7720,6 +7722,7 @@ Transform:
   - {fileID: 1697061045}
   - {fileID: 391097096}
   - {fileID: 612562143}
+  - {fileID: 1312253305}
   m_Father: {fileID: 344548032}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9343,6 +9346,59 @@ Transform:
   m_Father: {fileID: 548790634}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1312253304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1312253305}
+  - component: {fileID: 1312253306}
+  m_Layer: 0
+  m_Name: PlanetBig
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1312253305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312253304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 500, y: 500, z: 500}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1062899745}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312253306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312253304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1605c7a09982ab49890f3e61e48bacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shapeSettings: {fileID: 11400000, guid: 5f974db05a0b03044ba2db4c5975d5ad, type: 2}
+  colourSettings: {fileID: 11400000, guid: 057b240333bfde54699b270bba38dacb, type: 2}
+  ShapeSettingsFoldout: 0
+  mAutoUpdatePlanet: 1
+  mPosition: {x: 183, y: 500, z: 760}
+  mRotation: {x: 0, y: 0, z: 0}
+  mScale: {x: 1, y: 1, z: 1}
+  mMeshMat: {fileID: 2100000, guid: 0b94fa27fe926874a8e2cf6c9d7756d5, type: 2}
+  mResolution: 255
 --- !u!1 &1346649964
 GameObject:
   m_ObjectHideFlags: 0
@@ -12201,6 +12257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shapeSettings: {fileID: 11400000, guid: b9a91d1edbf0db34f9c5626cb96375da, type: 2}
+  colourSettings: {fileID: 11400000, guid: 057b240333bfde54699b270bba38dacb, type: 2}
   ShapeSettingsFoldout: 0
   mAutoUpdatePlanet: 1
   mPosition: {x: -362, y: 5, z: 275}

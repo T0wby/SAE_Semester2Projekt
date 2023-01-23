@@ -11,6 +11,7 @@ public class MyPlanetGenerator : MonoBehaviour
     private MeshFilter[] terrainFilters;
 
     [SerializeField] private ShapeSettings shapeSettings;
+    [SerializeField] private ColourSettings colourSettings;
     public ShapeSettings ShapeSettings => shapeSettings;
     [HideInInspector] public bool ShapeSettingsFoldout;
 
@@ -48,12 +49,13 @@ public class MyPlanetGenerator : MonoBehaviour
     {
         Initialize();
         GenerateMesh();
+        GenerateColour();
     }
 
     private void Initialize()
     {
         shapeGenerator = new ShapeGenerator();
-        shapeGenerator.UpdateShapeSettings(ShapeSettings, mPosition, mRotation, mScale);
+        shapeGenerator.UpdateShapeSettings(shapeSettings, mPosition, mRotation, mScale);
 
         terrainFaces = new TerrainFace[6];
 
@@ -90,6 +92,14 @@ public class MyPlanetGenerator : MonoBehaviour
             StartCoroutine(CheckTerrainFaces(i));
         }
 
+    }
+
+    private void GenerateColour()
+    {
+        for (int i = 0; i < terrainFilters.Length; i++)
+        {
+            terrainFilters[i].GetComponent<MeshRenderer>().sharedMaterial.color = colourSettings.PlanetColour;
+        }
     }
 
     public void OnBaseInfoUpdate()
