@@ -2932,7 +2932,7 @@ MonoBehaviour:
   mPosition: {x: -352, y: 5, z: 275}
   mRotation: {x: 0, y: 0, z: 0}
   mScale: {x: 1, y: 1, z: 1}
-  mMeshMat: {fileID: 2100000, guid: 0b94fa27fe926874a8e2cf6c9d7756d5, type: 2}
+  mMeshMat: {fileID: 2100000, guid: ee4a30466462c234e8324e9c8af9d429, type: 2}
   mResolution: 255
 --- !u!1 &399578565
 GameObject:
@@ -4693,7 +4693,7 @@ MonoBehaviour:
   mPosition: {x: -372, y: 5, z: 275}
   mRotation: {x: 0, y: 0, z: 0}
   mScale: {x: 1, y: 1, z: 1}
-  mMeshMat: {fileID: 2100000, guid: 0b94fa27fe926874a8e2cf6c9d7756d5, type: 2}
+  mMeshMat: {fileID: 2100000, guid: ee4a30466462c234e8324e9c8af9d429, type: 2}
   mResolution: 255
 --- !u!1 &624116278
 GameObject:
@@ -9397,7 +9397,7 @@ MonoBehaviour:
   mPosition: {x: 183, y: 500, z: 760}
   mRotation: {x: 0, y: 0, z: 0}
   mScale: {x: 1, y: 1, z: 1}
-  mMeshMat: {fileID: 2100000, guid: 0b94fa27fe926874a8e2cf6c9d7756d5, type: 2}
+  mMeshMat: {fileID: 2100000, guid: ee4a30466462c234e8324e9c8af9d429, type: 2}
   mResolution: 255
 --- !u!1 &1346649964
 GameObject:
@@ -12263,7 +12263,7 @@ MonoBehaviour:
   mPosition: {x: -362, y: 5, z: 275}
   mRotation: {x: 0, y: 0, z: 0}
   mScale: {x: 1, y: 1, z: 1}
-  mMeshMat: {fileID: 2100000, guid: 0b94fa27fe926874a8e2cf6c9d7756d5, type: 2}
+  mMeshMat: {fileID: 2100000, guid: ee4a30466462c234e8324e9c8af9d429, type: 2}
   mResolution: 255
 --- !u!1 &1746107417
 GameObject:
