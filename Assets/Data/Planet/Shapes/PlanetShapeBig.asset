@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28612decdf264f4419e233ca4263d7a0, type: 3}
+  m_Name: PlanetShapeBig
+  m_EditorClassIdentifier: 
+  PlanetRadius: 150
+  UseFancySphere: 1
+  NoiseLayers:
+  - Enabled: 1
+    UseFirstLayerAsMask: 0
+    NoiseSettings:
+      Strength: 0.1
+      LayerCount: 7
+      Amplitude: 0.8
+      Persistence: 0.5
+      Frequency: 1
+      Roughness: 2
+      NoiseCenter: {x: 69, y: 0, z: 69}
+      GroundLevel: 0.6
+  - Enabled: 1
+    UseFirstLayerAsMask: 1
+    NoiseSettings:
+      Strength: 3
+      LayerCount: 5
+      Amplitude: 0.5
+      Persistence: 0.7
+      Frequency: 1
+      Roughness: 3
+      NoiseCenter: {x: 420, y: 0, z: 420}
+      GroundLevel: 0.6

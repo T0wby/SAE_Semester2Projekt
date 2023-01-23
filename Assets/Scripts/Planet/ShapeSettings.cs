@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New ShapeSettings", menuName = "Create Shape Settings")]
+[CreateAssetMenu(fileName = "New ShapeSettings", menuName = "Planet/ShapeSettings")]
 public class ShapeSettings : ScriptableObject
 {
     public float PlanetRadius;

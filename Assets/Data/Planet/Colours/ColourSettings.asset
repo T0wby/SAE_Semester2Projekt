@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab4a0a860b2bf6640b196c499d1a0857, type: 3}
-  m_Name: DayAndNightSettings
+  m_Script: {fileID: 11500000, guid: 3c61f7cb61a97bb4190e0aba619198fd, type: 3}
+  m_Name: ColourSettings
   m_EditorClassIdentifier: 
-  EnableDayAndNightCycle: 0
-  DayLengthInSeconds: 300
-  DayInitialRatio: 0.2
-  LightRefreshRate: 0.01
+  PlanetColour: {r: 0.1878181, g: 0.9150943, b: 0.15107687, a: 0}
+  PlanetMaterial: {fileID: 2100000, guid: 17e99c26a23453743af72742336d30df, type: 2}

@@ -5,26 +5,28 @@ using UnityEngine;
 
 public class ShapeGenerator
 {
-    ShapeSettings currentSettings;
-    SimpleNoiseFilter[] noiseFilters;
+    private ShapeSettings _currentSettings;
+    private SimpleNoiseFilter[] _noiseFilters;
+    private MinMax _elevationMinMax;
 
-    Vector3 position;
-    Vector3 rotation;
-    Vector3 scale;
+    Vector3 _position;
+    Vector3 _rotation;
+    Vector3 _scale;
 
-    public void UpdateShapeSettings(ShapeSettings _newSettings, Vector3 _position, Vector3 _rotation, Vector3 _scale)
+    public void UpdateShapeSettings(ShapeSettings newSettings, Vector3 position, Vector3 rotation, Vector3 scale)
     {
-        currentSettings = _newSettings;
+        _currentSettings = newSettings;
 
-        position = _position;
-        rotation = _rotation;
-        scale = _scale;
+        this._position = position;
+        this._rotation = rotation;
+        this._scale = scale;
 
-        noiseFilters = new SimpleNoiseFilter[_newSettings.NoiseLayers.Length];
-        for (int i = 0; i < noiseFilters.Length; i++)
+        _noiseFilters = new SimpleNoiseFilter[newSettings.NoiseLayers.Length];
+        for (int i = 0; i < _noiseFilters.Length; i++)
         {
-            noiseFilters[i] = new SimpleNoiseFilter(_newSettings.NoiseLayers[i].NoiseSettings);
+            _noiseFilters[i] = new SimpleNoiseFilter(newSettings.NoiseLayers[i].NoiseSettings);
         }
+        _elevationMinMax = new MinMax();
     }
 
     public Vector3 TransformCubeToSpherePos(Vector3 _cubeVertPos, bool _useFancySphere)
@@ -50,27 +52,30 @@ public class ShapeGenerator
         float elevation = 0f;
         float firstLayerElevation = 0f;
 
-        if (noiseFilters.Length > 0)
+        if (_noiseFilters.Length > 0)
         {
-            firstLayerElevation = noiseFilters[0].Evaluate(_spherePos);
+            firstLayerElevation = _noiseFilters[0].Evaluate(_spherePos);
 
-            if (currentSettings.NoiseLayers[0].Enabled)
+            if (_currentSettings.NoiseLayers[0].Enabled)
                 elevation = firstLayerElevation;
         }
 
         //Start at idx 1 because first layer is already evaluated
         float mask = 0f;
-        for (int i = 1; i < noiseFilters.Length; i++)
+        for (int i = 1; i < _noiseFilters.Length; i++)
         {
-            if (currentSettings.NoiseLayers[i].Enabled)
+            if (_currentSettings.NoiseLayers[i].Enabled)
             {
-                mask = currentSettings.NoiseLayers[i].UseFirstLayerAsMask ? firstLayerElevation : 1f;
+                mask = _currentSettings.NoiseLayers[i].UseFirstLayerAsMask ? firstLayerElevation : 1f;
 
-                elevation += noiseFilters[i].Evaluate(_spherePos) * mask;
+                elevation += _noiseFilters[i].Evaluate(_spherePos) * mask;
             }
         }
 
-        return planetPos * currentSettings.PlanetRadius * (1 + elevation);
+        elevation = _currentSettings.PlanetRadius * (1 + elevation);
+        _elevationMinMax.AddValue(elevation);
+
+        return planetPos * elevation;
     }
 
     public Vector3 TransformPointWithOwnTransformMatrix(Vector3 _basePos)
@@ -127,7 +132,7 @@ public class ShapeGenerator
         #endregion
 
 
-        float xRotRad = rotation.x * Mathf.Deg2Rad;
+        float xRotRad = _rotation.x * Mathf.Deg2Rad;
         Matrix4x4 rotMatX = new Matrix4x4();
         rotMatX.SetRow(0, new Vector4(1, 0, 0, 0));
         rotMatX.SetRow(1, new Vector4(0, Mathf.Cos(xRotRad), -Mathf.Sin(xRotRad), 0));
@@ -135,14 +140,14 @@ public class ShapeGenerator
         rotMatX.SetRow(3, new Vector4(0, 0, 0, 1));
 
 
-        float yRotRad = rotation.y * Mathf.Deg2Rad;
+        float yRotRad = _rotation.y * Mathf.Deg2Rad;
         Matrix4x4 rotMatY = new Matrix4x4();
         rotMatY.SetRow(0, new Vector4(Mathf.Cos(yRotRad), 0, Mathf.Sin(yRotRad), 0));
         rotMatY.SetRow(1, new Vector4(0, 1, 0, 0));
         rotMatY.SetRow(2, new Vector4(-Mathf.Sin(yRotRad), 0, Mathf.Cos(yRotRad), 0));
         rotMatY.SetRow(3, new Vector4(0, 0, 0, 1));
 
-        float zRotRad = rotation.z * Mathf.Deg2Rad;
+        float zRotRad = _rotation.z * Mathf.Deg2Rad;
         Matrix4x4 rotMatZ = new Matrix4x4();
         rotMatZ.SetRow(0, new Vector4(Mathf.Cos(zRotRad), -Mathf.Sin(zRotRad), 0, 0));
         rotMatZ.SetRow(1, new Vector4(Mathf.Sin(zRotRad), Mathf.Cos(zRotRad), 0, 0));
@@ -154,14 +159,14 @@ public class ShapeGenerator
         Matrix4x4 transformMatrix = rotMatX * rotMatY * rotMatZ;
 
         //Skalierung
-        transformMatrix.m00 *= scale.x;
-        transformMatrix.m11 *= scale.y;
-        transformMatrix.m22 *= scale.z;
+        transformMatrix.m00 *= _scale.x;
+        transformMatrix.m11 *= _scale.y;
+        transformMatrix.m22 *= _scale.z;
 
         //Translation
-        transformMatrix.m03 = position.x;
-        transformMatrix.m13 = position.y;
-        transformMatrix.m23 = position.z;
+        transformMatrix.m03 = _position.x;
+        transformMatrix.m13 = _position.y;
+        transformMatrix.m23 = _position.z;
 
         return transformMatrix;
     }
