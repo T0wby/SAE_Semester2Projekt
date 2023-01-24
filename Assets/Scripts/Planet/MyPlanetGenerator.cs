@@ -15,7 +15,7 @@ public class MyPlanetGenerator : MonoBehaviour
     public ShapeSettings ShapeSettings => shapeSettings;
     [HideInInspector] public bool ShapeSettingsFoldout;
 
-    private ShapeGenerator shapeGenerator;
+    private ShapeGenerator shapeGenerator = new ShapeGenerator();
     private ColourGenerator colourGenerator = new ColourGenerator();
 
     private static Vector3[] DIRECTIONS = new Vector3[]
@@ -55,7 +55,6 @@ public class MyPlanetGenerator : MonoBehaviour
 
     private void Initialize()
     {
-        shapeGenerator = new ShapeGenerator();
         shapeGenerator.UpdateShapeSettings(shapeSettings, mPosition, mRotation, mScale);
 
         colourGenerator.UpdateSettings(colourSettings);

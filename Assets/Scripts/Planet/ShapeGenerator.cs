@@ -77,7 +77,7 @@ public class ShapeGenerator
         elevation = _currentSettings.PlanetRadius * (1 + elevation);
         _elevationMinMax.AddValue(elevation);
 
-        return planetPos * elevation;
+        return _spherePos * elevation;
     }
 
     public Vector3 TransformPointWithOwnTransformMatrix(Vector3 _basePos)

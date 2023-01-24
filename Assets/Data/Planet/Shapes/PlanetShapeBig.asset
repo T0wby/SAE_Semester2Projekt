@@ -19,21 +19,21 @@ MonoBehaviour:
     UseFirstLayerAsMask: 0
     NoiseSettings:
       Strength: 0.1
-      LayerCount: 7
-      Amplitude: 0.8
+      LayerCount: 4
+      Amplitude: 1.07
       Persistence: 0.5
       Frequency: 1
-      Roughness: 2
-      NoiseCenter: {x: 69, y: 0, z: 69}
+      Roughness: 2.2
+      NoiseCenter: {x: 1.11, y: 0.92, z: -0.39}
       GroundLevel: 0.6
   - Enabled: 1
     UseFirstLayerAsMask: 1
     NoiseSettings:
-      Strength: 3
-      LayerCount: 5
-      Amplitude: 0.5
-      Persistence: 0.7
+      Strength: 1.42
+      LayerCount: 4
+      Amplitude: 1
+      Persistence: 0.5
       Frequency: 1
       Roughness: 3
-      NoiseCenter: {x: 420, y: 0, z: 420}
+      NoiseCenter: {x: 0, y: 0, z: 0}
       GroundLevel: 0.6

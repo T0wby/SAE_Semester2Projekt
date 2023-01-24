@@ -52,11 +52,6 @@ public class TerrainFace
 
     private void CalculateMesh()
     {
-
-        //Stopwatch st = new Stopwatch();
-        //st.Start();
-
-
         _verts = new Vector3[_currentResolution * _currentResolution];
         _tris = new int[(_currentResolution - 1) * (_currentResolution - 1) * 2 * 3];
 
@@ -90,11 +85,6 @@ public class TerrainFace
                 }
             }
         }
-
-
-        //st.Stop();
-        //UnityEngine.Debug.Log($"GeneratePlanet took {st.ElapsedMilliseconds} ms to complete");
-
     }
 
     public bool SetMeshValues()
