@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New ShapeSettings", menuName = "Planet/ShapeSettings")]
 public class ShapeSettings : ScriptableObject
 {
-    public float PlanetRadius;
+    public float PlanetRadius = 1f;
     public bool UseFancySphere;
 
     public SNoiseLayer[] NoiseLayers;

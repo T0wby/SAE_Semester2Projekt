@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
     #region Fields
     [SerializeField] private bool _useMultiThreading = true;
 
-    private MyPlanetGenerator[] _allPlanets = null;
+    private PlanetGenerator[] _allPlanets = null;
     #endregion
 
     #region Properties
@@ -52,7 +52,7 @@ public class GameManager : Singleton<GameManager>
 
     private void GetAllPlanets()
     {
-        _allPlanets = FindObjectsOfType<MyPlanetGenerator>();
+        _allPlanets = FindObjectsOfType<PlanetGenerator>();
     }
     #endregion
 }

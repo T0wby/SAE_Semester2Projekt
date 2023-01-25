@@ -2,34 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleNoiseFilter
+public class SimpleNoiseFilter : INoiseFilter
 {
-    NoiseSettings noiseSettings;
-    SimplexNoise noise;
+    private Noise _noise = new Noise();
+    private NoiseSettings.SimpleNoiseSettings _settings;
 
-    public SimpleNoiseFilter(NoiseSettings _settings)
+
+    public SimpleNoiseFilter(NoiseSettings.SimpleNoiseSettings settings)
     {
-        noiseSettings = _settings;
-        noise = new SimplexNoise(69);
+        this._settings = settings;
     }
 
-    public float Evaluate(Vector3 _point)
+
+    /// <summary>
+    /// Generates value, typically in range [0, 1]
+    /// </summary>
+    /// <param name="point"></param>
+    /// <returns></returns>
+    public float Evaluate(Vector3 point)
     {
         float noiseValue = 0;
-        float frequency = noiseSettings.Frequency;
-        float amplitude = noiseSettings.Amplitude;
+        float frequency = _settings.BaseRoughness;
+        float amplitude = 1f;
 
-        for (int i = 0; i < noiseSettings.LayerCount; i++)
+        for (int i = 0; i < _settings.LayerCount; i++)
         {
-            float v = noise.Evaluate(_point * frequency + noiseSettings.NoiseCenter);
+            float v = _noise.Evaluate(point * frequency + _settings.NoiseCenter);
             noiseValue += (v + 1) * 0.5f * amplitude;
-
-            frequency *= noiseSettings.Roughness;
-            amplitude *= noiseSettings.Persistence;
+            frequency *= _settings.Roughness;
+            amplitude *= _settings.Persistence;
         }
 
-        noiseValue = Mathf.Max(0, noiseValue - noiseSettings.GroundLevel);
-
-        return noiseValue * noiseSettings.Strength;
+        noiseValue = Mathf.Max(0, noiseValue - _settings.GroundLevel);
+        return noiseValue * _settings.Strength;
     }
 }
