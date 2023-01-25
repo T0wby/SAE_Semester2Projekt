@@ -12,11 +12,13 @@ public class PlanetGenerator : MonoBehaviour
     [SerializeField] private ShapeSettings _shapeSettings;
     [SerializeField] private ColourSettings _colourSettings;
     [SerializeField] private bool _autoUpdate = true;
+    [SerializeField] private bool _useMultiThreading = true;
 
     [HideInInspector] public bool ColourSettingsFoldout = true;
     [HideInInspector] public bool ShapeSettingsFoldout = true;
 
     private ShapeGeneratorTwo _shapeGenerator = new ShapeGeneratorTwo();
+    private ColourGenerator _colourGenerator = new ColourGenerator();
 
     private static Vector3[] DIRECTIONS = new Vector3[]
     {
@@ -35,13 +37,17 @@ public class PlanetGenerator : MonoBehaviour
     #endregion
 
     #region Unity
-
+    private void Awake()
+    {
+        GeneratePlanet();
+    }
     #endregion
 
     #region Methods
     private void Initialize()
     {
-        _shapeGenerator.UpdateShapeSettings(_shapeSettings);
+        _shapeGenerator.UpdateSettings(_shapeSettings);
+        _colourGenerator.UpdateSettings(_colourSettings);
         if (_meshFilters == null || _meshFilters.Length == 0)
         {
             _meshFilters = new MeshFilter[6];
@@ -54,10 +60,11 @@ public class PlanetGenerator : MonoBehaviour
             {
                 GameObject meshObj = new GameObject("mesh");
                 meshObj.transform.parent = transform;
-                meshObj.AddComponent<MeshRenderer>().sharedMaterial = new Material(Shader.Find("Lit"));
+                meshObj.AddComponent<MeshRenderer>();
                 _meshFilters[i] = meshObj.AddComponent<MeshFilter>();
                 _meshFilters[i].sharedMesh = new Mesh();
             }
+            _meshFilters[i].GetComponent<MeshRenderer>().sharedMaterial = _colourSettings.PlanetMaterial;
 
             _terrainSides[i] = new TerrainSide(_shapeGenerator, _meshFilters[i].sharedMesh, _resolution, DIRECTIONS[i]);
         }
@@ -99,16 +106,14 @@ public class PlanetGenerator : MonoBehaviour
     {
         foreach (TerrainSide terrainSide in _terrainSides)
         {
-            terrainSide.GenerateMesh(GameManager.Instance.UseMultiThreading, _shapeSettings.UseFancySphere);
+            terrainSide.GenerateMesh(_useMultiThreading, _shapeSettings.UseFancySphere);
             StartCoroutine(CheckTerrainFaces(terrainSide));
         }
+        _colourGenerator.UpdateElevation(_shapeGenerator.ElevationMinMax);
     }
     private void GenerateColour()
     {
-        foreach (MeshFilter meshFilter in _meshFilters)
-        {
-            meshFilter.GetComponent<MeshRenderer>().sharedMaterial.color = _colourSettings.PlanetColor;
-        }
+        _colourGenerator.UpdateColours();
     }
     #endregion
 

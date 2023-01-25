@@ -15,11 +15,18 @@ public class ColourGenerator
 			_texture = new Texture2D(_textureResolution, 1);
     }
 
+	/// <summary>
+	/// Updates the Elevation Values for our Shader
+	/// </summary>
+	/// <param name="elevationMinMax"></param>
 	public void UpdateElevation(MinMax elevationMinMax)
 	{
 		_colourSettings.PlanetMaterial.SetVector("_elevationMinMax", new Vector4(elevationMinMax.Min, elevationMinMax.Max));
     }
 
+	/// <summary>
+	/// Updates our Texture depending on the Gradient
+	/// </summary>
 	public void UpdateColours()
 	{
 		Color[] colours = new Color[_textureResolution];

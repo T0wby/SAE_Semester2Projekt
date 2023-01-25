@@ -7,11 +7,11 @@ public class ShapeGeneratorTwo
 {
     private ShapeSettings _currentSettings;
     private INoiseFilter[] _noiseFilters;
-    //private MinMax _elevationMinMax;
+    private MinMax _elevationMinMax;
 
-    //public MinMax ElevationMinMax { get => _elevationMinMax; }
+    public MinMax ElevationMinMax { get => _elevationMinMax; }
 
-    public void UpdateShapeSettings(ShapeSettings newSettings)
+    public void UpdateSettings(ShapeSettings newSettings)
     {
         _currentSettings = newSettings;
         _noiseFilters = new INoiseFilter[_currentSettings.NoiseLayers.Length];
@@ -19,7 +19,7 @@ public class ShapeGeneratorTwo
         {
             _noiseFilters[i] = NoiseFilterFactory.CreateNoiseFilter(newSettings.NoiseLayers[i].NoiseSettings);
         }
-        //_elevationMinMax = new MinMax();
+        _elevationMinMax = new MinMax();
     }
 
     public Vector3 TransformCubeToSpherePos(Vector3 _cubeVertPos, bool _useFancySphere)
@@ -93,6 +93,9 @@ public class ShapeGeneratorTwo
             }
         }
 
-        return _pointOnUnitSphere * _currentSettings.PlanetRadius * (1 + elevation);
+        elevation = _currentSettings.PlanetRadius * (1 + elevation);
+        _elevationMinMax.AddValue(elevation);
+
+        return _pointOnUnitSphere * elevation;
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4a0a860b2bf6640b196c499d1a0857, type: 3}
   m_Name: DayAndNightSettings
   m_EditorClassIdentifier: 
-  EnableDayAndNightCycle: 0
-  DayLengthInSeconds: 300
-  DayInitialRatio: 0.2
+  EnableDayAndNightCycle: 1
+  DayLengthInSeconds: 60
+  DayInitialRatio: 1
   LightRefreshRate: 0.01
