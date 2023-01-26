@@ -36,13 +36,11 @@ public class HideAI : AEntity
         set { _currentWalkTime = value; }
     }
 
-
     public bool HasSeenEnemy
     {
         get { return _hasSeenEnemy; }
         set { _hasSeenEnemy = value; }
     }
-
 
     #endregion
 
