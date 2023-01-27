@@ -114,6 +114,10 @@ public class PlanetGenerator : MonoBehaviour
     private void GenerateColour()
     {
         _colourGenerator.UpdateColours();
+        foreach (TerrainSide terrainSide in _terrainSides)
+        {
+            terrainSide.UpdateUV(_colourGenerator);
+        }
     }
     #endregion
 

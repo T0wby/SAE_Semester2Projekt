@@ -86,12 +86,15 @@ public class TerrainSide
 
     public bool SetMeshValues()
     {
+        Vector2[] uv = _mesh.uv;
+
         if (_thread is null)
         {
             _mesh.Clear();
             _mesh.vertices = _vertices;
             _mesh.triangles = _triangles;
             _mesh.RecalculateNormals();
+            _mesh.uv = uv;
             return false;
         }
         else
@@ -104,7 +107,30 @@ public class TerrainSide
             _mesh.vertices = _vertices;
             _mesh.triangles = _triangles;
             _mesh.RecalculateNormals();
+            _mesh.uv = uv;
             return isThreadAlive;
         }
+    }
+
+    public void UpdateUV(ColourGenerator colourGenerator)
+    {
+        Vector2[] uv = new Vector2[_resolution * _resolution];
+
+        for (int y = 0; y < _resolution; y++)
+        {
+            for (int x = 0; x < _resolution; x++)
+            {
+                int i = x + y * _resolution;
+                // Getting the percentage of completion
+                // (_resolution - 1) because we do not loop over the last _resolution index
+                Vector2 percent = new Vector2(x, y) / (_resolution - 1);
+
+                Vector3 pointOnUnitCube = _localUp + (percent.x - 0.5f) * 2 * _axisA + (percent.y - 0.5f) * 2 * _axisB;
+                Vector3 pointOnUnitSphere = _shapeGenerator.TransformCubeToSpherePos(pointOnUnitCube, _useFancySphere);
+
+                uv[i] = new Vector2(colourGenerator.BiomePercentageFromPoint(pointOnUnitSphere), 0);
+            }
+        }
+        _mesh.uv = uv;
     }
 }
