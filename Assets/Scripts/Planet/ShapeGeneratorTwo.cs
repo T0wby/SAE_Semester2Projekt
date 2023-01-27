@@ -40,35 +40,6 @@ public class ShapeGeneratorTwo
 
     public Vector3 CalculatePointOnPlanet(Vector3 _pointOnUnitSphere)
     {
-        /** OldPart
-        float elevation = 0f;
-        float firstLayerElevation = 0f;
-
-        if (_noiseFilters.Length > 0)
-        {
-            firstLayerElevation = _noiseFilters[0].Evaluate(_pointOnUnitSphere);
-
-            if (_currentSettings.NoiseLayers[0].Enabled)
-                elevation = firstLayerElevation;
-        }
-
-        //Start at idx 1 because first layer is already evaluated
-        float mask = 0f;
-        for (int i = 1; i < _noiseFilters.Length; i++)
-        {
-            if (_currentSettings.NoiseLayers[i].Enabled)
-            {
-                mask = _currentSettings.NoiseLayers[i].UseFirstLayerAsMask ? firstLayerElevation : 1f;
-
-                elevation += _noiseFilters[i].Evaluate(_pointOnUnitSphere) * mask;
-            }
-        }
-
-        elevation = _currentSettings.PlanetRadius * (1 + elevation);
-        _elevationMinMax.AddValue(elevation);
-
-        return _pointOnUnitSphere * elevation;**/
-
         // Value later added to the _pointOnUnitSphere to create higher parts in the mesh
         float elevation = 0f;
         float firstLayerElevation = 0f;

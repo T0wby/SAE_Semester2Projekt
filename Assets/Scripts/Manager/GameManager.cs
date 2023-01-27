@@ -7,17 +7,8 @@ public class GameManager : Singleton<GameManager>
 {
 
     #region Fields
-    [SerializeField] private bool _useMultiThreading = true;
 
     private PlanetGenerator[] _allPlanets = null;
-    #endregion
-
-    #region Properties
-    public bool UseMultiThreading
-    {
-        get { return _useMultiThreading; }
-        set { _useMultiThreading = value; }
-    }
     #endregion
 
 
@@ -33,10 +24,10 @@ public class GameManager : Singleton<GameManager>
     #region Methods
     public void ChangeMultiThreading(bool value)
     {
-        Debug.Log(value);
-        Debug.Log($"_useMultiThreading: {_useMultiThreading}");
-
-        _useMultiThreading = value;
+        for (int i = 0; i < _allPlanets.Length; i++)
+        {
+            _allPlanets[i].UseMultiThreading = value;
+        }
     } 
 
     public void GenerateAllPlanets(InputAction.CallbackContext context)

@@ -34,6 +34,7 @@ public class PlanetGenerator : MonoBehaviour
     #region Properties
     public ShapeSettings ShapeSettings { get => _shapeSettings; }
     public ColourSettings ColourSettings { get => _colourSettings; }
+    public bool UseMultiThreading { get => _useMultiThreading; set => _useMultiThreading = value; }
     #endregion
 
     #region Unity

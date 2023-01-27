@@ -28,7 +28,7 @@ public class GoToTarget : Node
     {
         Transform targetTransform = (Transform)GetData("target");
 
-        SetAnimationBool(_animator, "IsWalking", true);
+        //SetAnimationBool(_animator, "IsWalking", true);
 
         if (_agent.speed != _settings.RunSpeed)
             _agent.speed = _settings.RunSpeed;
@@ -38,8 +38,7 @@ public class GoToTarget : Node
             if (_agent.destination != targetTransform.position)
                 _agent.destination = targetTransform.position;
         }
-        else
-            SetAnimationBool(_animator, "IsWalking", false);
+            //SetAnimationBool(_animator, "IsWalking", false);
 
         return state = ENodeState.RUNNING;
     }
