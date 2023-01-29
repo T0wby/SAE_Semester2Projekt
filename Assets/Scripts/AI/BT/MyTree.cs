@@ -7,7 +7,7 @@ namespace BehaviorTree
 {
     public abstract class MyTree : MonoBehaviour
     {
-        private Node _root = null;
+        protected Node _root = null;
         protected NavMeshAgent _agent;
         protected int _enemyLayerMask;
 

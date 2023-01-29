@@ -8,15 +8,17 @@ using BehaviorTree;
 public class RabbitBT : BehaviorTree.MyTree
 {
     [SerializeField] private AnimalAISettings _settings;
+    [SerializeField] private AnimalSearchArea _animalSearchArea;
     private Rabbit _rabbit;
+
+    public Node Root => _root;
 
     protected override Node SetupTree()
     {
-        _enemyLayerMask = 1 << 9;
         _agent = GetComponent<NavMeshAgent>();
         _rabbit = GetComponent<Rabbit>();
 
-        Node root = new Selector(new List<Node>
+        _root = new Selector(new List<Node>
         {
             new Sequence(new List<Node>
             {
@@ -24,6 +26,11 @@ public class RabbitBT : BehaviorTree.MyTree
                 new Sequence(new List<Node>
                 {
                     new LF_GoToAnimalTarget(this.transform, _agent, _settings, "_reproduceTransform"),
+                    new Sequence(new List<Node>
+                    {
+                        new LF_TargetInRange(this.transform, _settings, "_reproduceTransform"),
+                        new LF_StartActivity(_rabbit, _rabbit.State)
+                    }),
                 }),
             }),
             new Sequence(new List<Node>
@@ -40,10 +47,8 @@ public class RabbitBT : BehaviorTree.MyTree
                 new LF_CheckAnimalState(_rabbit, EAnimalStates.ReproduceReady, true),
                 new Sequence(new List<Node>
                 {
-                    // Target in Search radius ?
-                        // got the same state ?
-                        // set _animalTarget
-                            // Change to ReproRequest on both and set _reproduceTransform
+                    new LF_TargetInRadius(this.transform, _animalSearchArea, ETargetTypes.Animal),
+                    new LF_SetAnimalState(_rabbit, EAnimalStates.Engaged),
                 }),
             }),
             new Sequence(new List<Node>
@@ -51,7 +56,12 @@ public class RabbitBT : BehaviorTree.MyTree
                 new LF_CheckAnimalState(_rabbit, EAnimalStates.Drink, true),
                 new Sequence(new List<Node>
                 {
-                    // Target in Search radius ?
+                    new LF_TargetInRadius(this.transform, _animalSearchArea, ETargetTypes.Water),
+                    new Sequence(new List<Node>
+                    {
+                        new LF_TargetInRange(this.transform, _settings, "_waterTarget"),
+                        new LF_StartActivity(_rabbit, _rabbit.State)
+                    }),
                 }),
             }),
             new Sequence(new List<Node>
@@ -59,12 +69,17 @@ public class RabbitBT : BehaviorTree.MyTree
                 new LF_CheckAnimalState(_rabbit, EAnimalStates.Eat, true),
                 new Sequence(new List<Node>
                 {
-                    // Target in Search radius ?
+                    new LF_TargetInRadius(this.transform, _animalSearchArea, ETargetTypes.Grass),
+                    new Sequence(new List<Node>
+                    {
+                        new LF_TargetInRange(this.transform, _settings, "_eatTargetTransform"),
+                        new LF_StartActivity(_rabbit, _rabbit.State)
+                    }),
                 }),
             }),
-            // Move
+            new LF_MoveAround(this.transform, _agent, _settings)
         });
 
-        return root;
+        return _root;
     }
 }

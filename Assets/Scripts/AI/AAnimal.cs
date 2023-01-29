@@ -1,57 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-
-public enum EAnimalStates
-{
-    None,
-    Move,
-    Eat,
-    Drink,
-    ReproduceReady,
-    ReproRequest,
-    Engaged
-}
+using UnityEngine.UI;
 
 public abstract class AAnimal : MonoBehaviour, IMortal
 {
+    [Header("Settings")]
     [SerializeField] protected AnimalAISettings _settings;
     [SerializeField] protected GameObject _childPrefab;
+
+    [Header("UI")]
+    [SerializeField] protected TMP_Text _stateText;
+    [SerializeField] protected Image _lifeBar;
+    [SerializeField] protected Image _hungerBar;
+    [SerializeField] protected Image _thirstBar;
+    [SerializeField] protected Image _urgeBar;
+
     protected float _health;
     protected float _hunger;
     protected float _thirst;
     protected float _reproduceUrge = 0f;
-    private float _reproduceChance;
+    protected float _reproduceChance;
     protected EAnimalStates _state = EAnimalStates.None;
 
     public abstract float Health { get; set; }
-    public EAnimalStates State { get => _state; set => _state = value; }
+
+    public EAnimalStates State
+    {
+        get => _state;
+        set
+        {
+            _state = value;
+            if (OnStateChange != null)
+                OnStateChange.Invoke();
+        }
+    }
     public float ReproduceChance { get => _reproduceChance; }
 
-    public UnityEvent OnHealthReduction;
-    public UnityEvent OnHungerReduction;
-    public UnityEvent OnThirstReduction;
-    public UnityEvent OnReproduceAddition;
+    public UnityEvent OnHealthChange;
+    public UnityEvent OnHungerChange;
+    public UnityEvent OnThirstChange;
+    public UnityEvent OnReproduceChange;
+    public UnityEvent OnStateChange;
 
     private void Awake()
     {
-        OnHealthReduction.AddListener(CheckHealth);
-        OnHungerReduction.AddListener(CheckHunger);
-        OnThirstReduction.AddListener(CheckThirst);
-        OnReproduceAddition.AddListener(CheckReproduceUrge);
-        _health = _settings.MaxHealth;
-        _hunger = _settings.MaxHunger;
-        _thirst = _settings.MaxThirst;
-        _reproduceChance = _settings.ReproduceChance;
+        
     }
 
     public abstract void CheckHealth();
     public abstract void CheckHunger();
     public abstract void CheckThirst();
     public abstract void CheckReproduceUrge();
+    public abstract void CheckStateChange();
     public abstract void Destroy();
     public abstract void Reproduce();
     public abstract void Drink();
-    public abstract void Eat();
+    public abstract void Eat(Grass grass);
 }

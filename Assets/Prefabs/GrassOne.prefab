@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8418980817250724533}
   - component: {fileID: 8426408349069966893}
   - component: {fileID: 2171466680130606235}
+  - component: {fileID: 6360032276174028091}
   m_Layer: 0
   m_Name: GrassOne
   m_TagString: Untagged
@@ -96,3 +97,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ed41ea4d517374d88568d49f0d0e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6360032276174028091
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8405912248754163293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0.023827516, y: 0.16926847, z: -0.0028370619}

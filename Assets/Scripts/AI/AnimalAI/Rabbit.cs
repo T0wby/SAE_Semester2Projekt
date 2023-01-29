@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class Rabbit : AAnimal
 {
+
     #region Properties
     public override float Health
     {
@@ -13,8 +14,8 @@ public class Rabbit : AAnimal
         set
         {
             _health = value;
-            if (OnHealthReduction != null)
-                OnHealthReduction.Invoke();
+            if (OnHealthChange != null)
+                OnHealthChange.Invoke();
         }
     }
 
@@ -24,8 +25,8 @@ public class Rabbit : AAnimal
         set
         {
             _hunger = value;
-            if (OnHungerReduction != null)
-                OnHungerReduction.Invoke();
+            if (OnHungerChange != null)
+                OnHungerChange.Invoke();
         }
     }
     public float Thirst
@@ -34,8 +35,19 @@ public class Rabbit : AAnimal
         set
         {
             _thirst = value;
-            if (OnThirstReduction != null)
-                OnThirstReduction.Invoke();
+            if (OnThirstChange != null)
+                OnThirstChange.Invoke();
+        }
+    }
+    
+    public float ReproduceUrge
+    {
+        get => _reproduceUrge;
+        set
+        {
+            _reproduceUrge = value;
+            if (OnReproduceChange != null)
+                OnReproduceChange.Invoke();
         }
     }
 
@@ -54,6 +66,8 @@ public class Rabbit : AAnimal
     #region EventMethods
     public override void CheckHealth()
     {
+        _lifeBar.fillAmount = _health * 0.01f;
+
         if (_health <= 0)
         {
             Destroy();
@@ -65,9 +79,11 @@ public class Rabbit : AAnimal
         if (_hunger < 0)
             _hunger = 0;
 
+        _hungerBar.fillAmount = _hunger * 0.01f;
+
         if (_hunger < 20f && (_state == EAnimalStates.Move || _state == EAnimalStates.None))
         {
-            _state = EAnimalStates.Eat;
+            State = EAnimalStates.Eat;
             return;
         }
 
@@ -80,9 +96,11 @@ public class Rabbit : AAnimal
         if (_thirst < 0)
             _thirst = 0;
 
+        _thirstBar.fillAmount = _thirst * 0.01f;
+
         if (_thirst < 20f && (_state == EAnimalStates.Move || _state == EAnimalStates.None))
         {
-            _state = EAnimalStates.Drink;
+            State = EAnimalStates.Drink;
             return;
         }
 
@@ -92,12 +110,18 @@ public class Rabbit : AAnimal
 
     public override void CheckReproduceUrge()
     {
-        if (_reproduceUrge >= _settings.MaxReproduceUrge && _state != EAnimalStates.Engaged)
+        _urgeBar.fillAmount = _reproduceUrge * 0.01f;
+        if (_reproduceUrge >= _settings.MaxReproduceUrge && _state != EAnimalStates.Engaged && _state != EAnimalStates.ReproduceReady)
         {
-            _state = EAnimalStates.ReproduceReady;
+            State = EAnimalStates.ReproduceReady;
             _reproduceUrge = _settings.MaxReproduceUrge;
             return;
         }
+    }
+
+    public override void CheckStateChange()
+    {
+        _stateText.text = $"{_state}";
     }
     #endregion
 
@@ -106,6 +130,15 @@ public class Rabbit : AAnimal
     /// </summary>
     private void StartingMethods()
     {
+        OnHealthChange.AddListener(CheckHealth);
+        OnHungerChange.AddListener(CheckHunger);
+        OnThirstChange.AddListener(CheckThirst);
+        OnReproduceChange.AddListener(CheckReproduceUrge);
+        OnStateChange.AddListener(CheckReproduceUrge);
+        _health = _settings.MaxHealth;
+        _hunger = _settings.MaxHunger;
+        _thirst = _settings.MaxThirst;
+        _reproduceChance = _settings.ReproduceChance;
         StartCoroutine(ReduceValues());
     }
 
@@ -113,9 +146,9 @@ public class Rabbit : AAnimal
     {
         StopAllCoroutines();
 
-        OnHealthReduction.RemoveAllListeners();
-        OnHungerReduction.RemoveAllListeners();
-        OnThirstReduction.RemoveAllListeners();
+        OnHealthChange.RemoveAllListeners();
+        OnHungerChange.RemoveAllListeners();
+        OnThirstChange.RemoveAllListeners();
         gameObject.SetActive(false);
     }
 
@@ -130,9 +163,9 @@ public class Rabbit : AAnimal
         StartCoroutine(DrinkFull());
     }
 
-    public override void Eat()
+    public override void Eat(Grass grass)
     {
-        StartCoroutine(EatFull());
+        StartCoroutine(EatFull(grass));
     }
     #endregion
 
@@ -143,35 +176,50 @@ public class Rabbit : AAnimal
         while (true)
         {
             yield return new WaitForSeconds(5f);
-            _reproduceUrge += 10f;
-            _thirst -= 15f;
-            _hunger -= 10f;
+            ReproduceUrge += 10f;
+            Thirst -= 15f;
+            Hunger -= 10f;
         }
     }
 
     private IEnumerator DrinkFull()
     {
-        _state = EAnimalStates.Drink;
+        State = EAnimalStates.Drink;
 
         while (_thirst < _settings.MaxThirst)
         {
             yield return new WaitForSeconds(3f);
-            _thirst += 10f;
+            Thirst += 10f;
         }
 
-        _state = EAnimalStates.None;
+        State = EAnimalStates.None;
     }
-    private IEnumerator EatFull()
+    private IEnumerator EatFull(Grass grass)
     {
-        _state = EAnimalStates.Eat;
+        State = EAnimalStates.Eat;
+        grass.IsTaken = true;
+
 
         while (_hunger < _settings.MaxHunger)
         {
             yield return new WaitForSeconds(3f);
-            _hunger += 10f;
+            Hunger += 10f;
         }
 
-        _state = EAnimalStates.None;
+        Destroy(grass.gameObject);
+        State = EAnimalStates.None;
     }
+    #endregion
+
+    #region Gizmo
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(1, 1, 0, 0.1f);
+        Gizmos.DrawSphere(transform.position, _settings.SearchRange);
+    }
+
+    
+
     #endregion
 }
