@@ -18,6 +18,6 @@ MonoBehaviour:
   _walkSpeed: 2
   _runSpeed: 4
   _searchRange: 20
-  _interactRange: 2
+  _interactRange: 4
   _maxReproduceUrge: 100
   _reproduceChance: 50

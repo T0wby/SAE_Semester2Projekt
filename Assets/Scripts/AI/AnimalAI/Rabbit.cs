@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class Rabbit : AAnimal
 {
+    private Coroutine _coroutineEat;
+    private Coroutine _coroutineDrink;
 
     #region Properties
     public override float Health
@@ -155,17 +157,24 @@ public class Rabbit : AAnimal
     public override void Reproduce()
     {
         Instantiate(_childPrefab, this.transform.position, Quaternion.identity, this.transform.parent);
-        _reproduceUrge = 0f;
+        ReproduceUrge = 0f;
+        State = EAnimalStates.None;
     }
 
     public override void Drink()
     {
-        StartCoroutine(DrinkFull());
+        if (_coroutineDrink == null)
+        {
+            _coroutineDrink = StartCoroutine(DrinkFull());
+        }
     }
 
     public override void Eat(Grass grass)
     {
-        StartCoroutine(EatFull(grass));
+        if (_coroutineEat == null)
+        {
+            _coroutineEat = StartCoroutine(EatFull(grass));
+        }
     }
     #endregion
 
@@ -176,7 +185,7 @@ public class Rabbit : AAnimal
         while (true)
         {
             yield return new WaitForSeconds(5f);
-            ReproduceUrge += 10f;
+            ReproduceUrge += 20f;
             Thirst -= 15f;
             Hunger -= 10f;
         }
@@ -192,6 +201,7 @@ public class Rabbit : AAnimal
             Thirst += 10f;
         }
 
+        _coroutineDrink = null;
         State = EAnimalStates.None;
     }
     private IEnumerator EatFull(Grass grass)
@@ -208,6 +218,7 @@ public class Rabbit : AAnimal
 
         Destroy(grass.gameObject);
         State = EAnimalStates.None;
+        _coroutineEat = null;
     }
     #endregion
 
@@ -218,8 +229,6 @@ public class Rabbit : AAnimal
         Gizmos.color = new Color(1, 1, 0, 0.1f);
         Gizmos.DrawSphere(transform.position, _settings.SearchRange);
     }
-
-    
 
     #endregion
 }
