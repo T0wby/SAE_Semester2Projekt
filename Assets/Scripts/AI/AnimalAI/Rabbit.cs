@@ -6,8 +6,10 @@ using UnityEngine.Events;
 
 public class Rabbit : AAnimal
 {
+    #region Fields
     private Coroutine _coroutineEat;
-    private Coroutine _coroutineDrink;
+    private Coroutine _coroutineDrink; 
+    #endregion
 
     #region Properties
     public override float Health
@@ -52,7 +54,6 @@ public class Rabbit : AAnimal
                 OnReproduceChange.Invoke();
         }
     }
-
     #endregion
 
     #region Unity
@@ -61,7 +62,6 @@ public class Rabbit : AAnimal
         StartingMethods();
     } 
     #endregion
-
 
     #region Methods
 
@@ -128,7 +128,7 @@ public class Rabbit : AAnimal
     #endregion
 
     /// <summary>
-    /// Start all Coroutines on Awake
+    /// Start all Starting values
     /// </summary>
     private void StartingMethods()
     {
@@ -137,13 +137,16 @@ public class Rabbit : AAnimal
         OnThirstChange.AddListener(CheckThirst);
         OnReproduceChange.AddListener(CheckReproduceUrge);
         OnStateChange.AddListener(CheckReproduceUrge);
-        _health = _settings.MaxHealth;
-        _hunger = _settings.MaxHunger;
-        _thirst = _settings.MaxThirst;
+        Health = _settings.MaxHealth;
+        Hunger = _settings.MaxHunger;
+        Thirst = _settings.MaxThirst;
         _reproduceChance = _settings.ReproduceChance;
         StartCoroutine(ReduceValues());
     }
 
+    /// <summary>
+    /// Deactivates Object when health reaches 0
+    /// </summary>
     public override void Destroy()
     {
         StopAllCoroutines();
@@ -154,13 +157,23 @@ public class Rabbit : AAnimal
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Creates a child and resets the animal
+    /// </summary>
     public override void Reproduce()
     {
-        Instantiate(_childPrefab, this.transform.position, Quaternion.identity, this.transform.parent);
+        // Can only have one Child
+        if (_reproduceCount < 1)
+            Instantiate(_childPrefab, this.transform.position, Quaternion.identity, this.transform.parent);
+        _reproduceCount++;
         ReproduceUrge = 0f;
         State = EAnimalStates.None;
+        _randomMove = true;
     }
 
+    /// <summary>
+    /// Starts the Drink Coroutine
+    /// </summary>
     public override void Drink()
     {
         if (_coroutineDrink == null)
@@ -169,6 +182,10 @@ public class Rabbit : AAnimal
         }
     }
 
+    /// <summary>
+    /// Starts the Eat Coroutine
+    /// </summary>
+    /// <param name="grass"></param>
     public override void Eat(Grass grass)
     {
         if (_coroutineEat == null)
@@ -185,9 +202,9 @@ public class Rabbit : AAnimal
         while (true)
         {
             yield return new WaitForSeconds(5f);
-            ReproduceUrge += 20f;
-            Thirst -= 15f;
-            Hunger -= 10f;
+            ReproduceUrge += 0f;
+            Thirst -= 0f;
+            Hunger -= 15f;
         }
     }
 
@@ -203,6 +220,7 @@ public class Rabbit : AAnimal
 
         _coroutineDrink = null;
         State = EAnimalStates.None;
+        _randomMove = true;
     }
     private IEnumerator EatFull(Grass grass)
     {
@@ -213,12 +231,13 @@ public class Rabbit : AAnimal
         while (_hunger < _settings.MaxHunger)
         {
             yield return new WaitForSeconds(3f);
-            Hunger += 10f;
+            Hunger += 30f;
         }
 
         Destroy(grass.gameObject);
         State = EAnimalStates.None;
         _coroutineEat = null;
+        _randomMove = true;
     }
     #endregion
 

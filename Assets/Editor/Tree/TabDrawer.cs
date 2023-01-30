@@ -30,11 +30,11 @@ public class TabDrawer
 		int index = (int)_currentTab;
 		index = GUILayout.Toolbar(index, _allCategorylabels.ToArray());
         _currentTab = _allCategories[index];
-	}
+    }
 
 	private void InitTabs()
 	{
-		_allCategories= new List<Tabs>();
+		_allCategories = new List<Tabs>();
 
 		Tabs[] enums = (Tabs[])System.Enum.GetValues(typeof(Tabs));
 		for (int i = 0; i < enums.Length; i++)

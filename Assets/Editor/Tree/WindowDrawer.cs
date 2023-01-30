@@ -32,6 +32,10 @@ public class WindowDrawer
         _nodeWindows.Add(new NodeWindow(new Rect(xPos, yPos, _nodeWindowSize.x, _nodeWindowSize.y), node));
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="bTWindow"></param>
     public void RedrawWindows(BTWindow bTWindow)
     {
         bTWindow.BeginWindows();
@@ -48,6 +52,10 @@ public class WindowDrawer
         _connectionHandler.DrawConnections();
     }
 
+    /// <summary>
+    /// Create a NodeWindow which functions as the root and can't be deleted
+    /// </summary>
+    /// <param name="id"></param>
     private void DrawRootNodeWindow(int id)
     {
         if (_selectedRootNodeInt != (_selectedRootNodeInt = EditorGUILayout.Popup(_selectedRootNodeInt, _composites)))
@@ -59,6 +67,10 @@ public class WindowDrawer
         GUI.DragWindow();
     }
 
+    /// <summary>
+    /// Create a new NodeWindow
+    /// </summary>
+    /// <param name="idx">window id</param>
     private void DrawNodeWindow(int idx)
     {
         if (GUI.Button(new Rect(0, 0, 20, 20), "X"))
@@ -92,6 +104,10 @@ public class WindowDrawer
         GUI.DragWindow();
     }
 
+    /// <summary>
+    /// Draws two buttons on each individual Node Window, that add or remove connections to other Node Windows
+    /// </summary>
+    /// <param name="nodeWindow"></param>
     private void DrawAddAndRemoveButton(NodeWindow nodeWindow)
     {
         if (GUI.Button(new Rect(_nodeWindowSize.x - 20, 40, 15, 15), "+"))

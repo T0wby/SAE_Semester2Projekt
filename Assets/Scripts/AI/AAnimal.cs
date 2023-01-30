@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public abstract class AAnimal : MonoBehaviour, IMortal
 {
+    #region Fields
     [Header("Settings")]
     [SerializeField] protected AnimalAISettings _settings;
     [SerializeField] protected GameObject _childPrefab;
@@ -23,8 +24,12 @@ public abstract class AAnimal : MonoBehaviour, IMortal
     protected float _thirst;
     protected float _reproduceUrge = 0f;
     protected float _reproduceChance;
+    protected int _reproduceCount;
+    protected bool _randomMove = true;
     protected EAnimalStates _state = EAnimalStates.None;
+    #endregion
 
+    #region Properties
     public abstract float Health { get; set; }
 
     public EAnimalStates State
@@ -38,18 +43,19 @@ public abstract class AAnimal : MonoBehaviour, IMortal
         }
     }
     public float ReproduceChance { get => _reproduceChance; }
+    public bool RandomMove { get => _randomMove; set => _randomMove = value; }
+    #endregion
 
+    #region Events
     public UnityEvent OnHealthChange;
     public UnityEvent OnHungerChange;
     public UnityEvent OnThirstChange;
     public UnityEvent OnReproduceChange;
     public UnityEvent OnStateChange;
+    #endregion
 
-    private void Awake()
-    {
-        
-    }
 
+    #region Methods
     public abstract void CheckHealth();
     public abstract void CheckHunger();
     public abstract void CheckThirst();
@@ -58,5 +64,6 @@ public abstract class AAnimal : MonoBehaviour, IMortal
     public abstract void Destroy();
     public abstract void Reproduce();
     public abstract void Drink();
-    public abstract void Eat(Grass grass);
+    public abstract void Eat(Grass grass); 
+    #endregion
 }

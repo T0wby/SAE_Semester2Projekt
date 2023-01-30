@@ -8,6 +8,7 @@ public class LF_TargetInRadius : Node
     private AnimalSearchArea _animalSearchArea;
     private ETargetTypes _eTargetType;
     private Transform _thisTransform;
+    private AAnimal _animal;
 
     #region Constructors
     public LF_TargetInRadius()
@@ -20,9 +21,10 @@ public class LF_TargetInRadius : Node
     /// </summary>
     /// <param name="animalSearchArea">Reference to the search area component</param>
     /// <param name="targetType">Type that you are searching for</param>
-    public LF_TargetInRadius(Transform thisTransform, AnimalSearchArea animalSearchArea, ETargetTypes targetType)
+    public LF_TargetInRadius(Transform thisTransform, AAnimal animal, AnimalSearchArea animalSearchArea, ETargetTypes targetType)
     {
         _thisTransform = thisTransform;
+        _animal = animal;
         _animalSearchArea = animalSearchArea;
         _eTargetType = targetType;
     }
@@ -33,8 +35,6 @@ public class LF_TargetInRadius : Node
     {
         switch (_eTargetType)
         {
-            case ETargetTypes.None:
-                return ENodeState.FAILURE;
             case ETargetTypes.Grass:
                 return CheckGrass(_animalSearchArea.GrassInRange);
             case ETargetTypes.Animal:
@@ -42,6 +42,7 @@ public class LF_TargetInRadius : Node
             case ETargetTypes.Water:
                 return CheckWater(_animalSearchArea.WaterInRange);
             default:
+                _animal.RandomMove = true;
                 return ENodeState.FAILURE;
         }
     }
@@ -52,6 +53,7 @@ public class LF_TargetInRadius : Node
         {
             GetRoot(this).SetData("_eatTarget", grass[0]);
             GetRoot(this).SetData("_eatTargetTransform", grass[0].transform);
+            _animal.RandomMove = false;
             return ENodeState.SUCCESS;
         }
         else
@@ -75,6 +77,7 @@ public class LF_TargetInRadius : Node
         if (water.Count > 0)
         {
             GetRoot(this).SetData("_waterTarget", water[0].transform);
+            _animal.RandomMove = false;
             return ENodeState.SUCCESS;
         }
         else
@@ -95,6 +98,8 @@ public class LF_TargetInRadius : Node
                 SetAnimalTarget(animal, _thisTransform.gameObject.GetComponent<AAnimal>(), "_reproduceTransform");
                 animal.State = EAnimalStates.Engaged;
                 GetRoot(this).SetData("_reproduceTransform", animal.transform);
+                _animal.RandomMove = false;
+                animal.RandomMove = false;
                 return true;
             }
         }

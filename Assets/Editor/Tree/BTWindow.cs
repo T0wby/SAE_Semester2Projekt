@@ -10,16 +10,18 @@ public class BTWindow : EditorWindow
     private NodeCreationDrawer _nodeCreation;
     private WindowDrawer _windowDrawer;
 
+    private float panX = 0;
+    private float panY = 0;
 
     private Rect _windowRect = new Rect(50,50,150,50);
 
     [MenuItem("Tools/BTWindow")]
     private static void ShowWindow()
     {
-        _bTWindow = (BTWindow)EditorWindow.GetWindow(typeof(BTWindow));
-        _bTWindow.titleContent = new GUIContent();
+        _bTWindow = (BTWindow)GetWindow(typeof(BTWindow));
+        _bTWindow.titleContent = new GUIContent("BehaviourTree Window");
         _bTWindow.maxSize = new Vector2(2000, 2000);
-        _bTWindow.minSize = new Vector2(500, 500);
+        _bTWindow.minSize = new Vector2(700, 700);
     }
 
     private void OnEnable()
@@ -31,13 +33,15 @@ public class BTWindow : EditorWindow
 
     private void OnGUI()
     {
+        
+        GUI.BeginGroup(new Rect(panX, panY, _bTWindow.maxSize.x * 5, _bTWindow.maxSize.y * 5));
+
         _tabDrawer.DrawTabs();
 
         switch (_tabDrawer.CurrentTab)
         {
             case Tabs.Preset:
                 _nodeCreation.DrawNodeCreationButtons(_windowDrawer);
-
                 break;
             case Tabs.CurrentTree:
                 _windowDrawer.RedrawWindows(this);
@@ -45,25 +49,25 @@ public class BTWindow : EditorWindow
             case Tabs.Settings:
                 if (GUI.Button(new Rect(50,50,100,100),"Save"))
                 {
-
+                    _bTWindow.SaveChanges();
                 }
                 if (GUI.Button(new Rect(50, 175, 100, 100), "Load"))
                 {
-
+                    
                 }
                 break;
             default:
                 break;
         }
-    }
 
-    private void DrawWindow(int idx)
-    {
-        GUI.DragWindow();
+        GUI.EndGroup();
 
-        if (GUI.Button(new Rect(0, 0, 20, 20), "X"))
+        if (Event.current.type == EventType.MouseDrag)
         {
-
+            panX += Event.current.delta.x;
+            panY += Event.current.delta.y;
         }
+
+        Repaint();
     }
 }
