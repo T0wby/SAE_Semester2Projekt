@@ -10,12 +10,14 @@ public class GrassSpawner : MonoBehaviour
     [SerializeField] private int _maxSpawns = 5;
     [SerializeField] private float _spawnTimer = 5f;
     private List<GameObject> _spawnedGrass;
+    private List<int> _eatenGrass;
 
     public List<GameObject> SpawnedGrass { get => _spawnedGrass; }
 
     private void Awake()
     {
         _spawnedGrass = new List<GameObject>();
+        _eatenGrass = new List<int>();
         StartCoroutine(SpawnGrass());
     }
 
@@ -23,6 +25,7 @@ public class GrassSpawner : MonoBehaviour
     {
         while (true)
         {
+            CheckSpawnedGrass();
             if (_spawnedGrass.Count < _maxSpawns)
             {
                 float xPos = transform.position.x + Random.Range(-_spawnArea.x * 0.5f, _spawnArea.x * 0.5f);
@@ -32,6 +35,23 @@ public class GrassSpawner : MonoBehaviour
 
             yield return new WaitForSeconds(_spawnTimer);
         }
+    }
+
+    private void CheckSpawnedGrass()
+    {
+        for (int i = 0; i < _spawnedGrass.Count; i++)
+        {
+            if (_spawnedGrass[i] == null)
+            {
+                _eatenGrass.Add(i);
+            }
+        }
+
+        foreach (int eatenGrass in _eatenGrass)
+        {
+            _spawnedGrass.RemoveAt(eatenGrass);
+        }
+        _eatenGrass.Clear();
     }
 
     private void OnDrawGizmosSelected()

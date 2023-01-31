@@ -51,8 +51,24 @@ public class LF_TargetInRadius : Node
     {
         if (grass.Count > 0)
         {
-            GetRoot(this).SetData("_eatTarget", grass[0]);
-            GetRoot(this).SetData("_eatTargetTransform", grass[0].transform);
+            Grass closestGrass = grass[0];
+            Vector3 first = grass[0].transform.position - _thisTransform.position;
+            float minlength = first.sqrMagnitude;
+            float tmplength = 0;
+
+            for (int i = 1; i < grass.Count; i++)
+            {
+                Vector3 distance = grass[i].transform.position - _thisTransform.position;
+                tmplength = distance.sqrMagnitude;
+                if (minlength > tmplength)
+                {
+                    closestGrass = grass[i];
+                    minlength = tmplength;
+                }
+            }
+
+            GetRoot(this).SetData("_eatTarget", closestGrass);
+            GetRoot(this).SetData("_eatTargetTransform", closestGrass.transform);
             _animal.RandomMove = false;
             return ENodeState.SUCCESS;
         }
@@ -76,7 +92,24 @@ public class LF_TargetInRadius : Node
     {
         if (water.Count > 0)
         {
-            GetRoot(this).SetData("_waterTarget", water[0].transform);
+
+            GameObject closestWater = water[0];
+            Vector3 first = water[0].transform.position - _thisTransform.position;
+            float minlength = first.sqrMagnitude;
+            float tmplength = 0;
+
+            for (int i = 1; i < water.Count; i++)
+            {
+                Vector3 distance = water[i].transform.position - _thisTransform.position;
+                tmplength = distance.sqrMagnitude;
+                if (minlength > tmplength)
+                {
+                    closestWater = water[i];
+                    minlength = tmplength;
+                }
+            }
+
+            GetRoot(this).SetData("_waterTarget", closestWater.transform);
             _animal.RandomMove = false;
             return ENodeState.SUCCESS;
         }

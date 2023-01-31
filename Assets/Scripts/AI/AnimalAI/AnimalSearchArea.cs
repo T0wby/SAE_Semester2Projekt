@@ -70,7 +70,10 @@ public class AnimalSearchArea : MonoBehaviour
     {
         if (add)
         {
-            grassList.Add(grass);
+            if (!grass.IsTaken)
+            {
+                grassList.Add(grass);
+            }
         }
         else
         {

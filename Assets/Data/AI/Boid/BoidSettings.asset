@@ -19,8 +19,8 @@ MonoBehaviour:
   _runSpeed: 5
   _interactRange: 2
   _alignment: 1
-  _cohesion: 1
-  _seperation: 1
+  _cohesion: 1.12
+  _seperation: 1.1
   _target: 0
   _damage: 2
   _atkSpeed: 1
