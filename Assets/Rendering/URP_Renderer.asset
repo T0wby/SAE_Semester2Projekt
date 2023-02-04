@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248cdf21786c6574685a4cf9731f8566, type: 3}
   m_Name: NightVisionURP
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   shader: {fileID: 7200000, guid: dcfda70c5d2c1bc488a34d1103594df3, type: 3}
   radius: 70
   tintStrength: 0.7
   softenEdge: 3
-  tint: {r: 0, g: 1, b: 0, a: 1}
+  tint:
+    r: 0
+    g: 1
+    b: 0
+    a: 1
   lines: 100
 --- !u!114 &11400000
 MonoBehaviour:
@@ -33,9 +37,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugShaders:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
-  m_RendererFeatures:
-  - {fileID: -62102740389477855}
-  m_RendererFeatureMap: 21c281fbe25d23ff
+  m_RendererFeatures: []
+  m_RendererFeatureMap: 
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}

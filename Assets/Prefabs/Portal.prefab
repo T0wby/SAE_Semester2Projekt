@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2822017350108134588}
   - component: {fileID: 2822017350108134589}
   - component: {fileID: 1872473040}
+  - component: {fileID: 8718128584620342037}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -59,6 +60,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetPoint: {fileID: 0}
+  _targetTag: Player
+--- !u!114 &8718128584620342037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2822017350108134591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab0b1b5604b0fd42a4c6cb221d00b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvases: []
   _targetTag: Player
 --- !u!1 &2822017350369731364
 GameObject:

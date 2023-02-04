@@ -33,9 +33,6 @@ public class TerrainSide
     {
         _useFancySphere = useFancySphere;
 
-        //Stopwatch st = new Stopwatch();
-        //st.Start();
-
         if (useThreading)
         {
             _thread = new Thread(ConstructMesh);
@@ -44,8 +41,6 @@ public class TerrainSide
         else
             ConstructMesh();
 
-        //st.Stop();
-        //UnityEngine.Debug.Log($"GeneratePlanet took {st.ElapsedMilliseconds} ms to complete");
     }
 
     public void ConstructMesh()
@@ -69,7 +64,7 @@ public class TerrainSide
                 Vector3 pointOnUnitSphere = _shapeGenerator.TransformCubeToSpherePos(pointOnUnitCube, _useFancySphere);
                 _vertices[i] = _shapeGenerator.CalculatePointOnPlanet(pointOnUnitSphere);
 
-                //Creating triangles
+                // Creating triangles
                 if (x < _resolution - 1 && y < _resolution - 1)
                 {
                     _triangles[triIdx++] = i;

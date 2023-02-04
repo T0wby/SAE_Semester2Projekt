@@ -20,6 +20,8 @@ public class PlanetGenerator : MonoBehaviour
     private ShapeGeneratorTwo _shapeGenerator = new ShapeGeneratorTwo();
     private ColourGenerator _colourGenerator = new ColourGenerator();
 
+    private List<GameObject> _meshes;
+
     private static Vector3[] DIRECTIONS = new Vector3[]
     {
             Vector3.forward,
@@ -40,6 +42,7 @@ public class PlanetGenerator : MonoBehaviour
     #region Unity
     private void Awake()
     {
+        _meshes = new List<GameObject>();
         GeneratePlanet();
     }
     #endregion
@@ -61,6 +64,7 @@ public class PlanetGenerator : MonoBehaviour
             {
                 GameObject meshObj = new GameObject("mesh");
                 meshObj.transform.parent = transform;
+                _meshes.Add(meshObj);
                 meshObj.AddComponent<MeshRenderer>();
                 _meshFilters[i] = meshObj.AddComponent<MeshFilter>();
                 _meshFilters[i].sharedMesh = new Mesh();
@@ -69,6 +73,7 @@ public class PlanetGenerator : MonoBehaviour
 
             _terrainSides[i] = new TerrainSide(_shapeGenerator, _meshFilters[i].sharedMesh, _resolution, DIRECTIONS[i]);
         }
+        ResetPos();
     }
 
     /// <summary>
@@ -118,6 +123,17 @@ public class PlanetGenerator : MonoBehaviour
         foreach (TerrainSide terrainSide in _terrainSides)
         {
             terrainSide.UpdateUV(_colourGenerator);
+        }
+    }
+
+    private void ResetPos()
+    {
+        foreach (GameObject mesh in _meshes)
+        {
+            if (mesh.transform.localPosition != Vector3.zero)
+            {
+                mesh.transform.localPosition = Vector3.zero;
+            }
         }
     }
     #endregion

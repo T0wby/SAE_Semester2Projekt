@@ -52,6 +52,9 @@ public class NightVisionURP : ScriptableRendererFeature
             kernelHandle = shader.FindKernel(kernelName);
             thisCamera = Camera.main;
             CreateTextures();
+
+            RenderTextureDescriptor descriptor = renderingData.cameraData.cameraTargetDescriptor;
+            //cmd.GetTemporaryRT();
         }
 
         // Here you can implement the rendering logic.
@@ -60,7 +63,7 @@ public class NightVisionURP : ScriptableRendererFeature
         // You don't have to call ScriptableRenderContext.submit, the render pipeline will call it at specific points in the pipeline.
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
-            SetProperties();
+            //SetProperties();
             shader.SetFloat("time", Time.time);
 
             CheckResolution(out _);
@@ -71,6 +74,7 @@ public class NightVisionURP : ScriptableRendererFeature
         // Cleanup any allocated resources that were created during the execution of this render pass.
         public override void OnCameraCleanup(CommandBuffer cmd)
         {
+            cmd.Clear();
             ClearTextures();
         }
 
@@ -147,7 +151,6 @@ public class NightVisionURP : ScriptableRendererFeature
             }
         }
         #endregion
-
     }
 
     CustomRenderPass m_ScriptablePass;
@@ -168,7 +171,7 @@ public class NightVisionURP : ScriptableRendererFeature
         renderer.EnqueuePass(m_ScriptablePass);
     }
 
-    
+
 }
 
 

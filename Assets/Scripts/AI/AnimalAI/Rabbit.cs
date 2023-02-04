@@ -202,9 +202,9 @@ public class Rabbit : AAnimal
         while (true)
         {
             yield return new WaitForSeconds(5f);
-            ReproduceUrge += 0f;
-            Thirst -= 0f;
-            Hunger -= 15f;
+            ReproduceUrge += 10f;
+            Thirst -= 6f;
+            Hunger -= 4f;
         }
     }
 
