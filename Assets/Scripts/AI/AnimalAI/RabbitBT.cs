@@ -64,7 +64,7 @@ public class RabbitBT : BehaviorTree.MyTree
                     new LF_StartActivity(_rabbit, EAnimalStates.Drink, _animalSearchArea)
                     }),
                 }),
-                new LF_MoveAround(this.transform, _agent, _settings, _rabbit)
+                new LF_MoveAround(this.transform, _agent, _settings.SearchRange, _rabbit)
             }),
             new Sequence(new List<Node>
             {
@@ -78,10 +78,10 @@ public class RabbitBT : BehaviorTree.MyTree
                         new LF_TargetInRange(this.transform, _settings, "_eatTargetTransform"),
                         new LF_StartActivity(_rabbit, EAnimalStates.Eat, _animalSearchArea),
                     }),
-                    new LF_MoveAround(this.transform, _agent, _settings, _rabbit)
+                    new LF_MoveAround(this.transform, _agent, _settings.SearchRange, _rabbit)
                 }),
             }),
-            new LF_MoveAround(this.transform, _agent, _settings, _rabbit)
+            new LF_MoveAround(this.transform, _agent, _settings.SearchRange, _rabbit)
         });
 
         return _root;

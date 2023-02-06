@@ -8,8 +8,10 @@ public class LF_MoveAround : Node
 {
     private Transform _thisTransform;
     private NavMeshAgent _agent;
-    private AnimalAISettings _settings;
+    private float _searchRange;
     private AAnimal _animal;
+    private Vector2 _destination;
+    private float _distance;
 
     #region Constructors
     public LF_MoveAround()
@@ -17,11 +19,11 @@ public class LF_MoveAround : Node
         
     }
 
-    public LF_MoveAround(Transform thisTransform, NavMeshAgent agent, AnimalAISettings settings, AAnimal animal)
+    public LF_MoveAround(Transform thisTransform, NavMeshAgent agent, float searchRange, AAnimal animal)
     {
         _thisTransform = thisTransform;
         _agent = agent;
-        _settings = settings;
+        _searchRange = searchRange;
         _animal = animal;
     }
     #endregion
@@ -29,15 +31,17 @@ public class LF_MoveAround : Node
     #region Method
     public override ENodeState CalculateState()
     {
-        SetRandomDestination(_agent, _thisTransform, _settings.SearchRange);
+        SetRandomDestination(_agent, _thisTransform, _searchRange, _animal.RandomMove);
         return ENodeState.RUNNING;
     }
 
-    private void SetRandomDestination(NavMeshAgent agent, Transform thisTransform, float range)
+    private void SetRandomDestination(NavMeshAgent agent, Transform thisTransform, float range, bool allowedToMove)
     {
-        if (agent.destination != thisTransform.position && _animal.RandomMove)
+        _distance = (thisTransform.position - agent.destination).sqrMagnitude;
+        if ((_distance * _distance) < 2f && allowedToMove)
         {
-            agent.SetDestination(new Vector3(thisTransform.position.x + Random.Range(-range, range), thisTransform.position.y, thisTransform.position.z + Random.Range(-range, range)));
+            _destination = Random.insideUnitCircle * range;
+            agent.SetDestination(new Vector3(thisTransform.position.x + _destination.x, thisTransform.position.y, thisTransform.position.z + _destination.y));
         }
     }
 
