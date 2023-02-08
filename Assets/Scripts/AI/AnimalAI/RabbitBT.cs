@@ -58,13 +58,13 @@ public class RabbitBT : BehaviorTree.MyTree
                 {
                     new Sequence(new List<Node>
                     {
-                    new LF_TargetInRadius(this.transform, _rabbit, _animalSearchArea, ETargetTypes.Water),
-                    new LF_GoToAnimalTarget(this.transform, _agent, _settings, "_waterTarget"),
-                    new LF_TargetInRange(this.transform, _settings, "_waterTarget"),
-                    new LF_StartActivity(_rabbit, EAnimalStates.Drink, _animalSearchArea)
+                        new LF_TargetInRadius(this.transform, _rabbit, _animalSearchArea, ETargetTypes.Water),
+                        new LF_GoToAnimalTarget(this.transform, _agent, _settings, "_waterTarget"),
+                        new LF_TargetInRange(this.transform, _settings, "_waterTarget"),
+                        new LF_StartActivity(_rabbit, EAnimalStates.Drink, _animalSearchArea)
                     }),
+                    new LF_MoveAround(this.transform, _agent, _settings.SearchRange, _rabbit)
                 }),
-                new LF_MoveAround(this.transform, _agent, _settings.SearchRange, _rabbit)
             }),
             new Sequence(new List<Node>
             {

@@ -11,7 +11,7 @@ public class GetHidePosition : Node
     #region Fields
 
     private NavMeshAgent _agent;
-    private VillagerSettings _settings;
+    private HideAISettings _settings;
     private List<Collider> _colliders;
     private Transform _thisTransform;
     private Transform _targetTransform;
@@ -26,7 +26,7 @@ public class GetHidePosition : Node
 
     }
 
-    public GetHidePosition(NavMeshAgent agent, VillagerSettings settings, TrackHideObject trackHideObject, Transform thisTransform)
+    public GetHidePosition(NavMeshAgent agent, HideAISettings settings, TrackHideObject trackHideObject, Transform thisTransform)
     {
         _agent = agent;
         _settings = settings;

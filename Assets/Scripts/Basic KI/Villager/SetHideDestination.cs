@@ -9,7 +9,7 @@ public class SetHideDestination : Node
     #region Fields
 
     private NavMeshAgent _agent;
-    private VillagerSettings _settings;
+    private HideAISettings _settings;
     private Animator _animator;
     private object _hideDestination;
 
@@ -21,7 +21,7 @@ public class SetHideDestination : Node
 
     }
 
-    public SetHideDestination(NavMeshAgent agent, VillagerSettings settings, Animator animator)
+    public SetHideDestination(NavMeshAgent agent, HideAISettings settings, Animator animator)
 	{
         _agent = agent;
         _settings = settings;

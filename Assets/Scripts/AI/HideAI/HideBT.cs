@@ -7,7 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(HideAI), typeof(NavMeshAgent), typeof(Animator))]
 public class HideBT : MyTree
 {
-    public VillagerSettings settings;
+    public HideAISettings settings;
 
     [SerializeField] private LayerMask _hideableLayers;
     [SerializeField] private TrackHideObject _hideObjects;
@@ -32,22 +32,17 @@ public class HideBT : MyTree
                     new LF_EnemyInRange(settings.HideRange, transform),
                     new Sequence(new List<Node>
                     {
+                        new LF_CheckIfAtHidePoint(transform, _animator),
                         new GetHidePosition(_agent, settings, _hideObjects, transform),
                         new SetHideDestination(_agent, settings, _animator)
                     }),
                 })
             }),
-            new CheckIfNotAtHidePoint(transform, _animator),
             new Sequence(new List<Node>
             {
                 new CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
                 new LF_SetAlertState(_hideAI, true),
             }),
-            new Sequence(new List<Node>
-            {
-                new ChooseDirection(_hideAI),
-                new WalkAround(transform, _agent, settings.WalkSpeed, _animator, _hideAI)
-            })
         });
 
         return root;

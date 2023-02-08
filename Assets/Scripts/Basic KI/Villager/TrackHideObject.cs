@@ -6,7 +6,7 @@ using UnityEngine;
 public class TrackHideObject : MonoBehaviour
 {
     #region Attributes
-    [SerializeField] private VillagerSettings _settings;
+    [SerializeField] private HideAISettings _settings;
     private List<Collider> _colliders;
     private SphereCollider _sphereCollider;
     #endregion

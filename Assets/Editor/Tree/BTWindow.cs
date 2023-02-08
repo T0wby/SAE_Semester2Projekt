@@ -10,8 +10,8 @@ public class BTWindow : EditorWindow
     private NodeCreationDrawer _nodeCreation;
     private WindowDrawer _windowDrawer;
 
-    private float panX = 0;
-    private float panY = 0;
+    private float _panX = 0;
+    private float _panY = 0;
 
     private Rect _windowRect = new Rect(50,50,150,50);
 
@@ -34,7 +34,7 @@ public class BTWindow : EditorWindow
     private void OnGUI()
     {
         
-        GUI.BeginGroup(new Rect(panX, panY, _bTWindow.maxSize.x * 5, _bTWindow.maxSize.y * 5));
+        GUI.BeginGroup(new Rect(_panX, _panY, _bTWindow.maxSize.x * 5, _bTWindow.maxSize.y * 5));
 
         _tabDrawer.DrawTabs();
 
@@ -64,8 +64,8 @@ public class BTWindow : EditorWindow
 
         if (Event.current.type == EventType.MouseDrag)
         {
-            panX += Event.current.delta.x;
-            panY += Event.current.delta.y;
+            _panX += Event.current.delta.x;
+            _panY += Event.current.delta.y;
         }
 
         Repaint();
