@@ -13,17 +13,16 @@ MonoBehaviour:
   m_Name: LeafList
   m_EditorClassIdentifier: 
   _classNames:
+  - LF_CheckAnimalState
+  - LF_GoToAnimalTarget
+  - LF_MoveAround
+  - LF_SetAnimalState
+  - LF_StartActivity
+  - LF_TargetInRadius
+  - LF_Attack
+  - LF_TargetInRange
   - LF_CheckAlertState
   - LF_EnemyInRange
   - LF_SetAlertState
-  - CheckForEnemyInAttackRange
-  - CheckForEnemyInFOV
-  - GoToTarget
-  - LF_Attack
   - GetHidePosition
   - SetHideDestination
-  - CheckIfNotAtHidePoint
-  - GoToDataPoint
-  - GoToPos
-  - WalkAround
-  - Patrol

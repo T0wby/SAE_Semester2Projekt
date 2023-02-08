@@ -11,6 +11,7 @@ namespace BehaviorTree
         FAILURE
     }
 
+    [System.Serializable]
     public class Node
     {
         protected ENodeState state;

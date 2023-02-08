@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorTree;
 
+[System.Serializable]
 public class NodeWindow
 {
     private Rect _windowRect;
@@ -14,7 +15,7 @@ public class NodeWindow
     public Rect WindowRect { get => _windowRect; set => _windowRect = value; }
     public Node WindowNode { get => _windowNode; set => _windowNode = value; }
     public bool HasParent { get => _hasParent; set => _hasParent = value; }
-    public List<NodeWindow> Children { get => _children;}
+    public List<NodeWindow> Children { get => _children; set => _children = value; }
     public NodeWindow Parent { get => _parent; set => _parent = value; }
 
     public NodeWindow()

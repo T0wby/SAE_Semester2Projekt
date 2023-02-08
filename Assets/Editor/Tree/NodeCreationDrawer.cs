@@ -74,12 +74,22 @@ public class NodeCreationDrawer
 
     private void DrawButtons(List<Type> typeNodes, WindowDrawer windowDrawer, int xPos)
     {
+        int nextLine = 1;
+        int yPos = 0;
         for (int i = 0; i < typeNodes.Count; i++)
         {
-            if (GUI.Button(new Rect(xPos, 40 * i + 30, 150, 40), typeNodes[i].FullName))
+            if(i%11 == 10)
+            {
+                nextLine++;
+                yPos = 0;
+            }
+                
+
+            if (GUI.Button(new Rect(xPos * nextLine, 40 * yPos + 30, 170, 40), typeNodes[i].FullName))
             {
                 windowDrawer.AddWindow(50, 50, (Node)Activator.CreateInstance(typeNodes[i]));
             }
+            yPos++;
         }
     }
 }

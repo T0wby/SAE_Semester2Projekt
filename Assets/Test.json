@@ -1,0 +1,45 @@
+{
+    "_nodeWindowWraps": [
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 317.0,
+                "y": 427.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_windowNode": {},
+            "_hasParent": true,
+            "_parent": {},
+            "_children": []
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 842.0,
+                "y": 649.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_windowNode": {},
+            "_hasParent": false,
+            "_parent": {},
+            "_children": []
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 450.0,
+                "y": 255.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_windowNode": {},
+            "_hasParent": true,
+            "_parent": {},
+            "_children": [
+                {}
+            ]
+        }
+    ]
+}

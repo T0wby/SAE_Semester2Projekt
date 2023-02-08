@@ -17,6 +17,9 @@ public class WindowDrawer
     private string[] _composites;
 
     private ConnectionHandler _connectionHandler;
+    private StatusBarDrawer _statusBarDrawer;
+
+    public List<NodeWindow> NodeWindows { get => _nodeWindows; }
 
     public WindowDrawer(List<Type> compositeNodeTypes)
     {
@@ -50,6 +53,11 @@ public class WindowDrawer
         bTWindow.EndWindows();
 
         _connectionHandler.DrawConnections();
+    }
+
+    public void SetStatusReference(StatusBarDrawer statusBarDrawer)
+    {
+        _statusBarDrawer = statusBarDrawer;
     }
 
     /// <summary>
@@ -99,6 +107,7 @@ public class WindowDrawer
         if (GUI.Button(new Rect(0, 47.5f, 15, 15), "="))
         {
             _connectionHandler.UpdateConnection(_nodeWindows[idx]);
+            _statusBarDrawer.SetCurrentStatus(Status.Idle);
         }
 
         GUI.DragWindow();
@@ -113,10 +122,12 @@ public class WindowDrawer
         if (GUI.Button(new Rect(_nodeWindowSize.x - 20, 40, 15, 15), "+"))
         {
             _connectionHandler.SetParentNode(nodeWindow, true);
+            _statusBarDrawer.SetCurrentStatus(Status.Adding);
         }
         if (GUI.Button(new Rect(_nodeWindowSize.x - 20, 60, 15, 15), "-"))
         {
             _connectionHandler.SetParentNode(nodeWindow, false);
+            _statusBarDrawer.SetCurrentStatus(Status.Removing);
         }
     }
 }
