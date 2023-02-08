@@ -50,14 +50,7 @@ public class BTWindow : EditorWindow
                 GUI.EndGroup();
                 break;
             case Tabs.Settings:
-                if (GUI.Button(new Rect(50,50,100,100),"Save"))
-                {
-                    SaveTab.SaveTree(_windowDrawer.NodeWindows, "Test.json");
-                }
-                if (GUI.Button(new Rect(50, 175, 100, 100), "Load"))
-                {
-                    SaveTab.LoadTree(_windowDrawer.NodeWindows, "Test.json");
-                }
+                SettingsDrawer.DrawSettings(_windowDrawer);
                 break;
             default:
                 break;

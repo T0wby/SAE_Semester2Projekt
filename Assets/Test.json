@@ -3,34 +3,23 @@
         {
             "_windowRect": {
                 "serializedVersion": "2",
-                "x": 317.0,
-                "y": 427.0,
-                "width": 250.0,
-                "height": 80.0
-            },
-            "_windowNode": {},
-            "_hasParent": true,
-            "_parent": {},
-            "_children": []
-        },
-        {
-            "_windowRect": {
-                "serializedVersion": "2",
-                "x": 842.0,
-                "y": 649.0,
+                "x": 360.0,
+                "y": 207.0,
                 "width": 250.0,
                 "height": 80.0
             },
             "_windowNode": {},
             "_hasParent": false,
             "_parent": {},
-            "_children": []
+            "_children": [
+                {}
+            ]
         },
         {
             "_windowRect": {
                 "serializedVersion": "2",
-                "x": 450.0,
-                "y": 255.0,
+                "x": 294.0,
+                "y": 405.0,
                 "width": 250.0,
                 "height": 80.0
             },
@@ -38,8 +27,132 @@
             "_hasParent": true,
             "_parent": {},
             "_children": [
+                {},
                 {}
             ]
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 456.0,
+                "y": 559.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_windowNode": {},
+            "_hasParent": true,
+            "_parent": {},
+            "_children": []
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 107.0,
+                "y": 565.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_windowNode": {},
+            "_hasParent": true,
+            "_parent": {},
+            "_children": []
+        }
+    ],
+    "_connections": [
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 360.0,
+                    "y": 207.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_windowNode": {},
+                "_hasParent": false,
+                "_parent": {},
+                "_children": [
+                    {}
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 294.0,
+                    "y": 405.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_windowNode": {},
+                "_hasParent": true,
+                "_parent": {},
+                "_children": [
+                    {},
+                    {}
+                ]
+            }
+        },
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 294.0,
+                    "y": 405.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_windowNode": {},
+                "_hasParent": true,
+                "_parent": {},
+                "_children": [
+                    {},
+                    {}
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 107.0,
+                    "y": 565.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_windowNode": {},
+                "_hasParent": true,
+                "_parent": {},
+                "_children": []
+            }
+        },
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 294.0,
+                    "y": 405.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_windowNode": {},
+                "_hasParent": true,
+                "_parent": {},
+                "_children": [
+                    {},
+                    {}
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 456.0,
+                    "y": 559.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_windowNode": {},
+                "_hasParent": true,
+                "_parent": {},
+                "_children": []
+            }
         }
     ]
 }

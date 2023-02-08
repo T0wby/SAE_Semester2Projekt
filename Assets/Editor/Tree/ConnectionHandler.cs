@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[System.Serializable]
 public class ConnectionHandler
 {
     private bool _addConnection;
@@ -10,11 +11,14 @@ public class ConnectionHandler
 
     private List<WindowConnections> _connectedWindows;
 
+    public List<WindowConnections> ConnectedWindows { get => _connectedWindows; set => _connectedWindows = value; }
+
     public ConnectionHandler()
     {
         _addConnection = true;
         _parent = new NodeWindow();
         _connectedWindows = new List<WindowConnections>();
+        SettingsDrawer.ConnectionHandler = this;
     }
 
     public void DrawConnections()
@@ -95,7 +99,8 @@ public class ConnectionHandler
         }
     }
 
-    private class WindowConnections
+    [System.Serializable]
+    public class WindowConnections
     {
         public NodeWindow Parent;
         public NodeWindow Child;

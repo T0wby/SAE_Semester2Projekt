@@ -7,13 +7,15 @@ using UnityEngine;
 public class NodeWindowListWrap
 {
     public List<NodeWindowWrap> _nodeWindowWraps;
+    public List<WindowConnectionsWrap> _connections;
 
-	public NodeWindowListWrap()
+    public NodeWindowListWrap()
 	{
         _nodeWindowWraps = null;
     }
-	public NodeWindowListWrap(List<NodeWindowWrap> nodeWindowWraps)
+	public NodeWindowListWrap(List<NodeWindowWrap> nodeWindowWraps, List<WindowConnectionsWrap> connections)
 	{
         _nodeWindowWraps = nodeWindowWraps;
+        _connections = connections;
     }
 }
