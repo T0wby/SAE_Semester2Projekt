@@ -58,7 +58,7 @@ public class SetHideDestination : Node
         if (navMeshAgent.destination != position)
         {
             navMeshAgent.destination = position;
-            SetAnimationBool(_animator, "IsWalking", true);
+            //SetAnimationBool(_animator, "IsWalking", true);
         }
     }
 

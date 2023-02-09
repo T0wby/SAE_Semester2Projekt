@@ -39,14 +39,12 @@ namespace BehaviorTree
         {
             if (_waiting)
             {
-                SetAnimationBool(_animator, "IsWalking", false);
                 _waitCounter += Time.deltaTime;
                 if (_waitCounter >= _waitTime)
                     _waiting = false;
             }
             else
             {
-                SetAnimationBool(_animator, "IsWalking", true);
                 if (_previousWaypointIndex != _currentWaypointIndex)
                 {
                     Transform waypoint = _waypoints[_currentWaypointIndex];
@@ -57,7 +55,6 @@ namespace BehaviorTree
 
                 if (Vector3.Distance(_thisTransform.position, _destination) < 1f)
                 {
-                    SetAnimationBool(_animator, "IsWalking", false);
                     _waitCounter = 0f;
                     _waiting = true;
                     _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_FirePortal
+  m_Name: Mat_SandPortal
   m_Shader: {fileID: -6465566751694194690, guid: 2a53d31790c9e2445b36ee5613eb1762, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

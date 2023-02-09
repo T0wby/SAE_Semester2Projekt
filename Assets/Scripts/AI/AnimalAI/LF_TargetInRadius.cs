@@ -49,8 +49,15 @@ public class LF_TargetInRadius : Node
 
     private ENodeState CheckGrass(List<Grass> grass)
     {
+
         if (grass.Count > 0)
         {
+            if (grass[0] == null)
+            {
+                grass.RemoveAt(0);
+                return ENodeState.FAILURE;
+            }
+
             Grass closestGrass = grass[0];
             Vector3 first = grass[0].transform.position - _thisTransform.position;
             float minlength = first.sqrMagnitude;
