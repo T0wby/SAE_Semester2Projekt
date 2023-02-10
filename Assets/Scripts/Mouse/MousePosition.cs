@@ -1,11 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-/* TODO: 
- * Use same methode from PatrolWait script to generate random pos in radius from raycastHit.point
- * Check if random pos is still on Navmesh.
- * If not search for the nearest point on NavMesh
- * Maybe check distance between both to prevent random mouse clicks to move swarm
+/* 
+ * Only used in Old scripts and not in current version.
 */
 public static class MousePosition
 {

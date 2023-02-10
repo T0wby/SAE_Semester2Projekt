@@ -143,7 +143,7 @@ public class PlanetGenerator : MonoBehaviour
     {
         while (terrainSide.SetMeshValues())
         {
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
     }
     #endregion

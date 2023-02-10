@@ -21,13 +21,15 @@ public class UIManager : Singleton<UIManager>
     public void PauseGame()
     {
         IsInMenu = true;
-        Time.timeScale = 0f;
+        Cursor.visible = true;
+        Time.timeScale = 0f; 
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1.0f;
         IsInMenu = false;
+        Cursor.visible = false;
         _playerController.EnableMovement();
     }
 

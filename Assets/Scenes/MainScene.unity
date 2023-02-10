@@ -1640,12 +1640,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4904966262223860, guid: 964cbf80581c75b4894619dd8f450b36, type: 3}
   m_PrefabInstance: {fileID: 178376162}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &194063643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2343803824473772321, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+  m_PrefabInstance: {fileID: 328607138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &194063647 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8325972510565024221, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
   m_PrefabInstance: {fileID: 328607138}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 194063643}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c3867ef900c21c49b542ef3948f8e80, type: 3}
@@ -3492,19 +3497,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -3519,6 +3528,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 568264386}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 194063643}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 568264388}
@@ -3528,6 +3541,10 @@ PrefabInstance:
       objectReference: {fileID: 568264388}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
@@ -3552,6 +3569,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UIManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
@@ -3925,7 +3946,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345741545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.7, z: 0}
+  m_LocalPosition: {x: 6.7, y: 5.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3989,16 +4010,16 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 10
+      - m_Value: 8
         m_Name: SpawnRate
         m_Overridden: 1
-      - m_Value: 17
+      - m_Value: 10
         m_Name: LifetimeMin
         m_Overridden: 1
-      - m_Value: 20
+      - m_Value: 15
         m_Name: LifetimeMax
         m_Overridden: 1
-      - m_Value: 16
+      - m_Value: 32
         m_Name: FlipbookFrameRate
         m_Overridden: 1
       - m_Value: 30
@@ -5647,6 +5668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sandstorm: {fileID: 345741545}
+  _sandV: {fileID: 11400000, guid: ddb61c4ff6418964f8a91332b0e4ee23, type: 2}
 --- !u!114 &568264389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5713,7 +5735,19 @@ MonoBehaviour:
     m_ActionId: 11764988-322f-4a72-ad46-8746454d39ca
     m_ActionName: Menu/GeneratePlanet[/Keyboard/p]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 568264388}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ToggleSandstorm
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a973651f-14b8-4e7a-b55f-a438f41a5979
     m_ActionName: Menu/ToggleSandstorm[/Keyboard/o]
   m_NeverAutoSwitchControlSchemes: 0
@@ -10800,7 +10834,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2040777627}
+      - m_Target: {fileID: 862513318}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6

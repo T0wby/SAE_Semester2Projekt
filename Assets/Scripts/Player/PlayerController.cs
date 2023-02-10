@@ -37,6 +37,7 @@ namespace Player_Towby
             _playerControls = new PlayerControls();
             _thisRb = GetComponent<Rigidbody>();
             _cameraTransform = Camera.main.transform;
+            Cursor.visible = false;
         }
 
         private void OnEnable()
