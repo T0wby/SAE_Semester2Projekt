@@ -162,6 +162,8 @@ public class Rabbit : AAnimal
     /// </summary>
     public override void Reproduce()
     {
+        if (this == null) return;
+
         // Can only have one Child
         if (_reproduceCount < 1)
             Instantiate(_childPrefab, this.transform.position, Quaternion.identity, this.transform.parent);

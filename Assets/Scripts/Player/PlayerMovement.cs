@@ -116,6 +116,11 @@ namespace Player_Towby
             //Reset otherwise everything goes bonkers
             _rotationFollow.localEulerAngles = new Vector3(_angles.x, 0, 0);
         }
+
+        public void RotationPowerChange(float value)
+        {
+            _rotationPower = value;
+        }
     }
 }
 

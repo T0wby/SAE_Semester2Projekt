@@ -121,6 +121,9 @@ public class TerrainSide
                 uv[i] = new Vector2(colourGenerator.BiomePercentageFromPoint(pointOnUnitSphere), 0);
             }
         }
-        _mesh.uv = uv;
+        if (_mesh.uv.Length == uv.Length)
+        {
+            _mesh.uv = uv;
+        }
     }
 }
