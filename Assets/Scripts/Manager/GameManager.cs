@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
 
     #region Fields
-
+    [SerializeField] private GameObject _sandstorm;
     private PlanetGenerator[] _allPlanets = null;
     #endregion
 
@@ -38,6 +38,13 @@ public class GameManager : Singleton<GameManager>
             {
                 _allPlanets[i].GeneratePlanet();
             }
+        }
+    }
+    public void ToggleSandstorm(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            _sandstorm.SetActive(!_sandstorm.activeSelf);
         }
     }
 

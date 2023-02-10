@@ -5,14 +5,15 @@ using UnityEngine.InputSystem;
 
 namespace Player_Towby
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
-        
+        #region Fields
         private PlayerControls _playerControls;
         private InputAction _moveAround;
         private InputAction _lookAround;
         private InputAction _menuAction;
         private InputAction _generatePlanets;
+        private InputAction _toggleSandstorm;
 
 
         private Rigidbody _thisRb;
@@ -28,7 +29,9 @@ namespace Player_Towby
         [SerializeField] private float _runSpeed = 30f;
         [SerializeField] private float _rotationPower = 1;
         [SerializeField] private Transform _rotationFollow;
+        #endregion
 
+        #region Unity
         private void Awake()
         {
             _playerControls = new PlayerControls();
@@ -39,24 +42,25 @@ namespace Player_Towby
         private void OnEnable()
         {
             _moveAround = _playerControls.PlayerMovement.Movement;
-            _moveAround.Enable();
-
             _lookAround = _playerControls.PlayerMovement.Camera;
-            _lookAround.Enable();
+            EnableMovement();
 
             _menuAction = _playerControls.Menu.OpenMenu;
             _menuAction.Enable();
 
             _generatePlanets = _playerControls.Menu.GeneratePlanet;
             _generatePlanets.Enable();
+
+            _toggleSandstorm = _playerControls.Menu.ToggleSandstorm;
+            _toggleSandstorm.Enable();
         }
 
         private void OnDisable()
         {
-            _moveAround.Disable();
-            _lookAround.Disable();
+            DisableMovement();
             _menuAction.Disable();
             _generatePlanets.Disable();
+            _toggleSandstorm.Disable();
         }
 
         private void Update()
@@ -64,7 +68,9 @@ namespace Player_Towby
             Move(_move);
             Rotation(_look);
         }
+        #endregion
 
+        #region Callbacks
         public void OnMove(InputAction.CallbackContext context)
         {
             _move = context.ReadValue<Vector2>();
@@ -72,9 +78,14 @@ namespace Player_Towby
 
         public void OnLook(InputAction.CallbackContext context)
         {
+            if (UIManager.Instance.IsInMenu)
+                return;
+
             _look = context.ReadValue<Vector2>();
         }
+        #endregion
 
+        #region Methods
         private void Move(Vector2 dir)
         {
             _direction = new Vector3(dir.x, 0, dir.y);
@@ -120,7 +131,20 @@ namespace Player_Towby
         public void RotationPowerChange(float value)
         {
             _rotationPower = value;
+        } 
+
+        public void EnableMovement()
+        {
+            _moveAround.Enable();
+            _lookAround.Enable();
         }
+
+        public void DisableMovement()
+        {
+            _moveAround.Disable();
+            _lookAround.Disable();
+        }
+        #endregion
     }
 }
 

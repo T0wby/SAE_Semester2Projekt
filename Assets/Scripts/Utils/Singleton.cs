@@ -16,7 +16,7 @@ public class Singleton<T> : MonoBehaviour where T : Component
             else
             {
                 var name = typeof(T).Name;
-                Debug.LogWarning($"Another instance of {name} is already running. Instance is {_instance.gameObject.name}.");
+                //Debug.LogWarning($"Another instance of {name} is already running. Instance is {_instance.gameObject.name}.");
             }
             return _instance;
         }

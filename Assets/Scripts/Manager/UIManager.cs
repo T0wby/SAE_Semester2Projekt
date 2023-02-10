@@ -1,3 +1,4 @@
+using Player_Towby;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,21 +7,28 @@ using UnityEngine.InputSystem;
 public class UIManager : Singleton<UIManager>
 {
     [SerializeField] private GameObject _menu;
+    private PlayerController _playerController;
+
+    public bool IsInMenu { get; set; }
 
     protected override void Awake()
     {
         IsInAllScenes = true;
         base.Awake();
+        _playerController = FindObjectOfType<PlayerController>();
     }
 
     public void PauseGame()
     {
+        IsInMenu = true;
         Time.timeScale = 0f;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1.0f;
+        IsInMenu = false;
+        _playerController.EnableMovement();
     }
 
     public void OpenCloseMenu(InputAction.CallbackContext context)
@@ -30,9 +38,16 @@ public class UIManager : Singleton<UIManager>
             _menu.SetActive(!_menu.activeSelf);
 
             if (_menu.activeSelf)
+            {
                 PauseGame();
+                _playerController.DisableMovement();
+            }
             else
+            {
                 ResumeGame();
+                _playerController.EnableMovement();
+            }
+                
         }
     }
 

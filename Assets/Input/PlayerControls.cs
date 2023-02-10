@@ -136,6 +136,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleSandstorm"",
+                    ""type"": ""Button"",
+                    ""id"": ""a973651f-14b8-4e7a-b55f-a438f41a5979"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -160,6 +169,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""GeneratePlanet"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""523a0195-ca09-4a86-b6ad-bfd11db603dc"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleSandstorm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -174,6 +194,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_OpenMenu = m_Menu.FindAction("OpenMenu", throwIfNotFound: true);
         m_Menu_GeneratePlanet = m_Menu.FindAction("GeneratePlanet", throwIfNotFound: true);
+        m_Menu_ToggleSandstorm = m_Menu.FindAction("ToggleSandstorm", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -276,12 +297,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IMenuActions m_MenuActionsCallbackInterface;
     private readonly InputAction m_Menu_OpenMenu;
     private readonly InputAction m_Menu_GeneratePlanet;
+    private readonly InputAction m_Menu_ToggleSandstorm;
     public struct MenuActions
     {
         private @PlayerControls m_Wrapper;
         public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @OpenMenu => m_Wrapper.m_Menu_OpenMenu;
         public InputAction @GeneratePlanet => m_Wrapper.m_Menu_GeneratePlanet;
+        public InputAction @ToggleSandstorm => m_Wrapper.m_Menu_ToggleSandstorm;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -297,6 +320,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @GeneratePlanet.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnGeneratePlanet;
                 @GeneratePlanet.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnGeneratePlanet;
                 @GeneratePlanet.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnGeneratePlanet;
+                @ToggleSandstorm.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnToggleSandstorm;
+                @ToggleSandstorm.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnToggleSandstorm;
+                @ToggleSandstorm.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnToggleSandstorm;
             }
             m_Wrapper.m_MenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -307,6 +333,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @GeneratePlanet.started += instance.OnGeneratePlanet;
                 @GeneratePlanet.performed += instance.OnGeneratePlanet;
                 @GeneratePlanet.canceled += instance.OnGeneratePlanet;
+                @ToggleSandstorm.started += instance.OnToggleSandstorm;
+                @ToggleSandstorm.performed += instance.OnToggleSandstorm;
+                @ToggleSandstorm.canceled += instance.OnToggleSandstorm;
             }
         }
     }
@@ -320,5 +349,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnOpenMenu(InputAction.CallbackContext context);
         void OnGeneratePlanet(InputAction.CallbackContext context);
+        void OnToggleSandstorm(InputAction.CallbackContext context);
     }
 }

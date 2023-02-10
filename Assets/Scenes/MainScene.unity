@@ -3464,7 +3464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_ActionId
@@ -3475,6 +3475,10 @@ PrefabInstance:
       value: 11764988-322f-4a72-ad46-8746454d39ca
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: a973651f-14b8-4e7a-b55f-a438f41a5979
+      objectReference: {fileID: 0}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_ActionName
       value: Menu/OpenMenu[/Keyboard/escape]
       objectReference: {fileID: 0}
@@ -3483,11 +3487,19 @@ PrefabInstance:
       value: Menu/GeneratePlanet[/Keyboard/p]
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: Menu/ToggleSandstorm[/Keyboard/o]
+      objectReference: {fileID: 0}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
@@ -3499,11 +3511,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 568264386}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 568264388}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 568264388}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
@@ -3515,12 +3535,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenCloseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GenerateAllPlanets
+      objectReference: {fileID: 0}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleSandstorm
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3531,11 +3559,19 @@ PrefabInstance:
       value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 254070436570569713, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2343803824473772321, guid: 5c3fe96559c040b4e97b694d78e45ff1, type: 3}
@@ -5610,6 +5646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b42ecb8a5b9f143b7dab0bf91e7a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sandstorm: {fileID: 345741545}
 --- !u!114 &568264389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5675,6 +5712,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 11764988-322f-4a72-ad46-8746454d39ca
     m_ActionName: Menu/GeneratePlanet[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a973651f-14b8-4e7a-b55f-a438f41a5979
+    m_ActionName: Menu/ToggleSandstorm[/Keyboard/o]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Menu
@@ -6971,7 +7012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &690284464
 MonoBehaviour:
   m_ObjectHideFlags: 0
