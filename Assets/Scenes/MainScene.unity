@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 22208847}
   - component: {fileID: 22208848}
   m_Layer: 0
-  m_Name: PlanetTest
+  m_Name: Planet3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -368,9 +368,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _resolution: 100
-  _shapeSettings: {fileID: 11400000, guid: 56c3a09bfc81b3d4785abeb323c280da, type: 2}
-  _colourSettings: {fileID: 11400000, guid: 42c05b2561b3288488f093708a488111, type: 2}
+  _resolution: 255
+  _shapeSettings: {fileID: 11400000, guid: 23abecdcaa27a2c4fa5aedfc3cc532e9, type: 2}
+  _colourSettings: {fileID: 11400000, guid: 4113eabbb3e978643ad852d5f894b9b0, type: 2}
   _autoUpdate: 1
   _useMultiThreading: 1
   ColourSettingsFoldout: 1
@@ -12291,7 +12291,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _resolution: 15
+  _resolution: 255
   _shapeSettings: {fileID: 11400000, guid: 8eeba6d13ccfdd74da8a7a43769f64a8, type: 2}
   _colourSettings: {fileID: 11400000, guid: 057b240333bfde54699b270bba38dacb, type: 2}
   _autoUpdate: 1
@@ -18824,7 +18824,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _resolution: 100
+  _resolution: 255
   _shapeSettings: {fileID: 11400000, guid: 56c3a09bfc81b3d4785abeb323c280da, type: 2}
   _colourSettings: {fileID: 11400000, guid: 42c05b2561b3288488f093708a488111, type: 2}
   _autoUpdate: 1

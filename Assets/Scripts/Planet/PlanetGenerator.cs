@@ -62,6 +62,8 @@ public class PlanetGenerator : MonoBehaviour
         {
             if (_meshFilters[i] == null)
             {
+                if(_meshes== null)
+                    _meshes = new List<GameObject>();
                 GameObject meshObj = new GameObject("mesh");
                 meshObj.transform.parent = transform;
                 _meshes.Add(meshObj);
@@ -128,6 +130,8 @@ public class PlanetGenerator : MonoBehaviour
 
     private void ResetPos()
     {
+        if (_meshes == null) return;
+
         foreach (GameObject mesh in _meshes)
         {
             if (mesh.transform.localPosition != Vector3.zero)
