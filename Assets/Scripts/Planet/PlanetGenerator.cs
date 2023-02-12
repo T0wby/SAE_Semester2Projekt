@@ -43,7 +43,7 @@ public class PlanetGenerator : MonoBehaviour
     private void Awake()
     {
         _meshes = new List<GameObject>();
-        GeneratePlanet();
+        //GeneratePlanet();
     }
     #endregion
 

@@ -5722,7 +5722,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 568264388}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GenerateAllPlanets
+        m_MethodName: GenerateRandomPlanet
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
