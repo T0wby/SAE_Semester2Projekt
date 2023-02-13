@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using static ConnectionHandler;
-using static Unity.VisualScripting.Metadata;
 
 public static class SaveTab
 {
@@ -74,30 +73,13 @@ public static class SaveTab
 
             nodeWindows.Add(nodeWindow);
         }
-        for (int i = 0; i < nodeWindowListWrap._connections.Count; i++)
+        for (int i = 0; i < nodeWindows.Count; i++)
         {
-            // Parent
-            NodeWindowWrap nodeWindowWrapParent = nodeWindowListWrap._connections[i].Parent;
-            NodeWindow nodeWindowParent = new NodeWindow();
-
-            if (nodeWindowWrapParent != null)
+            for (int x = 0; x < nodeWindows[i].Children.Count; x++)
             {
-                nodeWindowParent = TranslateToNW(nodeWindowListWrap._connections[i].Parent, nodeWindowParent);
+                connectedWindows.Add(new WindowConnections(nodeWindows[i], nodeWindows[i].Children[x]));
             }
-            
-
-            // Child
-            NodeWindowWrap nodeWindowWrapChild = nodeWindowListWrap._connections[i].Child;
-            NodeWindow nodeWindowChild = new NodeWindow();
-
-            if (nodeWindowWrapChild != null)
-            {
-                nodeWindowChild = TranslateToNW(nodeWindowListWrap._connections[i].Child, nodeWindowChild);
-            }
-            
-            connectedWindows.Add(new WindowConnections(nodeWindowParent, nodeWindowChild));
         }
-
         return nodeWindows;
     }
 
@@ -128,7 +110,34 @@ public static class SaveTab
         {
             NodeWindowWrap node = new NodeWindowWrap();
             // infinite loop, use different with parent=this
-            children.Add(TranslateToNWW(node, nodeWindow.Children[i]));
+            children.Add(TranslateToNWWChild(node, nodeWindow.Children[i], nodeWindowWrap));
+        }
+        nodeWindowWrap._children = children;
+
+        return nodeWindowWrap;
+    }
+
+    private static NodeWindowWrap TranslateToNWWChild(NodeWindowWrap nodeWindowWrap, NodeWindow nodeWindow, NodeWindowWrap parent)
+    {
+        if (nodeWindowWrap == null)
+        {
+            nodeWindowWrap = new NodeWindowWrap();
+        }
+
+        nodeWindowWrap._windowRect = nodeWindow.WindowRect;
+        nodeWindowWrap._name = nodeWindow.Name;
+        nodeWindowWrap._hasParent = nodeWindow.HasParent;
+
+        if (parent != null)
+            nodeWindowWrap._parent = parent;
+
+        List<NodeWindowWrap> children = new List<NodeWindowWrap>();
+
+        for (int i = 0; i < nodeWindow.Children.Count; i++)
+        {
+            NodeWindowWrap node = new NodeWindowWrap();
+            // infinite loop, use different with parent=this
+            children.Add(TranslateToNWWChild(node, nodeWindow.Children[i], nodeWindowWrap));
         }
         nodeWindowWrap._children = children;
 
@@ -160,7 +169,32 @@ public static class SaveTab
         for (int i = 0; i < nodeWindowWrap._children.Count; i++)
         {
             NodeWindow node = new NodeWindow();
-            children.Add(TranslateToNW(nodeWindowWrap._children[i], node));
+            children.Add(TranslateToNWChild(nodeWindowWrap._children[i], node, nodeWindow));
+        }
+        nodeWindow.Children = children;
+        return nodeWindow;
+    }
+
+    private static NodeWindow TranslateToNWChild(NodeWindowWrap nodeWindowWrap, NodeWindow nodeWindow, NodeWindow parent)
+    {
+        if (nodeWindow == null)
+        {
+            nodeWindow = new NodeWindow();
+        }
+
+        nodeWindow.WindowRect = nodeWindowWrap._windowRect;
+        nodeWindow.Name = nodeWindowWrap._name;
+        nodeWindow.HasParent = nodeWindowWrap._hasParent;
+
+        if (parent != null)
+            nodeWindow.Parent = parent;
+
+        List<NodeWindow> children = new List<NodeWindow>();
+
+        for (int i = 0; i < nodeWindowWrap._children.Count; i++)
+        {
+            NodeWindow node = new NodeWindow();
+            children.Add(TranslateToNWChild(nodeWindowWrap._children[i], node, nodeWindow));
         }
         nodeWindow.Children = children;
         return nodeWindow;

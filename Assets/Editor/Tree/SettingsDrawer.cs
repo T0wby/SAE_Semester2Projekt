@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public static class SettingsDrawer
 {
     private static ConnectionHandler _connectionHandler;
+    private static string _fileName;
+    private static GUIContent _label = new GUIContent("Save/Load Name: ");
 
     public static ConnectionHandler ConnectionHandler { get => _connectionHandler; set => _connectionHandler = value; }
 
@@ -12,12 +15,12 @@ public static class SettingsDrawer
     {
         if (GUI.Button(new Rect(50, 50, 100, 100), "Save"))
         {
-            SaveTab.SaveTree(windowDrawer.NodeWindows, _connectionHandler.ConnectedWindows, "Test.json");
+            SaveTab.SaveTree(windowDrawer.NodeWindows, _connectionHandler.ConnectedWindows, $"{_fileName}.json");
         }
+        _fileName = EditorGUILayout.TextField(_label, "Name");
         if (GUI.Button(new Rect(50, 175, 100, 100), "Load"))
         {
-            SaveTab.LoadTree(windowDrawer.NodeWindows, _connectionHandler.ConnectedWindows, "Test.json");
-            _connectionHandler.DrawConnections();
+            SaveTab.LoadTree(windowDrawer.NodeWindows, _connectionHandler.ConnectedWindows, $"{_fileName}.json");
         }
         if (GUI.Button(new Rect(50, 300, 100, 100), "Diconnect All"))
         {

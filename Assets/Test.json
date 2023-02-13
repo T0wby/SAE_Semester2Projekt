@@ -3,12 +3,37 @@
         {
             "_windowRect": {
                 "serializedVersion": "2",
-                "x": 306.0,
-                "y": 151.0,
+                "x": 196.0,
+                "y": 168.0,
                 "width": 250.0,
                 "height": 80.0
             },
-            "_name": "LF_CheckAnimalState",
+            "_name": "Sequence",
+            "_hasParent": true,
+            "_children": [
+                {
+                    "_windowRect": {
+                        "serializedVersion": "2",
+                        "x": 97.0,
+                        "y": 312.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "_name": "LF_MoveAround",
+                    "_hasParent": true,
+                    "_children": []
+                }
+            ]
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 97.0,
+                "y": 312.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_name": "LF_MoveAround",
             "_hasParent": true,
             "_children": []
         }
@@ -18,8 +43,47 @@
             "Parent": {
                 "_windowRect": {
                     "serializedVersion": "2",
-                    "x": 299.0,
-                    "y": 34.0,
+                    "x": 196.0,
+                    "y": 168.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 97.0,
+                            "y": 312.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_MoveAround",
+                        "_hasParent": true,
+                        "_children": []
+                    }
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 97.0,
+                    "y": 312.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "LF_MoveAround",
+                "_hasParent": true,
+                "_children": []
+            }
+        },
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 255.0,
+                    "y": 30.0,
                     "width": 250.0,
                     "height": 80.0
                 },
@@ -29,28 +93,78 @@
                     {
                         "_windowRect": {
                             "serializedVersion": "2",
-                            "x": 306.0,
-                            "y": 151.0,
+                            "x": 274.0,
+                            "y": 270.0,
                             "width": 250.0,
                             "height": 80.0
                         },
-                        "_name": "LF_CheckAnimalState",
+                        "_name": "LF_MoveAround",
                         "_hasParent": true,
                         "_children": []
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 214.0,
+                            "y": 260.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_Attack",
+                        "_hasParent": true,
+                        "_children": []
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 196.0,
+                            "y": 168.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "Sequence",
+                        "_hasParent": true,
+                        "_children": [
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 97.0,
+                                    "y": 312.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "LF_MoveAround",
+                                "_hasParent": true,
+                                "_children": []
+                            }
+                        ]
                     }
                 ]
             },
             "Child": {
                 "_windowRect": {
                     "serializedVersion": "2",
-                    "x": 306.0,
-                    "y": 151.0,
+                    "x": 196.0,
+                    "y": 168.0,
                     "width": 250.0,
                     "height": 80.0
                 },
-                "_name": "LF_CheckAnimalState",
+                "_name": "Sequence",
                 "_hasParent": true,
-                "_children": []
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 97.0,
+                            "y": 312.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_MoveAround",
+                        "_hasParent": true,
+                        "_children": []
+                    }
+                ]
             }
         }
     ]
