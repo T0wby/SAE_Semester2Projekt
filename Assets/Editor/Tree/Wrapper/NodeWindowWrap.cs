@@ -7,23 +7,25 @@ using UnityEngine;
 public class NodeWindowWrap
 {
     public Rect _windowRect;
-    public Node _windowNode;
+    //public Node _windowNode;
+    public string _name;
     public bool _hasParent;
-    public NodeWindow _parent;
-    public List<NodeWindow> _children;
+    public NodeWindowWrap _parent;
+    public List<NodeWindowWrap> _children;
 
 
     public NodeWindowWrap()
     {
-
+        _parent = null;
     }
 
-	public NodeWindowWrap(NodeWindow nodeWindow)
-	{
-        _windowRect = nodeWindow.WindowRect;
-        _windowNode = nodeWindow.WindowNode;
-        _hasParent = nodeWindow.HasParent;
-        _parent = nodeWindow.Parent;
-        _children = nodeWindow.Children;
-    }
+	//public NodeWindowWrap(NodeWindow nodeWindow)
+	//{
+ //       _windowRect = nodeWindow.WindowRect;
+ //       //_windowNode = nodeWindow.WindowNode;
+ //       _name = nodeWindow.Name;
+ //       _hasParent = nodeWindow.HasParent;
+ //       _parent = nodeWindow.Parent;
+ //       _children = nodeWindow.Children;
+ //   }
 }

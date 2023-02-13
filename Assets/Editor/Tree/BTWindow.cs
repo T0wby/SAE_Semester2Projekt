@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BTWindow : EditorWindow
 {
-    private static BTWindow _bTWindow;
+    public static BTWindow _bTWindow;
     private TabDrawer _tabDrawer;
     private NodeCreationDrawer _nodeCreation;
     private WindowDrawer _windowDrawer;
@@ -15,6 +15,8 @@ public class BTWindow : EditorWindow
     private float _panYPreset = 0;
 
     private Rect _windowRect = new Rect(50,50,150,50);
+
+    public WindowDrawer WindowDrawer { get => _windowDrawer; }
 
     [MenuItem("Tools/BTWindow")]
     private static void ShowWindow()

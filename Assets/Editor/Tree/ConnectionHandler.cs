@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static Codice.CM.Common.CmCallContext;
 
 [System.Serializable]
 public class ConnectionHandler
@@ -55,7 +56,8 @@ public class ConnectionHandler
     {
         WindowConnections connections = new WindowConnections(_parent, nodeWindow);
 
-        if (nodeWindow.HasParent || _parent.WindowNode == null || _parent.WindowNode == nodeWindow.WindowNode) return;
+        //if (nodeWindow.HasParent || _parent.WindowNode == null || _parent.WindowNode == nodeWindow.WindowNode) return;
+        if (nodeWindow.HasParent || _parent == null || _parent == nodeWindow) return;
 
         _connectedWindows.Add(connections);
 
@@ -69,7 +71,7 @@ public class ConnectionHandler
     {
         WindowConnections connections;
 
-        if (!child.HasParent || parent == null || parent.WindowNode == child.WindowNode) return;
+        if (!child.HasParent || parent == null || parent == child) return;
 
         for (int i = _connectedWindows.Count - 1; i >= 0; i--)
         {
@@ -79,12 +81,37 @@ public class ConnectionHandler
             {
                 _connectedWindows.RemoveAt(i);
                 child.HasParent = false;
+                child.Parent.Children.Remove(parent);
                 child.Parent = null;
                 break;
             }
         }
         parent.Children.Remove(child);
         _parent = null;
+    }
+
+    public void DisconnectAllNodes(List<NodeWindow> nodeWindows)
+    {
+        WindowConnections connections;
+        for (int i = 0; i < nodeWindows.Count; i++)
+        {
+            NodeWindow current = nodeWindows[i];
+            if (!current.HasParent) continue;
+
+            for (int y = _connectedWindows.Count - 1; y >= 0; y--)
+            {
+                connections = _connectedWindows[y];
+                if (connections.Parent == current.Parent && connections.Child == current)
+                {
+                    _connectedWindows.RemoveAt(y);
+                    current.HasParent = false;
+                    current.Parent.Children.Remove(current);
+                    current.Parent = null;
+
+                    break;
+                }
+            }
+        }
     }
 
     public void UpdateConnection(NodeWindow nodeWindow)

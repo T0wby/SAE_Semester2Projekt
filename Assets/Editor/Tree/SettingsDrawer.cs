@@ -19,5 +19,9 @@ public static class SettingsDrawer
             SaveTab.LoadTree(windowDrawer.NodeWindows, _connectionHandler.ConnectedWindows, "Test.json");
             _connectionHandler.DrawConnections();
         }
+        if (GUI.Button(new Rect(50, 300, 100, 100), "Diconnect All"))
+        {
+            _connectionHandler.DisconnectAllNodes(BTWindow._bTWindow.WindowDrawer.NodeWindows);
+        }
     }
 }

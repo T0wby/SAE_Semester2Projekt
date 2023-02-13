@@ -87,7 +87,8 @@ public class NodeCreationDrawer
 
             if (GUI.Button(new Rect(xPos * nextLine, 40 * yPos + 30, 170, 40), typeNodes[i].FullName))
             {
-                windowDrawer.AddWindow(50, 50, (Node)Activator.CreateInstance(typeNodes[i]));
+                //windowDrawer.AddWindow(50, 50, (Node)Activator.CreateInstance(typeNodes[i]));
+                windowDrawer.AddWindow(50, 50, typeNodes[i].Name);
             }
             yPos++;
         }
