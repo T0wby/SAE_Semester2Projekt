@@ -127,6 +127,7 @@ public static class SaveTab
         for (int i = 0; i < nodeWindow.Children.Count; i++)
         {
             NodeWindowWrap node = new NodeWindowWrap();
+            // infinite loop, use different with parent=this
             children.Add(TranslateToNWW(node, nodeWindow.Children[i]));
         }
         nodeWindowWrap._children = children;
