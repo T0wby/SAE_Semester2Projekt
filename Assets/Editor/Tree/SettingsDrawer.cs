@@ -6,10 +6,11 @@ using UnityEngine;
 public static class SettingsDrawer
 {
     private static ConnectionHandler _connectionHandler;
-    private static string _fileName;
+    private static string _fileName = "FileName";
     private static GUIContent _label = new GUIContent("Save/Load Name: ");
 
     public static ConnectionHandler ConnectionHandler { get => _connectionHandler; set => _connectionHandler = value; }
+    public static string FileName { get => _fileName; set => _fileName = value; }
 
     public static void DrawSettings(WindowDrawer windowDrawer)
     {
@@ -17,7 +18,7 @@ public static class SettingsDrawer
         {
             SaveTab.SaveTree(windowDrawer.NodeWindows, _connectionHandler.ConnectedWindows, $"{_fileName}.json");
         }
-        _fileName = EditorGUILayout.TextField(_label, "Name");
+        _fileName = EditorGUI.TextField(new Rect(200, 150, 300, 20), _label, _fileName);
         if (GUI.Button(new Rect(50, 175, 100, 100), "Load"))
         {
             SaveTab.LoadTree(windowDrawer.NodeWindows, _connectionHandler.ConnectedWindows, $"{_fileName}.json");

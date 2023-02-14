@@ -77,7 +77,7 @@ public static class SaveTab
         {
             for (int x = 0; x < nodeWindows[i].Children.Count; x++)
             {
-                connectedWindows.Add(new WindowConnections(nodeWindows[i], nodeWindows[i].Children[x]));
+                connectedWindows.Add(new WindowConnections(nodeWindows[i], SearchForChildNode(nodeWindows, nodeWindows[i].Children[x])));
             }
         }
         return nodeWindows;
@@ -198,5 +198,18 @@ public static class SaveTab
         }
         nodeWindow.Children = children;
         return nodeWindow;
+    }
+
+    private static NodeWindow SearchForChildNode(List<NodeWindow> nodeWindows, NodeWindow child)
+    {
+        for (int i = 0; i < nodeWindows.Count; i++)
+        {
+            if (nodeWindows[i].WindowRect == child.WindowRect && nodeWindows[i].Name == child.Name)
+            {
+                return nodeWindows[i];
+            }
+        }
+        Debug.Log("No matching Child found");
+        return null;
     }
 }

@@ -1,0 +1,1336 @@
+{
+    "_nodeWindowWraps": [
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 63.0,
+                "y": 225.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_name": "Sequence",
+            "_hasParent": true,
+            "_children": [
+                {
+                    "_windowRect": {
+                        "serializedVersion": "2",
+                        "x": 287.0,
+                        "y": 420.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "_name": "Sequence",
+                    "_hasParent": true,
+                    "_children": [
+                        {
+                            "_windowRect": {
+                                "serializedVersion": "2",
+                                "x": 46.0,
+                                "y": 602.0,
+                                "width": 250.0,
+                                "height": 80.0
+                            },
+                            "_name": "LF_EnemyInRange",
+                            "_hasParent": true,
+                            "_children": []
+                        },
+                        {
+                            "_windowRect": {
+                                "serializedVersion": "2",
+                                "x": 371.0,
+                                "y": 601.0,
+                                "width": 250.0,
+                                "height": 80.0
+                            },
+                            "_name": "Sequence",
+                            "_hasParent": true,
+                            "_children": [
+                                {
+                                    "_windowRect": {
+                                        "serializedVersion": "2",
+                                        "x": 259.0,
+                                        "y": 750.0,
+                                        "width": 250.0,
+                                        "height": 80.0
+                                    },
+                                    "_name": "GetHidePosition",
+                                    "_hasParent": true,
+                                    "_children": []
+                                },
+                                {
+                                    "_windowRect": {
+                                        "serializedVersion": "2",
+                                        "x": 543.0,
+                                        "y": 753.0,
+                                        "width": 250.0,
+                                        "height": 80.0
+                                    },
+                                    "_name": "SetHideDestination",
+                                    "_hasParent": true,
+                                    "_children": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_windowRect": {
+                        "serializedVersion": "2",
+                        "x": 26.0,
+                        "y": 417.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "_name": "LF_CheckAlertState",
+                    "_hasParent": true,
+                    "_children": []
+                }
+            ]
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 718.0,
+                "y": 210.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_name": "Sequence",
+            "_hasParent": true,
+            "_children": [
+                {
+                    "_windowRect": {
+                        "serializedVersion": "2",
+                        "x": 598.0,
+                        "y": 403.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "_name": "LF_EnemyInRange",
+                    "_hasParent": true,
+                    "_children": []
+                },
+                {
+                    "_windowRect": {
+                        "serializedVersion": "2",
+                        "x": 924.0,
+                        "y": 403.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "_name": "LF_SetAnimalState",
+                    "_hasParent": true,
+                    "_children": []
+                }
+            ]
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 287.0,
+                "y": 420.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_name": "Sequence",
+            "_hasParent": true,
+            "_children": [
+                {
+                    "_windowRect": {
+                        "serializedVersion": "2",
+                        "x": 46.0,
+                        "y": 602.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "_name": "LF_EnemyInRange",
+                    "_hasParent": true,
+                    "_children": []
+                },
+                {
+                    "_windowRect": {
+                        "serializedVersion": "2",
+                        "x": 371.0,
+                        "y": 601.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "_name": "Sequence",
+                    "_hasParent": true,
+                    "_children": [
+                        {
+                            "_windowRect": {
+                                "serializedVersion": "2",
+                                "x": 259.0,
+                                "y": 750.0,
+                                "width": 250.0,
+                                "height": 80.0
+                            },
+                            "_name": "GetHidePosition",
+                            "_hasParent": true,
+                            "_children": []
+                        },
+                        {
+                            "_windowRect": {
+                                "serializedVersion": "2",
+                                "x": 543.0,
+                                "y": 753.0,
+                                "width": 250.0,
+                                "height": 80.0
+                            },
+                            "_name": "SetHideDestination",
+                            "_hasParent": true,
+                            "_children": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 371.0,
+                "y": 601.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_name": "Sequence",
+            "_hasParent": true,
+            "_children": [
+                {
+                    "_windowRect": {
+                        "serializedVersion": "2",
+                        "x": 259.0,
+                        "y": 750.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "_name": "GetHidePosition",
+                    "_hasParent": true,
+                    "_children": []
+                },
+                {
+                    "_windowRect": {
+                        "serializedVersion": "2",
+                        "x": 543.0,
+                        "y": 753.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "_name": "SetHideDestination",
+                    "_hasParent": true,
+                    "_children": []
+                }
+            ]
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 26.0,
+                "y": 417.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_name": "LF_CheckAlertState",
+            "_hasParent": true,
+            "_children": []
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 598.0,
+                "y": 403.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_name": "LF_EnemyInRange",
+            "_hasParent": true,
+            "_children": []
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 259.0,
+                "y": 750.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_name": "GetHidePosition",
+            "_hasParent": true,
+            "_children": []
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 543.0,
+                "y": 753.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_name": "SetHideDestination",
+            "_hasParent": true,
+            "_children": []
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 46.0,
+                "y": 602.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_name": "LF_EnemyInRange",
+            "_hasParent": true,
+            "_children": []
+        },
+        {
+            "_windowRect": {
+                "serializedVersion": "2",
+                "x": 924.0,
+                "y": 403.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "_name": "LF_SetAnimalState",
+            "_hasParent": true,
+            "_children": []
+        }
+    ],
+    "_connections": [
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 309.0,
+                    "y": 53.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Selector",
+                "_hasParent": false,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 63.0,
+                            "y": 225.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "Sequence",
+                        "_hasParent": true,
+                        "_children": [
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 287.0,
+                                    "y": 420.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "Sequence",
+                                "_hasParent": true,
+                                "_children": [
+                                    {
+                                        "_windowRect": {
+                                            "serializedVersion": "2",
+                                            "x": 46.0,
+                                            "y": 602.0,
+                                            "width": 250.0,
+                                            "height": 80.0
+                                        },
+                                        "_name": "LF_EnemyInRange",
+                                        "_hasParent": true,
+                                        "_children": []
+                                    },
+                                    {
+                                        "_windowRect": {
+                                            "serializedVersion": "2",
+                                            "x": 371.0,
+                                            "y": 601.0,
+                                            "width": 250.0,
+                                            "height": 80.0
+                                        },
+                                        "_name": "Sequence",
+                                        "_hasParent": true,
+                                        "_children": [
+                                            {
+                                                "_windowRect": {
+                                                    "serializedVersion": "2",
+                                                    "x": 259.0,
+                                                    "y": 750.0,
+                                                    "width": 250.0,
+                                                    "height": 80.0
+                                                },
+                                                "_name": "GetHidePosition",
+                                                "_hasParent": true,
+                                                "_children": []
+                                            },
+                                            {
+                                                "_windowRect": {
+                                                    "serializedVersion": "2",
+                                                    "x": 543.0,
+                                                    "y": 753.0,
+                                                    "width": 250.0,
+                                                    "height": 80.0
+                                                },
+                                                "_name": "SetHideDestination",
+                                                "_hasParent": true,
+                                                "_children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 26.0,
+                                    "y": 417.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "LF_CheckAlertState",
+                                "_hasParent": true,
+                                "_children": []
+                            }
+                        ]
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 718.0,
+                            "y": 210.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "Sequence",
+                        "_hasParent": true,
+                        "_children": [
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 598.0,
+                                    "y": 403.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "LF_EnemyInRange",
+                                "_hasParent": true,
+                                "_children": []
+                            },
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 924.0,
+                                    "y": 403.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "LF_SetAnimalState",
+                                "_hasParent": true,
+                                "_children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 63.0,
+                    "y": 225.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 287.0,
+                            "y": 420.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "Sequence",
+                        "_hasParent": true,
+                        "_children": [
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 46.0,
+                                    "y": 602.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "LF_EnemyInRange",
+                                "_hasParent": true,
+                                "_children": []
+                            },
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 371.0,
+                                    "y": 601.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "Sequence",
+                                "_hasParent": true,
+                                "_children": [
+                                    {
+                                        "_windowRect": {
+                                            "serializedVersion": "2",
+                                            "x": 259.0,
+                                            "y": 750.0,
+                                            "width": 250.0,
+                                            "height": 80.0
+                                        },
+                                        "_name": "GetHidePosition",
+                                        "_hasParent": true,
+                                        "_children": []
+                                    },
+                                    {
+                                        "_windowRect": {
+                                            "serializedVersion": "2",
+                                            "x": 543.0,
+                                            "y": 753.0,
+                                            "width": 250.0,
+                                            "height": 80.0
+                                        },
+                                        "_name": "SetHideDestination",
+                                        "_hasParent": true,
+                                        "_children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 26.0,
+                            "y": 417.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_CheckAlertState",
+                        "_hasParent": true,
+                        "_children": []
+                    }
+                ]
+            }
+        },
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 309.0,
+                    "y": 53.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Selector",
+                "_hasParent": false,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 63.0,
+                            "y": 225.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "Sequence",
+                        "_hasParent": true,
+                        "_children": [
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 287.0,
+                                    "y": 420.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "Sequence",
+                                "_hasParent": true,
+                                "_children": [
+                                    {
+                                        "_windowRect": {
+                                            "serializedVersion": "2",
+                                            "x": 46.0,
+                                            "y": 602.0,
+                                            "width": 250.0,
+                                            "height": 80.0
+                                        },
+                                        "_name": "LF_EnemyInRange",
+                                        "_hasParent": true,
+                                        "_children": []
+                                    },
+                                    {
+                                        "_windowRect": {
+                                            "serializedVersion": "2",
+                                            "x": 371.0,
+                                            "y": 601.0,
+                                            "width": 250.0,
+                                            "height": 80.0
+                                        },
+                                        "_name": "Sequence",
+                                        "_hasParent": true,
+                                        "_children": [
+                                            {
+                                                "_windowRect": {
+                                                    "serializedVersion": "2",
+                                                    "x": 259.0,
+                                                    "y": 750.0,
+                                                    "width": 250.0,
+                                                    "height": 80.0
+                                                },
+                                                "_name": "GetHidePosition",
+                                                "_hasParent": true,
+                                                "_children": []
+                                            },
+                                            {
+                                                "_windowRect": {
+                                                    "serializedVersion": "2",
+                                                    "x": 543.0,
+                                                    "y": 753.0,
+                                                    "width": 250.0,
+                                                    "height": 80.0
+                                                },
+                                                "_name": "SetHideDestination",
+                                                "_hasParent": true,
+                                                "_children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 26.0,
+                                    "y": 417.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "LF_CheckAlertState",
+                                "_hasParent": true,
+                                "_children": []
+                            }
+                        ]
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 718.0,
+                            "y": 210.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "Sequence",
+                        "_hasParent": true,
+                        "_children": [
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 598.0,
+                                    "y": 403.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "LF_EnemyInRange",
+                                "_hasParent": true,
+                                "_children": []
+                            },
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 924.0,
+                                    "y": 403.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "LF_SetAnimalState",
+                                "_hasParent": true,
+                                "_children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 718.0,
+                    "y": 210.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 598.0,
+                            "y": 403.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_EnemyInRange",
+                        "_hasParent": true,
+                        "_children": []
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 924.0,
+                            "y": 403.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_SetAnimalState",
+                        "_hasParent": true,
+                        "_children": []
+                    }
+                ]
+            }
+        },
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 63.0,
+                    "y": 225.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 287.0,
+                            "y": 420.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "Sequence",
+                        "_hasParent": true,
+                        "_children": [
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 46.0,
+                                    "y": 602.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "LF_EnemyInRange",
+                                "_hasParent": true,
+                                "_children": []
+                            },
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 371.0,
+                                    "y": 601.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "Sequence",
+                                "_hasParent": true,
+                                "_children": [
+                                    {
+                                        "_windowRect": {
+                                            "serializedVersion": "2",
+                                            "x": 259.0,
+                                            "y": 750.0,
+                                            "width": 250.0,
+                                            "height": 80.0
+                                        },
+                                        "_name": "GetHidePosition",
+                                        "_hasParent": true,
+                                        "_children": []
+                                    },
+                                    {
+                                        "_windowRect": {
+                                            "serializedVersion": "2",
+                                            "x": 543.0,
+                                            "y": 753.0,
+                                            "width": 250.0,
+                                            "height": 80.0
+                                        },
+                                        "_name": "SetHideDestination",
+                                        "_hasParent": true,
+                                        "_children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 26.0,
+                            "y": 417.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_CheckAlertState",
+                        "_hasParent": true,
+                        "_children": []
+                    }
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 287.0,
+                    "y": 420.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 46.0,
+                            "y": 602.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_EnemyInRange",
+                        "_hasParent": true,
+                        "_children": []
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 371.0,
+                            "y": 601.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "Sequence",
+                        "_hasParent": true,
+                        "_children": [
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 259.0,
+                                    "y": 750.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "GetHidePosition",
+                                "_hasParent": true,
+                                "_children": []
+                            },
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 543.0,
+                                    "y": 753.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "SetHideDestination",
+                                "_hasParent": true,
+                                "_children": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 63.0,
+                    "y": 225.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 287.0,
+                            "y": 420.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "Sequence",
+                        "_hasParent": true,
+                        "_children": [
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 46.0,
+                                    "y": 602.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "LF_EnemyInRange",
+                                "_hasParent": true,
+                                "_children": []
+                            },
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 371.0,
+                                    "y": 601.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "Sequence",
+                                "_hasParent": true,
+                                "_children": [
+                                    {
+                                        "_windowRect": {
+                                            "serializedVersion": "2",
+                                            "x": 259.0,
+                                            "y": 750.0,
+                                            "width": 250.0,
+                                            "height": 80.0
+                                        },
+                                        "_name": "GetHidePosition",
+                                        "_hasParent": true,
+                                        "_children": []
+                                    },
+                                    {
+                                        "_windowRect": {
+                                            "serializedVersion": "2",
+                                            "x": 543.0,
+                                            "y": 753.0,
+                                            "width": 250.0,
+                                            "height": 80.0
+                                        },
+                                        "_name": "SetHideDestination",
+                                        "_hasParent": true,
+                                        "_children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 26.0,
+                            "y": 417.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_CheckAlertState",
+                        "_hasParent": true,
+                        "_children": []
+                    }
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 26.0,
+                    "y": 417.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "LF_CheckAlertState",
+                "_hasParent": true,
+                "_children": []
+            }
+        },
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 718.0,
+                    "y": 210.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 598.0,
+                            "y": 403.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_EnemyInRange",
+                        "_hasParent": true,
+                        "_children": []
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 924.0,
+                            "y": 403.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_SetAnimalState",
+                        "_hasParent": true,
+                        "_children": []
+                    }
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 598.0,
+                    "y": 403.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "LF_EnemyInRange",
+                "_hasParent": true,
+                "_children": []
+            }
+        },
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 287.0,
+                    "y": 420.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 46.0,
+                            "y": 602.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_EnemyInRange",
+                        "_hasParent": true,
+                        "_children": []
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 371.0,
+                            "y": 601.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "Sequence",
+                        "_hasParent": true,
+                        "_children": [
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 259.0,
+                                    "y": 750.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "GetHidePosition",
+                                "_hasParent": true,
+                                "_children": []
+                            },
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 543.0,
+                                    "y": 753.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "SetHideDestination",
+                                "_hasParent": true,
+                                "_children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 46.0,
+                    "y": 602.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "LF_EnemyInRange",
+                "_hasParent": true,
+                "_children": []
+            }
+        },
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 287.0,
+                    "y": 420.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 46.0,
+                            "y": 602.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_EnemyInRange",
+                        "_hasParent": true,
+                        "_children": []
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 371.0,
+                            "y": 601.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "Sequence",
+                        "_hasParent": true,
+                        "_children": [
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 259.0,
+                                    "y": 750.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "GetHidePosition",
+                                "_hasParent": true,
+                                "_children": []
+                            },
+                            {
+                                "_windowRect": {
+                                    "serializedVersion": "2",
+                                    "x": 543.0,
+                                    "y": 753.0,
+                                    "width": 250.0,
+                                    "height": 80.0
+                                },
+                                "_name": "SetHideDestination",
+                                "_hasParent": true,
+                                "_children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 371.0,
+                    "y": 601.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 259.0,
+                            "y": 750.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "GetHidePosition",
+                        "_hasParent": true,
+                        "_children": []
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 543.0,
+                            "y": 753.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "SetHideDestination",
+                        "_hasParent": true,
+                        "_children": []
+                    }
+                ]
+            }
+        },
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 371.0,
+                    "y": 601.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 259.0,
+                            "y": 750.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "GetHidePosition",
+                        "_hasParent": true,
+                        "_children": []
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 543.0,
+                            "y": 753.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "SetHideDestination",
+                        "_hasParent": true,
+                        "_children": []
+                    }
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 259.0,
+                    "y": 750.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "GetHidePosition",
+                "_hasParent": true,
+                "_children": []
+            }
+        },
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 371.0,
+                    "y": 601.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 259.0,
+                            "y": 750.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "GetHidePosition",
+                        "_hasParent": true,
+                        "_children": []
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 543.0,
+                            "y": 753.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "SetHideDestination",
+                        "_hasParent": true,
+                        "_children": []
+                    }
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 543.0,
+                    "y": 753.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "SetHideDestination",
+                "_hasParent": true,
+                "_children": []
+            }
+        },
+        {
+            "Parent": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 718.0,
+                    "y": 210.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "Sequence",
+                "_hasParent": true,
+                "_children": [
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 598.0,
+                            "y": 403.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_EnemyInRange",
+                        "_hasParent": true,
+                        "_children": []
+                    },
+                    {
+                        "_windowRect": {
+                            "serializedVersion": "2",
+                            "x": 924.0,
+                            "y": 403.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "_name": "LF_SetAnimalState",
+                        "_hasParent": true,
+                        "_children": []
+                    }
+                ]
+            },
+            "Child": {
+                "_windowRect": {
+                    "serializedVersion": "2",
+                    "x": 924.0,
+                    "y": 403.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "_name": "LF_SetAnimalState",
+                "_hasParent": true,
+                "_children": []
+            }
+        }
+    ]
+}
