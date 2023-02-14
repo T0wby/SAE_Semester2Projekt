@@ -14,8 +14,6 @@ public class BTWindow : EditorWindow
     private float _panXPreset = 0;
     private float _panYPreset = 0;
 
-    private Rect _windowRect = new Rect(50,50,150,50);
-
     public WindowDrawer WindowDrawer { get => _windowDrawer; }
 
     [MenuItem("Tools/BTWindow")]

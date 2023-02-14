@@ -10,7 +10,6 @@ public static class SettingsDrawer
     private static GUIContent _label = new GUIContent("Save/Load Name: ");
 
     public static ConnectionHandler ConnectionHandler { get => _connectionHandler; set => _connectionHandler = value; }
-    public static string FileName { get => _fileName; set => _fileName = value; }
 
     public static void DrawSettings(WindowDrawer windowDrawer)
     {

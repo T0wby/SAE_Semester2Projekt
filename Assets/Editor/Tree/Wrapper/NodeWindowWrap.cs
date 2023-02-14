@@ -6,26 +6,15 @@ using UnityEngine;
 [System.Serializable]
 public class NodeWindowWrap
 {
-    public Rect _windowRect;
-    //public Node _windowNode;
-    public string _name;
-    public bool _hasParent;
-    public NodeWindowWrap _parent;
-    public List<NodeWindowWrap> _children;
+    public Rect WindowRect;
+    public string Name;
+    public bool HasParent;
+    public NodeWindowWrap Parent;
+    public List<NodeWindowWrap> Children;
 
 
     public NodeWindowWrap()
     {
-        _parent = null;
+        Parent = null;
     }
-
-	//public NodeWindowWrap(NodeWindow nodeWindow)
-	//{
- //       _windowRect = nodeWindow.WindowRect;
- //       //_windowNode = nodeWindow.WindowNode;
- //       _name = nodeWindow.Name;
- //       _hasParent = nodeWindow.HasParent;
- //       _parent = nodeWindow.Parent;
- //       _children = nodeWindow.Children;
- //   }
 }

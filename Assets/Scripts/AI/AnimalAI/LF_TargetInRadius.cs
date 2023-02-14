@@ -65,6 +65,8 @@ public class LF_TargetInRadius : Node
 
             for (int i = 1; i < grass.Count; i++)
             {
+                if (grass[i] == null) continue;
+
                 Vector3 distance = grass[i].transform.position - _thisTransform.position;
                 tmplength = distance.sqrMagnitude;
                 if (minlength > tmplength)

@@ -7,6 +7,7 @@ using static ConnectionHandler;
 public static class SaveTab
 {
     private static string _filepath = $"{Application.dataPath}/";
+
     public static void SaveTree(List<NodeWindow> nodeWindows, List<WindowConnections> connectedWindows, string name)
     {
         List<NodeWindowWrap> nodeWindowWraps = new List<NodeWindowWrap>();
@@ -96,13 +97,13 @@ public static class SaveTab
             nodeWindowWrap = new NodeWindowWrap();
         }
 
-        nodeWindowWrap._windowRect = nodeWindow.WindowRect;
+        nodeWindowWrap.WindowRect = nodeWindow.WindowRect;
         //nodeWindow.WindowNode = nodeWindowWrap._windowNode;
-        nodeWindowWrap._name = nodeWindow.Name;
-        nodeWindowWrap._hasParent = nodeWindow.HasParent;
+        nodeWindowWrap.Name = nodeWindow.Name;
+        nodeWindowWrap.HasParent = nodeWindow.HasParent;
 
         if(nodeWindow.Parent != null)
-            nodeWindowWrap._parent = TranslateToNWW(nodeWindowWrap._parent, nodeWindow.Parent);
+            nodeWindowWrap.Parent = TranslateToNWW(nodeWindowWrap.Parent, nodeWindow.Parent);
 
         List<NodeWindowWrap> children = new List<NodeWindowWrap>();
 
@@ -112,11 +113,18 @@ public static class SaveTab
             // infinite loop, use different with parent=this
             children.Add(TranslateToNWWChild(node, nodeWindow.Children[i], nodeWindowWrap));
         }
-        nodeWindowWrap._children = children;
+        nodeWindowWrap.Children = children;
 
         return nodeWindowWrap;
     }
 
+    /// <summary>
+    /// Take information from a NodeWindow class and put it into a NodeWindowWrap class, but set the parent extra to avoid a stack overflow
+    /// </summary>
+    /// <param name="nodeWindowWrap">Class to fill</param>
+    /// <param name="nodeWindow">Class to read from</param>
+    /// <param name="parent">Parent of the class to fill</param>
+    /// <returns>Returns the filled class</returns>
     private static NodeWindowWrap TranslateToNWWChild(NodeWindowWrap nodeWindowWrap, NodeWindow nodeWindow, NodeWindowWrap parent)
     {
         if (nodeWindowWrap == null)
@@ -124,12 +132,12 @@ public static class SaveTab
             nodeWindowWrap = new NodeWindowWrap();
         }
 
-        nodeWindowWrap._windowRect = nodeWindow.WindowRect;
-        nodeWindowWrap._name = nodeWindow.Name;
-        nodeWindowWrap._hasParent = nodeWindow.HasParent;
+        nodeWindowWrap.WindowRect = nodeWindow.WindowRect;
+        nodeWindowWrap.Name = nodeWindow.Name;
+        nodeWindowWrap.HasParent = nodeWindow.HasParent;
 
         if (parent != null)
-            nodeWindowWrap._parent = parent;
+            nodeWindowWrap.Parent = parent;
 
         List<NodeWindowWrap> children = new List<NodeWindowWrap>();
 
@@ -139,7 +147,7 @@ public static class SaveTab
             // infinite loop, use different with parent=this
             children.Add(TranslateToNWWChild(node, nodeWindow.Children[i], nodeWindowWrap));
         }
-        nodeWindowWrap._children = children;
+        nodeWindowWrap.Children = children;
 
         return nodeWindowWrap;
     }
@@ -157,24 +165,31 @@ public static class SaveTab
             nodeWindow = new NodeWindow();
         }
 
-        nodeWindow.WindowRect = nodeWindowWrap._windowRect;
-        nodeWindow.Name = nodeWindowWrap._name;
-        nodeWindow.HasParent = nodeWindowWrap._hasParent;
+        nodeWindow.WindowRect = nodeWindowWrap.WindowRect;
+        nodeWindow.Name = nodeWindowWrap.Name;
+        nodeWindow.HasParent = nodeWindowWrap.HasParent;
 
-        if(nodeWindowWrap._parent != null)
-            nodeWindow.Parent = TranslateToNW(nodeWindowWrap._parent, nodeWindow.Parent);
+        if(nodeWindowWrap.Parent != null)
+            nodeWindow.Parent = TranslateToNW(nodeWindowWrap.Parent, nodeWindow.Parent);
 
         List<NodeWindow> children = new List<NodeWindow>();
 
-        for (int i = 0; i < nodeWindowWrap._children.Count; i++)
+        for (int i = 0; i < nodeWindowWrap.Children.Count; i++)
         {
             NodeWindow node = new NodeWindow();
-            children.Add(TranslateToNWChild(nodeWindowWrap._children[i], node, nodeWindow));
+            children.Add(TranslateToNWChild(nodeWindowWrap.Children[i], node, nodeWindow));
         }
         nodeWindow.Children = children;
         return nodeWindow;
     }
 
+    /// <summary>
+    /// Take information from a NodeWindowWrap class and put it into a NodeWindow class, but set the parent extra to avoid a stack overflow
+    /// </summary>
+    /// <param name="nodeWindowWrap">Class to read from</param>
+    /// <param name="nodeWindow">Class to fill</param>
+    /// <param name="parent">Parent of the class to fill</param>
+    /// <returns>Returns the filled class</returns>
     private static NodeWindow TranslateToNWChild(NodeWindowWrap nodeWindowWrap, NodeWindow nodeWindow, NodeWindow parent)
     {
         if (nodeWindow == null)
@@ -182,24 +197,30 @@ public static class SaveTab
             nodeWindow = new NodeWindow();
         }
 
-        nodeWindow.WindowRect = nodeWindowWrap._windowRect;
-        nodeWindow.Name = nodeWindowWrap._name;
-        nodeWindow.HasParent = nodeWindowWrap._hasParent;
+        nodeWindow.WindowRect = nodeWindowWrap.WindowRect;
+        nodeWindow.Name = nodeWindowWrap.Name;
+        nodeWindow.HasParent = nodeWindowWrap.HasParent;
 
         if (parent != null)
             nodeWindow.Parent = parent;
 
         List<NodeWindow> children = new List<NodeWindow>();
 
-        for (int i = 0; i < nodeWindowWrap._children.Count; i++)
+        for (int i = 0; i < nodeWindowWrap.Children.Count; i++)
         {
             NodeWindow node = new NodeWindow();
-            children.Add(TranslateToNWChild(nodeWindowWrap._children[i], node, nodeWindow));
+            children.Add(TranslateToNWChild(nodeWindowWrap.Children[i], node, nodeWindow));
         }
         nodeWindow.Children = children;
         return nodeWindow;
     }
 
+    /// <summary>
+    /// Searches for a matching node in all active nodeWindows, to set the correct reference
+    /// </summary>
+    /// <param name="nodeWindows">List of all Nodes</param>
+    /// <param name="child">Node used to compare</param>
+    /// <returns>Returns a reference to the found Node</returns>
     private static NodeWindow SearchForChildNode(List<NodeWindow> nodeWindows, NodeWindow child)
     {
         for (int i = 0; i < nodeWindows.Count; i++)
