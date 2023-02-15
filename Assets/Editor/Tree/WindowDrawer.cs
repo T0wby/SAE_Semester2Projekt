@@ -26,15 +26,9 @@ public class WindowDrawer
         _nodeWindows = new List<NodeWindow>();
         _compositeNodeTypes = compositeNodeTypes;
         _composites = _compositeNodeTypes.ConvertAll(type => type.ToString()).ToArray();
-        //_rootNode = new NodeWindow(new Rect(50, 50, _nodeWindowSize.x, _nodeWindowSize.y), _compositeNodeTypes.Count > 0 ? (Node)Activator.CreateInstance(_compositeNodeTypes[0]) : null);
         _rootNode = new NodeWindow(new Rect(50, 50, _nodeWindowSize.x, _nodeWindowSize.y), _compositeNodeTypes.Count > 0 ? _compositeNodeTypes[0].Name : null);
         _connectionHandler = new ConnectionHandler();
     }
-
-    //public void AddWindow(int xPos, int yPos, Node node)
-    //{
-    //    _nodeWindows.Add(new NodeWindow(new Rect(xPos, yPos, _nodeWindowSize.x, _nodeWindowSize.y), node));
-    //}
     public void AddWindow(int xPos, int yPos, string nodeName)
     {
         _nodeWindows.Add(new NodeWindow(new Rect(xPos, yPos, _nodeWindowSize.x, _nodeWindowSize.y), nodeName));
@@ -73,7 +67,6 @@ public class WindowDrawer
     {
         if (_selectedRootNodeInt != (_selectedRootNodeInt = EditorGUILayout.Popup(_selectedRootNodeInt, _composites)))
         {
-            //_rootNode.WindowNode = (Node)Activator.CreateInstance(_compositeNodeTypes[_selectedRootNodeInt]);
             _rootNode.Name = _compositeNodeTypes[_selectedRootNodeInt].Name;
         }
         DrawAddAndRemoveButton(_rootNode);

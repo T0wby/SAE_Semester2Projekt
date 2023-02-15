@@ -7,14 +7,12 @@ using BehaviorTree;
 public class NodeWindow
 {
     private Rect _windowRect;
-    //private Node _windowNode;
     private string _name;
     private bool _hasParent;
     private NodeWindow _parent;
     private List<NodeWindow> _children;
 
     public Rect WindowRect { get => _windowRect; set => _windowRect = value; }
-    //public Node WindowNode { get => _windowNode; set => _windowNode = value; }
     public bool HasParent { get => _hasParent; set => _hasParent = value; }
     public List<NodeWindow> Children { get => _children; set => _children = value; }
     public NodeWindow Parent { get => _parent; set => _parent = value; }
@@ -23,7 +21,6 @@ public class NodeWindow
     public NodeWindow()
     {
         _windowRect = new Rect();
-        //_windowNode = null;
         _hasParent = false;
         _children = new List<NodeWindow>();
         _parent = null;
@@ -33,7 +30,6 @@ public class NodeWindow
     public NodeWindow(Rect windowRect, string windowName)
     {
         _windowRect = windowRect;
-        //_windowNode = windowNode;
         _hasParent = false;
         _children = new List<NodeWindow>();
         _parent = null;

@@ -8,6 +8,12 @@ public static class SaveTab
 {
     private static string _filepath = $"{Application.dataPath}/";
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nodeWindows"></param>
+    /// <param name="connectedWindows"></param>
+    /// <param name="name"></param>
     public static void SaveTree(List<NodeWindow> nodeWindows, List<WindowConnections> connectedWindows, string name)
     {
         List<NodeWindowWrap> nodeWindowWraps = new List<NodeWindowWrap>();
@@ -16,7 +22,6 @@ public static class SaveTab
         for (int i = 0; i < nodeWindows.Count; i++)
         {
             NodeWindowWrap nodeWindowWrap = new NodeWindowWrap();
-            //nodeWindowWraps.Add(TranslateToNWW(nodeWindowWrap, nodeWindows[i]));
             nodeWindowWrap = TranslateBasicInfoToSave(nodeWindowWrap, nodeWindows[i]);
             nodeWindowWraps.Add(nodeWindowWrap);
         }
@@ -33,14 +38,10 @@ public static class SaveTab
             WindowConnectionsWrap singleConnectionsWrap = new WindowConnectionsWrap();
             if (connectedWindows[i].Parent != null)
             {
-                //NodeWindowWrap nodeWindowWrap = new NodeWindowWrap();
-                //singleConnectionsWrap.Parent = TranslateToNWW(nodeWindowWrap, connectedWindows[i].Parent);
                 singleConnectionsWrap.Parent = SearchMatchingNode(connectedWindows[i].Parent, nodeWindowWraps);
             }
             if (connectedWindows[i].Child != null)
             {
-                //NodeWindowWrap nodeWindowWrap = new NodeWindowWrap();
-                //singleConnectionsWrap.Child = TranslateToNWW(nodeWindowWrap, connectedWindows[i].Child);
                 singleConnectionsWrap.Child = SearchMatchingNode(connectedWindows[i].Child, nodeWindowWraps);
             }
 
@@ -57,6 +58,13 @@ public static class SaveTab
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nodeWindows"></param>
+    /// <param name="connectedWindows"></param>
+    /// <param name="name"></param>
+    /// <returns></returns>
     public static List<NodeWindow> LoadTree(List<NodeWindow> nodeWindows, List<WindowConnections> connectedWindows, string name)
     {
         if (!File.Exists(_filepath + name))
@@ -100,6 +108,12 @@ public static class SaveTab
         return nodeWindows;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nodeWindowWrap"></param>
+    /// <param name="nodeWindow"></param>
+    /// <returns></returns>
     private static NodeWindowWrap TranslateBasicInfoToSave(NodeWindowWrap nodeWindowWrap, NodeWindow nodeWindow)
     {
         if (nodeWindowWrap == null)
@@ -114,6 +128,11 @@ public static class SaveTab
         return nodeWindowWrap;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nodeWindowWraps"></param>
+    /// <param name="nodeWindows"></param>
     private static void TranslateParentInfoToSave(List<NodeWindowWrap> nodeWindowWraps, List<NodeWindow> nodeWindows)
     {
         for (int i = 0; i < nodeWindows.Count; i++)
@@ -125,6 +144,11 @@ public static class SaveTab
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nodeWindowWraps"></param>
+    /// <param name="nodeWindows"></param>
     private static void TranslateChildInfoToSave(List<NodeWindowWrap> nodeWindowWraps, List<NodeWindow> nodeWindows)
     {
         for (int i = 0; i < nodeWindows.Count; i++)
@@ -145,6 +169,12 @@ public static class SaveTab
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nodeWindowWrap"></param>
+    /// <param name="nodeWindow"></param>
+    /// <returns></returns>
     private static NodeWindow TranslateBasicInfoBack(NodeWindowWrap nodeWindowWrap, NodeWindow nodeWindow)
     {
         if (nodeWindow == null)
@@ -159,6 +189,11 @@ public static class SaveTab
         return nodeWindow;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nodeWindowWraps"></param>
+    /// <param name="nodeWindows"></param>
     private static void TranslateParentInfoBack(List<NodeWindowWrap> nodeWindowWraps, List<NodeWindow>  nodeWindows)
     {
         for (int i = 0; i < nodeWindowWraps.Count; i++)
@@ -176,6 +211,11 @@ public static class SaveTab
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nodeWindowWraps"></param>
+    /// <param name="nodeWindows"></param>
     private static void TranslateChildInfoBack(List<NodeWindowWrap> nodeWindowWraps, List<NodeWindow> nodeWindows)
     {
         for (int i = 0; i < nodeWindowWraps.Count; i++)
@@ -194,6 +234,12 @@ public static class SaveTab
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nodeWindowWrap"></param>
+    /// <param name="nodeWindows"></param>
+    /// <returns></returns>
     private static NodeWindow SearchMatchingNode(NodeWindowWrap nodeWindowWrap, List<NodeWindow> nodeWindows)
     {
         for (int i = 0; i < nodeWindows.Count; i++)
@@ -205,6 +251,13 @@ public static class SaveTab
         }
         return null;
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nodeWindow"></param>
+    /// <param name="nodeWindowWraps"></param>
+    /// <returns></returns>
     private static NodeWindowWrap SearchMatchingNode(NodeWindow nodeWindow, List<NodeWindowWrap> nodeWindowWraps)
     {
         for (int i = 0; i < nodeWindowWraps.Count; i++)
@@ -216,170 +269,4 @@ public static class SaveTab
         }
         return null;
     }
-
-    /// <summary>
-    /// Searches for a matching node in all active nodeWindows, to set the correct reference
-    /// </summary>
-    /// <param name="nodeWindows">List of all Nodes</param>
-    /// <param name="child">Node used to compare</param>
-    /// <returns>Returns a reference to the found Node</returns>
-    private static NodeWindow SearchForChildNode(List<NodeWindow> nodeWindows, NodeWindow child)
-    {
-        for (int i = 0; i < nodeWindows.Count; i++)
-        {
-            if (nodeWindows[i].WindowRect == child.WindowRect && nodeWindows[i].Name == child.Name)
-            {
-                return nodeWindows[i];
-            }
-        }
-        Debug.Log("No matching Child found");
-        return null;
-    }
-
-    private static void SetParentNodes(List<NodeWindow> nodeWindows)
-    {
-        for (int i = 0; i < nodeWindows.Count; i++)
-        {
-            int childCount = nodeWindows[i].Children.Count;
-            if (childCount <= 0) continue;
-
-            for (int x = 0; x < childCount; x++)
-            {
-                SearchForChildNode(nodeWindows, nodeWindows[i].Children[x]).Parent = nodeWindows[i];
-            }
-        }
-    }
-
-
-    // Old Translation
-    /** 
-
-    /// <summary>
-    /// Take information from a NodeWindowWrap class and put it into a NodeWindow class
-    /// </summary>
-    /// <param name="nodeWindowWrap">Class to read from</param>
-    /// <param name="nodeWindow">Class to fill</param>
-    /// <returns>Returns the filled class</returns>
-    private static NodeWindow TranslateToNW(NodeWindowWrap nodeWindowWrap, NodeWindow nodeWindow)
-    {
-        if (nodeWindow == null)
-        {
-            nodeWindow = new NodeWindow();
-        }
-
-        nodeWindow.WindowRect = nodeWindowWrap.WindowRect;
-        nodeWindow.Name = nodeWindowWrap.Name;
-        nodeWindow.HasParent = nodeWindowWrap.HasParent;
-
-        if (nodeWindowWrap.Parent != null)
-            nodeWindow.Parent = TranslateToNW(nodeWindowWrap.Parent, nodeWindow.Parent);
-
-        List<NodeWindow> children = new List<NodeWindow>();
-
-        for (int i = 0; i < nodeWindowWrap.Children.Count; i++)
-        {
-            NodeWindow node = new NodeWindow();
-            children.Add(TranslateToNWChild(nodeWindowWrap.Children[i], node, nodeWindow));
-        }
-        nodeWindow.Children = children;
-        return nodeWindow;
-    }
-
-    /// <summary>
-    /// Take information from a NodeWindowWrap class and put it into a NodeWindow class, but set the parent extra to avoid a stack overflow
-    /// </summary>
-    /// <param name="nodeWindowWrap">Class to read from</param>
-    /// <param name="nodeWindow">Class to fill</param>
-    /// <param name="parent">Parent of the class to fill</param>
-    /// <returns>Returns the filled class</returns>
-    private static NodeWindow TranslateToNWChild(NodeWindowWrap nodeWindowWrap, NodeWindow nodeWindow, NodeWindow parent)
-    {
-        if (nodeWindow == null)
-        {
-            nodeWindow = new NodeWindow();
-        }
-
-        nodeWindow.WindowRect = nodeWindowWrap.WindowRect;
-        nodeWindow.Name = nodeWindowWrap.Name;
-        nodeWindow.HasParent = nodeWindowWrap.HasParent;
-
-        if (parent != null)
-            nodeWindow.Parent = parent;
-
-        List<NodeWindow> children = new List<NodeWindow>();
-
-        for (int i = 0; i < nodeWindowWrap.Children.Count; i++)
-        {
-            NodeWindow node = new NodeWindow();
-            children.Add(TranslateToNWChild(nodeWindowWrap.Children[i], node, nodeWindow));
-        }
-        nodeWindow.Children = children;
-        return nodeWindow;
-    }
-
-    /// <summary>
-    /// Take information from a NodeWindow class and put it into a NodeWindowWrap class
-    /// </summary>
-    /// <param name="nodeWindowWrap">Class to fill</param>
-    /// <param name="nodeWindow">Class to read from</param>
-    /// <returns>Returns the filled class</returns>
-    private static NodeWindowWrap TranslateToNWW(NodeWindowWrap nodeWindowWrap, NodeWindow nodeWindow)
-    {
-        if (nodeWindowWrap == null)
-        {
-            nodeWindowWrap = new NodeWindowWrap();
-        }
-
-        nodeWindowWrap.WindowRect = nodeWindow.WindowRect;
-        nodeWindowWrap.Name = nodeWindow.Name;
-        nodeWindowWrap.HasParent = nodeWindow.HasParent;
-
-        if (nodeWindow.Parent != null)
-            nodeWindowWrap.Parent = TranslateToNWW(nodeWindowWrap.Parent, nodeWindow.Parent);
-
-        List<NodeWindowWrap> children = new List<NodeWindowWrap>();
-
-        for (int i = 0; i < nodeWindow.Children.Count; i++)
-        {
-            NodeWindowWrap node = new NodeWindowWrap();
-            children.Add(TranslateToNWWChild(node, nodeWindow.Children[i], nodeWindowWrap));
-        }
-        nodeWindowWrap.Children = children;
-
-        return nodeWindowWrap;
-    }
-
-    /// <summary>
-    /// Take information from a NodeWindow class and put it into a NodeWindowWrap class, but set the parent extra to avoid a stack overflow
-    /// </summary>
-    /// <param name="nodeWindowWrap">Class to fill</param>
-    /// <param name="nodeWindow">Class to read from</param>
-    /// <param name="parent">Parent of the class to fill</param>
-    /// <returns>Returns the filled class</returns>
-    private static NodeWindowWrap TranslateToNWWChild(NodeWindowWrap nodeWindowWrap, NodeWindow nodeWindow, NodeWindowWrap parent)
-    {
-        if (nodeWindowWrap == null)
-        {
-            nodeWindowWrap = new NodeWindowWrap();
-        }
-
-        nodeWindowWrap.WindowRect = nodeWindow.WindowRect;
-        nodeWindowWrap.Name = nodeWindow.Name;
-        nodeWindowWrap.HasParent = nodeWindow.HasParent;
-
-        if (parent != null)
-            nodeWindowWrap.Parent = parent;
-
-        List<NodeWindowWrap> children = new List<NodeWindowWrap>();
-
-        for (int i = 0; i < nodeWindow.Children.Count; i++)
-        {
-            NodeWindowWrap node = new NodeWindowWrap();
-            children.Add(TranslateToNWWChild(node, nodeWindow.Children[i], nodeWindowWrap));
-        }
-        nodeWindowWrap.Children = children;
-
-        return nodeWindowWrap;
-    }
-    **/
 }

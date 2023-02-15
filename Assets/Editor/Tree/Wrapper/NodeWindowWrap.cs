@@ -11,12 +11,11 @@ public class NodeWindowWrap
     public bool HasParent;
     public Rect ParentWindowRect;
     public string ParentName;
-    //public NodeWindowWrap Parent;
     public List<NodeWindowWrap> Children;
 
 
     public NodeWindowWrap()
     {
-        //Parent = null;
+
     }
 }
