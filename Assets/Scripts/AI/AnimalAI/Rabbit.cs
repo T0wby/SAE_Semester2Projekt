@@ -236,7 +236,11 @@ public class Rabbit : AAnimal
             Hunger += 30f;
         }
 
-        Destroy(grass.gameObject);
+        if (grass.gameObject != null)
+        {
+            Destroy(grass.gameObject);
+        }
+        
         State = EAnimalStates.None;
         _coroutineEat = null;
         _randomMove = true;

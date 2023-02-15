@@ -12,6 +12,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28612decdf264f4419e233ca4263d7a0, type: 3}
   m_Name: Planet12Shape
   m_EditorClassIdentifier: 
-  PlanetRadius: 1
-  UseFancySphere: 0
-  NoiseLayers: []
+  PlanetRadius: 2
+  UseFancySphere: 1
+  NoiseLayers:
+  - Enabled: 1
+    UseFirstLayerAsMask: 0
+    NoiseSettings:
+      FilterType: 0
+      simpleNoiseSettings:
+        Strength: 0.1
+        LayerCount: 8
+        BaseRoughness: 2
+        Roughness: 1
+        Persistence: 0.3
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 1
+      rigidNoiseSettings:
+        Strength: 0
+        LayerCount: 0
+        BaseRoughness: 0
+        Roughness: 0
+        Persistence: 0
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+        WeightMultiplier: 0
+  - Enabled: 1
+    UseFirstLayerAsMask: 0
+    NoiseSettings:
+      FilterType: 0
+      simpleNoiseSettings:
+        Strength: -0.14
+        LayerCount: 8
+        BaseRoughness: 2
+        Roughness: 1
+        Persistence: 0.3
+        NoiseCenter: {x: 0.61, y: 0, z: 0}
+        GroundLevel: 1
+      rigidNoiseSettings:
+        Strength: 0
+        LayerCount: 0
+        BaseRoughness: 0
+        Roughness: 0
+        Persistence: 0
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+        WeightMultiplier: 0
+  - Enabled: 1
+    UseFirstLayerAsMask: 1
+    NoiseSettings:
+      FilterType: 1
+      simpleNoiseSettings:
+        Strength: -0.14
+        LayerCount: 8
+        BaseRoughness: 2
+        Roughness: 1
+        Persistence: 0.3
+        NoiseCenter: {x: 0.61, y: 0, z: 0}
+        GroundLevel: 1
+      rigidNoiseSettings:
+        Strength: 1
+        LayerCount: 4
+        BaseRoughness: 1
+        Roughness: 2
+        Persistence: 0.5
+        NoiseCenter: {x: 200, y: 0, z: 0}
+        GroundLevel: 1
+        WeightMultiplier: 1
