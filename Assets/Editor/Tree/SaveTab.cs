@@ -98,7 +98,6 @@ public static class SaveTab
         }
 
         nodeWindowWrap.WindowRect = nodeWindow.WindowRect;
-        //nodeWindow.WindowNode = nodeWindowWrap._windowNode;
         nodeWindowWrap.Name = nodeWindow.Name;
         nodeWindowWrap.HasParent = nodeWindow.HasParent;
 
@@ -110,7 +109,6 @@ public static class SaveTab
         for (int i = 0; i < nodeWindow.Children.Count; i++)
         {
             NodeWindowWrap node = new NodeWindowWrap();
-            // infinite loop, use different with parent=this
             children.Add(TranslateToNWWChild(node, nodeWindow.Children[i], nodeWindowWrap));
         }
         nodeWindowWrap.Children = children;
@@ -144,7 +142,6 @@ public static class SaveTab
         for (int i = 0; i < nodeWindow.Children.Count; i++)
         {
             NodeWindowWrap node = new NodeWindowWrap();
-            // infinite loop, use different with parent=this
             children.Add(TranslateToNWWChild(node, nodeWindow.Children[i], nodeWindowWrap));
         }
         nodeWindowWrap.Children = children;
@@ -232,5 +229,10 @@ public static class SaveTab
         }
         Debug.Log("No matching Child found");
         return null;
+    }
+
+    private static void SearchForNode()
+    {
+
     }
 }

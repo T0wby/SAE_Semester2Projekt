@@ -96,19 +96,17 @@ public class ConnectionHandler
         for (int i = 0; i < nodeWindows.Count; i++)
         {
             NodeWindow current = nodeWindows[i];
-            if (!current.HasParent) continue;
+            if (current.Children.Count <= 0) continue;
 
             for (int y = _connectedWindows.Count - 1; y >= 0; y--)
             {
                 connections = _connectedWindows[y];
-                if (connections.Parent == current.Parent && connections.Child == current)
+                if (connections.Parent == current && current.Children.Contains(connections.Child))
                 {
                     _connectedWindows.RemoveAt(y);
-                    current.HasParent = false;
-                    current.Parent.Children.Remove(current);
-                    current.Parent = null;
-
-                    break;
+                    current.Children.Remove(connections.Child);
+                    connections.Child.Parent = null;
+                    connections.Child.HasParent = false;
                 }
             }
         }

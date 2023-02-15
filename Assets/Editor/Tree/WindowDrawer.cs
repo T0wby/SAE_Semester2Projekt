@@ -19,7 +19,7 @@ public class WindowDrawer
     private ConnectionHandler _connectionHandler;
     private StatusBarDrawer _statusBarDrawer;
 
-    public List<NodeWindow> NodeWindows { get => _nodeWindows; }
+    public List<NodeWindow> NodeWindows { get => _nodeWindows; set => _nodeWindows = value; }
 
     public WindowDrawer(List<Type> compositeNodeTypes)
     {

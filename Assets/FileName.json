@@ -1,0 +1,169 @@
+{
+    "_nodeWindowWraps": [
+        {
+            "WindowRect": {
+                "serializedVersion": "2",
+                "x": 385.0,
+                "y": 408.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "Name": "LF_Attack",
+            "HasParent": true,
+            "Children": []
+        },
+        {
+            "WindowRect": {
+                "serializedVersion": "2",
+                "x": 63.0,
+                "y": 404.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "Name": "LF_TargetInRange",
+            "HasParent": true,
+            "Children": []
+        },
+        {
+            "WindowRect": {
+                "serializedVersion": "2",
+                "x": 223.0,
+                "y": 205.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "Name": "Sequence",
+            "HasParent": false,
+            "Children": [
+                {
+                    "WindowRect": {
+                        "serializedVersion": "2",
+                        "x": 63.0,
+                        "y": 404.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "Name": "LF_TargetInRange",
+                    "HasParent": true,
+                    "Children": []
+                },
+                {
+                    "WindowRect": {
+                        "serializedVersion": "2",
+                        "x": 385.0,
+                        "y": 408.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "Name": "LF_Attack",
+                    "HasParent": true,
+                    "Children": []
+                }
+            ]
+        }
+    ],
+    "_connections": [
+        {
+            "Parent": {
+                "WindowRect": {
+                    "serializedVersion": "2",
+                    "x": 223.0,
+                    "y": 205.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "Name": "Sequence",
+                "HasParent": false,
+                "Children": [
+                    {
+                        "WindowRect": {
+                            "serializedVersion": "2",
+                            "x": 63.0,
+                            "y": 404.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "Name": "LF_TargetInRange",
+                        "HasParent": true,
+                        "Children": []
+                    },
+                    {
+                        "WindowRect": {
+                            "serializedVersion": "2",
+                            "x": 385.0,
+                            "y": 408.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "Name": "LF_Attack",
+                        "HasParent": true,
+                        "Children": []
+                    }
+                ]
+            },
+            "Child": {
+                "WindowRect": {
+                    "serializedVersion": "2",
+                    "x": 63.0,
+                    "y": 404.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "Name": "LF_TargetInRange",
+                "HasParent": true,
+                "Children": []
+            }
+        },
+        {
+            "Parent": {
+                "WindowRect": {
+                    "serializedVersion": "2",
+                    "x": 223.0,
+                    "y": 205.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "Name": "Sequence",
+                "HasParent": false,
+                "Children": [
+                    {
+                        "WindowRect": {
+                            "serializedVersion": "2",
+                            "x": 63.0,
+                            "y": 404.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "Name": "LF_TargetInRange",
+                        "HasParent": true,
+                        "Children": []
+                    },
+                    {
+                        "WindowRect": {
+                            "serializedVersion": "2",
+                            "x": 385.0,
+                            "y": 408.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "Name": "LF_Attack",
+                        "HasParent": true,
+                        "Children": []
+                    }
+                ]
+            },
+            "Child": {
+                "WindowRect": {
+                    "serializedVersion": "2",
+                    "x": 385.0,
+                    "y": 408.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "Name": "LF_Attack",
+                "HasParent": true,
+                "Children": []
+            }
+        }
+    ]
+}

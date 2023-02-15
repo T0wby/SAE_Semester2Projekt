@@ -1,0 +1,82 @@
+{
+    "_nodeWindowWraps": [
+        {
+            "WindowRect": {
+                "serializedVersion": "2",
+                "x": 269.0,
+                "y": 236.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "Name": "LF_GoToAnimalTarget",
+            "HasParent": false,
+            "Children": [
+                {
+                    "WindowRect": {
+                        "serializedVersion": "2",
+                        "x": 316.0,
+                        "y": 345.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "Name": "LF_MoveAround",
+                    "HasParent": true,
+                    "Children": []
+                }
+            ]
+        },
+        {
+            "WindowRect": {
+                "serializedVersion": "2",
+                "x": 316.0,
+                "y": 345.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "Name": "LF_MoveAround",
+            "HasParent": true,
+            "Children": []
+        }
+    ],
+    "_connections": [
+        {
+            "Parent": {
+                "WindowRect": {
+                    "serializedVersion": "2",
+                    "x": 269.0,
+                    "y": 236.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "Name": "LF_GoToAnimalTarget",
+                "HasParent": false,
+                "Children": [
+                    {
+                        "WindowRect": {
+                            "serializedVersion": "2",
+                            "x": 316.0,
+                            "y": 345.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "Name": "LF_MoveAround",
+                        "HasParent": true,
+                        "Children": []
+                    }
+                ]
+            },
+            "Child": {
+                "WindowRect": {
+                    "serializedVersion": "2",
+                    "x": 316.0,
+                    "y": 345.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "Name": "LF_MoveAround",
+                "HasParent": true,
+                "Children": []
+            }
+        }
+    ]
+}

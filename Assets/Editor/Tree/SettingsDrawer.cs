@@ -20,7 +20,7 @@ public static class SettingsDrawer
         _fileName = EditorGUI.TextField(new Rect(200, 150, 300, 20), _label, _fileName);
         if (GUI.Button(new Rect(50, 175, 100, 100), "Load"))
         {
-            SaveTab.LoadTree(windowDrawer.NodeWindows, _connectionHandler.ConnectedWindows, $"{_fileName}.json");
+            windowDrawer.NodeWindows = SaveTab.LoadTree(windowDrawer.NodeWindows, _connectionHandler.ConnectedWindows, $"{_fileName}.json");
         }
         if (GUI.Button(new Rect(50, 300, 100, 100), "Diconnect All"))
         {
