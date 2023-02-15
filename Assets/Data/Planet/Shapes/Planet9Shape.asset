@@ -13,5 +13,68 @@ MonoBehaviour:
   m_Name: Planet9Shape
   m_EditorClassIdentifier: 
   PlanetRadius: 1
-  UseFancySphere: 0
-  NoiseLayers: []
+  UseFancySphere: 1
+  NoiseLayers:
+  - Enabled: 1
+    UseFirstLayerAsMask: 0
+    NoiseSettings:
+      FilterType: 0
+      simpleNoiseSettings:
+        Strength: 0.15
+        LayerCount: 5
+        BaseRoughness: 2
+        Roughness: 2
+        Persistence: 0.3
+        NoiseCenter: {x: 0.93, y: 0.43, z: -0.42}
+        GroundLevel: 0.8
+      rigidNoiseSettings:
+        Strength: 0
+        LayerCount: 0
+        BaseRoughness: 0
+        Roughness: 0
+        Persistence: 0
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+        WeightMultiplier: 0
+  - Enabled: 1
+    UseFirstLayerAsMask: 1
+    NoiseSettings:
+      FilterType: 0
+      simpleNoiseSettings:
+        Strength: 3
+        LayerCount: 3
+        BaseRoughness: 3
+        Roughness: 2
+        Persistence: 0.1
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0.8
+      rigidNoiseSettings:
+        Strength: 3
+        LayerCount: 3
+        BaseRoughness: 3
+        Roughness: 3
+        Persistence: 3
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0.8
+        WeightMultiplier: 0
+  - Enabled: 1
+    UseFirstLayerAsMask: 1
+    NoiseSettings:
+      FilterType: 1
+      simpleNoiseSettings:
+        Strength: 3
+        LayerCount: 3
+        BaseRoughness: 3
+        Roughness: 2
+        Persistence: 0.1
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0.8
+      rigidNoiseSettings:
+        Strength: 0.3
+        LayerCount: 3
+        BaseRoughness: 1
+        Roughness: 2
+        Persistence: 1
+        NoiseCenter: {x: 3, y: 2, z: -99}
+        GroundLevel: 0.8
+        WeightMultiplier: 1

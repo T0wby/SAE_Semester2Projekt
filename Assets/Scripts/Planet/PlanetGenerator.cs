@@ -43,7 +43,6 @@ public class PlanetGenerator : MonoBehaviour
     private void Awake()
     {
         _meshes = new List<GameObject>();
-        //GeneratePlanet();
     }
     #endregion
 
@@ -62,7 +61,7 @@ public class PlanetGenerator : MonoBehaviour
         {
             if (_meshFilters[i] == null)
             {
-                if(_meshes== null)
+                if(_meshes == null)
                     _meshes = new List<GameObject>();
                 GameObject meshObj = new GameObject("mesh");
                 meshObj.transform.parent = transform;
@@ -131,6 +130,9 @@ public class PlanetGenerator : MonoBehaviour
     private void ResetPos()
     {
         if (_meshes == null) return;
+
+        _meshes.RemoveAll(x => x == null);
+
 
         foreach (GameObject mesh in _meshes)
         {
