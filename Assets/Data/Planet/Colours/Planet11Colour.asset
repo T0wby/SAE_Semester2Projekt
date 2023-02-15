@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c61f7cb61a97bb4190e0aba619198fd, type: 3}
+  m_Name: Planet11Colour
+  m_EditorClassIdentifier: 
+  PlanetMaterial: {fileID: 2100000, guid: 963be4ba406a4304899ba17240a6ba86, type: 2}
+  biomeColourSettings:
+    Biomes: []
+    Noise:
+      FilterType: 0
+      simpleNoiseSettings:
+        Strength: 1
+        LayerCount: 0
+        BaseRoughness: 1
+        Roughness: 2
+        Persistence: 0.5
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+      rigidNoiseSettings:
+        Strength: 1
+        LayerCount: 0
+        BaseRoughness: 1
+        Roughness: 2
+        Persistence: 0.5
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+        WeightMultiplier: 0.8
+    NoiseOffset: 0
+    NoiseStrength: 0
