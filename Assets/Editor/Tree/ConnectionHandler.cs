@@ -56,7 +56,6 @@ public class ConnectionHandler
     {
         WindowConnections connections = new WindowConnections(_parent, nodeWindow);
 
-        //if (nodeWindow.HasParent || _parent.WindowNode == null || _parent.WindowNode == nodeWindow.WindowNode) return;
         if (nodeWindow.HasParent || _parent == null || _parent == nodeWindow) return;
 
         _connectedWindows.Add(connections);
@@ -81,12 +80,11 @@ public class ConnectionHandler
             {
                 _connectedWindows.RemoveAt(i);
                 child.HasParent = false;
-                child.Parent.Children.Remove(parent);
                 child.Parent = null;
+                parent.Children.Remove(child);
                 break;
             }
         }
-        parent.Children.Remove(child);
         _parent = null;
     }
 
