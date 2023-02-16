@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.AI;
 using BehaviorTree;
 
-public class GoToTarget : Node
+public class LF_GoToTarget : Node
 {
     private Transform _thisTransform;
     private NavMeshAgent _agent;
     private BasicKISettings _settings;
     private Animator _animator;
 
-    public GoToTarget()
+    public LF_GoToTarget()
     {
 
     }
 
-    public GoToTarget(Transform transform, NavMeshAgent agent, BasicKISettings settings, Animator animator)
+    public LF_GoToTarget(Transform transform, NavMeshAgent agent, BasicKISettings settings, Animator animator)
     {
         _thisTransform = transform;
         _agent = agent;

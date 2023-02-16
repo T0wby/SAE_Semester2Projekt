@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorTree;
 
-public class CheckForEnemyInFOV : Node
+public class LF_CheckForEnemyInFOV : Node
 {
     private int _enemyLayerMask;
     private Transform _thisTransform;
@@ -12,12 +12,12 @@ public class CheckForEnemyInFOV : Node
     private float _range;
     private float _viewAngle;
 
-    public CheckForEnemyInFOV()
+    public LF_CheckForEnemyInFOV()
     {
 
     }
 
-    public CheckForEnemyInFOV(Transform transform, float range, float viewAngle, int enemyLayerMask)
+    public LF_CheckForEnemyInFOV(Transform transform, float range, float viewAngle, int enemyLayerMask)
     {
         _thisTransform = transform;
         _range = range;

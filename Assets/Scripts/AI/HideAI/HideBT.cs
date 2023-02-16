@@ -33,14 +33,14 @@ public class HideBT : MyTree
                     new Sequence(new List<Node>
                     {
                         new LF_CheckIfAtHidePoint(transform, _animator),
-                        new GetHidePosition(_agent, settings, _hideObjects, transform),
-                        new SetHideDestination(_agent, settings, _animator)
+                        new LF_GetHidePosition(_agent, settings, _hideObjects, transform),
+                        new LF_SetHideDestination(_agent, settings, _animator)
                     }),
                 })
             }),
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
+                new LF_CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
                 new LF_SetAlertState(_hideAI, true),
             }),
         });

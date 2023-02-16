@@ -4,7 +4,7 @@ using UnityEngine;
 using BehaviorTree;
 using UnityEngine.AI;
 
-public class SetHideDestination : Node
+public class LF_SetHideDestination : Node
 {
     #region Fields
 
@@ -16,12 +16,12 @@ public class SetHideDestination : Node
     #endregion
 
     #region Constructor
-    public SetHideDestination()
+    public LF_SetHideDestination()
     {
 
     }
 
-    public SetHideDestination(NavMeshAgent agent, HideAISettings settings, Animator animator)
+    public LF_SetHideDestination(NavMeshAgent agent, HideAISettings settings, Animator animator)
 	{
         _agent = agent;
         _settings = settings;
@@ -58,7 +58,6 @@ public class SetHideDestination : Node
         if (navMeshAgent.destination != position)
         {
             navMeshAgent.destination = position;
-            //SetAnimationBool(_animator, "IsWalking", true);
         }
     }
 

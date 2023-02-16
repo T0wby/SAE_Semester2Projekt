@@ -23,10 +23,10 @@ public class SnowBT : BehaviorTree.MyTree
         {
             new Sequence(new List<Node>
             {
-                new CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
-                new GoToTarget(transform, _agent, settings, _animator)
+                new LF_CheckForEnemyInFOV(transform, settings.FovRange, settings.FovAngle, _enemyLayerMask),
+                new LF_GoToTarget(transform, _agent, settings, _animator)
             }),
-            new PatrolWait(transform, waypoints, _agent, _waypointRadius, settings.WalkSpeed, _animator),
+            new LF_PatrolWait(transform, waypoints, _agent, _waypointRadius, settings.WalkSpeed, _animator),
         });
 
         return root;

@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorTree;
 
-public class CheckForEnemyInAttackRange : Node
+public class LF_CheckForEnemyInAttackRange : Node
 {
     private Transform _thisTransform;
     private float _range;
     private Animator _animator;
 
-    public CheckForEnemyInAttackRange()
+    public LF_CheckForEnemyInAttackRange()
     {
         _thisTransform = null;
         _range = 3f;
         _animator = null;
     }
 
-    public CheckForEnemyInAttackRange(Transform transform, float range, Animator animator)
+    public LF_CheckForEnemyInAttackRange(Transform transform, float range, Animator animator)
     {
         _thisTransform = transform;
         _range = range;

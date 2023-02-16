@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviorTree;
-using static Unity.Burst.Intrinsics.X86.Avx;
 
-public class EnemyIsCertainType<T> : Node where T : BehaviorTree.MyTree
+public class LF_EnemyIsCertainType<T> : Node where T : BehaviorTree.MyTree
 {
     public override ENodeState CalculateState()
 	{

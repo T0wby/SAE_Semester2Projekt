@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using UnityEditor;
 using Unity.VisualScripting;
 
-public class GetHidePosition : Node
+public class LF_GetHidePosition : Node
 {
     #region Fields
 
@@ -21,12 +21,12 @@ public class GetHidePosition : Node
     #endregion
 
     #region Constructors
-    public GetHidePosition()
+    public LF_GetHidePosition()
     {
 
     }
 
-    public GetHidePosition(NavMeshAgent agent, HideAISettings settings, TrackHideObject trackHideObject, Transform thisTransform)
+    public LF_GetHidePosition(NavMeshAgent agent, HideAISettings settings, TrackHideObject trackHideObject, Transform thisTransform)
     {
         _agent = agent;
         _settings = settings;
@@ -42,9 +42,6 @@ public class GetHidePosition : Node
         if (_target is not null)
             _targetTransform = (Transform)_target;
 
-        //Reset Hide destination
-        //GetRoot(this).SetData("hideDestination", null);
-
         if (Hiding(_targetTransform))
             return ENodeState.SUCCESS;
 
@@ -59,14 +56,6 @@ public class GetHidePosition : Node
     private bool Hiding(Transform target)
     {
         _colliders = _trackHideObject.Colliders;
-
-        //for (int i = 0; i < _colliders.Count; i++)
-        //{
-        //    if (Vector3.SqrMagnitude(_colliders[i].transform.position - _thisTransform.position) > _settings.FovRange * _settings.FovRange)
-        //    {
-        //        _colliders.RemoveAt(i);
-        //    }
-        //}
 
         for (int i = 0; i < _colliders.Count; i++)
         {
