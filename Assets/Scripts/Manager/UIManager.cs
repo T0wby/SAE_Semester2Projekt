@@ -22,7 +22,8 @@ public class UIManager : Singleton<UIManager>
     {
         IsInMenu = true;
         Cursor.visible = true;
-        Time.timeScale = 0f; 
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void ResumeGame()
@@ -31,6 +32,7 @@ public class UIManager : Singleton<UIManager>
         IsInMenu = false;
         Cursor.visible = false;
         _playerController.EnableMovement();
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void OpenCloseMenu(InputAction.CallbackContext context)

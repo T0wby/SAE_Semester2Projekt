@@ -17728,15 +17728,15 @@ PrefabInstance:
     - target: {fileID: 4396834507425219507, guid: a0da749c9fb41da4f9bbaa3efe7883c9, type: 3}
       propertyPath: waypoints.Array.data[2]
       value: 
-      objectReference: {fileID: 441204832}
+      objectReference: {fileID: 626461113}
     - target: {fileID: 4396834507425219507, guid: a0da749c9fb41da4f9bbaa3efe7883c9, type: 3}
       propertyPath: waypoints.Array.data[3]
       value: 
-      objectReference: {fileID: 626461113}
+      objectReference: {fileID: 755063141}
     - target: {fileID: 4396834507425219507, guid: a0da749c9fb41da4f9bbaa3efe7883c9, type: 3}
       propertyPath: waypoints.Array.data[4]
       value: 
-      objectReference: {fileID: 755063141}
+      objectReference: {fileID: 441204832}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0da749c9fb41da4f9bbaa3efe7883c9, type: 3}
 --- !u!4 &1759094960 stripped

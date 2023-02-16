@@ -20,7 +20,6 @@ MonoBehaviour:
   - LF_CheckForEnemyInFOV
   - LF_CheckIfAtHidePoint
   - LF_EnemyInRange
-  - LF_EnemyIsCertainType
   - LF_GetHidePosition
   - LF_GoToAnimalTarget
   - LF_GoToTarget

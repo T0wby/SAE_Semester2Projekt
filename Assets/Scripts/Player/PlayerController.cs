@@ -38,6 +38,7 @@ namespace Player_Towby
             _thisRb = GetComponent<Rigidbody>();
             _cameraTransform = Camera.main.transform;
             Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         private void OnEnable()
