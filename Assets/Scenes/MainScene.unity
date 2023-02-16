@@ -13178,7 +13178,7 @@ MonoBehaviour:
   _autoUpdate: 1
   _useMultiThreading: 1
   ColourSettingsFoldout: 1
-  ShapeSettingsFoldout: 0
+  ShapeSettingsFoldout: 1
 --- !u!1 &1301728634
 GameObject:
   m_ObjectHideFlags: 0

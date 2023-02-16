@@ -7,22 +7,27 @@ using UnityEditor.TerrainTools;
 [CustomEditor(typeof(PlanetGenerator))]
 public class PlanetEditor : Editor
 {
+    #region Fields
     private PlanetGenerator _planetGenerator;
     private Editor _shapeEditor;
     private Editor _colourEditor;
+    #endregion
 
+    #region Unity
     public override void OnInspectorGUI()
     {
+        // Checks if something in the GUI changed
         using (var check = new EditorGUI.ChangeCheckScope())
         {
             base.OnInspectorGUI();
             if (check.changed)
             {
-                _planetGenerator.GeneratePlanet();
+                if (_planetGenerator.AutoUpdate)
+                    _planetGenerator.GeneratePlanet();
             }
         }
 
-        if(GUILayout.Button("Generate Planet"))
+        if (GUILayout.Button("Generate Planet"))
         {
             _planetGenerator.GeneratePlanet();
         }
@@ -35,13 +40,23 @@ public class PlanetEditor : Editor
     {
         _planetGenerator = (PlanetGenerator)target;
     }
+    #endregion
 
-   private void DrawSettingsEditor(Object settings, System.Action onSettingsUpdated, ref Editor editor ,ref bool foldout)
+    #region Methods
+    /// <summary>
+    /// Creates the custom Editor for one of our Planet settings
+    /// </summary>
+    /// <param name="settings">Settings to be displayed</param>
+    /// <param name="onSettingsUpdated">Action that is performed, when a value in the editor changed</param>
+    /// <param name="editor">Reference to the Editor</param>
+    /// <param name="foldout">Is the setting unfolded</param>
+    private void DrawSettingsEditor(Object settings, System.Action onSettingsUpdated, ref Editor editor, ref bool foldout)
     {
         if (settings != null)
         {
             foldout = EditorGUILayout.InspectorTitlebar(foldout, settings);
 
+            // Checks if something in the Editor changed
             using (var check = new EditorGUI.ChangeCheckScope())
             {
                 if (foldout)
@@ -58,5 +73,6 @@ public class PlanetEditor : Editor
                 }
             }
         }
-    }
+    } 
+    #endregion
 }

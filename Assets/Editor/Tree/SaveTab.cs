@@ -8,17 +8,20 @@ public static class SaveTab
 {
     private static string _filepath = $"{Application.dataPath}/";
 
+    #region Functions
+    #region Saving/Loading
     /// <summary>
-    /// 
+    /// Saves the current tree in a JSON file
     /// </summary>
-    /// <param name="nodeWindows"></param>
-    /// <param name="connectedWindows"></param>
-    /// <param name="name"></param>
+    /// <param name="nodeWindows">List of all current active NodeWindows</param>
+    /// <param name="connectedWindows">List of all current active Connections between the windows</param>
+    /// <param name="name">Name of the savefile</param>
     public static void SaveTree(List<NodeWindow> nodeWindows, List<WindowConnections> connectedWindows, string name)
     {
         List<NodeWindowWrap> nodeWindowWraps = new List<NodeWindowWrap>();
         List<WindowConnectionsWrap> windowConnectionsWraps = new List<WindowConnectionsWrap>();
 
+        #region Translate all current active Windows to wrapper class
         for (int i = 0; i < nodeWindows.Count; i++)
         {
             NodeWindowWrap nodeWindowWrap = new NodeWindowWrap();
@@ -29,7 +32,9 @@ public static class SaveTab
         TranslateParentInfoToSave(nodeWindowWraps, nodeWindows);
 
         TranslateChildInfoToSave(nodeWindowWraps, nodeWindows);
+        #endregion
 
+        #region Translate all connections to a wrapper class and add to a wrapper list
         for (int i = 0; i < connectedWindows.Count; i++)
         {
             if (connectedWindows[i].Parent == null && connectedWindows[i].Child == null)
@@ -47,9 +52,12 @@ public static class SaveTab
 
             windowConnectionsWraps.Add(singleConnectionsWrap);
         }
+        #endregion
 
+        // Create wrapper List
         NodeWindowListWrap nodeWindowListWrap = new NodeWindowListWrap(nodeWindowWraps, windowConnectionsWraps);
 
+        // Write List into a JSON file
         string windowsJson = JsonUtility.ToJson(nodeWindowListWrap, true);
 
         using (StreamWriter writer = File.CreateText(_filepath + name))
@@ -59,12 +67,12 @@ public static class SaveTab
     }
 
     /// <summary>
-    /// 
+    /// Load a saved tree from a JSON file
     /// </summary>
-    /// <param name="nodeWindows"></param>
-    /// <param name="connectedWindows"></param>
-    /// <param name="name"></param>
-    /// <returns></returns>
+    /// <param name="nodeWindows">List of all current active NodeWindows</param>
+    /// <param name="connectedWindows">List of all current active Connections between the windows</param>
+    /// <param name="name">Name of the file you wish to load</param>
+    /// <returns>List of Loaded NodeWindows</returns>
     public static List<NodeWindow> LoadTree(List<NodeWindow> nodeWindows, List<WindowConnections> connectedWindows, string name)
     {
         if (!File.Exists(_filepath + name))
@@ -80,6 +88,7 @@ public static class SaveTab
 
         JsonUtility.FromJsonOverwrite(windows, nodeWindowListWrap);
 
+        // Clearing the current active lists
         nodeWindows.Clear();
         connectedWindows.Clear();
 
@@ -107,13 +116,16 @@ public static class SaveTab
 
         return nodeWindows;
     }
+    #endregion
 
+    #region Translations
+    #region Translate from NodeWindow to NodeWindowWrap
     /// <summary>
-    /// 
+    /// Translate the basic info from a NodeWindow object to a NodeWindowWrap object
     /// </summary>
-    /// <param name="nodeWindowWrap"></param>
-    /// <param name="nodeWindow"></param>
-    /// <returns></returns>
+    /// <param name="nodeWindowWrap">NodeWindowWrap to translate into</param>
+    /// <param name="nodeWindow">NodeWindow to translate from</param>
+    /// <returns>Translated NodeWindowWrap object</returns>
     private static NodeWindowWrap TranslateBasicInfoToSave(NodeWindowWrap nodeWindowWrap, NodeWindow nodeWindow)
     {
         if (nodeWindowWrap == null)
@@ -129,10 +141,10 @@ public static class SaveTab
     }
 
     /// <summary>
-    /// 
+    /// Translate the parent info from all active NodeWindow objects to all previously basic translated NodeWindowWraps
     /// </summary>
-    /// <param name="nodeWindowWraps"></param>
-    /// <param name="nodeWindows"></param>
+    /// <param name="nodeWindowWraps">NodeWindowWraps to translate into</param>
+    /// <param name="nodeWindows">NodeWindows to translate from</param>
     private static void TranslateParentInfoToSave(List<NodeWindowWrap> nodeWindowWraps, List<NodeWindow> nodeWindows)
     {
         for (int i = 0; i < nodeWindows.Count; i++)
@@ -145,10 +157,10 @@ public static class SaveTab
     }
 
     /// <summary>
-    /// 
+    /// Translate the children info from all active NodeWindow objects to all previously basic translated NodeWindowWraps
     /// </summary>
-    /// <param name="nodeWindowWraps"></param>
-    /// <param name="nodeWindows"></param>
+    /// <param name="nodeWindowWraps">NodeWindowWraps to translate into</param>
+    /// <param name="nodeWindows">NodeWindows to translate from</param>
     private static void TranslateChildInfoToSave(List<NodeWindowWrap> nodeWindowWraps, List<NodeWindow> nodeWindows)
     {
         for (int i = 0; i < nodeWindows.Count; i++)
@@ -168,13 +180,15 @@ public static class SaveTab
             }
         }
     }
+    #endregion
 
+    #region Translate from NodeWindowWrap to NodeWindow
     /// <summary>
-    /// 
+    /// Translate the basic info from a NodeWindowWrap object to a NodeWindow object
     /// </summary>
-    /// <param name="nodeWindowWrap"></param>
-    /// <param name="nodeWindow"></param>
-    /// <returns></returns>
+    /// <param name="nodeWindowWrap">NodeWindowWrap to translate from</param>
+    /// <param name="nodeWindow">NodeWindow to translate into</param>
+    /// <returns>Translated NodeWindow object</returns>
     private static NodeWindow TranslateBasicInfoBack(NodeWindowWrap nodeWindowWrap, NodeWindow nodeWindow)
     {
         if (nodeWindow == null)
@@ -190,11 +204,11 @@ public static class SaveTab
     }
 
     /// <summary>
-    /// 
+    /// Translate the parent info from all active NodeWindowWrap objects to all previously basic translated NodeWindows
     /// </summary>
-    /// <param name="nodeWindowWraps"></param>
-    /// <param name="nodeWindows"></param>
-    private static void TranslateParentInfoBack(List<NodeWindowWrap> nodeWindowWraps, List<NodeWindow>  nodeWindows)
+    /// <param name="nodeWindowWraps">NodeWindowWraps to translate from</param>
+    /// <param name="nodeWindows">NodeWindows to translate into</param>
+    private static void TranslateParentInfoBack(List<NodeWindowWrap> nodeWindowWraps, List<NodeWindow> nodeWindows)
     {
         for (int i = 0; i < nodeWindowWraps.Count; i++)
         {
@@ -212,10 +226,10 @@ public static class SaveTab
     }
 
     /// <summary>
-    /// 
+    /// Translate the children info from all active NodeWindowWrap objects to all previously basic translated NodeWindows
     /// </summary>
-    /// <param name="nodeWindowWraps"></param>
-    /// <param name="nodeWindows"></param>
+    /// <param name="nodeWindowWraps">NodeWindowWraps to translate from</param>
+    /// <param name="nodeWindows">NodeWindows to translate into</param>
     private static void TranslateChildInfoBack(List<NodeWindowWrap> nodeWindowWraps, List<NodeWindow> nodeWindows)
     {
         for (int i = 0; i < nodeWindowWraps.Count; i++)
@@ -228,18 +242,21 @@ public static class SaveTab
             {
                 NodeWindow child = SearchMatchingNode(children[x], nodeWindows);
 
-                if(child != null)
+                if (child != null)
                     nodeWindows[i].Children.Add(child);
             }
         }
     }
+    #endregion
+    #endregion
 
+    #region Searches
     /// <summary>
-    /// 
+    /// Takes a NodeWindowWrap object and looks in a list of NodeWindows for an object with matching basic infos
     /// </summary>
-    /// <param name="nodeWindowWrap"></param>
-    /// <param name="nodeWindows"></param>
-    /// <returns></returns>
+    /// <param name="nodeWindowWrap">NodeWindowWrap object to compare for</param>
+    /// <param name="nodeWindows">List of all active NodeWindows</param>
+    /// <returns>Returns the matching NodeWindow object</returns>
     private static NodeWindow SearchMatchingNode(NodeWindowWrap nodeWindowWrap, List<NodeWindow> nodeWindows)
     {
         for (int i = 0; i < nodeWindows.Count; i++)
@@ -253,11 +270,11 @@ public static class SaveTab
     }
 
     /// <summary>
-    /// 
+    /// Takes a NodeWindow object and looks in a list of NodeWindowWraps for an object with matching basic infos
     /// </summary>
-    /// <param name="nodeWindow"></param>
-    /// <param name="nodeWindowWraps"></param>
-    /// <returns></returns>
+    /// <param name="nodeWindow">NodeWindow object to compare for</param>
+    /// <param name="nodeWindowWraps">List of all loaded NodeWindowWraps</param>
+    /// <returns>Returns the matching NodeWindowWrap object</returns>
     private static NodeWindowWrap SearchMatchingNode(NodeWindow nodeWindow, List<NodeWindowWrap> nodeWindowWraps)
     {
         for (int i = 0; i < nodeWindowWraps.Count; i++)
@@ -268,5 +285,7 @@ public static class SaveTab
             }
         }
         return null;
-    }
+    }  
+    #endregion
+    #endregion
 }

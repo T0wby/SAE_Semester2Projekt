@@ -5,12 +5,20 @@ using UnityEngine;
 
 public static class SettingsDrawer
 {
+    #region Fields
     private static ConnectionHandler _connectionHandler;
     private static string _fileName = "FileName";
     private static GUIContent _label = new GUIContent("Save/Load Name: ");
+    #endregion
 
+    #region Properties
     public static ConnectionHandler ConnectionHandler { get => _connectionHandler; set => _connectionHandler = value; }
+    #endregion
 
+    /// <summary>
+    /// Creates the Setting buttons
+    /// </summary>
+    /// <param name="windowDrawer">WindowDrawer that gives a reference to the active windows</param>
     public static void DrawSettings(WindowDrawer windowDrawer)
     {
         if (GUI.Button(new Rect(50, 50, 100, 100), "Save"))

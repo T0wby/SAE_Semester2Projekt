@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BTWindow : EditorWindow
 {
+    #region Fields
     public static BTWindow _bTWindow;
     private TabDrawer _tabDrawer;
     private NodeCreationDrawer _nodeCreation;
@@ -13,8 +14,13 @@ public class BTWindow : EditorWindow
 
     private float _panXPreset = 0;
     private float _panYPreset = 0;
+    #endregion
+
+    #region Properties
 
     public WindowDrawer WindowDrawer { get => _windowDrawer; }
+
+    #endregion
 
     [MenuItem("Tools/BTWindow")]
     private static void ShowWindow()
@@ -45,6 +51,7 @@ public class BTWindow : EditorWindow
                 _nodeCreation.DrawNodeCreationButtons(_windowDrawer);
                 break;
             case Tabs.CurrentTree:
+                // Enable dragging
                 GUI.BeginGroup(new Rect(_panXPreset, _panYPreset, _bTWindow.maxSize.x * 5, _bTWindow.maxSize.y * 5));
                 _windowDrawer.RedrawWindows(this);
                 GUI.EndGroup();
@@ -56,7 +63,7 @@ public class BTWindow : EditorWindow
                 break;
         }
 
-
+        // Set new values for the CurrentTree rect
         if (Event.current.type == EventType.MouseDrag)
         {
             _panXPreset += Event.current.delta.x;

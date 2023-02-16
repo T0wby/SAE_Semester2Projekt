@@ -11,26 +11,40 @@ public enum Tabs
 
 public class TabDrawer
 {
+	#region Fields
 	private List<Tabs> _allCategories;
 	private List<string> _allCategorylabels;
 	private Tabs _currentTab;
+	#endregion
 
-    public Tabs CurrentTab { get => _currentTab; }
+	#region Properties
+	public Tabs CurrentTab { get => _currentTab; }
+	#endregion
 
 
-    public TabDrawer()
+	#region Constructor
+	public TabDrawer()
 	{
 		InitTabs();
-    }
+	}
+    #endregion
 
 
+    #region Methods
+
+    /// <summary>
+    /// Creates Toolbar with all Elements from Tabs
+    /// </summary>
     public void DrawTabs()
 	{
 		int index = (int)_currentTab;
 		index = GUILayout.Toolbar(index, _allCategorylabels.ToArray());
-        _currentTab = _allCategories[index];
-    }
+		_currentTab = _allCategories[index];
+	}
 
+	/// <summary>
+	/// Converts all Tabs Elements to a tabs list and then convert that into strings
+	/// </summary>
 	private void InitTabs()
 	{
 		_allCategories = new List<Tabs>();
@@ -43,5 +57,6 @@ public class TabDrawer
 
 		_allCategorylabels = _allCategories.ConvertAll(x => x.ToString());
 
-    }
+	} 
+	#endregion
 }

@@ -7,21 +7,31 @@ using static Codice.CM.Common.CmCallContext;
 [System.Serializable]
 public class ConnectionHandler
 {
+    #region Fields
     private bool _addConnection;
     private NodeWindow _parent;
 
+    // List of all active connections
     private List<WindowConnections> _connectedWindows;
+    #endregion
 
+    #region Properties
     public List<WindowConnections> ConnectedWindows { get => _connectedWindows; set => _connectedWindows = value; }
+    #endregion
 
+    #region Constructor
     public ConnectionHandler()
     {
         _addConnection = true;
         _parent = new NodeWindow();
         _connectedWindows = new List<WindowConnections>();
         SettingsDrawer.ConnectionHandler = this;
-    }
+    } 
+    #endregion
 
+    /// <summary>
+    /// Draws a line between every connection in the list
+    /// </summary>
     public void DrawConnections()
     {
         foreach (WindowConnections item in _connectedWindows)
@@ -30,6 +40,11 @@ public class ConnectionHandler
         }
     }
 
+    /// <summary>
+    /// Draws a Bezier curve from start to end rect
+    /// </summary>
+    /// <param name="start">Start of the Bezier curve</param>
+    /// <param name="end">End of the Bezier curve</param>
     private void DrawNodeCurve(Rect start, Rect end)
     {
         Vector3 startPos = new Vector3(start.x + start.width * 0.5f, start.y + start.height, 0);
@@ -38,24 +53,36 @@ public class ConnectionHandler
         Vector3 endTan = endPos;
 
         Color shadow = new Color(0, 0, 0, 0.06f);
+        // Draw a shadow to the line
         for (int i = 0; i < 3; i++)
         {
             Handles.DrawBezier(startPos, endPos, startTan, endTan, shadow, null, (i + 1) * 5);
         }
 
+        // Draw the line itself over the shadow
         Handles.DrawBezier(startPos, endPos, startTan, endTan, Color.black, null, 1f);
     }
 
+    /// <summary>
+    /// Sets the Parent node of the ConnectionHandler
+    /// </summary>
+    /// <param name="nodeWindow">Parent node to set</param>
+    /// <param name="addConnection">Either connect or disconnect from the parent node</param>
     public void SetParentNode(NodeWindow nodeWindow, bool addConnection)
     {
         this._addConnection = addConnection;
         _parent = nodeWindow;
     }
 
+    /// <summary>
+    /// Connects the current Parent node with the given node
+    /// </summary>
+    /// <param name="nodeWindow">Node that should be connected to the current set Parent</param>
     public void ConnectNodes(NodeWindow nodeWindow)
     {
         WindowConnections connections = new WindowConnections(_parent, nodeWindow);
 
+        // Check if the user tries to connect a node with itself
         if (nodeWindow.HasParent || _parent == null || _parent == nodeWindow) return;
 
         _connectedWindows.Add(connections);
@@ -66,6 +93,11 @@ public class ConnectionHandler
         _parent = null;
     }
 
+    /// <summary>
+    /// Disconnects the given parent and child. Removes the connection from the connection list
+    /// </summary>
+    /// <param name="parent">Parent to disconnect from</param>
+    /// <param name="child">Child to disconnect from parent</param>
     public void DisconnectNodes(NodeWindow parent, NodeWindow child)
     {
         WindowConnections connections;
@@ -88,6 +120,10 @@ public class ConnectionHandler
         _parent = null;
     }
 
+    /// <summary>
+    /// Disconnects all current connections
+    /// </summary>
+    /// <param name="nodeWindows">List of all current active NodeWindows</param>
     public void DisconnectAllNodes(List<NodeWindow> nodeWindows)
     {
         WindowConnections connections;
@@ -110,6 +146,10 @@ public class ConnectionHandler
         }
     }
 
+    /// <summary>
+    /// Depending on the current set bool we either connect or disconnect the given NodeWindow and current set parent
+    /// </summary>
+    /// <param name="nodeWindow">NodeWindow to connect or disconnect</param>
     public void UpdateConnection(NodeWindow nodeWindow)
     {
         if (_addConnection)
