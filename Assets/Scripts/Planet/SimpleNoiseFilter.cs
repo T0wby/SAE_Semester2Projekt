@@ -17,8 +17,8 @@ public class SimpleNoiseFilter : INoiseFilter
     /// <summary>
     /// Generates value, typically in range [0, 1]
     /// </summary>
-    /// <param name="point"></param>
-    /// <returns></returns>
+    /// <param name="point">point to calculate noise value for</param>
+    /// <returns>alue of the noise</returns>
     public float Evaluate(Vector3 point)
     {
         float noiseValue = 0;

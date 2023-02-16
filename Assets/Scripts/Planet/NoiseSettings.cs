@@ -10,10 +10,12 @@ public class NoiseSettings
         Simple,
         Rigid
     }
+    #region Fields
     public EFilterType FilterType;
 
     public SimpleNoiseSettings simpleNoiseSettings;
-    public RigidNoiseSettings rigidNoiseSettings;
+    public RigidNoiseSettings rigidNoiseSettings; 
+    #endregion
 
 
     [System.Serializable]

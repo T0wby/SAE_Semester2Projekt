@@ -217,13 +217,14 @@ public class Rabbit : AAnimal
         while (_thirst < _settings.MaxThirst)
         {
             yield return new WaitForSeconds(3f);
-            Thirst += 10f;
+            Thirst += 30f;
         }
 
         _coroutineDrink = null;
         State = EAnimalStates.None;
         _randomMove = true;
     }
+
     private IEnumerator EatFull(Grass grass)
     {
         State = EAnimalStates.Eat;

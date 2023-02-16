@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TerrainSide
 {
+    #region Fields
     private ShapeGeneratorTwo _shapeGenerator;
     private Mesh _mesh;
     private int _resolution;
@@ -13,7 +14,9 @@ public class TerrainSide
     private Thread _thread;
     private Vector3[] _vertices;
     private int[] _triangles;
+    #endregion
 
+    #region Constructor
     public TerrainSide(ShapeGeneratorTwo shapeGenerator, Mesh mesh, int resolution, Vector3 localUp)
     {
         _shapeGenerator = shapeGenerator;
@@ -23,13 +26,21 @@ public class TerrainSide
         _axisA = new Vector3(_localUp.y, _localUp.z, _localUp.x);
         _axisB = Vector3.Cross(localUp, _axisA);
     }
+    #endregion
 
+    #region Methods
+    /// <summary>
+    /// Generates the mesh of the terrainside
+    /// </summary>
+    /// <param name="useThreading">Determines if we use multithreading for the calculation or not</param>
+    /// <param name="useFancySphere">Determines if we use the FancySphere or not</param>
     public void GenerateMesh(bool useThreading, bool useFancySphere)
     {
         _useFancySphere = useFancySphere;
 
         if (useThreading)
         {
+            // Create a new thread for the calculation of vertices and triangles
             _thread = new Thread(ConstructMesh);
             _thread.Start();
         }
@@ -38,6 +49,9 @@ public class TerrainSide
 
     }
 
+    /// <summary>
+    /// Calculating each verice and triangle of the TerrainSide
+    /// </summary>
     public void ConstructMesh()
     {
         // Number of vertices per mesh
@@ -53,7 +67,7 @@ public class TerrainSide
                 int i = x + y * _resolution;
                 // Getting the percentage of completion of the mesh
                 // (_resolution - 1) because we do not loop over the last _resolution index
-                Vector2 percent = new Vector2( x, y )/ (_resolution - 1);
+                Vector2 percent = new Vector2(x, y) / (_resolution - 1);
 
                 Vector3 pointOnUnitCube = _localUp + (percent.x - 0.5f) * 2 * _axisA + (percent.y - 0.5f) * 2 * _axisB;
                 Vector3 pointOnUnitSphere = _shapeGenerator.TransformCubeToSpherePos(pointOnUnitCube, _useFancySphere);
@@ -74,6 +88,11 @@ public class TerrainSide
         }
     }
 
+    /// <summary>
+    /// Set the values depending on the thread status
+    /// Done extra cause we access unity objects, which are not thread safe
+    /// </summary>
+    /// <returns>Returns false if the calculation is not done yet or true if it is</returns>
     public bool SetMeshValues()
     {
         Vector2[] uv = _mesh.uv;
@@ -102,6 +121,10 @@ public class TerrainSide
         }
     }
 
+    /// <summary>
+    /// Update UV values for the planet
+    /// </summary>
+    /// <param name="colourGenerator">ColourGenerator of the planet</param>
     public void UpdateUV(ColourGenerator colourGenerator)
     {
         Vector2[] uv = new Vector2[_resolution * _resolution];
@@ -125,5 +148,6 @@ public class TerrainSide
         {
             _mesh.uv = uv;
         }
-    }
+    } 
+    #endregion
 }

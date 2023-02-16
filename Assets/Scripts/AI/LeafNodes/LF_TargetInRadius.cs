@@ -49,32 +49,18 @@ public class LF_TargetInRadius : Node
 
     private ENodeState CheckGrass(List<Grass> grass)
     {
+        grass.RemoveAll(item => item == null);
 
         if (grass.Count > 0)
         {
+            // Safety check
             if (grass[0] == null)
             {
                 grass.RemoveAt(0);
                 return ENodeState.FAILURE;
             }
 
-            Grass closestGrass = grass[0];
-            Vector3 first = grass[0].transform.position - _thisTransform.position;
-            float minlength = first.sqrMagnitude;
-            float tmplength = 0;
-
-            for (int i = 1; i < grass.Count; i++)
-            {
-                if (grass[i] == null) continue;
-
-                Vector3 distance = grass[i].transform.position - _thisTransform.position;
-                tmplength = distance.sqrMagnitude;
-                if (minlength > tmplength)
-                {
-                    closestGrass = grass[i];
-                    minlength = tmplength;
-                }
-            }
+            Grass closestGrass = GetClosestObject(grass, _thisTransform.position);
 
             GetRoot(this).SetData("_eatTarget", closestGrass);
             GetRoot(this).SetData("_eatTargetTransform", closestGrass.transform);
@@ -101,22 +87,7 @@ public class LF_TargetInRadius : Node
     {
         if (water.Count > 0)
         {
-
-            GameObject closestWater = water[0];
-            Vector3 first = water[0].transform.position - _thisTransform.position;
-            float minlength = first.sqrMagnitude;
-            float tmplength = 0;
-
-            for (int i = 1; i < water.Count; i++)
-            {
-                Vector3 distance = water[i].transform.position - _thisTransform.position;
-                tmplength = distance.sqrMagnitude;
-                if (minlength > tmplength)
-                {
-                    closestWater = water[i];
-                    minlength = tmplength;
-                }
-            }
+            GameObject closestWater = GetClosestObject(water, _thisTransform.position);
 
             GetRoot(this).SetData("_waterTarget", closestWater.transform);
             _animal.RandomMove = false;
@@ -164,6 +135,58 @@ public class LF_TargetInRadius : Node
 
         Node root = targetedAnimal.gameObject.GetComponent<RabbitBT>().Root;
         root.SetData(key, transformAnimal.transform);
+    }
+
+    /// <summary>
+    /// Get closest Grass object to AI
+    /// </summary>
+    /// <param name="objects">List of Grass objects in search range</param>
+    /// <param name="thisPos">Own position vector</param>
+    /// <returns>Returns closest grass object</returns>
+    private Grass GetClosestObject(List<Grass> objects, Vector3 thisPos)
+    {
+        float minSqrDist = (objects[0].transform.position - thisPos).sqrMagnitude;
+        float currSqrDist = 0f;
+        Grass currObj = objects[0];
+
+        for (int i = 1; i < objects.Count; i++)
+        {
+            currSqrDist = (objects[i].transform.position - thisPos).sqrMagnitude;
+
+            if (currSqrDist < minSqrDist)
+            {
+                minSqrDist = currSqrDist;
+                currObj = objects[i];
+            }
+        }
+
+        return currObj;
+    }
+
+    /// <summary>
+    /// Get closest GameObject to AI
+    /// </summary>
+    /// <param name="objects">List of GameObjects in search range</param>
+    /// <param name="thisPos">Own position vector</param>
+    /// <returns>Returns closest GameObject</returns>
+    private GameObject GetClosestObject(List<GameObject> objects, Vector3 thisPos)
+    {
+        float minSqrDist = (objects[0].transform.position - thisPos).sqrMagnitude;
+        float currSqrDist = 0f;
+        GameObject currObj = objects[0];
+
+        for (int i = 1; i < objects.Count; i++)
+        {
+            currSqrDist = (objects[i].transform.position - thisPos).sqrMagnitude;
+
+            if (currSqrDist < minSqrDist)
+            {
+                minSqrDist = currSqrDist;
+                currObj = objects[i];
+            }
+        }
+
+        return currObj;
     }
     #endregion
 }

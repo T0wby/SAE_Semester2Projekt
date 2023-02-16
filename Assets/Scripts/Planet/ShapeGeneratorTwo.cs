@@ -5,12 +5,20 @@ using UnityEngine;
 
 public class ShapeGeneratorTwo
 {
+    #region Fields
     private ShapeSettings _currentSettings;
     private INoiseFilter[] _noiseFilters;
     private MinMax _elevationMinMax;
+    #endregion
 
+    #region Properties
     public MinMax ElevationMinMax { get => _elevationMinMax; }
+    #endregion
 
+    /// <summary>
+    /// Initializes all shape settings
+    /// </summary>
+    /// <param name="newSettings">ShapeSettings from the planet</param>
     public void UpdateSettings(ShapeSettings newSettings)
     {
         _currentSettings = newSettings;
@@ -22,6 +30,12 @@ public class ShapeGeneratorTwo
         _elevationMinMax = new MinMax();
     }
 
+    /// <summary>
+    /// Transforms each vertice position from the original cube to one for a sphere
+    /// </summary>
+    /// <param name="_cubeVertPos">Vertice position</param>
+    /// <param name="_useFancySphere">Use FancySphere formula</param>
+    /// <returns>Returns new Position</returns>
     public Vector3 TransformCubeToSpherePos(Vector3 _cubeVertPos, bool _useFancySphere)
     {
         if (!_useFancySphere)
@@ -38,6 +52,11 @@ public class ShapeGeneratorTwo
         return new Vector3(xPrime, yPrime, zPrime);
     }
 
+    /// <summary>
+    /// Calculate point position depending on Noises and Planet radius
+    /// </summary>
+    /// <param name="_pointOnUnitSphere">Point to calculate</param>
+    /// <returns>New Position for the point</returns>
     public Vector3 CalculatePointOnPlanet(Vector3 _pointOnUnitSphere)
     {
         // Value later added to the _pointOnUnitSphere to create higher parts in the mesh

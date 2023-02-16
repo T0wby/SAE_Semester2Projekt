@@ -48,6 +48,10 @@ public class PlanetGenerator : MonoBehaviour
     #endregion
 
     #region Methods
+
+    /// <summary>
+    /// Create/Update all important Planet settings, variables and reset the mesh positions
+    /// </summary>
     private void Initialize()
     {
         _shapeGenerator.UpdateSettings(_shapeSettings);
@@ -79,7 +83,7 @@ public class PlanetGenerator : MonoBehaviour
     }
 
     /// <summary>
-    /// Calling if everything needs to change
+    /// Calling if everything needs to be changed or updated
     /// </summary>
     public void GeneratePlanet()
     {
@@ -110,6 +114,9 @@ public class PlanetGenerator : MonoBehaviour
         GenerateColour();
     }
 
+    /// <summary>
+    /// Generate a mesh for each of the 6 sides and update the Elevation values for our Material
+    /// </summary>
     private void GenerateMesh()
     {
         foreach (TerrainSide terrainSide in _terrainSides)
@@ -119,6 +126,10 @@ public class PlanetGenerator : MonoBehaviour
         }
         _colourGenerator.UpdateElevation(_shapeGenerator.ElevationMinMax);
     }
+
+    /// <summary>
+    /// Update colours for our Planet and the UVs of each mesh
+    /// </summary>
     private void GenerateColour()
     {
         _colourGenerator.UpdateColours();
@@ -128,6 +139,9 @@ public class PlanetGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resets the local mesh position to Zero
+    /// </summary>
     private void ResetPos()
     {
         if (_meshes == null) return;
@@ -146,6 +160,12 @@ public class PlanetGenerator : MonoBehaviour
     #endregion
 
     #region Enumerators
+    /// <summary>
+    /// Running as long as the mesh values are not set yet
+    /// Prevents errors in case of the usage of MultiThreading
+    /// </summary>
+    /// <param name="terrainSide">Mesh to calculate</param>
+    /// <returns>null</returns>
     private IEnumerator CheckTerrainFaces(TerrainSide terrainSide)
     {
         while (terrainSide.SetMeshValues())

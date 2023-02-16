@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class RigidNoiseFilter : INoiseFilter
 {
+    #region Fields
     private Noise _noise = new Noise();
     private NoiseSettings.RigidNoiseSettings _settings;
+    #endregion
 
 
+    #region Constructor
     public RigidNoiseFilter(NoiseSettings.RigidNoiseSettings settings)
     {
         this._settings = settings;
-    }
+    } 
+    #endregion
 
 
     /// <summary>
     /// Generates value, typically in range [0, 1] and is inversed
     /// </summary>
-    /// <param name="point"></param>
-    /// <returns></returns>
+    /// <param name="point">point to calculate noise value for</param>
+    /// <returns>Value of the noise</returns>
     public float Evaluate(Vector3 point)
     {
         float noiseValue = 0;
@@ -27,6 +31,7 @@ public class RigidNoiseFilter : INoiseFilter
         // Later Layers will have a higher weight and provide more details for this Filter
         float weight = 1f;
 
+        // Calculate values for each Layer
         for (int i = 0; i < _settings.LayerCount; i++)
         {
             float v = 1 - Mathf.Abs(_noise.Evaluate(point * frequency + _settings.NoiseCenter));

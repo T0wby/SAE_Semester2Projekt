@@ -16,6 +16,10 @@ public class MinMax
         _max = float.MinValue;
     }
 
+    /// <summary>
+    /// Calculates if the inserted value sets a new min or max value
+    /// </summary>
+    /// <param name="value">new value to test</param>
     public void AddValue(float value)
     {
         if (value > _max)
