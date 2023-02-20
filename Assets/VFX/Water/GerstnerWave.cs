@@ -5,10 +5,6 @@ using UnityEngine.EventSystems;
 
 public class GerstnerWave : MonoBehaviour
 {
-    private struct VertexPosition
-    {
-        public Vector3 position;
-    }
 
     [SerializeField] private ComputeShader _shader;
     [SerializeField] private float _waveAmplitude = 1f;
@@ -22,7 +18,6 @@ public class GerstnerWave : MonoBehaviour
     private int _groupSizeX;
     private int _verticeCount;
     private Vector3[] _meshVertices;
-    private VertexPosition[] _vertexPos;
 
     private void Start()
     {
@@ -32,21 +27,15 @@ public class GerstnerWave : MonoBehaviour
         uint x;
         _shader.GetKernelThreadGroupSizes(_kernelHandle, out x, out _, out _);
         _groupSizeX = Mathf.CeilToInt((float)_verticeCount / (float)x);
-        _vertexPos = new VertexPosition[_verticeCount];
         _meshVertices = _mesh.vertices;
-
-        for (int i = 0; i < _verticeCount; i++)
-        {
-            _vertexPos[i].position = _meshVertices[i];
-        }
 
         InitShader();
     }
 
     private void InitShader()
     {
-        _vertexBuffer = new ComputeBuffer(1, sizeof(float) * 3);
-        _vertexBuffer.SetData(_vertexPos);
+        _vertexBuffer = new ComputeBuffer(_verticeCount, sizeof(float) * 3);
+        _vertexBuffer.SetData(_meshVertices);
 
         _shader.SetBuffer(_kernelHandle, "vertexBuffer", _vertexBuffer);
         _shader.SetFloat("waveAmplitude", _waveAmplitude);
@@ -63,12 +52,9 @@ public class GerstnerWave : MonoBehaviour
 
         _shader.Dispatch(_kernelHandle, _groupSizeX, 1, 1);
 
-        _vertexBuffer.GetData(_vertexPos);
+        _vertexBuffer.GetData(_meshVertices);
 
-        for (int i = 0; i < _vertexPos.Length; i++)
-        {
-            _meshVertices[i] = _vertexPos[i].position;
-        }
+        _mesh.vertices = _meshVertices;
     }
 
     void OnDestroy()
