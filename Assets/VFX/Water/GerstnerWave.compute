@@ -1,0 +1,38 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+#define GROUP_SIZE 256
+
+struct VertexPos
+{
+    float3 position;
+};
+
+RWStructuredBuffer<VertexPos> vertexBuffer;
+
+float time;
+float waveAmplitude;
+float waveWavelength;
+float waveSteepness;
+float waveSpeed;
+float2 waveDirection;
+const float PI = 3.1415926535897932384626433832795;
+const float g = 9.81;
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> Result;
+
+[numthreads(GROUP_SIZE,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    uint instanceId = id.x;
+    VertexPos vertexPos = vertexBuffer[instanceId];
+
+    float k = 2 * PI / waveWavelength;
+    float c = sqrt(g / k);
+    float q = k * (waveDirection.x * vertexPos.x + waveDirection.y * vertexPos.z) + waveSpeed * time;
+    float wx = waveAmplitude * waveDirection.x * cos(q);
+    float wz = waveAmplitude * waveDirection.y * sin(q);
+    float dy = waveSteepness * k * (wx + wz);
+    vertexPos.y = dy;
+    vertexBuffer[instanceId] = vertexPos;
+}

@@ -16,32 +16,32 @@ public class SimpleFlocking : MonoBehaviour
         }
     }
 
-    public ComputeShader shader;
+    [SerializeField] private ComputeShader _shader;
 
-    public float rotationSpeed = 1f;
-    public float boidSpeed = 1f;
-    public float neighbourDistance = 1f;
-    public float boidSpeedVariation = 1f;
-    public GameObject boidPrefab;
-    public int boidsCount;
-    public float spawnRadius;
-    public Transform target;
+    [SerializeField] private float _rotationSpeed = 1f;
+    [SerializeField] private float _boidSpeed = 1f;
+    [SerializeField] private float _neighbourDistance = 1f;
+    [SerializeField] private float _boidSpeedVariation = 1f;
+    [SerializeField] private GameObject _boidPrefab;
+    [SerializeField] private int _boidsCount;
+    [SerializeField] private float _spawnRadius;
+    [SerializeField] private Transform _target;
 
-    int kernelHandle;
-    ComputeBuffer boidsBuffer;
-    Boid[] boidsArray;
-    GameObject[] boids;
-    int groupSizeX;
-    int numOfBoids;
+    private int _kernelHandle;
+    private ComputeBuffer _boidsBuffer;
+    private Boid[] _boidsArray;
+    private GameObject[] _boids;
+    private int _groupSizeX;
+    private int _numOfBoids;
 
     void Start()
     {
-        kernelHandle = shader.FindKernel("CSMain");
+        _kernelHandle = _shader.FindKernel("CSMain");
 
         uint x;
-        shader.GetKernelThreadGroupSizes(kernelHandle, out x, out _, out _);
-        groupSizeX = Mathf.CeilToInt((float)boidsCount / (float)x);
-        numOfBoids = groupSizeX * (int)x;
+        _shader.GetKernelThreadGroupSizes(_kernelHandle, out x, out _, out _);
+        _groupSizeX = Mathf.CeilToInt((float)_boidsCount / (float)x);
+        _numOfBoids = _groupSizeX * (int)x;
 
         InitBoids();
         InitShader();
@@ -49,48 +49,48 @@ public class SimpleFlocking : MonoBehaviour
 
     private void InitBoids()
     {
-        boids = new GameObject[numOfBoids];
-        boidsArray = new Boid[numOfBoids];
+        _boids = new GameObject[_numOfBoids];
+        _boidsArray = new Boid[_numOfBoids];
 
-        for (int i = 0; i < numOfBoids; i++)
+        for (int i = 0; i < _numOfBoids; i++)
         {
-            Vector3 pos = transform.position + Random.insideUnitSphere * spawnRadius;
-            boidsArray[i] = new Boid(pos);
-            boids[i] = Instantiate(boidPrefab, pos, Quaternion.identity);
-            boidsArray[i].direction = boids[i].transform.forward;
+            Vector3 pos = transform.position + Random.insideUnitSphere * _spawnRadius;
+            _boidsArray[i] = new Boid(pos);
+            _boids[i] = Instantiate(_boidPrefab, pos, Quaternion.identity);
+            _boidsArray[i].direction = _boids[i].transform.forward;
         }
     }
 
-    void InitShader()
+    private void InitShader()
     {
-        boidsBuffer = new ComputeBuffer(numOfBoids, 6 * sizeof(float));
-        boidsBuffer.SetData(boidsArray);
+        _boidsBuffer = new ComputeBuffer(_numOfBoids, 6 * sizeof(float));
+        _boidsBuffer.SetData(_boidsArray);
 
-        shader.SetBuffer(kernelHandle, "boidsBuffer", boidsBuffer);
-        shader.SetFloat("rotationSpeed", rotationSpeed);
-        shader.SetFloat("boidSpeed", boidSpeed);
-        shader.SetFloat("boidSpeedVariation", boidSpeedVariation);
-        shader.SetVector("flockPosition", target.transform.position);
-        shader.SetFloat("neighbourDistance", neighbourDistance);
-        shader.SetInt("boidsCount", boidsCount);
+        _shader.SetBuffer(_kernelHandle, "boidsBuffer", _boidsBuffer);
+        _shader.SetFloat("rotationSpeed", _rotationSpeed);
+        _shader.SetFloat("boidSpeed", _boidSpeed);
+        _shader.SetFloat("boidSpeedVariation", _boidSpeedVariation);
+        _shader.SetVector("flockPosition", _target.transform.position);
+        _shader.SetFloat("neighbourDistance", _neighbourDistance);
+        _shader.SetInt("boidsCount", _boidsCount);
     }
 
     void Update()
     {
-        shader.SetFloat("time", Time.time);
-        shader.SetFloat("deltaTime", Time.deltaTime);
+        _shader.SetFloat("time", Time.time);
+        _shader.SetFloat("deltaTime", Time.deltaTime);
 
-        shader.Dispatch(kernelHandle, groupSizeX, 1, 1);
+        _shader.Dispatch(_kernelHandle, _groupSizeX, 1, 1);
 
-        boidsBuffer.GetData(boidsArray);
+        _boidsBuffer.GetData(_boidsArray);
 
-        for (int i = 0; i < boidsArray.Length; i++)
+        for (int i = 0; i < _boidsArray.Length; i++)
         {
-            boids[i].transform.localPosition = boidsArray[i].position;
+            _boids[i].transform.localPosition = _boidsArray[i].position;
 
-            if (!boidsArray[i].direction.Equals(Vector3.zero))
+            if (!_boidsArray[i].direction.Equals(Vector3.zero))
             {
-                boids[i].transform.rotation = Quaternion.LookRotation(boidsArray[i].direction);
+                _boids[i].transform.rotation = Quaternion.LookRotation(_boidsArray[i].direction);
             }
 
         }
@@ -98,9 +98,9 @@ public class SimpleFlocking : MonoBehaviour
 
     void OnDestroy()
     {
-        if (boidsBuffer!=null)
+        if (_boidsBuffer != null)
         {
-            boidsBuffer.Dispose();
+            _boidsBuffer.Dispose();
         }
     }
 }
