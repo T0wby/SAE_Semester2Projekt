@@ -190,7 +190,7 @@ public class Rabbit : AAnimal
     /// <param name="grass"></param>
     public override void Eat(Grass grass)
     {
-        if (_coroutineEat == null)
+        if (_coroutineEat == null && grass != null)
         {
             _coroutineEat = StartCoroutine(EatFull(grass));
         }
