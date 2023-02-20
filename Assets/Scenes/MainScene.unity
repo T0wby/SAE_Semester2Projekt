@@ -9908,13 +9908,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shader: {fileID: 7200000, guid: 80419d1ec5d222a4a92bebfad0649131, type: 3}
-  _rotationSpeed: 1
-  _boidSpeed: 3
-  _neighbourDistance: 1
-  _boidSpeedVariation: 3
+  _rotationSpeed: 4
+  _boidSpeed: 6
+  _neighbourDistance: 2
+  _boidSpeedVariation: 0.9
   _boidPrefab: {fileID: 9193165041613206846, guid: 00b1adb33b0f6934bab2061ec724a31e, type: 3}
-  _boidsCount: 5
-  _spawnRadius: 5
+  _boidsCount: 200
+  _spawnRadius: 2
   _target: {fileID: 934606013}
 --- !u!1 &942547182
 GameObject:
