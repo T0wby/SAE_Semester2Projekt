@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -15,8 +14,8 @@ public class GameManager : Singleton<GameManager>
     private PlanetGenerator[] _allPlanets = null;
     private List<PlanetGenerator> _noneGeneratedPlanets = null;
     private UnityEngine.Rendering.Universal.Vignette _vignette;
+    private PlanetSettingCollection _collection;
     #endregion
-
 
     #region Unity
     protected override void Awake()
@@ -24,6 +23,7 @@ public class GameManager : Singleton<GameManager>
         IsInAllScenes = true;
         base.Awake();
         GetAllPlanets();
+        _collection = FindObjectOfType<PlanetSettingCollection>();
     }
     #endregion
 
@@ -45,7 +45,20 @@ public class GameManager : Singleton<GameManager>
             _noneGeneratedPlanets[random].GeneratePlanet();
             _noneGeneratedPlanets.RemoveAt(random);
         }
+        //if (context.started && _noneGeneratedPlanets.Count > 0)
+        //{
+        //    int random = Random.Range(0, _noneGeneratedPlanets.Count - 1);
+        //    ShapeSettings shapeSettings = _collection.GetRandomShapeSetting();
+        //    ColourSettings colourSettings = _collection.GetRandomColourSetting();
+
+
+        //    _noneGeneratedPlanets[random].ShapeSettings = shapeSettings;
+        //    _noneGeneratedPlanets[random].ColourSettings = colourSettings;
+        //    _noneGeneratedPlanets[random].GeneratePlanet();
+        //    _noneGeneratedPlanets.RemoveAt(random);
+        //}
     }
+
     public void ToggleSandstorm(InputAction.CallbackContext context)
     {
         if (context.started)

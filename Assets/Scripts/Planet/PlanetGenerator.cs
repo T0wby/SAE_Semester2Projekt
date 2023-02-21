@@ -34,8 +34,8 @@ public class PlanetGenerator : MonoBehaviour
     #endregion
 
     #region Properties
-    public ShapeSettings ShapeSettings { get => _shapeSettings; }
-    public ColourSettings ColourSettings { get => _colourSettings; }
+    public ShapeSettings ShapeSettings { get => _shapeSettings; set => _shapeSettings = value; }
+    public ColourSettings ColourSettings { get => _colourSettings; set => _colourSettings = value; }
     public bool UseMultiThreading { get => _useMultiThreading; set => _useMultiThreading = value; }
     public bool AutoUpdate { get => _autoUpdate; }
     #endregion

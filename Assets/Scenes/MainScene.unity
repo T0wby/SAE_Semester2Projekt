@@ -10746,6 +10746,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1062899745}
+  - component: {fileID: 1062899746}
   m_Layer: 0
   m_Name: Planets
   m_TagString: Untagged
@@ -10781,6 +10782,45 @@ Transform:
   m_Father: {fileID: 344548032}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1062899746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062899744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66b20da3fa64f4e4db8a9c284214d80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shapeSettings:
+  - {fileID: 11400000, guid: 725d866378d58ba43bcddc3067d0a0c6, type: 2}
+  - {fileID: 11400000, guid: 56c3a09bfc81b3d4785abeb323c280da, type: 2}
+  - {fileID: 11400000, guid: 23abecdcaa27a2c4fa5aedfc3cc532e9, type: 2}
+  - {fileID: 11400000, guid: 33dd9268f2ee5944a955d25024518fa5, type: 2}
+  - {fileID: 11400000, guid: b0a3629945528714c98151f6c116f49c, type: 2}
+  - {fileID: 11400000, guid: 9e3120160b06ffa458578dcbeaeed4b4, type: 2}
+  - {fileID: 11400000, guid: 2aceeb737aee08e4da62594d4b029628, type: 2}
+  - {fileID: 11400000, guid: 2cf63306519cec0499c45032e6bad761, type: 2}
+  - {fileID: 11400000, guid: 59bc517dff5a72045b4062cdb9cbe5b9, type: 2}
+  - {fileID: 11400000, guid: 1263f12957ecef048bd08e07d870e19a, type: 2}
+  - {fileID: 11400000, guid: e6df3451d8ceb354eac3eb2a36ebec7c, type: 2}
+  - {fileID: 11400000, guid: 374e09d7d9c51e549a40862d0ad68499, type: 2}
+  _colourSettings:
+  - {fileID: 11400000, guid: f0fe9f44e3273004f8af55f2d140554b, type: 2}
+  - {fileID: 11400000, guid: 057b240333bfde54699b270bba38dacb, type: 2}
+  - {fileID: 11400000, guid: 42c05b2561b3288488f093708a488111, type: 2}
+  - {fileID: 11400000, guid: 4113eabbb3e978643ad852d5f894b9b0, type: 2}
+  - {fileID: 11400000, guid: f1f07897cf1f2f244acd91e449171a95, type: 2}
+  - {fileID: 11400000, guid: 93f8d74f68ba56446903adb274de5dc0, type: 2}
+  - {fileID: 11400000, guid: c17e2d6c076dc3544abc050eab584981, type: 2}
+  - {fileID: 11400000, guid: a61ea4d433decf64ab68c242a4d26aed, type: 2}
+  - {fileID: 11400000, guid: 57bebe5093c848f428fceb049ba0d56c, type: 2}
+  - {fileID: 11400000, guid: 3626cfba5e0d42b47a10046d849bbd69, type: 2}
+  - {fileID: 11400000, guid: 56f0a7194bc14a84ea4683a75127f5bf, type: 2}
+  - {fileID: 11400000, guid: f4b03dd7d472cdb4ebf1241fd50e31bc, type: 2}
+  - {fileID: 11400000, guid: 5bc72d17cfac7cb4dab20086285d9a33, type: 2}
 --- !u!1 &1063055987
 GameObject:
   m_ObjectHideFlags: 0
@@ -12754,7 +12794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1251937924
 MonoBehaviour:
   m_ObjectHideFlags: 0
