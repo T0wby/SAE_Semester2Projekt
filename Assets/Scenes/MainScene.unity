@@ -12794,7 +12794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1251937924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25733,6 +25733,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1611505506}
     m_Modifications:
+    - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
+      propertyPath: _waveAmplitude
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
+      propertyPath: _waveSteepness
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
+      propertyPath: _waveDirection.x
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 80371968709927467, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -45,11 +45,15 @@ public class RabbitBT : BehaviorTree.MyTree
             new Sequence(new List<Node>
             {
                 new LF_CheckAnimalState(_rabbit, EAnimalStates.ReproduceReady, true),
-                new Sequence(new List<Node>
+                new Selector(new List<Node>
                 {
-                    new LF_TargetInRadius(this.transform, _rabbit, _animalSearchArea, ETargetTypes.Animal),
-                    new LF_SetAnimalState(_rabbit, EAnimalStates.Engaged),
-                }),
+                    new Sequence(new List<Node>
+                    {
+                        new LF_TargetInRadius(this.transform, _rabbit, _animalSearchArea, ETargetTypes.Animal),
+                        new LF_SetAnimalState(_rabbit, EAnimalStates.Engaged),
+                    }),
+                    new LF_MoveAround(this.transform, _agent, _settings.SearchRange, _rabbit)
+                })
             }),
             new Sequence(new List<Node>
             {

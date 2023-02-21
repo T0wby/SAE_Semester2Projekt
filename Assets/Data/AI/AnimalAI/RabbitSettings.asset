@@ -17,7 +17,7 @@ MonoBehaviour:
   _maxThirst: 100
   _walkSpeed: 2
   _runSpeed: 4
-  _searchRange: 20
+  _searchRange: 25
   _interactRange: 4
   _maxReproduceUrge: 100
   _reproduceChance: 25

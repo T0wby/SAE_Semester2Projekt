@@ -54,5 +54,5 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _elevationMinMax: {r: 2, g: 2.023706, b: 0, a: 0}
+    - _elevationMinMax: {r: 1.9798554, g: 2.023706, b: 0, a: 0}
   m_BuildTextureStacks: []
