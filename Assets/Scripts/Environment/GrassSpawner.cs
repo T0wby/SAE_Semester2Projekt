@@ -10,14 +10,12 @@ public class GrassSpawner : MonoBehaviour
     [SerializeField] private int _maxSpawns = 5;
     [SerializeField] private float _spawnTimer = 5f;
     private List<GameObject> _spawnedGrass;
-    private List<int> _eatenGrass;
 
     public List<GameObject> SpawnedGrass { get => _spawnedGrass; }
 
     private void Awake()
     {
         _spawnedGrass = new List<GameObject>();
-        _eatenGrass = new List<int>();
         StartCoroutine(SpawnGrass());
     }
 
@@ -39,19 +37,7 @@ public class GrassSpawner : MonoBehaviour
 
     private void CheckSpawnedGrass()
     {
-        for (int i = 0; i < _spawnedGrass.Count; i++)
-        {
-            if (_spawnedGrass[i] == null)
-            {
-                _eatenGrass.Add(i);
-            }
-        }
-
-        foreach (int eatenGrass in _eatenGrass)
-        {
-            _spawnedGrass.RemoveAt(eatenGrass);
-        }
-        _eatenGrass.Clear();
+        _spawnedGrass.RemoveAll(grass => grass == null);
     }
 
     private void OnDrawGizmosSelected()
