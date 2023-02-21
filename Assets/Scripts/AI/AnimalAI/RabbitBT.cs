@@ -28,7 +28,7 @@ public class RabbitBT : BehaviorTree.MyTree
                     new LF_GoToAnimalTarget(this.transform, _agent, _settings, "_reproduceTransform"),
                     new Sequence(new List<Node>
                     {
-                        new LF_TargetInRange(this.transform, _settings, "_reproduceTransform"),
+                        new LF_TargetInRange(this.transform, _settings.InteractRange, "_reproduceTransform"),
                         new LF_StartActivity(_rabbit, EAnimalStates.Engaged, _animalSearchArea)
                     }),
                 }),
@@ -64,7 +64,7 @@ public class RabbitBT : BehaviorTree.MyTree
                     {
                         new LF_TargetInRadius(this.transform, _rabbit, _animalSearchArea, ETargetTypes.Water),
                         new LF_GoToAnimalTarget(this.transform, _agent, _settings, "_waterTarget"),
-                        new LF_TargetInRange(this.transform, _settings, "_waterTarget"),
+                        new LF_TargetInRange(this.transform, _settings.InteractRange, "_waterTarget"),
                         new LF_StartActivity(_rabbit, EAnimalStates.Drink, _animalSearchArea)
                     }),
                     new LF_MoveAround(this.transform, _agent, _settings.SearchRange, _rabbit)
@@ -79,7 +79,7 @@ public class RabbitBT : BehaviorTree.MyTree
                     {
                         new LF_TargetInRadius(this.transform, _rabbit, _animalSearchArea, ETargetTypes.Grass),
                         new LF_GoToAnimalTarget(this.transform, _agent, _settings, "_eatTargetTransform"),
-                        new LF_TargetInRange(this.transform, _settings, "_eatTargetTransform"),
+                        new LF_TargetInRange(this.transform, _settings.InteractRange, "_eatTargetTransform"),
                         new LF_StartActivity(_rabbit, EAnimalStates.Eat, _animalSearchArea),
                     }),
                     new LF_MoveAround(this.transform, _agent, _settings.SearchRange, _rabbit)

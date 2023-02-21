@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class Rabbit : AAnimal
 {
     #region Fields
+    [SerializeField] private float _interactIntervall = 1f;
     private Coroutine _coroutineEat;
     private Coroutine _coroutineDrink; 
     #endregion
@@ -44,7 +45,7 @@ public class Rabbit : AAnimal
         }
     }
     
-    public float ReproduceUrge
+    public override float ReproduceUrge
     {
         get => _reproduceUrge;
         set
@@ -210,13 +211,17 @@ public class Rabbit : AAnimal
         }
     }
 
+    /// <summary>
+    /// Drink till max value reached
+    /// </summary>
+    /// <returns>Wait time</returns>
     private IEnumerator DrinkFull()
     {
         State = EAnimalStates.Drink;
 
         while (_thirst < _settings.MaxThirst)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(_interactIntervall);
             Thirst += 30f;
         }
 
@@ -225,6 +230,11 @@ public class Rabbit : AAnimal
         _randomMove = true;
     }
 
+    /// <summary>
+    /// Eat till max value reached
+    /// </summary>
+    /// <param name="grass">Grass to eat</param>
+    /// <returns>Wait time</returns>
     private IEnumerator EatFull(Grass grass)
     {
         State = EAnimalStates.Eat;
@@ -233,7 +243,7 @@ public class Rabbit : AAnimal
 
         while (_hunger < _settings.MaxHunger)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(_interactIntervall);
             Hunger += 30f;
         }
 

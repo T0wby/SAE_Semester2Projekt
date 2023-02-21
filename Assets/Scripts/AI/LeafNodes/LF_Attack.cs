@@ -5,16 +5,18 @@ using BehaviorTree;
 
 public class LF_Attack : Node
 {
+    #region Fields
     private Transform _currentTarget;
     private Transform _lastTarget;
     private Transform _thisTransform;
     private IMortal _enemy;
     private IAttack _thisAttack;
     private Animator _animator;
-
     private float _attackTime;
     private float _attackCounter = 0f;
+    #endregion
 
+    #region Constructors
     public LF_Attack()
     {
 
@@ -26,7 +28,8 @@ public class LF_Attack : Node
         _attackTime = attackSpeed;
         _thisAttack = transform.GetComponent<IAttack>();
         _animator = animator;
-    }
+    } 
+    #endregion
 
     public override ENodeState CalculateState()
     {
@@ -35,7 +38,7 @@ public class LF_Attack : Node
         SetAnimationBool(_animator, "IsWalking", false);
         
 
-        if (_currentTarget != _lastTarget)
+        if (_currentTarget.gameObject != _lastTarget.gameObject)
         {
             _enemy = _currentTarget.GetComponent<IMortal>();
             _lastTarget = _currentTarget;
@@ -57,11 +60,11 @@ public class LF_Attack : Node
     {
         if (enemy.Health <= 0)
         {
-            RemoveDeadEnemy(enemy);
+            RemoveDeadEnemy();
         }
     }
 
-    private void RemoveDeadEnemy(IMortal enemy)
+    private void RemoveDeadEnemy()
     {
         DeleteData("target");
     }

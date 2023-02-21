@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class LF_SetAnimalState : Node
 {
+    #region Fields
     private AAnimal _animal;
-    private EAnimalStates _stateToSet;
+    private EAnimalStates _stateToSet; 
+    #endregion
 
     #region Constructors
     public LF_SetAnimalState()
@@ -14,6 +16,11 @@ public class LF_SetAnimalState : Node
         _stateToSet = EAnimalStates.None;
     }
 
+    /// <summary>
+    /// Changes the state of the animal
+    /// </summary>
+    /// <param name="animal">Animal in question</param>
+    /// <param name="stateToSet">State to change to</param>
     public LF_SetAnimalState(AAnimal animal, EAnimalStates stateToSet)
     {
         this._animal = animal;

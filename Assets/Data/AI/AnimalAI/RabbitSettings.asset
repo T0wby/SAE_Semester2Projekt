@@ -20,4 +20,4 @@ MonoBehaviour:
   _searchRange: 25
   _interactRange: 4
   _maxReproduceUrge: 100
-  _reproduceChance: 25
+  _reproduceChance: 30

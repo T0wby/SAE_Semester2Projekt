@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class SimpleFlocking : MonoBehaviour
 {
+    #region Struct
     public struct Boid
     {
         public Vector3 position;
         public Vector3 direction;
-        
+
         public Boid(Vector3 pos)
         {
             position = pos;
             direction = Vector3.zero;
         }
     }
+    #endregion
 
+    #region Fields
     [SerializeField] private ComputeShader _shader;
 
     [SerializeField] private float _rotationSpeed = 1f;
@@ -32,13 +35,15 @@ public class SimpleFlocking : MonoBehaviour
     private Boid[] _boidsArray;
     private GameObject[] _boids;
     private int _groupSizeX;
-    private int _numOfBoids;
+    private int _numOfBoids; 
+    #endregion
 
     void Start()
     {
         _kernelHandle = _shader.FindKernel("CSMain");
 
         uint x;
+        // Get group size from the shader to calculate the total boid number
         _shader.GetKernelThreadGroupSizes(_kernelHandle, out x, out _, out _);
         _groupSizeX = Mathf.CeilToInt((float)_boidsCount / (float)x);
         _numOfBoids = _groupSizeX * (int)x;
@@ -47,6 +52,9 @@ public class SimpleFlocking : MonoBehaviour
         InitShader();
     }
 
+    /// <summary>
+    /// Create boid arrays and instantiate all boids
+    /// </summary>
     private void InitBoids()
     {
         _boids = new GameObject[_numOfBoids];
@@ -61,6 +69,9 @@ public class SimpleFlocking : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Initialize all fields and the buffer for the compute shader
+    /// </summary>
     private void InitShader()
     {
         _boidsBuffer = new ComputeBuffer(_numOfBoids, 6 * sizeof(float));
@@ -80,10 +91,12 @@ public class SimpleFlocking : MonoBehaviour
         _shader.SetFloat("time", Time.time);
         _shader.SetFloat("deltaTime", Time.deltaTime);
 
+        // Start compute shader
         _shader.Dispatch(_kernelHandle, _groupSizeX, 1, 1);
 
         _boidsBuffer.GetData(_boidsArray);
 
+        // Set calculated direction
         for (int i = 0; i < _boidsArray.Length; i++)
         {
             _boids[i].transform.localPosition = _boidsArray[i].position;

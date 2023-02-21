@@ -5,10 +5,14 @@ using BehaviorTree;
 
 public class LF_CheckForEnemyInAttackRange : Node
 {
+    #region Fields
     private Transform _thisTransform;
     private float _range;
     private Animator _animator;
+    private float _sqrDist;
+    #endregion
 
+    #region Constructors
     public LF_CheckForEnemyInAttackRange()
     {
         _thisTransform = null;
@@ -16,12 +20,19 @@ public class LF_CheckForEnemyInAttackRange : Node
         _animator = null;
     }
 
+    /// <summary>
+    /// Checks if the found enemy is in range for an attack
+    /// </summary>
+    /// <param name="transform">The own transform</param>
+    /// <param name="range">Range to check</param>
+    /// <param name="animator">Own animator</param>
     public LF_CheckForEnemyInAttackRange(Transform transform, float range, Animator animator)
     {
         _thisTransform = transform;
         _range = range;
         _animator = animator;
-    }
+    } 
+    #endregion
 
     public override ENodeState CalculateState()
     {
@@ -33,7 +44,9 @@ public class LF_CheckForEnemyInAttackRange : Node
         }
 
         Transform target = (Transform)tmp;
-        if (Vector3.Distance(_thisTransform.position, target.position) <= _range)
+
+        _sqrDist = (target.position - _thisTransform.position).sqrMagnitude;
+        if (_sqrDist <= (_range * _range))
         {
             return state = ENodeState.SUCCESS;
         }

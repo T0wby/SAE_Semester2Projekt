@@ -22,6 +22,11 @@ public class LF_CheckIfAtHidePoint : Node
 
     }
 
+    /// <summary>
+    /// Checks if the entity is near the hideDestination yet
+    /// </summary>
+    /// <param name="transform">Own transform</param>
+    /// <param name="animator">Own animator</param>
     public LF_CheckIfAtHidePoint(Transform transform, Animator animator)
     {
         _thisTransform = transform;

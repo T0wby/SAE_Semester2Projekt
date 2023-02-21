@@ -29,7 +29,7 @@ public class HideBT : MyTree
                 new LF_CheckAlertState(_hideAI),
                 new Sequence(new List<Node>
                 {
-                    new LF_EnemyInRange(settings.HideRange, transform),
+                    new LF_TargetInRange(transform, settings.HideRange, "target"),
                     new Sequence(new List<Node>
                     {
                         new LF_CheckIfAtHidePoint(transform, _animator),

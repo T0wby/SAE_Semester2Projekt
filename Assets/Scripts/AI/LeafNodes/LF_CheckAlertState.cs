@@ -12,6 +12,10 @@ public class LF_CheckAlertState : Node
         _hideAI = null;
     }
 
+    /// <summary>
+    /// Check if the AI has seen an enemy
+    /// </summary>
+    /// <param name="hideAI">AI to check</param>
     public LF_CheckAlertState(HideAI hideAI)
     {
         _hideAI = hideAI;

@@ -26,6 +26,13 @@ public class LF_GetHidePosition : Node
 
     }
 
+    /// <summary>
+    /// Searches for a hide point
+    /// </summary>
+    /// <param name="agent">Agent that is hiding</param>
+    /// <param name="settings">Settings of the hiding agent</param>
+    /// <param name="trackHideObject">Reference to the tracked objects that the agents can hide behind</param>
+    /// <param name="thisTransform">Own transform</param>
     public LF_GetHidePosition(NavMeshAgent agent, HideAISettings settings, TrackHideObject trackHideObject, Transform thisTransform)
     {
         _agent = agent;

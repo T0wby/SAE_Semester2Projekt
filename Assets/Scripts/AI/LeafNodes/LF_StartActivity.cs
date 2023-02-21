@@ -7,11 +7,13 @@ using UnityEngine;
 
 public class LF_StartActivity : Node
 {
+    #region Fields
     private AAnimal _thisAnimal;
     private AAnimal _partnerAnimal;
     private AnimalSearchArea _animalSearchArea;
     private EAnimalStates _eAnimalState;
-    private float _totalChance;
+    private float _totalChance; 
+    #endregion
 
     #region Constructors
     public LF_StartActivity()
@@ -20,7 +22,7 @@ public class LF_StartActivity : Node
     }
 
     /// <summary>
-    /// Constructor
+    /// Starts an activity fpr one of the states in EAnimalStates
     /// </summary>
     /// <param name="thisAnimal">Animal to perform the activity on</param>
     /// <param name="targetType">Type of activity you wish to perform</param>
@@ -38,15 +40,15 @@ public class LF_StartActivity : Node
         switch (_eAnimalState)
         {
             case EAnimalStates.Eat:
-                RemoveTargetFromList(_animalSearchArea, _eAnimalState);
                 _thisAnimal.Eat((Grass)GetData("_eatTarget"));
+                _animalSearchArea.GrassInRange.RemoveAll(grass => grass == null);
                 return ENodeState.SUCCESS;
             case EAnimalStates.Drink:
-                RemoveTargetFromList(_animalSearchArea, _eAnimalState);
+                Transform wtarget = (Transform)GetData("_waterTarget");
                 _thisAnimal.Drink();
+                _animalSearchArea.WaterInRange.Remove(wtarget.gameObject);
                 return ENodeState.SUCCESS;
             case EAnimalStates.Engaged:
-                RemoveTargetFromList(_animalSearchArea, _eAnimalState);
                 TryingToReproduce();
                 break;
             default:
@@ -56,6 +58,10 @@ public class LF_StartActivity : Node
         return ENodeState.FAILURE;
     }
 
+    /// <summary>
+    /// Gets the partner information and checkts if the reproduce try was a success or not
+    /// </summary>
+    /// <returns>Failure or Success</returns>
     private ENodeState TryingToReproduce()
     {
         Transform partnerTransform= (Transform)GetData("_reproduceTransform");
@@ -65,7 +71,7 @@ public class LF_StartActivity : Node
             _animalSearchArea.AnimalInRange.Remove(_partnerAnimal);
 
         _totalChance = _thisAnimal.ReproduceChance + _partnerAnimal.ReproduceChance;
-        if (_totalChance < Random.Range(0, 1))
+        if (_totalChance < Random.Range(0, 100))
         {
             ResettingStates();
             return ENodeState.FAILURE;
@@ -78,32 +84,24 @@ public class LF_StartActivity : Node
         }
     }
 
+    /// <summary>
+    /// Resetts the state and ReproduceUrge of the AAnimal
+    /// </summary>
     private void ResettingStates()
     {
         _partnerAnimal.State = EAnimalStates.None;
+        _partnerAnimal.ReproduceUrge = 0f;
         _thisAnimal.State = EAnimalStates.None;
+        _thisAnimal.ReproduceUrge = 0f;
     }
 
+    /// <summary>
+    /// If the Reproducetry was a success we instantiate a new rabbit after a set delay
+    /// </summary>
     private async void ReproduceTime()
     {
         await Task.Delay(9000);
         _thisAnimal.Reproduce();
     }
-
-    private void RemoveTargetFromList(AnimalSearchArea animalSearchArea, EAnimalStates state)
-    {
-        switch (state)
-        {
-            case EAnimalStates.Eat:
-                animalSearchArea.GrassInRange.RemoveAt(0);
-                break;
-            case EAnimalStates.Drink:
-                animalSearchArea.WaterInRange.RemoveAt(0);
-                break;
-            default:
-                break;
-        }
-    }
-
     #endregion
 }

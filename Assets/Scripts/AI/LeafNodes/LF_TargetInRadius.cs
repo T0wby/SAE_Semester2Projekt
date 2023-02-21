@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class LF_TargetInRadius : Node
 {
+    #region Fields
     private AnimalSearchArea _animalSearchArea;
     private ETargetTypes _eTargetType;
     private Transform _thisTransform;
-    private AAnimal _animal;
+    private AAnimal _animal; 
+    #endregion
 
     #region Constructors
     public LF_TargetInRadius()
@@ -17,7 +19,7 @@ public class LF_TargetInRadius : Node
     }
 
     /// <summary>
-    /// Constructor
+    /// Depending on the ETargetType we do different checks and actions
     /// </summary>
     /// <param name="animalSearchArea">Reference to the search area component</param>
     /// <param name="targetType">Type that you are searching for</param>

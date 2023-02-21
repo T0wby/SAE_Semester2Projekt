@@ -62,7 +62,6 @@ namespace BehaviorTree
         /// <param name="value">Value that will be added</param>
         public void SetData(string key, object value)
         {
-            //_data.Add(key, value);
             _data[key] = value;
         }
 

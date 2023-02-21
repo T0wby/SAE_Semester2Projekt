@@ -15,7 +15,6 @@ public class TrackHideObject : MonoBehaviour
     public List<Collider> Colliders { get => _colliders; }
     #endregion
 
-
     #region Unity
 
     private void Awake()

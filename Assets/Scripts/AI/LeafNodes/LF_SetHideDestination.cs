@@ -21,6 +21,12 @@ public class LF_SetHideDestination : Node
 
     }
 
+    /// <summary>
+    /// Sets the calculated hide destination for the agent
+    /// </summary>
+    /// <param name="agent">Agent to set the destination for</param>
+    /// <param name="settings">Settings of the agent</param>
+    /// <param name="animator">Animator of the agent</param>
     public LF_SetHideDestination(NavMeshAgent agent, HideAISettings settings, Animator animator)
 	{
         _agent = agent;

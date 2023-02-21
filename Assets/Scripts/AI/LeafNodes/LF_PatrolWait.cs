@@ -25,6 +25,15 @@ public class LF_PatrolWait : Node
     #endregion
 
     #region Constructor
+    /// <summary>
+    /// Patrols an agent between an array of points with a waittime at each station
+    /// </summary>
+    /// <param name="transform">Own transform</param>
+    /// <param name="waypoints">Array of points to patrol</param>
+    /// <param name="agent">Own NavMeshAgent</param>
+    /// <param name="radius">radius around the points to patrol</param>
+    /// <param name="speed">Speed that the agent should have</param>
+    /// <param name="animator">Own animator</param>
     public LF_PatrolWait(Transform transform, Transform[] waypoints, NavMeshAgent agent, float radius, float speed, Animator animator)
     {
         _thisTransform = transform;
@@ -55,7 +64,7 @@ public class LF_PatrolWait : Node
             }
 
 
-            if (Vector3.Distance(_thisTransform.position, _destination) < 1f)
+            if (Vector3.SqrMagnitude(_thisTransform.position - _destination) < 1f)
             {
                 _waitCounter = 0f;
                 _waiting = true;

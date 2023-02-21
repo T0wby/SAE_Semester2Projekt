@@ -6,11 +6,13 @@ using UnityEngine.AI;
 
 public class LF_GoToAnimalTarget : Node
 {
+    #region Fields
     private NavMeshAgent _agent;
     private AnimalAISettings _settings;
     private Transform _thisTransform;
     private Transform _targetTransform;
-    private string _dataSet;
+    private string _dataSet; 
+    #endregion
 
     #region Constructors
     public LF_GoToAnimalTarget()
@@ -18,6 +20,13 @@ public class LF_GoToAnimalTarget : Node
         
     }
 
+    /// <summary>
+    /// Move the agent to a target
+    /// </summary>
+    /// <param name="transform">Own transform</param>
+    /// <param name="agent">Own NavMeshAgent</param>
+    /// <param name="settings">Own AnimalAISettings</param>
+    /// <param name="dataSet">String for the target transform</param>
     public LF_GoToAnimalTarget(Transform transform, NavMeshAgent agent, AnimalAISettings settings, string dataSet)
     {
         _thisTransform = transform;
@@ -34,7 +43,7 @@ public class LF_GoToAnimalTarget : Node
         if (_agent.speed != _settings.RunSpeed)
             _agent.speed = _settings.RunSpeed;
 
-        if (Vector3.Distance(_thisTransform.position, _targetTransform.position) > _settings.InteractRange)
+        if (Vector3.SqrMagnitude(_thisTransform.position - _targetTransform.position) > (_settings.InteractRange * _settings.InteractRange))
         {
             if (_agent.destination != _targetTransform.position)
                 _agent.destination = _targetTransform.position;

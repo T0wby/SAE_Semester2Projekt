@@ -6,10 +6,12 @@ using UnityEngine.AI;
 
 public class LF_TargetInRange : Node
 {
-    private AnimalAISettings _settings;
+    #region Fields
     private Transform _thisTransform;
     private Transform _targetTransform;
     private string _dataSet;
+    private float _range;
+    #endregion
 
     #region Constructors
     public LF_TargetInRange()
@@ -17,10 +19,16 @@ public class LF_TargetInRange : Node
 
     }
 
-    public LF_TargetInRange(Transform transform, AnimalAISettings settings, string dataSet)
+    /// <summary>
+    /// Checks if the target is in a certain range
+    /// </summary>
+    /// <param name="transform">Own transform</param>
+    /// <param name="range">Range to be checked</param>
+    /// <param name="dataSet">String used to store the target data</param>
+    public LF_TargetInRange(Transform transform, float range, string dataSet)
     {
         _thisTransform = transform;
-        _settings = settings;
+        _range = range;
         _dataSet = dataSet;
     }
     #endregion
@@ -29,12 +37,16 @@ public class LF_TargetInRange : Node
     public override ENodeState CalculateState()
     {
         _targetTransform = (Transform)GetData(_dataSet);
-        if (Vector3.Distance(_thisTransform.position, _targetTransform.position) < _settings.InteractRange)
-        {
-            return ENodeState.SUCCESS;
-        }
 
-        return ENodeState.FAILURE;
+        if (_targetTransform is null)
+            return ENodeState.FAILURE;
+
+        return CheckIfInRange(_thisTransform, _targetTransform, _range);
+    }
+
+    private ENodeState CheckIfInRange(Transform thisTransform, Transform targetTransform, float range)
+    {
+        return Vector3.SqrMagnitude(targetTransform.position - thisTransform.position) < range * range ? ENodeState.SUCCESS : ENodeState.FAILURE;
     }
     #endregion
 }

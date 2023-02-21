@@ -44,6 +44,7 @@ public abstract class AAnimal : MonoBehaviour, IMortal
     }
     public float ReproduceChance { get => _reproduceChance; }
     public bool RandomMove { get => _randomMove; set => _randomMove = value; }
+    public abstract float ReproduceUrge { get; set; }
     #endregion
 
     #region Events

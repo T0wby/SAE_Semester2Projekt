@@ -66,6 +66,13 @@ public class AnimalSearchArea : MonoBehaviour
     #endregion
 
     #region Methods
+
+    /// <summary>
+    /// Add or remove a grass element from a list
+    /// </summary>
+    /// <param name="grass">Grass to perform action with</param>
+    /// <param name="grassList">List to perform action on</param>
+    /// <param name="add">true add element, false remove element</param>
     private void AddRemoveGrass(Grass grass, List<Grass> grassList, bool add)
     {
         if (add)
@@ -81,6 +88,12 @@ public class AnimalSearchArea : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Add or remove a water element from a list
+    /// </summary>
+    /// <param name="water">water to perform action with</param>
+    /// <param name="waterList">List to perform action on</param>
+    /// <param name="add">true add element, false remove element</param>
     private void AddRemoveWater(GameObject water, List<GameObject> waterList, bool add)
     {
         if (add)
@@ -93,6 +106,12 @@ public class AnimalSearchArea : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Add or remove an AAnimal element from a list
+    /// </summary>
+    /// <param name="animal">AAnimal to perform action with</param>
+    /// <param name="animalList">List to perform action on</param>
+    /// <param name="add">true add element, false remove element</param>
     private void AddRemoveAnimal(AAnimal animal, List<AAnimal> animalList, bool add)
     {
         if (add)

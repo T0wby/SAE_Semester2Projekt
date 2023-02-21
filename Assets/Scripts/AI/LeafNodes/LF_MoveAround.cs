@@ -6,12 +6,14 @@ using UnityEngine.AI;
 
 public class LF_MoveAround : Node
 {
+    #region Fields
     private Transform _thisTransform;
     private NavMeshAgent _agent;
     private float _searchRange;
     private AAnimal _animal;
     private Vector2 _destination;
-    private float _distance;
+    private float _distance; 
+    #endregion
 
     #region Constructors
     public LF_MoveAround()
@@ -19,6 +21,13 @@ public class LF_MoveAround : Node
         
     }
 
+    /// <summary>
+    /// Moves the agent to a random point inside a circle
+    /// </summary>
+    /// <param name="thisTransform">Own transform</param>
+    /// <param name="agent"Own NavMeshAgent></param>
+    /// <param name="searchRange">radius of the circle</param>
+    /// <param name="animal">Own AAnimal reference</param>
     public LF_MoveAround(Transform thisTransform, NavMeshAgent agent, float searchRange, AAnimal animal)
     {
         _thisTransform = thisTransform;
