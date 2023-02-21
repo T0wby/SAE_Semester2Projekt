@@ -7,11 +7,6 @@ public class DeactivateCanvas : MonoBehaviour
     [SerializeField] private List<GameObject> _canvases;
     [SerializeField] string _targetTag = "Player";
 
-    private void Awake()
-    {
-        //_canvases = new List<GameObject>();
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(_targetTag))

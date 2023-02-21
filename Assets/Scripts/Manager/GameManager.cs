@@ -4,11 +4,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.VFX;
 
 public class GameManager : Singleton<GameManager>
 {
     #region Fields
     [SerializeField] private GameObject _sandstorm;
+    [SerializeField] private VisualEffect _sandground;
     [SerializeField] private VolumeProfile _sandV;
     private PlanetGenerator[] _allPlanets = null;
     private List<PlanetGenerator> _noneGeneratedPlanets = null;
@@ -70,9 +72,15 @@ public class GameManager : Singleton<GameManager>
                 return;
 
             if (_sandstorm.activeSelf)
+            {
                 _vignette.intensity.Override(0.7f);
+                _sandground.SetInt("SpawnRate", 80);
+            }
             else
+            {
                 _vignette.intensity.Override(0.0f);
+                _sandground.SetInt("SpawnRate", 0);
+            }
         }
     }
 
