@@ -7,7 +7,6 @@ using UnityEngine.Rendering;
 
 public class GameManager : Singleton<GameManager>
 {
-
     #region Fields
     [SerializeField] private GameObject _sandstorm;
     [SerializeField] private VolumeProfile _sandV;
@@ -38,6 +37,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GenerateRandomPlanet(InputAction.CallbackContext context)
     {
+        /** Generate random planet positions, but used fixed settings **/
         if (context.started && _noneGeneratedPlanets.Count > 0)
         {
             int random = Random.Range(0, _noneGeneratedPlanets.Count - 1);
@@ -45,6 +45,8 @@ public class GameManager : Singleton<GameManager>
             _noneGeneratedPlanets[random].GeneratePlanet();
             _noneGeneratedPlanets.RemoveAt(random);
         }
+
+        /** Completely randomize planets **/
         //if (context.started && _noneGeneratedPlanets.Count > 0)
         //{
         //    int random = Random.Range(0, _noneGeneratedPlanets.Count - 1);
