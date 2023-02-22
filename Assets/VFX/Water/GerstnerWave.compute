@@ -24,6 +24,10 @@ void CSMain (uint3 id : SV_DispatchThreadID)
     uint instanceId = id.x;
     Vertex vertex = vertexBuffer[instanceId];
 
+    /**
+    * Gerstner wave formula
+    * E.g https://catlikecoding.com/unity/tutorials/flow/waves/#:~:text=Gerstner%20waves%20don%27t%20have,pressure%2C%20the%20flatter%20the%20waves.
+    **/
     float k = 2 * PI / waveWavelength;
     float c = sqrt(G / k);
     float q = k * (waveDirection.x * vertex.position.x + waveDirection.y * vertex.position.z) + waveSpeed * time;

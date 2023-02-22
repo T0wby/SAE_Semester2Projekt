@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class GerstnerWave : MonoBehaviour
 {
-
+    #region Fields
     [SerializeField] private ComputeShader _shader;
     [SerializeField] private float _waveAmplitude = 1f;
     [SerializeField] private float _waveWavelength = 10f;
@@ -17,7 +17,8 @@ public class GerstnerWave : MonoBehaviour
     private ComputeBuffer _vertexBuffer;
     private int _groupSizeX;
     private int _verticeCount;
-    private Vector3[] _meshVertices;
+    private Vector3[] _meshVertices; 
+    #endregion
 
     private void Start()
     {
@@ -32,6 +33,9 @@ public class GerstnerWave : MonoBehaviour
         InitShader();
     }
 
+    /// <summary>
+    /// Initialize all shader properties and the buffer
+    /// </summary>
     private void InitShader()
     {
         _vertexBuffer = new ComputeBuffer(_verticeCount, sizeof(float) * 3);
