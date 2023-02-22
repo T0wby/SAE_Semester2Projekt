@@ -6177,7 +6177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589216465}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -400}
+  m_LocalPosition: {x: 0, y: 1.20012, z: -400}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25750,15 +25750,43 @@ PrefabInstance:
     m_TransformParent: {fileID: 1611505506}
     m_Modifications:
     - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
+      propertyPath: _waveSpeed
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
+      propertyPath: _waveSpeed2
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
       propertyPath: _waveAmplitude
-      value: 0.12
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
       propertyPath: _waveSteepness
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
+      propertyPath: _waveAmplitude2
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
+      propertyPath: _waveSteepness2
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
       propertyPath: _waveDirection.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
+      propertyPath: _waveWavelength2
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
+      propertyPath: _waveDirection2.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 80371968709927464, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
+      propertyPath: _waveDirection2.y
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 80371968709927467, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
@@ -25779,7 +25807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 80371968709927467, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.20002
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 80371968709927467, guid: 3b5aa790b85caf5458e0799d6191a128, type: 3}
       propertyPath: m_LocalPosition.z

@@ -41,7 +41,7 @@ Material:
     - _VoronoiDensity: 5.91
     - _VoronoiOffset: 5.45
     m_Colors:
-    - _MinMax: {r: 0, g: 1.5, b: 0, a: 0}
+    - _MinMax: {r: 0, g: 2, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4909365648772846978
 MonoBehaviour:
