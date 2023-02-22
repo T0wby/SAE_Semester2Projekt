@@ -88,6 +88,11 @@ namespace Player_Towby
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Calculates direction and velocity of the player
+        /// </summary>
+        /// <param name="dir">Direction to move in</param>
         private void Move(Vector2 dir)
         {
             _direction = new Vector3(dir.x, 0, dir.y);
@@ -100,6 +105,10 @@ namespace Player_Towby
             }
         }
 
+        /// <summary>
+        /// Calculates the rotation of the player
+        /// </summary>
+        /// <param name="look">Rotation vector from the mouse input</param>
         private void Rotation(Vector2 look)
         {
             _rotationFollow.rotation *= Quaternion.AngleAxis(look.x * _rotationPower, Vector3.up);
@@ -130,6 +139,10 @@ namespace Player_Towby
             _rotationFollow.localEulerAngles = new Vector3(_angles.x, 0, 0);
         }
 
+        /// <summary>
+        /// Used for the slider in the UI
+        /// </summary>
+        /// <param name="value">Slider value</param>
         public void RotationPowerChange(float value)
         {
             _rotationPower = value;

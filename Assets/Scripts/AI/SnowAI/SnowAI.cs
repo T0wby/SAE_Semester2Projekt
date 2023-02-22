@@ -5,10 +5,13 @@ using UnityEngine.Events;
 
 public class SnowAI : AEntity, IAttack
 {
+    #region Fields
     [SerializeField] private OfficerSettings _settings;
 
-    public UnityEvent OnHealthReduction;
+    public UnityEvent OnHealthReduction; 
+    #endregion
 
+    #region Properties
     public override float Health
     {
         get => _health;
@@ -20,9 +23,10 @@ public class SnowAI : AEntity, IAttack
         }
     }
     public float Damage { get => _settings.Damage; }
-    public float AtkSpeed { get => _settings.AtkSpeed; }
+    public float AtkSpeed { get => _settings.AtkSpeed; } 
+    #endregion
 
-    
+
 
     private void Awake()
     {
@@ -34,6 +38,7 @@ public class SnowAI : AEntity, IAttack
         OnHealthReduction.AddListener(CheckHealth);
     }
 
+    #region Methods
     public void Attack(IMortal enemy)
     {
         enemy.Health -= Damage;
@@ -50,5 +55,6 @@ public class SnowAI : AEntity, IAttack
     public override void Destroy()
     {
         gameObject.SetActive(false);
-    }
+    } 
+    #endregion
 }

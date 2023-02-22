@@ -15,8 +15,9 @@ public class ShapeGeneratorTwo
     public MinMax ElevationMinMax { get => _elevationMinMax; }
     #endregion
 
+    #region Methods
     /// <summary>
-    /// Initializes all shape settings
+    /// Initializes all settings
     /// </summary>
     /// <param name="newSettings">ShapeSettings from the planet</param>
     public void UpdateSettings(ShapeSettings newSettings)
@@ -87,5 +88,6 @@ public class ShapeGeneratorTwo
         _elevationMinMax.AddValue(elevation);
 
         return _pointOnUnitSphere * elevation;
-    }
+    } 
+    #endregion
 }

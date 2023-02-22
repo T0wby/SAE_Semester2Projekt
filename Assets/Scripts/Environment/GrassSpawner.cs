@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class GrassSpawner : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private GameObject _grassPrefab;
     [SerializeField] private Vector2 _spawnArea = Vector2.zero;
     [SerializeField] private int _maxSpawns = 5;
     [SerializeField] private float _spawnTimer = 5f;
     private List<GameObject> _spawnedGrass;
+    #endregion
 
-    public List<GameObject> SpawnedGrass { get => _spawnedGrass; }
+    #region Properties
+    public List<GameObject> SpawnedGrass { get => _spawnedGrass; } 
+    #endregion
 
     private void Awake()
     {
@@ -19,6 +23,10 @@ public class GrassSpawner : MonoBehaviour
         StartCoroutine(SpawnGrass());
     }
 
+    /// <summary>
+    /// Spawn a grass prefab at a random position inside of a box
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator SpawnGrass()
     {
         while (true)
@@ -35,6 +43,9 @@ public class GrassSpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Removes all null references inside the grass list
+    /// </summary>
     private void CheckSpawnedGrass()
     {
         _spawnedGrass.RemoveAll(grass => grass == null);

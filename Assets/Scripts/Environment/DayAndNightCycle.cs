@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class DayAndNightCycle : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private SceneSettings _sceneSettings;
     [SerializeField] private Transform _lightTransform;
-    [SerializeField] private GameObject[] _lights;
+    [SerializeField] private GameObject[] _lights; 
+    
 
     private float _lightRefreshRate;
     private float _rotationAngleStep;
     private Vector3 _rotationAxis;
+    #endregion
 
-
+    #region Unity
     private void Awake()
     {
         if (_sceneSettings.EnableDayAndNightCycle)
@@ -35,9 +38,13 @@ public class DayAndNightCycle : MonoBehaviour
     {
         if (_sceneSettings.EnableDayAndNightCycle)
             StartCoroutine(UpdateLight());
-    }
+    } 
+    #endregion
 
-
+    /// <summary>
+    /// Rotate the light
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator UpdateLight()
     {
         while (true)

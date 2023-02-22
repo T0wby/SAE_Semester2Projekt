@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class DisableZoneElements : MonoBehaviour
 {
+    #region Fields
     private HideAI[] _hideAIGroup;
     private SimpleFlocking[] _flockinGroup;
     private GerstnerWave[] _gerstnerWave;
     private SnowAI[] _snowAIGroup;
+    #endregion
 
-    // Start is called before the first frame update
+    #region Unity
     void Start()
     {
         _hideAIGroup = FindObjectsOfType<HideAI>();
@@ -21,7 +23,9 @@ public class DisableZoneElements : MonoBehaviour
         ChangeSimpleFlockingStatus();
         ChangeSnowAIStatus();
     }
+    #endregion
 
+    #region Methods
     public void ChangeHideAIStatus()
     {
         foreach (HideAI hideAi in _hideAIGroup)
@@ -47,5 +51,6 @@ public class DisableZoneElements : MonoBehaviour
         {
             ai.gameObject.SetActive(!ai.gameObject.activeSelf);
         }
-    }
+    } 
+    #endregion
 }

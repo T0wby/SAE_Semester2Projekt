@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class FaceCamera : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private Vector3 offset;
-    private Vector3 position;
+    #region Fields
     private Camera cam;
+    #endregion
 
     private void Start()
     {
@@ -16,11 +15,6 @@ public class FaceCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //position = cam.WorldToScreenPoint(target.position + offset);
-
-        //if (transform.position != position)
-        //    transform.position = position;
-
         transform.LookAt(cam.transform);
         transform.Rotate(0, 180, 0);
     }

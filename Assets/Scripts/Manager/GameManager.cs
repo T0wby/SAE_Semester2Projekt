@@ -29,6 +29,11 @@ public class GameManager : Singleton<GameManager>
     #endregion
 
     #region Methods
+
+    /// <summary>
+    /// Changes the Multithreading of all planet objects in the game
+    /// </summary>
+    /// <param name="value">value to change to</param>
     public void ChangeMultiThreading(bool value)
     {
         for (int i = 0; i < _allPlanets.Length; i++)
@@ -37,6 +42,10 @@ public class GameManager : Singleton<GameManager>
         }
     } 
 
+    /// <summary>
+    /// Generate the meshes of one of the existing planets
+    /// </summary>
+    /// <param name="context"></param>
     public void GenerateRandomPlanet(InputAction.CallbackContext context)
     {
         /** Generate random planet positions, but used fixed settings **/
@@ -63,6 +72,10 @@ public class GameManager : Singleton<GameManager>
         //}
     }
 
+    /// <summary>
+    /// Turns the sandstorm vfx on and off
+    /// </summary>
+    /// <param name="context"></param>
     public void ToggleSandstorm(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -84,6 +97,9 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    /// <summary>
+    /// Get a reference to all Planets
+    /// </summary>
     private void GetAllPlanets()
     {
         _allPlanets = FindObjectsOfType<PlanetGenerator>();

@@ -6,18 +6,25 @@ using UnityEngine.InputSystem;
 
 public class UIManager : Singleton<UIManager>
 {
+    #region Fields
     [SerializeField] private GameObject _menu;
     private PlayerController _playerController;
+    #endregion
 
+    #region Properties
     public bool IsInMenu { get; set; }
+    #endregion
 
+    #region Unity
     protected override void Awake()
     {
         IsInAllScenes = true;
         base.Awake();
         _playerController = FindObjectOfType<PlayerController>();
     }
+    #endregion
 
+    #region Methods
     public void PauseGame()
     {
         IsInMenu = true;
@@ -51,12 +58,13 @@ public class UIManager : Singleton<UIManager>
                 ResumeGame();
                 _playerController.EnableMovement();
             }
-                
+
         }
     }
 
     public void QuitGame()
     {
         Application.Quit();
-    }
+    } 
+    #endregion
 }
