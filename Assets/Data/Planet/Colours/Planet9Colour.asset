@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c61f7cb61a97bb4190e0aba619198fd, type: 3}
+  m_Name: Planet9Colour
+  m_EditorClassIdentifier: 
+  PlanetMaterial: {fileID: 2100000, guid: 46893adf26089984394d0c115dc77391, type: 2}
+  biomeColourSettings:
+    Biomes:
+    - gradient:
+        serializedVersion: 2
+        key0: {r: 0.026821356, g: 0.0053577577, b: 0.4056604, a: 1}
+        key1: {r: 0.15985867, g: 0.040174417, b: 0.5754717, a: 1}
+        key2: {r: 0.14247058, g: 0.6459496, b: 0.8679245, a: 0}
+        key3: {r: 0.4339623, g: 0.35151833, b: 0.144927, a: 0}
+        key4: {r: 0.67058825, g: 0.6386252, b: 0.27450982, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 16384
+        ctime2: 25250
+        ctime3: 40863
+        ctime4: 65535
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 5
+        m_NumAlphaKeys: 2
+      Tint: {r: 0, g: 0, b: 0, a: 0}
+      StartHeight: 0
+      TintPercent: 0
+    Noise:
+      FilterType: 0
+      simpleNoiseSettings:
+        Strength: 1
+        LayerCount: 0
+        BaseRoughness: 1
+        Roughness: 2
+        Persistence: 0.5
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+      rigidNoiseSettings:
+        Strength: 1
+        LayerCount: 0
+        BaseRoughness: 1
+        Roughness: 2
+        Persistence: 0.5
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+        WeightMultiplier: 0.8
+    NoiseOffset: 0
+    NoiseStrength: 0

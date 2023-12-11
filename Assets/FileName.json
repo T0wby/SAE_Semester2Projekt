@@ -1,0 +1,273 @@
+{
+    "_nodeWindowWraps": [
+        {
+            "WindowRect": {
+                "serializedVersion": "2",
+                "x": 350.0,
+                "y": 343.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "Name": "LF_StartActivity",
+            "HasParent": true,
+            "ParentWindowRect": {
+                "serializedVersion": "2",
+                "x": 178.0,
+                "y": 226.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "ParentName": "Sequence",
+            "Children": []
+        },
+        {
+            "WindowRect": {
+                "serializedVersion": "2",
+                "x": 53.0,
+                "y": 373.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "Name": "LF_TargetInRadius",
+            "HasParent": true,
+            "ParentWindowRect": {
+                "serializedVersion": "2",
+                "x": 178.0,
+                "y": 226.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "ParentName": "Sequence",
+            "Children": []
+        },
+        {
+            "WindowRect": {
+                "serializedVersion": "2",
+                "x": 178.0,
+                "y": 226.0,
+                "width": 250.0,
+                "height": 80.0
+            },
+            "Name": "Sequence",
+            "HasParent": false,
+            "ParentWindowRect": {
+                "serializedVersion": "2",
+                "x": 0.0,
+                "y": 0.0,
+                "width": 0.0,
+                "height": 0.0
+            },
+            "ParentName": "",
+            "Children": [
+                {
+                    "WindowRect": {
+                        "serializedVersion": "2",
+                        "x": 350.0,
+                        "y": 343.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "Name": "LF_StartActivity",
+                    "HasParent": true,
+                    "ParentWindowRect": {
+                        "serializedVersion": "2",
+                        "x": 178.0,
+                        "y": 226.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "ParentName": "Sequence",
+                    "Children": []
+                },
+                {
+                    "WindowRect": {
+                        "serializedVersion": "2",
+                        "x": 53.0,
+                        "y": 373.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "Name": "LF_TargetInRadius",
+                    "HasParent": true,
+                    "ParentWindowRect": {
+                        "serializedVersion": "2",
+                        "x": 178.0,
+                        "y": 226.0,
+                        "width": 250.0,
+                        "height": 80.0
+                    },
+                    "ParentName": "Sequence",
+                    "Children": []
+                }
+            ]
+        }
+    ],
+    "_connections": [
+        {
+            "Parent": {
+                "WindowRect": {
+                    "serializedVersion": "2",
+                    "x": 178.0,
+                    "y": 226.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "Name": "Sequence",
+                "HasParent": false,
+                "ParentWindowRect": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 0.0,
+                    "height": 0.0
+                },
+                "ParentName": "",
+                "Children": [
+                    {
+                        "WindowRect": {
+                            "serializedVersion": "2",
+                            "x": 350.0,
+                            "y": 343.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "Name": "LF_StartActivity",
+                        "HasParent": true,
+                        "ParentWindowRect": {
+                            "serializedVersion": "2",
+                            "x": 178.0,
+                            "y": 226.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "ParentName": "Sequence",
+                        "Children": []
+                    },
+                    {
+                        "WindowRect": {
+                            "serializedVersion": "2",
+                            "x": 53.0,
+                            "y": 373.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "Name": "LF_TargetInRadius",
+                        "HasParent": true,
+                        "ParentWindowRect": {
+                            "serializedVersion": "2",
+                            "x": 178.0,
+                            "y": 226.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "ParentName": "Sequence",
+                        "Children": []
+                    }
+                ]
+            },
+            "Child": {
+                "WindowRect": {
+                    "serializedVersion": "2",
+                    "x": 350.0,
+                    "y": 343.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "Name": "LF_StartActivity",
+                "HasParent": true,
+                "ParentWindowRect": {
+                    "serializedVersion": "2",
+                    "x": 178.0,
+                    "y": 226.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "ParentName": "Sequence",
+                "Children": []
+            }
+        },
+        {
+            "Parent": {
+                "WindowRect": {
+                    "serializedVersion": "2",
+                    "x": 178.0,
+                    "y": 226.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "Name": "Sequence",
+                "HasParent": false,
+                "ParentWindowRect": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 0.0,
+                    "height": 0.0
+                },
+                "ParentName": "",
+                "Children": [
+                    {
+                        "WindowRect": {
+                            "serializedVersion": "2",
+                            "x": 350.0,
+                            "y": 343.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "Name": "LF_StartActivity",
+                        "HasParent": true,
+                        "ParentWindowRect": {
+                            "serializedVersion": "2",
+                            "x": 178.0,
+                            "y": 226.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "ParentName": "Sequence",
+                        "Children": []
+                    },
+                    {
+                        "WindowRect": {
+                            "serializedVersion": "2",
+                            "x": 53.0,
+                            "y": 373.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "Name": "LF_TargetInRadius",
+                        "HasParent": true,
+                        "ParentWindowRect": {
+                            "serializedVersion": "2",
+                            "x": 178.0,
+                            "y": 226.0,
+                            "width": 250.0,
+                            "height": 80.0
+                        },
+                        "ParentName": "Sequence",
+                        "Children": []
+                    }
+                ]
+            },
+            "Child": {
+                "WindowRect": {
+                    "serializedVersion": "2",
+                    "x": 53.0,
+                    "y": 373.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "Name": "LF_TargetInRadius",
+                "HasParent": true,
+                "ParentWindowRect": {
+                    "serializedVersion": "2",
+                    "x": 178.0,
+                    "y": 226.0,
+                    "width": 250.0,
+                    "height": 80.0
+                },
+                "ParentName": "Sequence",
+                "Children": []
+            }
+        }
+    ]
+}

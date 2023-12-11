@@ -1,0 +1,51 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+#define GROUP_SIZE 256
+#define PI 3.1415926535897932384626433832795
+const float G = 9.81;
+
+struct Vertex
+{
+    float3 position;
+};
+
+RWStructuredBuffer<Vertex> vertexBuffer;
+
+float time;
+
+//Wave One
+float waveAmplitude;
+float waveWavelength;
+float waveSteepness;
+float waveSpeed;
+float2 waveDirection;
+//Wave Two
+float waveAmplitude2;
+float waveWavelength2;
+float waveSteepness2;
+float waveSpeed2;
+float2 waveDirection2;
+
+float GerstnerYPos(float wavelength, float waveAmplitude, float waveSteepness, float waveSpeed, float2 waveDirection, Vertex vertex) {
+    float k = 2 * PI / wavelength;
+    float c = sqrt(G / k);
+    float q = k * (waveDirection.x * vertex.position.x + waveDirection.y * vertex.position.z) + waveSpeed * time;
+    float wx = waveAmplitude * waveDirection.x * cos(q * PI / 180.0f);
+    float wz = waveAmplitude * waveDirection.y * sin(q * PI / 180.0f);
+    return waveSteepness * k * (wx + wz);
+}
+
+[numthreads(GROUP_SIZE,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    uint instanceId = id.x;
+    Vertex vertex = vertexBuffer[instanceId];
+
+    /**
+    * Gerstner wave formula
+    * E.g https://catlikecoding.com/unity/tutorials/flow/waves/#:~:text=Gerstner%20waves%20don%27t%20have,pressure%2C%20the%20flatter%20the%20waves.
+    **/
+    vertex.position.y = GerstnerYPos(waveWavelength, waveAmplitude, waveSteepness, waveSpeed, waveDirection, vertex);
+    vertex.position.y += GerstnerYPos(waveWavelength2, waveAmplitude2, waveSteepness2, waveSpeed2, waveDirection2, vertex);
+    vertexBuffer[instanceId] = vertex;
+}

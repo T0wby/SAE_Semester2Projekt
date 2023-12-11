@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c61f7cb61a97bb4190e0aba619198fd, type: 3}
+  m_Name: Planet12Colour
+  m_EditorClassIdentifier: 
+  PlanetMaterial: {fileID: 2100000, guid: e37de3b455abe564fa668a245b953895, type: 2}
+  biomeColourSettings:
+    Biomes:
+    - gradient:
+        serializedVersion: 2
+        key0: {r: 0.9150943, g: 0.7105305, b: 0.15107687, a: 1}
+        key1: {r: 0.8235294, g: 0.7454577, b: 0.42352942, a: 1}
+        key2: {r: 0.4433962, g: 0.21502738, b: 0.14012992, a: 1}
+        key3: {r: 0.8773585, g: 0.42805585, b: 0.15312389, a: 1}
+        key4: {r: 0.8773585, g: 0.362026, b: 0.1448469, a: 1}
+        key5: {r: 0.85762036, g: 0.79463065, b: 0.53489304, a: 0}
+        key6: {r: 1, g: 1, b: 1, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 12722
+        ctime1: 15806
+        ctime2: 18890
+        ctime3: 21203
+        ctime4: 32189
+        ctime5: 57440
+        ctime6: 65535
+        ctime7: 0
+        atime0: 0
+        atime1: 8481
+        atime2: 12722
+        atime3: 36044
+        atime4: 65535
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 7
+        m_NumAlphaKeys: 5
+      Tint: {r: 0, g: 0, b: 0, a: 0}
+      StartHeight: 0
+      TintPercent: 0
+    Noise:
+      FilterType: 0
+      simpleNoiseSettings:
+        Strength: 1
+        LayerCount: 0
+        BaseRoughness: 1
+        Roughness: 2
+        Persistence: 0.5
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+      rigidNoiseSettings:
+        Strength: 1
+        LayerCount: 0
+        BaseRoughness: 1
+        Roughness: 2
+        Persistence: 0.5
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+        WeightMultiplier: 0.8
+    NoiseOffset: 0
+    NoiseStrength: 0

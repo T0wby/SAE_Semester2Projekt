@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28612decdf264f4419e233ca4263d7a0, type: 3}
+  m_Name: Planet10Shape
+  m_EditorClassIdentifier: 
+  PlanetRadius: 0.5
+  UseFancySphere: 1
+  NoiseLayers:
+  - Enabled: 1
+    UseFirstLayerAsMask: 0
+    NoiseSettings:
+      FilterType: 0
+      simpleNoiseSettings:
+        Strength: 0.1
+        LayerCount: 3
+        BaseRoughness: 2
+        Roughness: 1
+        Persistence: 0.3
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0.5
+      rigidNoiseSettings:
+        Strength: 0
+        LayerCount: 0
+        BaseRoughness: 0
+        Roughness: 0
+        Persistence: 0
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+        WeightMultiplier: 0
+  - Enabled: 1
+    UseFirstLayerAsMask: 0
+    NoiseSettings:
+      FilterType: 0
+      simpleNoiseSettings:
+        Strength: -0.2
+        LayerCount: 2
+        BaseRoughness: 1
+        Roughness: 2
+        Persistence: 0
+        NoiseCenter: {x: 33, y: 2, z: 1111}
+        GroundLevel: 0.5
+      rigidNoiseSettings:
+        Strength: 0
+        LayerCount: 0
+        BaseRoughness: 0
+        Roughness: 0
+        Persistence: 0
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+        WeightMultiplier: 0
+  - Enabled: 1
+    UseFirstLayerAsMask: 0
+    NoiseSettings:
+      FilterType: 1
+      simpleNoiseSettings:
+        Strength: 0
+        LayerCount: 0
+        BaseRoughness: 0
+        Roughness: 0
+        Persistence: 0
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+      rigidNoiseSettings:
+        Strength: -0.15
+        LayerCount: 7
+        BaseRoughness: 0.3
+        Roughness: 2
+        Persistence: 0.2
+        NoiseCenter: {x: 22, y: 0, z: 0}
+        GroundLevel: 0.5
+        WeightMultiplier: 1
+  - Enabled: 1
+    UseFirstLayerAsMask: 1
+    NoiseSettings:
+      FilterType: 0
+      simpleNoiseSettings:
+        Strength: 0.2
+        LayerCount: 2
+        BaseRoughness: 1
+        Roughness: 1
+        Persistence: 0.29
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0.3
+      rigidNoiseSettings:
+        Strength: 0
+        LayerCount: 0
+        BaseRoughness: 0
+        Roughness: 0
+        Persistence: 0
+        NoiseCenter: {x: 0, y: 0, z: 0}
+        GroundLevel: 0
+        WeightMultiplier: 0
